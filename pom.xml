@@ -37,18 +37,13 @@
         <repository>
             <id>repository</id>
             <name>Repository</name>
-            <url>http://falkoschumann.github.io/maven-repository/releases/</url>
+            <url>http://192.168.1.84:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>Snapshot Repository</name>
-            <url>http://falkoschumann.github.io/maven-repository/snapshots/</url>
+            <url>http://192.168.1.84:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
-        <site>
-            <id>github.pages</id>
-            <name>GitHub Pages</name>
-            <url>scm:git:https://github.com/falkoschumann/datenverteiler-kernsoftware.git</url>
-        </site>
     </distributionManagement>
 
     <issueManagement>
