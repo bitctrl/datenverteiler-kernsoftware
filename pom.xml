@@ -28,9 +28,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/falkoschumann/datenverteiler-kernsoftware</url>
-        <connection>scm:git:https://github.com/falkoschumann/datenverteiler-kernsoftware.git</connection>
-        <developerConnection>scm:git:https://github.com/falkoschumann/datenverteiler-kernsoftware.git</developerConnection>
+        <url>https://github.com/upeuker/datenverteiler-kernsoftware</url>
+        <connection>scm:git:https://github.com/upeuker/datenverteiler-kernsoftware.git</connection>
+        <developerConnection>scm:git:https://github.com/upeuker/datenverteiler-kernsoftware.git</developerConnection>
     </scm>
 
     <distributionManagement>
@@ -58,8 +58,8 @@
 
     <repositories>
         <repository>
-            <id>falkoschumann-releases</id>
-            <url>http://falkoschumann.github.io/maven-repository/releases/</url>
+            <id>repository</id>
+            <url>http://192.168.1.84:8081/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
 
