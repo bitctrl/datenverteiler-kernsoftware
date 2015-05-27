@@ -9,7 +9,7 @@ zu machen.
 Das Projekt beinhaltet die SWEs, die vom NERZ e.V. als Paket *Kernsoftware* zum
 Download bereit gestellt werden.
 
-Aktueller Stand: kernsoftware 3.6.5 vom 33.05.2015
+Aktueller Stand: kernsoftware 3.6.5 vom 22.05.2015
 
 Die Projektdokumentation befindet sich unter
 http://falkoschumann.github.io/datenverteiler-kernsoftware/
