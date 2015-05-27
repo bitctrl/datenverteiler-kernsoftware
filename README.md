@@ -1,4 +1,4 @@
-Kernsoftware [![Build Status](https://travis-ci.org/falkoschumann/datenverteiler-kernsoftware.png)](https://travis-ci.org/falkoschumann/datenverteiler-kernsoftware)
+Kernsoftware [![Build Status](https://travis-ci.org/bitctrl/datenverteiler-kernsoftware.png)](https://travis-ci.org/bitctrl/datenverteiler-kernsoftware)
 ============
 
 Die Kernsoftware des Datenverteilers in Form eines Maven-Projekts. Der Zweck
@@ -12,9 +12,9 @@ Download bereit gestellt werden.
 Aktueller Stand: kernsoftware 3.6.5 vom 22.05.2015
 
 Die Projektdokumentation befindet sich unter
-http://falkoschumann.github.io/datenverteiler-kernsoftware/
+http://bitctrl.github.io/datenverteiler-kernsoftware/
 
-Das Maven Repository http://falkoschumann.github.io/maven-repository/releases/
+Das Maven Repository http://bitctrl.github.io/maven-repository/releases/
 enthält alle mit diesem Projekt erzeugten Artefakte der Kernsofware: Binary
 JARs, Source JARs und JavaDoc JARs.
 
