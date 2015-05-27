@@ -6,7 +6,7 @@
 
     <groupId>kernsoftware</groupId>
     <artifactId>kernsoftware</artifactId>
-    <version>3.6.2</version>
+    <version>3.6.5</version>
     <packaging>pom</packaging>
 
     <name>Kernsoftware</name>
@@ -34,17 +34,15 @@
     </scm>
 
     <distributionManagement>
-        <repository>
-            <id>repository</id>
-            <name>Repository</name>
-            <url>http://192.168.1.84:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Snapshot Repository</name>
-            <url>http://192.168.1.84:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+		<snapshotRepository>
+			<id>bitctrl.nexus.snapshots</id>
+			<url>http://bitctrlbuildserver:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>bitctrl.nexus</id>
+			<url>http://bitctrlbuildserver:8081/nexus/content/repositories/releases</url>
+		</repository>
+	</distributionManagement>
 
     <issueManagement>
         <system>GitHub</system>
@@ -59,7 +57,7 @@
     <repositories>
         <repository>
             <id>repository</id>
-            <url>http://192.168.1.84:8081/nexus/content/repositories/releases/</url>
+            <url>http://bitctrlbuildserver:8081/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
 
@@ -179,6 +177,7 @@
                 <version>2.9</version>
                 <configuration>
                     <aggregate>true</aggregate>
+                    <failOnError>false</failOnError>
                 </configuration>
             </plugin>
             <plugin>

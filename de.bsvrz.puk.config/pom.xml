@@ -26,7 +26,7 @@
     <parent>
         <groupId>kernsoftware</groupId>
         <artifactId>kernsoftware</artifactId>
-        <version>3.6.2</version>
+        <version>3.6.5</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -34,57 +34,47 @@
         <dependency>
             <groupId>de.bsvrz.dav</groupId>
             <artifactId>de.bsvrz.dav.daf</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
-            <artifactId>de.bsvrz.sys.funclib.dataSerializer</artifactId>
-            <version>3.6.2</version>
-        </dependency>
-        <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
-            <artifactId>de.bsvrz.sys.funclib.communicationStreams</artifactId>
-            <version>3.6.2</version>
-        </dependency>
-        <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.commandLineArgs</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.hexdump</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.debug</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.xmlSupport</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.filelock</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.crypt</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.concurrent</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
         <dependency>
-            <groupId>de.bsvrz.sys.funclib</groupId>
+            <groupId>de.bsvrz.sys</groupId>
             <artifactId>de.bsvrz.sys.funclib.application</artifactId>
-            <version>3.6.2</version>
+            <version>3.6.5</version>
         </dependency>
     </dependencies>
 
@@ -101,6 +91,7 @@
                 <version>2.9</version>
                 <configuration>
                     <aggregate>false</aggregate>
+                    <failOnError>false</failOnError>
                 </configuration>
             </plugin>
             <plugin>
