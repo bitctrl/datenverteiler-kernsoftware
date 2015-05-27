@@ -1,0 +1,34 @@
+-classpath
+'C:/git/datenverteiler-kernsoftware/de.kappich.pat.gnd/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.dav.daf/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.crypt/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.pat.onlprot/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.pat.datgen/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.hexdump/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.commandLineArgs/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.operatingMessage/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.configObjectAcquisition/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.pat.sysbed/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.filelock/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.consoleProcessFrame/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.debug/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.concurrent/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.timeout/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.application/target/classes;C:/git/datenverteiler-kernsoftware/de.bsvrz.pat.sysprot/target/classes'
+-encoding
+'ISO-8859-1'
+-protected
+-sourcepath
+'C:/git/datenverteiler-kernsoftware/de.kappich.pat.gnd/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2015 <a href="http://www.kappich.de">Kappich Systemberatung</a>. All Rights Reserved.'
+-charset
+'ISO-8859-1'
+-d
+'C:/git/datenverteiler-kernsoftware/de.kappich.pat.gnd/target/site/apidocs'
+-docencoding
+'ISO-8859-1'
+-doctitle
+'Kappich GND 3.6.5 API'
+-linkoffline
+'http://docs.oracle.com/javase/6/docs/api' 'C:/git/datenverteiler-kernsoftware/de.kappich.pat.gnd/target/javadoc-bundle-options'
+-linkoffline
+'http://bitctrl.github.io/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.commandLineArgs/apidocs' 'C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.commandLineArgs/target/site/apidocs'
+-linkoffline
+'http://bitctrl.github.io/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.debug/apidocs' 'C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.debug/target/site/apidocs'
+-linkoffline
+'http://bitctrl.github.io/datenverteiler-kernsoftware/de.bsvrz.dav.daf/apidocs' 'C:/git/datenverteiler-kernsoftware/de.bsvrz.dav.daf/target/site/apidocs'
+-linkoffline
+'http://bitctrl.github.io/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.application/apidocs' 'C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.application/target/site/apidocs'
+-linkoffline
+'http://bitctrl.github.io/datenverteiler-kernsoftware/de.bsvrz.pat.sysbed/apidocs' 'C:/git/datenverteiler-kernsoftware/de.bsvrz.pat.sysbed/target/site/apidocs'
+-use
+-version
+-windowtitle
+'Kappich GND 3.6.5 API'

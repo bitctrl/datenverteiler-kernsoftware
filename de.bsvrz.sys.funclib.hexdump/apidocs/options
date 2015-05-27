@@ -1,0 +1,24 @@
+-classpath
+'C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.hexdump/target/classes'
+-encoding
+'ISO-8859-1'
+-protected
+-sourcepath
+'C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.hexdump/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2015 <a href="http://www.nerz-ev.de">NERZ e.V.</a>. All Rights Reserved.'
+-charset
+'ISO-8859-1'
+-d
+'C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.hexdump/target/site/apidocs'
+-docencoding
+'ISO-8859-1'
+-doctitle
+'Sys Funktionsbibliothek Hexdump 3.6.5 API'
+-linkoffline
+'http://docs.oracle.com/javase/6/docs/api' 'C:/git/datenverteiler-kernsoftware/de.bsvrz.sys.funclib.hexdump/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Sys Funktionsbibliothek Hexdump 3.6.5 API'
