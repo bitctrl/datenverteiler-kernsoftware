@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>Kernsoftware</name>
-    <url>http://falkoschumann.github.io/datenverteiler-kernsoftware</url>
+    <url>http://bitctrl.github.io/datenverteiler-kernsoftware</url>
     <organization>
         <name>NERZ e.V.</name>
         <url>http://www.nerz-ev.de</url>
@@ -42,16 +42,21 @@
 			<id>bitctrl.nexus</id>
 			<url>http://bitctrlbuildserver:8081/nexus/content/repositories/releases</url>
 		</repository>
+		 <site>
+            <id>github.pages</id>
+            <name>GitHub Pages</name>
+            <url>http://bitctrl.github.io/datenverteiler-kernsoftware/</url>
+        </site>
 	</distributionManagement>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/falkoschumann/datenverteiler-kernsoftware/issues</url>
+        <url>https://github.com/bitctrl/datenverteiler-kernsoftware/issues</url>
     </issueManagement>
 
     <ciManagement>
         <system>Travis-CI</system>
-        <url>https://travis-ci.org/falkoschumann/datenverteiler-kernsoftware</url>
+        <url>https://travis-ci.org/bitctrl/datenverteiler-kernsoftware</url>
     </ciManagement>
 
     <repositories>

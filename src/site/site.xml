@@ -33,7 +33,7 @@
         <menu ref="modules"/>
         <menu ref="reports"/>
         <links>
-            <item name="GitHub" href="https://github.com/falkoschumann/datenverteiler-kernsoftware"/>
+            <item name="GitHub" href="https://github.com/bitctrl/datenverteiler-kernsoftware"/>
             <item name="NERZ e.V." href="http://www.nerz-ev.de"/>
         </links>
     </body>
