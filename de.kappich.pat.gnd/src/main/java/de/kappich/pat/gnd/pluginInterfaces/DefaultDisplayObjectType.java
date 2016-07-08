@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.pluginInterfaces;
 
@@ -48,16 +54,16 @@ import javax.swing.table.TableModel;
 /**
  * Ein DefaultDisplayObjectType ist eine abstrakte Klasse, die eine teilweise Implementation von DisplayObjectType ist.
  * Die Grundfigur im Interface DisplayObjectType wird allerdings in dieser Implementation stets ignoriert. Subklassen,
- * für die dies Verhalten ideal ist, sind DOTLine, DOTArea und DOTComplex.
+ * fÃ¼r die dies Verhalten ideal ist, sind DOTLine, DOTArea und DOTComplex.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOTManager.DOTChangeListener {
 	
 	/**
-	 * Ein DefaultDisplayObjectType ist keine funktional vollständige Implementation von DisplayObjectType,
+	 * Ein DefaultDisplayObjectType ist keine funktional vollstÃ¤ndige Implementation von DisplayObjectType,
 	 * sondern beinhaltet die Gemeinsamkeiten der Implementation von DOTArea, DOTComplex und DOTLine.
 	 */
 	protected DefaultDisplayObjectType () {
@@ -130,7 +136,7 @@ abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOT
 	}
 	
 	/*
-	 * Die Default-Implementation ignoriert den Grundfigurnamen und berücksichtigt, falls der übergebene
+	 * Die Default-Implementation ignoriert den Grundfigurnamen und berÃ¼cksichtigt, falls der Ã¼bergebene
 	 * Boolean <code>true</code> ist, ob die Eigenschaft bisher dynamisch war, und setzt ihren Wert
 	 * auf den Defaultwert.
 	 */
@@ -386,7 +392,7 @@ abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOT
 	
 	
 	/**
-	 * Gibt ein TableModel für die übergebene Eigenschaft zurück.
+	 * Gibt ein TableModel fÃ¼r die Ã¼bergebene Eigenschaft zurÃ¼ck.
 	 *  
 	 * @param property die Eigenschaft
 	 * @return ein TableModel
@@ -413,9 +419,9 @@ abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOT
 	}
 	
 	/**
-	 * Liefert die Einträge der Legende zurück.
+	 * Liefert die EintrÃ¤ge der Legende zurÃ¼ck.
 	 * 
-	 * @return eine Teilbaum für die Legende
+	 * @return eine Teilbaum fÃ¼r die Legende
 	 */
 	public LegendTreeNodes getLegendTreeNodes() {
 		LegendTreeNodes legendTreeNodes = new LegendTreeNodes();
@@ -530,33 +536,33 @@ abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOT
 	}
 	
 	/**
-	 * Gibt den Default-Wert der Eigenschaft zurück.
+	 * Gibt den Default-Wert der Eigenschaft zurÃ¼ck.
 	 * 
 	 * @param property eine Eigenschaft
 	 * @return der Default-Wert
 	 */
 	private static Object getDefaultValue( DOTProperty property) {
 		if ( property == null) {
-			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): die übergebene Property ist null");
+			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): die Ã¼bergebene Property ist null");
 		}
 		if ( property == DOTProperty.FARBE || property == DOTProperty.FUELLUNG) {
 			return DEFAULT_COLOR_NAME;
 		} else if ( property == DOTProperty.ABSTAND) {
 			return DEFAULT_DISTANCE;
 		} else if ( property == DOTProperty.DURCHMESSER) {
-			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert für " + property.toString());
+			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert fÃ¼r " + property.toString());
 		} else if ( property == DOTProperty.GROESSE) {
-			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert für " + property.toString());
+			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert fÃ¼r " + property.toString());
 		} else if ( property == DOTProperty.STRICHBREITE) {
 			return DEFAULT_STROKE_WIDTH;
 		} else if ( property == DOTProperty.TEXT) {
-			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert für " + property.toString());
+			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert fÃ¼r " + property.toString());
 		} else if ( property == DOTProperty.TEXTSTIL) {
-			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert für " + property.toString());
+			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert fÃ¼r " + property.toString());
 		} else if ( property == DOTProperty.TRANSPARENZ) {
 			return DEFAULT_TRANSPARENCY;
 		} else {
-			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert für " + property.toString());
+			throw new IllegalArgumentException("DefaultDisplayObject.getDefaultValue(): nicht definierter Default-Wert fÃ¼r " + property.toString());
 		}
 	}
 	
@@ -628,7 +634,7 @@ abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOT
 				return treeMap1.values().toArray( new DisplayObjectTypeItem[1])[0];
 			}
 		}
-		// den übergreifenden Status überprüfen
+		// den Ã¼bergreifenden Status Ã¼berprÃ¼fen
 		final String keyString2 = dynamicDOTItemManager.getKeyString( subscriptionData, 
 				DynamicDefinitionComponent.LEERE_DATEN_STATUS);
 		final TreeMap<Interval<Double>, DynamicDOTItem> treeMap2 = 
@@ -683,7 +689,7 @@ abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOT
 		if ( !_info.equals(d._info)) {
 			return false;
 		}
-		// Erst die Größen vergleichen ...
+		// Erst die GrÃ¶ÃŸen vergleichen ...
 		if ( _isStaticMap.size() != d._isStaticMap.size()) {
 			return false;
 		}
@@ -776,17 +782,17 @@ abstract public class DefaultDisplayObjectType implements DisplayObjectType, DOT
 	/* Abstrakte Methoden */
 	
 	/**
-	 * Jede nicht-abstrakte Subklasse muss ihre Plugin-Selbstbeschreibung angeben können.
+	 * Jede nicht-abstrakte Subklasse muss ihre Plugin-Selbstbeschreibung angeben kÃ¶nnen.
 	 * 
-	 * @return die zugehörige Plugin-Selbstbeschreibung
+	 * @return die zugehÃ¶rige Plugin-Selbstbeschreibung
 	 */
 	abstract public DisplayObjectTypePlugin getDisplayObjectTypePlugin();
 	
 	protected String _name = "";
 	protected String _info = "";
-	// Die folgende Map definiert, welche Eigenschaften statisch sind. Für die beiden folgenden
-	// Maps gilt: _staticPropertyValues enthält für jede statische Property einen Eintrag,
-	// während _dynamicDOTItemManagers für jede (!) Property einen Eintrag enthält, denn
+	// Die folgende Map definiert, welche Eigenschaften statisch sind. FÃ¼r die beiden folgenden
+	// Maps gilt: _staticPropertyValues enthÃ¤lt fÃ¼r jede statische Property einen Eintrag,
+	// wÃ¤hrend _dynamicDOTItemManagers fÃ¼r jede (!) Property einen Eintrag enthÃ¤lt, denn
 	// die DynamicDOTItemManager-Objekte in dieser Map sind in DOTLineDialog ja die TableModels.
 	final protected Map<DOTProperty, Boolean> _isStaticMap = new HashMap<DOTProperty, Boolean>();
 	final protected Map<DOTProperty, Object> _staticPropertyValues = new HashMap<DOTProperty, Object>();

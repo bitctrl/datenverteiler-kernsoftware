@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.gnd;
 
@@ -33,15 +39,15 @@ import java.util.*;
  * Diese Klasse dient zur Verwaltung externer Plugins.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 9139 $
+ * @version $Revision$
  *
  */
 public class PluginManager {
 	
-	/* Hier werden die externen Plugins gespeichert. Jeder Name muss der vollständige Klassenname
+	/* Hier werden die externen Plugins gespeichert. Jeder Name muss der vollstÃ¤ndige Klassenname
 	 * einer Klasse sein, die das Interface DisplayObjectTypePlugin implementiert. */
 	final private static Set<String> _pluginNames = new HashSet<String>();
-	/* In dieser Map sind die Schlüssel die Rückgabewerte von DisplayObjectTypePlugin.getName() für externe
+	/* In dieser Map sind die SchlÃ¼ssel die RÃ¼ckgabewerte von DisplayObjectTypePlugin.getName() fÃ¼r externe
 	 * Implementationen von DisplayObjectTypePlugin und die Werte sind die Implementationen selber. */
 	final private static Map<String, DisplayObjectTypePlugin> _pluginsMap = new HashMap<String, DisplayObjectTypePlugin>();
 	
@@ -50,15 +56,15 @@ public class PluginManager {
 	private PluginManager() {}
 	
 	/**
-	 * Diese Methode macht die externen Plugins bekannt, indem die vollständigen Namen der Klassen,
-	 * die DisplayObjectTypePlugin implementieren, übergeben werden. Sie muss vor dem ersten Zugriff
-	 * auf Teile dieser Plugins aufgerufen werden; der beste Moment dafür ist, bevor der erste
-	 * Konstruktor von {@link GenericNetDisplay} aufgerufen wird, denn sonst könnte schon die 
-	 * Initialisierung aus den Präferenzen scheitern; man beachte, dass GenericNetDisplay eine 
+	 * Diese Methode macht die externen Plugins bekannt, indem die vollstÃ¤ndigen Namen der Klassen,
+	 * die DisplayObjectTypePlugin implementieren, Ã¼bergeben werden. Sie muss vor dem ersten Zugriff
+	 * auf Teile dieser Plugins aufgerufen werden; der beste Moment dafÃ¼r ist, bevor der erste
+	 * Konstruktor von {@link GenericNetDisplay} aufgerufen wird, denn sonst kÃ¶nnte schon die 
+	 * Initialisierung aus den PrÃ¤ferenzen scheitern; man beachte, dass GenericNetDisplay eine 
 	 * {@link GenericNetDisplay.#addPlugins gleichnamige} und ebenfalls statische Methode 
 	 * anbietet, die die Arbeit an diese Methode delegiert.
 	 * 
-	 * @param plugins die hinzuzufügenden Externen Plugins
+	 * @param plugins die hinzuzufÃ¼genden Externen Plugins
 	 */
 	public static void addPlugins( final List<String> plugins) {
 		if ( plugins == null || (plugins.size() == 0)) {
@@ -107,10 +113,10 @@ public class PluginManager {
                 }
                 final DisplayObjectTypePlugin displayObjectTypePlugin = (DisplayObjectTypePlugin) pluginObject;
                 final String name = displayObjectTypePlugin.getName();
-                if ( name.equals( "Fläche") || name.equals( "Komplex") || name.equals( "Linie") || name.equals( "Punkt")) {
-                	_debug.error( "Fehler im PluginManager: ein Plugin mit dem Namen '" + name + "' kann nicht hinzugefüht werden.");
+                if ( name.equals( "FlÃ¤che") || name.equals( "Komplex") || name.equals( "Linie") || name.equals( "Punkt")) {
+                	_debug.error( "Fehler im PluginManager: ein Plugin mit dem Namen '" + name + "' kann nicht hinzugefÃ¼ht werden.");
                 } else if ( _pluginsMap.containsKey( name)) {
-                	_debug.error( "Fehler im PluginManager: ein Plugin mit dem Namen '" + name + "' wurde bereits hinzugefügt.");
+                	_debug.error( "Fehler im PluginManager: ein Plugin mit dem Namen '" + name + "' wurde bereits hinzugefÃ¼gt.");
                 } else {
                 	_pluginNames.add( pluginName);
                 	_pluginsMap.put( name, displayObjectTypePlugin);
@@ -122,20 +128,20 @@ public class PluginManager {
 			}
 		}
 		
-		/* Das Folgende wird nicht über einen Listener-Mechanismus implementiert, weil sonst
-		 * sichergestellt werden müsste, dass der/die Listener bereits registriert sind. */
+		/* Das Folgende wird nicht Ã¼ber einen Listener-Mechanismus implementiert, weil sonst
+		 * sichergestellt werden mÃ¼sste, dass der/die Listener bereits registriert sind. */
 		DOTManager.pluginsAdded( newPlugins);
 	}
 
 	/**
-	 * Gibt die Namen aller Plugins zurück. Dazu zählen die 4 internen Plugins und alle 
+	 * Gibt die Namen aller Plugins zurÃ¼ck. Dazu zÃ¤hlen die 4 internen Plugins und alle 
 	 * externen Plugins.
 	 * 
 	 * @return alle Plugin-Namen
 	 */
 	public static Vector<String> getAllPluginNames() {
 		final Vector<String> names = new Vector<String>();
-		names.add( "Fläche");
+		names.add( "FlÃ¤che");
 		names.add( "Komplex");
 		names.add( "Linie");
 		names.add( "Punkt");
@@ -144,14 +150,14 @@ public class PluginManager {
 	}
 	
 	/** 
-	 * Gibt das DisplayObjectTypePlugin-Objekt zurück, dessen getName-Implementation den
-	 * übergebenen Namen zurückgibt, und <code>null</code>, wenn kein solches Objekt existiert.
+	 * Gibt das DisplayObjectTypePlugin-Objekt zurÃ¼ck, dessen getName-Implementation den
+	 * Ã¼bergebenen Namen zurÃ¼ckgibt, und <code>null</code>, wenn kein solches Objekt existiert.
 	 * 
 	 * @param name ein Plugin-Name
 	 * @return das Plugin oder <code>null</code>
 	 */
 	public static DisplayObjectTypePlugin getPlugin( final String name) {
-		if ( name.equals( "Fläche")) {
+		if ( name.equals( "FlÃ¤che")) {
 			return new DOTAreaPlugin();
 		} else if ( name.equals( "Komplex")) {
 			return new DOTComplexPlugin();

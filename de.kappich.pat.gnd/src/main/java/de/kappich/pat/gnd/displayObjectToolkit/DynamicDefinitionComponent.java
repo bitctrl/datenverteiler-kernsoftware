@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -71,12 +77,12 @@ import javax.swing.plaf.basic.BasicComboBoxEditor;
  * Das Panel, mit dessen Hilfe man die Informationen einer Anmeldung auf dynamische Daten definiert.
  * Eine dynamische Eigenschaft is eine Zuordnung von Anmeldedaten, bestehend aus Attributgruppe, Aspekt,
  * Attribut/Status, und gegebenenfalls unteren und oberen Schranken der Attributwerte zu jeweils einem 
- * Wert der Eigenschaft, z.B. einer Farbe. Dieses Panel stellt die Funktionalität für die fehlerfreie
- * und bequeme Zusammenstellung der Anmeldedaten zur Verfügung, und wird in den Plugins jeweils in
+ * Wert der Eigenschaft, z.B. einer Farbe. Dieses Panel stellt die FunktionalitÃ¤t fÃ¼r die fehlerfreie
+ * und bequeme Zusammenstellung der Anmeldedaten zur VerfÃ¼gung, und wird in den Plugins jeweils in
  * den Defintionsdialogen der Darstellungstypen verwendet.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8076 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -111,7 +117,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	// AttributeGroup-Pid -> Objekt-Typ
 	final private Map<String, SystemObjectType> _objectTypeMap = new HashMap<String, SystemObjectType>();
 	
-	final public static String LEERE_DATEN_STATUS = "<keine Daten (übergreifender Status)>";
+	final public static String LEERE_DATEN_STATUS = "<keine Daten (Ã¼bergreifender Status)>";
 	final public static String KEINE_DATEN_STATUS = "<keine Daten von der Quelle>";
 	final public static String KEINE_QUELLE_STATUS = "<keine Quelle>";
 	final public static String KEINE_RECHTE_STATUS = "<keine Rechte>";
@@ -183,16 +189,16 @@ public class DynamicDefinitionComponent extends JPanel {
 	 * Setzen der Tooltipps im Konstruktor
 	 */
 	private void setTooltips() {
-		_infoField.setToolTipText( "Bitte geben Sie eine kurze, aussagekräftige Beschreibung ein, die in der Legende benutzt werden kann.");
-		_objectTypeFilterCheckBox.setToolTipText( "Das Hinzuschalten des Objektfilters dient nur der Einschränkung der möglichen Attributgruppen.");
-		_objectTypeFilterComboBox.setToolTipText( "Das Hinzuschalten des Objektfilters dient nur der Einschränkung der möglichen Attributgruppen.");
+		_infoField.setToolTipText( "Bitte geben Sie eine kurze, aussagekrÃ¤ftige Beschreibung ein, die in der Legende benutzt werden kann.");
+		_objectTypeFilterCheckBox.setToolTipText( "Das Hinzuschalten des Objektfilters dient nur der EinschrÃ¤nkung der mÃ¶glichen Attributgruppen.");
+		_objectTypeFilterComboBox.setToolTipText( "Das Hinzuschalten des Objektfilters dient nur der EinschrÃ¤nkung der mÃ¶glichen Attributgruppen.");
 	}
 			
 	/**
 	 * Mit dieser Methode werden die Textfelder und Comboboxen mit Inhalten, die
-	 * aus dem übergebenen Item und Interval stammen, gefüllt.
+	 * aus dem Ã¼bergebenen Item und Interval stammen, gefÃ¼llt.
 	 * 
-	 * @param dotItemWithInterval ein Item mit zugehörigem Intervall
+	 * @param dotItemWithInterval ein Item mit zugehÃ¶rigem Intervall
 	 */
 	@SuppressWarnings("unchecked")
 	public void fillComponents( final DisplayObjectTypeItemWithInterval dotItemWithInterval) {
@@ -315,7 +321,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 			
 	/*
-	 * Berechnet aus den übergebenen Informationen das Object der Klasse Attribut.
+	 * Berechnet aus den Ã¼bergebenen Informationen das Object der Klasse Attribut.
 	 * Der String attributeDescriptionString kann ein komplexer Attributname sein.
 	 */
 	private Attribute getAttribute( 
@@ -383,8 +389,8 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 			
 	/*
-	 * Erzeugt das Subpanel, welches die Objekttypefilter-Checkbox und die zugehörige
-	 * Combobox enthält, und auch deren Abhängigkeit unter einander und zur _attributeGroupComboBox
+	 * Erzeugt das Subpanel, welches die Objekttypefilter-Checkbox und die zugehÃ¶rige
+	 * Combobox enthÃ¤lt, und auch deren AbhÃ¤ngigkeit unter einander und zur _attributeGroupComboBox
 	 * modelliert.
 	 */
 	private JPanel getObjectTypePanel() {
@@ -479,8 +485,8 @@ public class DynamicDefinitionComponent extends JPanel {
 	/*
 	 * Bestimmt rekursiv die Namen aller Systemobjekttypen, die in der Objekt-
 	 * Combobox erscheinen sollen. Die Initialisierung beginnt derzeit bei
-	 * 'typ.typ'; man könnte sie auch tiefer beginnen lassen, wenn man eine
-	 * kleinere Menge haben möchte.
+	 * 'typ.typ'; man kÃ¶nnte sie auch tiefer beginnen lassen, wenn man eine
+	 * kleinere Menge haben mÃ¶chte.
 	 */
 	private void getObjectTypes( Collection<String> ots) {
 		SystemObjectType typeType = _configuration.getType( "typ.typ");
@@ -491,7 +497,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 			
 	/*
-	 * Bestimmt ausgehend von dem übergebenen SystemObjectType rekursiv die Menge aller 
+	 * Bestimmt ausgehend von dem Ã¼bergebenen SystemObjectType rekursiv die Menge aller 
 	 * Attributgruppennamen, die in der entsprechenden Combobox auftauchen sollen.
 	 */
 	private void getAttributeGroups( SystemObjectType type, Collection<String> atgs) {
@@ -516,9 +522,9 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/*
-	 * Fügt der _attributeGroupComboBox den Listener hinzu, der im Falle der Änderung der
-	 * Selektion dieser Box in der Aspekt-Combobox und bei den Attributnamen die nötigen
-	 * Änderungen durchführt.
+	 * FÃ¼gt der _attributeGroupComboBox den Listener hinzu, der im Falle der Ã„nderung der
+	 * Selektion dieser Box in der Aspekt-Combobox und bei den Attributnamen die nÃ¶tigen
+	 * Ã„nderungen durchfÃ¼hrt.
 	 */
 	private void addATGItemListener () {
 		ItemListener itemListener = new ItemListener() {
@@ -578,8 +584,8 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/*
-	 * Fügt der _attributeNameComboBox den Listener hinzu, der bei Änderunge der Selektion 
-	 * in _attributeNameTextField und den Von- und Bis-Feldern die nötigen Änderungen durchführt.
+	 * FÃ¼gt der _attributeNameComboBox den Listener hinzu, der bei Ã„nderunge der Selektion 
+	 * in _attributeNameTextField und den Von- und Bis-Feldern die nÃ¶tigen Ã„nderungen durchfÃ¼hrt.
 	 */
 	private void addAttributeNameListener() {
 		ItemListener comboBoxItemListener = new ItemListener() {
@@ -595,7 +601,7 @@ public class DynamicDefinitionComponent extends JPanel {
 						_attributeNameTextField.setToolTipText( "Bitte bearbeiten sie die Feldgrenzen!");
 					} else {
 						_attributeNameTextField.setEditable(false);
-						_attributeNameTextField.setToolTipText( "Keine Bearbeitung nötig!");
+						_attributeNameTextField.setToolTipText( "Keine Bearbeitung nÃ¶tig!");
 					}
 					// Von- und Bis-Werte:
 					AttributeGroup atg = _configuration.getAttributeGroup( (String) _attributeGroupComboBox.getSelectedItem());
@@ -684,7 +690,7 @@ public class DynamicDefinitionComponent extends JPanel {
 									}
 								}
 							}
-							if ( range != null) {	// keine Zustände!
+							if ( range != null) {	// keine ZustÃ¤nde!
 								_fromUnscaledComboBox.setEditable( true);
 								_toUnscaledComboBox.setEditable( true);
 								Long rangeMinimum = range.getMinimum();
@@ -722,7 +728,7 @@ public class DynamicDefinitionComponent extends JPanel {
 							}
 						}
 						if ( unscaledStrings.size() != stateStrings.size()) {
-							_debug.warning("DynamicDefinitionComponent: Anzahl Rohwerte ungleich Anzahl Zustände.");
+							_debug.warning("DynamicDefinitionComponent: Anzahl Rohwerte ungleich Anzahl ZustÃ¤nde.");
 						}
 						_fromUnscaledComboBox.removeAllItems();
 						_fromUnscaledComboBox.setModel( new DefaultComboBoxModel( unscaledStrings.toArray()));
@@ -753,7 +759,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 			
 	/*
-	 * Fügt den Von- und Bis-Feldern die Listener hinzu, die die Logik dieser Felder untereinander
+	 * FÃ¼gt den Von- und Bis-Feldern die Listener hinzu, die die Logik dieser Felder untereinander
 	 * beinhalten.
 	 */
 	private void addFromToListeners() {
@@ -813,7 +819,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt den Infotext zurück, wenn dieser nicht leer ist, oder <code>null</code>.
+	 * Gibt den Infotext zurÃ¼ck, wenn dieser nicht leer ist, oder <code>null</code>.
 	 * 
 	 * @return der Infotext
 	 */
@@ -826,7 +832,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt den Namen der Attribtgruppe zurück, wenn dieser nicht leer ist, oder <code>null</code>.
+	 * Gibt den Namen der Attribtgruppe zurÃ¼ck, wenn dieser nicht leer ist, oder <code>null</code>.
 	 * 
 	 * @return der Attributgruppenname
 	 */
@@ -839,7 +845,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt den Namen des Aspekts zurück, wenn dieser nicht leer ist, oder <code>null</code>.
+	 * Gibt den Namen des Aspekts zurÃ¼ck, wenn dieser nicht leer ist, oder <code>null</code>.
 	 * 
 	 * @return der Aspektname
 	 */
@@ -852,8 +858,8 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt den Attributnamen zurück, wenn dieser nicht leer ist und keine Array-Beschreibungsteile
-	 * enthält, oder <code>null</code>.
+	 * Gibt den Attributnamen zurÃ¼ck, wenn dieser nicht leer ist und keine Array-Beschreibungsteile
+	 * enthÃ¤lt, oder <code>null</code>.
 	 * 
 	 * @return der Attributname
 	 */
@@ -875,10 +881,10 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt eine 0 zurück, wenn _attributeNameTextField einen korrekten (komplexen) Attributnamen
-	 * enthält. Gibt eine 1 zurück, wenn _attributeNameTextField keinen oder einen leeren String
-	 * enthält. Gibt eine 2 zurück, wenn _attributeNameTextField einen Attributnamen mit Array-
-	 * Beschreibungsteilen enthält.
+	 * Gibt eine 0 zurÃ¼ck, wenn _attributeNameTextField einen korrekten (komplexen) Attributnamen
+	 * enthÃ¤lt. Gibt eine 1 zurÃ¼ck, wenn _attributeNameTextField keinen oder einen leeren String
+	 * enthÃ¤lt. Gibt eine 2 zurÃ¼ck, wenn _attributeNameTextField einen Attributnamen mit Array-
+	 * Beschreibungsteilen enthÃ¤lt.
 	 * 
 	 * @return 0, 1 oder 2
 	 */
@@ -897,8 +903,8 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt den Von-Wert zurück oder <code>null</code>. Letzteres geschieht wenn _fromUnscaledComboBox
-	 * keinen, einen leeren oder einen nicht in einen Double umwandelbaren Wert enthält.
+	 * Gibt den Von-Wert zurÃ¼ck oder <code>null</code>. Letzteres geschieht wenn _fromUnscaledComboBox
+	 * keinen, einen leeren oder einen nicht in einen Double umwandelbaren Wert enthÃ¤lt.
 	 * 
 	 * @return der Von-Wert oder <code>null</code>
 	 */
@@ -924,9 +930,9 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Überprüft, ob _fromUnscaledComboBox einen in einen vernünftigen Wert enthält, und gibt
-	 * in diesem Fall eine 0 zurück. Gibt eine 1 zurück, wenn kein Von-Wert eingetragen wurde,
-	 * eine 2 oder 3 wenn der Wert sich nicht in einen Double wandeln läßt.
+	 * ÃœberprÃ¼ft, ob _fromUnscaledComboBox einen in einen vernÃ¼nftigen Wert enthÃ¤lt, und gibt
+	 * in diesem Fall eine 0 zurÃ¼ck. Gibt eine 1 zurÃ¼ck, wenn kein Von-Wert eingetragen wurde,
+	 * eine 2 oder 3 wenn der Wert sich nicht in einen Double wandeln lÃ¤ÃŸt.
 	 * 
 	 * @return 0, 1, 2 oder 3
 	 */
@@ -963,8 +969,8 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt den Bis-Wert zurück oder <code>null</code>. Letzteres geschieht wenn _fromUnscaledComboBox
-	 * keinen, einen leeren oder einen nicht in einen Double umwandelbaren Wert enthält.
+	 * Gibt den Bis-Wert zurÃ¼ck oder <code>null</code>. Letzteres geschieht wenn _fromUnscaledComboBox
+	 * keinen, einen leeren oder einen nicht in einen Double umwandelbaren Wert enthÃ¤lt.
 	 * 
 	 * @return den Bis-Wert oder <code>null</code>
 	 */
@@ -990,9 +996,9 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Überprüft, ob _fromUnscaledComboBox einen in einen vernünftigen Wert enthält, und gibt
-	 * in diesem Fall eine 0 zurück. Gibt eine 1 zurück, wenn kein Von-Wert eingetragen wurde,
-	 * eine 2 oder 3 wenn der Wert sich nicht in einen Double wandeln läßt.
+	 * ÃœberprÃ¼ft, ob _fromUnscaledComboBox einen in einen vernÃ¼nftigen Wert enthÃ¤lt, und gibt
+	 * in diesem Fall eine 0 zurÃ¼ck. Gibt eine 1 zurÃ¼ck, wenn kein Von-Wert eingetragen wurde,
+	 * eine 2 oder 3 wenn der Wert sich nicht in einen Double wandeln lÃ¤ÃŸt.
 	 * 
 	 * @return 0, 1, 2 oder 3
 	 */
@@ -1026,8 +1032,8 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn das in _attributeNameComboBox selektierte Objekt einen
-	 * der Stati für leere Daten, keine Daten, keine Quelle oder keine Rechte beschreibt.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn das in _attributeNameComboBox selektierte Objekt einen
+	 * der Stati fÃ¼r leere Daten, keine Daten, keine Quelle oder keine Rechte beschreibt.
 	 * 
 	 * @return <code>true</code> genau dann, wenn es 'keine-Daten-Status' selektiert ist
 	 */
@@ -1046,7 +1052,7 @@ public class DynamicDefinitionComponent extends JPanel {
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn der übergebene String einen der Stati für leere Daten, 
+	 * Gibt <code>true</code> zurÃ¼ck, wenn der Ã¼bergebene String einen der Stati fÃ¼r leere Daten, 
 	 * keine Daten, keine Quelle oder keine Rechte beschreibt.
 	 * 
 	 * @return <code>true</code> genau dann, wenn der String einen 'keine-Daten-Status' beschreibt

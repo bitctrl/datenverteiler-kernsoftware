@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.gnd;
 
@@ -27,14 +33,14 @@ import java.util.Map;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
- * Eine Klasse für eine Liste von Objekten in der Legende der Kartendarstellung. Die einzelnen
- * Knoten in dieser Liste haben Informationen über die Tiefe innerhalb der Legendenbaumes, die
- * jeweils relativ zum Vorgänger berechnet ist. Der allgemeineren Verständnis: jeder Darstellungstyp
+ * Eine Klasse fÃ¼r eine Liste von Objekten in der Legende der Kartendarstellung. Die einzelnen
+ * Knoten in dieser Liste haben Informationen Ã¼ber die Tiefe innerhalb der Legendenbaumes, die
+ * jeweils relativ zum VorgÃ¤nger berechnet ist. Der allgemeineren VerstÃ¤ndnis: jeder Darstellungstyp
  * muss die Methode getLegendTreeNodes implementieren, die ein Objekt von LegendTreeNodes
- * zurückliefert, das gerade für den Teilbaum der Legende, den dieser Darstellungstyp festlegt, steht.
+ * zurÃ¼ckliefert, das gerade fÃ¼r den Teilbaum der Legende, den dieser Darstellungstyp festlegt, steht.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 public class LegendTreeNodes {
@@ -42,18 +48,18 @@ public class LegendTreeNodes {
 	/**
 	 * Ein LegendTreeNodes-Objekt verwaltet die Knoten des Legendenbaums als Liste. Jeder solche
 	 * Knoten ist ein LegendTreeNode-Objekt mit der Information, in welchem Umfang sich der
-	 * Level des aktuellen Knoten von dem seines Vorgängers unterscheidet. Dabei bedeutet eine
-	 * 0, dass sich der Knoten auf demselben Level wie sein Vorgänger befindet, während -1
+	 * Level des aktuellen Knoten von dem seines VorgÃ¤ngers unterscheidet. Dabei bedeutet eine
+	 * 0, dass sich der Knoten auf demselben Level wie sein VorgÃ¤nger befindet, wÃ¤hrend -1
 	 * bedeutet, dass er einen Level tiefer angeordnet wird, und eine Positive Zahl i bedeutet,
-	 * dass der Knoten i Level höher anzuordnen ist. 
+	 * dass der Knoten i Level hÃ¶her anzuordnen ist. 
 	 */
 	public LegendTreeNodes () {}
 	
 	/**
-	 * Fügt einen neuen Knoten mit dem übergebenen Level-Änderung relativ zum Vorgänger hinzu.
+	 * FÃ¼gt einen neuen Knoten mit dem Ã¼bergebenen Level-Ã„nderung relativ zum VorgÃ¤nger hinzu.
 	 * 
 	 * @param node der neue Knoten
-	 * @param levelChange die Level-Änderung
+	 * @param levelChange die Level-Ã„nderung
 	 */
 	public void add( LegendTreeNode node, Integer levelChange) {
 		_legendTreeNodes.add( node);
@@ -61,7 +67,7 @@ public class LegendTreeNodes {
 	}
 	
 	/**
-	 * Gibt die Liste der Knoten zurück.
+	 * Gibt die Liste der Knoten zurÃ¼ck.
 	 * 
 	 * @return die Liste aller Knoten
 	 */
@@ -70,23 +76,23 @@ public class LegendTreeNodes {
 	}
 	
 	/**
-	 * Gibt für übergebenen Knoten die Leveländerung relativ zu seinem Vorgänger zurück.
+	 * Gibt fÃ¼r Ã¼bergebenen Knoten die LevelÃ¤nderung relativ zu seinem VorgÃ¤nger zurÃ¼ck.
 	 * 
-	 * @return die Leveländerung relativ zu seinem Vorgänger
+	 * @return die LevelÃ¤nderung relativ zu seinem VorgÃ¤nger
 	 */
 	public Integer getLevelChange( LegendTreeNode node) {
 		return _levelChanges.get( node);
 	}
 	
 	/**
-	 * Eine Klasse für einzelne Objekte in der Legende der Kartendarstellung.
+	 * Eine Klasse fÃ¼r einzelne Objekte in der Legende der Kartendarstellung.
 	 * <p>
-	 * Ein LegendTreeNode verkörpert einen Knoten im Legendenbaum.
+	 * Ein LegendTreeNode verkÃ¶rpert einen Knoten im Legendenbaum.
 	 * Jeder Knoten hat einen Namen, d.i. der Text, der in der Legende angezeigt wird,
 	 * und einen Infotext, der als Tooltipp verwendet wird.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 8080 $
+	 * @version $Revision$
 	 *
 	 */
 	@SuppressWarnings("serial")
@@ -105,7 +111,7 @@ public class LegendTreeNodes {
 		}
 		
 		/**
-		 * Gibt den Namen oder Text des Knoten zurück.
+		 * Gibt den Namen oder Text des Knoten zurÃ¼ck.
 		 * 
 		 * @return den Namen des Knoten
 		 */
@@ -114,7 +120,7 @@ public class LegendTreeNodes {
 		}
 		
 		/**
-		 * Gibt den Infotext des Knotens zurück.
+		 * Gibt den Infotext des Knotens zurÃ¼ck.
 		 * 
 		 * @return den Infotext
 		 */
@@ -126,11 +132,11 @@ public class LegendTreeNodes {
 	final private List<LegendTreeNode> _legendTreeNodes = new ArrayList<LegendTreeNode>();
 	final private Map<LegendTreeNode, Integer> _levelChanges = new HashMap<LegendTreeNode, Integer>();
 	// Die Logik ist hier wie folgt zu verstehen:
-	// Im der Liste werden die Nodes gemäß ihrer Reihenfolge aufgelistet. In der Map wird die Änderung
+	// Im der Liste werden die Nodes gemÃ¤ÃŸ ihrer Reihenfolge aufgelistet. In der Map wird die Ã„nderung
 	// des Levls vermerkt: eine -1 oder jede andere negative Zahl bedeutet, dass nach diesem Node
 	// ein neuer Children-Level unterhalb des jetzigen Nodes beginnt. Eine 0 bedeutet, dass sich der 
-	// Level und damit auch der Parent-Node für den nächsten Node nicht verändert.
-	// Eine positive Zahl n bedeutet, dass der Parent-Node des nächsten Nodes der n-te Parent des
+	// Level und damit auch der Parent-Node fÃ¼r den nÃ¤chsten Node nicht verÃ¤ndert.
+	// Eine positive Zahl n bedeutet, dass der Parent-Node des nÃ¤chsten Nodes der n-te Parent des
 	// aktuellen Nodes ist.
 	// Beispiel:
 	// Root-Node: (existiert)
@@ -143,5 +149,5 @@ public class LegendTreeNodes {
 	//				Property4:		0
 	//				Property5:		+2
 	//		Layer2:					-1
-	//			PrimitiveForm6:		+1 (zurück zu Root!)
+	//			PrimitiveForm6:		+1 (zurÃ¼ck zu Root!)
 }

@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.linePlugin;
 
@@ -38,10 +44,10 @@ import java.util.*;
 import java.util.List;
 
 /**
- * Der Painter für Linienobjekte.
+ * Der Painter fÃ¼r Linienobjekte.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 9143 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -76,7 +82,7 @@ public class DOTLinePainter extends JPanel implements DisplayObjectPainter {
 				} else {
 					color = ColorManager.getInstance().getColor( "keine");
 				}
-				// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+				// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 				// Erweiterung muss hier unterschieden werden.
 			}
 			
@@ -171,7 +177,7 @@ public class DOTLinePainter extends JPanel implements DisplayObjectPainter {
 			return new Path2D.Double();
 		}
 		Point2D.Double p2 = new Point2D.Double( (int) coords[0], (int) coords[1]);
-		while ( p1.distance(p2) < 10.) {	// "vorwärts spulen"
+		while ( p1.distance(p2) < 10.) {	// "vorwÃ¤rts spulen"
 			pathIterator.next();
 			if ( pathIterator.isDone()) {
 				break;
@@ -191,7 +197,7 @@ public class DOTLinePainter extends JPanel implements DisplayObjectPainter {
 		Path2D.Double resultPolyline = new Path2D.Double();
 		resultPolyline.moveTo(p.getX(),p.getY());
 		while ( !pathIterator.isDone()) {
-			while ( p1.distance(p2) < 10.) {	// "vorwärts spulen"
+			while ( p1.distance(p2) < 10.) {	// "vorwÃ¤rts spulen"
 				pathIterator.next();
 				if ( pathIterator.isDone()) {
 					break;
@@ -261,14 +267,14 @@ public class DOTLinePainter extends JPanel implements DisplayObjectPainter {
 	}
 	
 	/**
-	 * Berechnet in der Ebene einen um <code>|d|</code> Einheiten verschobenen Punkt, den man erhält, wenn 
+	 * Berechnet in der Ebene einen um <code>|d|</code> Einheiten verschobenen Punkt, den man erhÃ¤lt, wenn 
 	 * man den Punkt <code>a</code> senkrecht zu der durch die Punkte <code>a</code> und <code>b</code> 
-	 * gegebenen Linie verschiebt. Das Vorzeichen von <code>d</code> entscheidet über die Richtung der 
+	 * gegebenen Linie verschiebt. Das Vorzeichen von <code>d</code> entscheidet Ã¼ber die Richtung der 
 	 * Verschiebung: bei positiven Vorzeichen wird der Punkt nach rechts verschoben, wenn man von <code>a</code> 
 	 * nach <code>b</code> blickt, sonst nach links.
 	 * <p>
-	 * Die Punkte <code>a</code> und <code>b</code> müssen verschieden sein, damit die Verbindungslinie
-	 * eine Richtung und eine nicht verschwindende Länge besitzt.
+	 * Die Punkte <code>a</code> und <code>b</code> mÃ¼ssen verschieden sein, damit die Verbindungslinie
+	 * eine Richtung und eine nicht verschwindende LÃ¤nge besitzt.
 	 */
 	
 	private Point2D.Double calculateTranslatedPoint(Point2D.Double a, Point2D.Double b, double d) {

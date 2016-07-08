@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataexchange;
@@ -26,14 +32,14 @@ import de.bsvrz.dav.daf.main.ReceiverRole;
 import de.bsvrz.dav.daf.main.SenderRole;
 import de.bsvrz.kex.kexdav.correspondingObjects.ObjectManagerInterface;
 import de.bsvrz.kex.kexdav.dataplugin.KExDaVDataPlugin;
+import de.bsvrz.kex.kexdav.main.KExDaVLocalApplication;
 import de.bsvrz.kex.kexdav.management.ManagerInterface;
 import de.bsvrz.kex.kexdav.management.Message;
 import de.bsvrz.kex.kexdav.systemobjects.KExDaVAttributeGroupData;
 import de.bsvrz.kex.kexdav.systemobjects.KExDaVObject;
-import de.bsvrz.kex.kexdav.systemobjects.MissingObjectException;
 
 /**
- * Empfängt Daten von einem Objekt in einem Datenverteiler und sendet diese an das gleiche oder ein anderes Objekt (vorzugsweise auf einem anderen
+ * EmpfÃ¤ngt Daten von einem Objekt in einem Datenverteiler und sendet diese an das gleiche oder ein anderes Objekt (vorzugsweise auf einem anderen
  * Datenverteiler), evtl. unter Benutzung einer anderen Attributgruppe und eines anderen Aspekts sowie unter Zuhilfenahme eines Plugins, das die Daten
  * gegebenenfalls anpasst, falls z.B. unterschiedliche Attributgruppen vorliegen.
  *
@@ -73,13 +79,13 @@ public abstract class LowLevelDataPipe {
 	 * @param aspTarget               Ziel-Aspekt
 	 * @param simulationVariantSource Quell-Simulationsvariante
 	 * @param simulationVariantTarget Ziel-Simulationsvariante
-	 * @param receiveOptions          Nur geänderte Daten übertragen?
+	 * @param receiveOptions          Nur geÃ¤nderte Daten Ã¼bertragen?
 	 * @param receiverRole            Art der Anmeldung im Quellsystem
 	 * @param senderRole              Art der Anmeldung im Zielsystem
-	 * @param plugin                  Modul, das das Kopieren und gegebenenfalls anpassen der Daten übernimmt. Im einfachsten Fall eine Instanz des {@link
+	 * @param plugin                  Modul, das das Kopieren und gegebenenfalls anpassen der Daten Ã¼bernimmt. Im einfachsten Fall eine Instanz des {@link
 	 *                                de.bsvrz.kex.kexdav.dataplugin.BasicKExDaVDataPlugin}.
 	 * @param objectManagerInterface  Verwaltung korrespondierender Objekte (optional)
-	 * @param manager                 Callback für Ereignisse und Warnungen
+	 * @param manager                 Callback fÃ¼r Ereignisse und Warnungen
 	 */
 	public static LowLevelDataPipe createLowLevelDataPipe(
 			final KExDaVObject source,
@@ -137,11 +143,13 @@ public abstract class LowLevelDataPipe {
 	/** Stoppt den Datentransfer */
 	public void stop() {
 		_manager.addMessage(Message.newInfo("Stoppe Datenaustausch: " + this));
-		
-		try {
-			Thread.sleep(10);
-		}
-		catch(InterruptedException ignored) {
+		if(KExDaVLocalApplication.sleepWorkaround) {
+			
+			try {
+				Thread.sleep(10);
+			}
+			catch(InterruptedException ignored) {
+			}
 		}
 		if(_hasReceiver) {
 			_source.unsubscribeReceiver(_receiver);
@@ -153,20 +161,20 @@ public abstract class LowLevelDataPipe {
 		}
 	}
 
-	/** Führt nur einen Datenaustausch durch */
+	/** FÃ¼hrt nur einen Datenaustausch durch */
 	public void startOneTime() {
 		_stopOnNextData = true;
 		start();
 	}
 
 	/**
-	 * Sendet die Daten weiter an den Empfänger. Wird von der {@link #_policy} aufgerufen.
-	 *
-	 * @param sourceData Daten
+	 * Sendet die Daten weiter an den EmpfÃ¤nger. Wird von der {@link #_policy} aufgerufen.
+	 *  @param sourceData Daten
 	 * @param dataState  Datenzustand
 	 * @param dataTime   Datenzeit
+	 * @param delayed    <code>true</code>, wenn der im Ergebnis enthaltene Datensatz als nachgeliefert gekennzeichnet werden soll.    
 	 */
-	abstract void sendDataToReceiver(KExDaVAttributeGroupData sourceData, DataState dataState, long dataTime);
+	abstract void sendDataToReceiver(KExDaVAttributeGroupData sourceData, DataState dataState, long dataTime, final boolean delayed);
 
 	@Override
 	public boolean equals(final Object o) {
@@ -218,10 +226,10 @@ public abstract class LowLevelDataPipe {
 
 	private class MyReceiver implements KExDaVReceiver {
 
-		public void update(final KExDaVAttributeGroupData sourceData, final DataState dataState, final long dataTime) {
+		public void update(final KExDaVAttributeGroupData sourceData, final DataState dataState, final long dataTime, final boolean isDelayed) {
 			if(!_hasReceiver) return;
 
-			_policy.handleData(sourceData, dataState, dataTime);
+			_policy.handleData(sourceData, dataState, dataTime, isDelayed);
 		}
 	}
 

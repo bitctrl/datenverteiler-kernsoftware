@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.colorManagement;
 
@@ -31,17 +37,17 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 /**
- * Die Farbenverwaltung verwaltet die verfügbaren Farben.
+ * Die Farbenverwaltung verwaltet die verfÃ¼gbaren Farben.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 10225 $
+ * @version $Revision$
  *
  */
 public class ColorManager {
 	
 	/**
-	 * Gibt die Instanz des Singletons zurück.
-	 * @return gibt den ColorManager zurück
+	 * Gibt die Instanz des Singletons zurÃ¼ck.
+	 * @return gibt den ColorManager zurÃ¼ck
 	 */
 	public static ColorManager getInstance() {
 		return _instance;
@@ -60,12 +66,12 @@ public class ColorManager {
 	}
 	
 	/**
-	 * Fügt eine Farbe hinzu. Der Name wird nur kleingeschrieben verwendet. Mit dem Flag 
+	 * FÃ¼gt eine Farbe hinzu. Der Name wird nur kleingeschrieben verwendet. Mit dem Flag 
 	 * storeInPreferences bestimmt man, ob die Farbe dauerhaft gespeichert wird.
 	 * 
 	 * @param name der Name der Farbe, der nur kleingeschrieben verwendet wird
 	 * @param color die Farbe
-	 * @param storeInPreferences soll die Farbe in den Präferenzen gespeichert werden 
+	 * @param storeInPreferences soll die Farbe in den PrÃ¤ferenzen gespeichert werden 
 	 */
 	public void addColor( String name, Color color, boolean storeInPreferences) {
 		final String lowerCasedName = name.toLowerCase();
@@ -77,11 +83,11 @@ public class ColorManager {
 	}
 	
 	/**
-	 * Löscht die Farbe mit diesem Namen; gibt <code>true</code> zurück, wenn dies erfolgreich ist,
-	 * und <code>false</code> sonst, was etwa dann möglich ist, wenn die Farbe in Benutzung ist.
+	 * LÃ¶scht die Farbe mit diesem Namen; gibt <code>true</code> zurÃ¼ck, wenn dies erfolgreich ist,
+	 * und <code>false</code> sonst, was etwa dann mÃ¶glich ist, wenn die Farbe in Benutzung ist.
 	 * 
-	 * @param name der Name der zu löschenden Farbe, keine Beachtung von Klein-/Großschreibung
-	 * @return <code>true</code> genau dann, wenn das Löschen erfolgreich war.
+	 * @param name der Name der zu lÃ¶schenden Farbe, keine Beachtung von Klein-/GroÃŸschreibung
+	 * @return <code>true</code> genau dann, wenn das LÃ¶schen erfolgreich war.
 	 */
 	public boolean deleteColor ( String name) {
 		final String lowerCaseName = name.toLowerCase();
@@ -96,10 +102,10 @@ public class ColorManager {
 	}
 	
 	/**
-	 * Gibt die Farbe des übergebenen Namens zurück, oder <code>null</code>, wenn eine solche Farbe
+	 * Gibt die Farbe des Ã¼bergebenen Namens zurÃ¼ck, oder <code>null</code>, wenn eine solche Farbe
 	 * nicht existiert.
 	 * 
-	 * @param name der Name der gesuchten Farbe, keine Beachtung von Klein-/Großschreibung
+	 * @param name der Name der gesuchten Farbe, keine Beachtung von Klein-/GroÃŸschreibung
 	 * @return die gesuchte Farbe oder <code>null</code>, wenn sie nicht existiert
 	 */
 	public Color getColor( String name) {
@@ -108,7 +114,7 @@ public class ColorManager {
 	}
 	
 	/**
-	 * Gibt den Namen der übergebenen Farbe zurück.
+	 * Gibt den Namen der Ã¼bergebenen Farbe zurÃ¼ck.
 	 * 
 	 * @param color die Farbe
 	 * @return der Name der farbe oder <code>null</code>, wenn die Farbe nicht existiert
@@ -118,7 +124,7 @@ public class ColorManager {
 	}
 	
 	/**
-	 * Man erhält die Namen aller Farben.
+	 * Man erhÃ¤lt die Namen aller Farben.
 	 * 
 	 * @return die Namen aller Farben
 	 */
@@ -129,7 +135,7 @@ public class ColorManager {
 	/**
 	 * Beantwortet die Frage, ob eine Farbe mit diesem Namen schon definiert ist. 
 	 * 
-	 * @param name der Name einer Farbe, keine Beachtung von Klein-/Großschreibung
+	 * @param name der Name einer Farbe, keine Beachtung von Klein-/GroÃŸschreibung
 	 * @return <code>true</code> wenn die Farbe existiert, <code>false</code> sonst
 	 */
 	public boolean hasColor( String name) {
@@ -154,8 +160,8 @@ public class ColorManager {
 		_basicColorNames.add( "dunkelgrau");
 		addColor("grau", Color.gray, false);
 		_basicColorNames.add( "grau");
-		addColor("grün", Color.green, false);
-		_basicColorNames.add( "grün");
+		addColor("grÃ¼n", Color.green, false);
+		_basicColorNames.add( "grÃ¼n");
 		addColor("hellgrau", Color.lightGray, false);
 		_basicColorNames.add( "hellgrau");
 		addColor("magenta", Color.magenta, false);
@@ -166,8 +172,8 @@ public class ColorManager {
 		_basicColorNames.add( "pink");
 		addColor("rot", Color.red, false);
 		_basicColorNames.add( "rot");
-		addColor("weiß", Color.white, false);
-		_basicColorNames.add( "weiß");
+		addColor("weiÃŸ", Color.white, false);
+		_basicColorNames.add( "weiÃŸ");
 		addColor("gelb", Color.yellow, false);
 		_basicColorNames.add( "gelb");
 		final Color noColor = new Color(0.f,0.f,0.f,0.f);
@@ -222,7 +228,7 @@ public class ColorManager {
 	}
 	
 	/**
-	 * Löscht alle Farben, die weder in {@link java.awt.Color} vordefiniert noch in Benutzung sind.
+	 * LÃ¶scht alle Farben, die weder in {@link java.awt.Color} vordefiniert noch in Benutzung sind.
 	 */
 	public void clearColors() {
 		Set<String> deleteTheseColors = new HashSet<String>();

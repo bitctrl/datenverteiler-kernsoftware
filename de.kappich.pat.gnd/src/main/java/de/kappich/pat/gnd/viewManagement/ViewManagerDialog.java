@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.viewManagement;
 
@@ -51,12 +57,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 /**
- * Eine Dialog, der alle Ansichten auflistet und ¸ber Schaltfl‰chen Mˆglichkeiten bietet, diese zu betrachten,
- * zu bearbeiten, zu lˆschen oder neue einzuf¸hren. Der ViewManagerDialog zeigt die Inhalte der 
+ * Eine Dialog, der alle Ansichten auflistet und √ºber Schaltfl√§chen M√∂glichkeiten bietet, diese zu betrachten,
+ * zu bearbeiten, zu l√∂schen oder neue einzuf√ºhren. Der ViewManagerDialog zeigt die Inhalte der 
  * {@link ViewManager Ansichtsverwaltung}. 
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 public class ViewManagerDialog {
@@ -71,11 +77,11 @@ public class ViewManagerDialog {
 	
 	private JButton _aktivierenButton = new JButton("Ansicht aktivieren");
 	private JButton _startAnsichtButton = new JButton("Als Startansicht festlegen");
-	private JButton _schliessenButton = new JButton("Dialog schlieﬂen");
+	private JButton _schliessenButton = new JButton("Dialog schlie√üen");
 	private JButton _neueAnsichtButton = new JButton("Neue Ansicht");
 	private JButton _bearbeitenButton = new JButton("Ansicht bearbeiten");
 	private JButton _kopierenButton = new JButton("Ansicht kopieren");
-	private JButton _loeschenButton = new JButton("Ansicht lˆschen");
+	private JButton _loeschenButton = new JButton("Ansicht l√∂schen");
 	private JButton _helpButton = new JButton("Hilfe");
 	
 	/**
@@ -86,7 +92,7 @@ public class ViewManagerDialog {
 	}
 	
 	/**
-	 * Schlieﬂt den Dialog.
+	 * Schlie√üt den Dialog.
 	 */
 	public void closeDialog() {
 		_dialog.setVisible( false);
@@ -110,7 +116,7 @@ public class ViewManagerDialog {
 					int n = JOptionPane.showOptionDialog(
 							new JFrame(),
 							"Entweder Sie aktivieren eine Ansicht aus oder die GND wird beendet.",
-							"Pr‰ferenzen importieren",
+							"Pr√§ferenzen importieren",
 							JOptionPane.YES_NO_CANCEL_OPTION,
 							JOptionPane.QUESTION_MESSAGE,
 							null,
@@ -136,7 +142,7 @@ public class ViewManagerDialog {
 					int n = JOptionPane.showOptionDialog(
 							new JFrame(),
 							"Entweder Sie aktivieren eine Ansicht aus oder die GND wird beendet.",
-							"Pr‰ferenzen importieren",
+							"Pr√§ferenzen importieren",
 							JOptionPane.YES_NO_CANCEL_OPTION,
 							JOptionPane.QUESTION_MESSAGE,
 							null,
@@ -174,7 +180,7 @@ public class ViewManagerDialog {
 	
 	/**
 	 * Konstruiert den Dialog zur Anzeige bzw. Auswahl aller Ansichten. Der Dialog kennt das
-	 * die {@link GenericNetDisplay Generische-Netzdarstellung}, zu der er gehˆrt, und kann
+	 * die {@link GenericNetDisplay Generische-Netzdarstellung}, zu der er geh√∂rt, und kann
 	 * bei Bedarf modal gestartet werden.
 	 * 
 	 * @param gnd die Netzdarstellung
@@ -245,20 +251,20 @@ public class ViewManagerDialog {
 		
 		final ListSelectionModel selectionModel = _table.getSelectionModel();
 		selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		// vordefinierte Darstellungsobjekttypen d¸rfen nicht bearbeitet oder gelˆscht werden
+		// vordefinierte Darstellungsobjekttypen d√ºrfen nicht bearbeitet oder gel√∂scht werden
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				final int selectedRow = _table.getSelectedRow();
 				if ( selectedRow == -1) {
-					_bearbeitenButton.setToolTipText( "Es ist keine Ansicht ausgew‰hlt worden");
+					_bearbeitenButton.setToolTipText( "Es ist keine Ansicht ausgew√§hlt worden");
 					_bearbeitenButton.setEnabled(false);
-					_kopierenButton.setToolTipText( "Es ist keine Ansicht ausgew‰hlt worden");
+					_kopierenButton.setToolTipText( "Es ist keine Ansicht ausgew√§hlt worden");
 					_kopierenButton.setEnabled(false);
-					_loeschenButton.setToolTipText( "Es ist keine Ansicht ausgew‰hlt worden");
+					_loeschenButton.setToolTipText( "Es ist keine Ansicht ausgew√§hlt worden");
 					_loeschenButton.setEnabled(false);
-					_aktivierenButton.setToolTipText( "Es ist keine Ansicht ausgew‰hlt worden");
+					_aktivierenButton.setToolTipText( "Es ist keine Ansicht ausgew√§hlt worden");
 					_aktivierenButton.setEnabled(false);
-					_startAnsichtButton.setToolTipText( "Es ist keine Ansicht ausgew‰hlt worden");
+					_startAnsichtButton.setToolTipText( "Es ist keine Ansicht ausgew√§hlt worden");
 					_startAnsichtButton.setEnabled(false);
 				}
 				else {
@@ -267,20 +273,20 @@ public class ViewManagerDialog {
 					if ( !changeable) {
 						_bearbeitenButton.setText( "Ansicht betrachten");
 						_bearbeitenButton.setToolTipText( "Details der Ansicht betrachten");
-						_loeschenButton.setToolTipText( "Die ausgew‰hlte Ansicht ist nicht lˆschbar");
+						_loeschenButton.setToolTipText( "Die ausgew√§hlte Ansicht ist nicht l√∂schbar");
 						_loeschenButton.setEnabled(false);
 					} else {
 						_bearbeitenButton.setText( "Ansicht bearbeiten");
-						_bearbeitenButton.setToolTipText( "Details der ausgew‰hlten Ansicht bearbeiten");
-						_loeschenButton.setToolTipText( "Die ausgew‰hlte Ansicht lˆschen");
+						_bearbeitenButton.setToolTipText( "Details der ausgew√§hlten Ansicht bearbeiten");
+						_loeschenButton.setToolTipText( "Die ausgew√§hlte Ansicht l√∂schen");
 						_loeschenButton.setEnabled(true && !_modal);
 					}
 					_bearbeitenButton.setEnabled(true && !_modal);
-					_kopierenButton.setToolTipText( "Kopie der ausgew‰hlten Ansicht erstellen und bearbeiten");
+					_kopierenButton.setToolTipText( "Kopie der ausgew√§hlten Ansicht erstellen und bearbeiten");
 					_kopierenButton.setEnabled(true && !_modal);
-					_aktivierenButton.setToolTipText( "Die ausgew‰hlte Ansicht zur aktuellen Ansicht machen");
+					_aktivierenButton.setToolTipText( "Die ausgew√§hlte Ansicht zur aktuellen Ansicht machen");
 					_aktivierenButton.setEnabled(true);
-					_startAnsichtButton.setToolTipText("Die ausgew‰hlte Ansicht zur Startansicht machen");
+					_startAnsichtButton.setToolTipText("Die ausgew√§hlte Ansicht zur Startansicht machen");
 					_startAnsichtButton.setEnabled(true && !_modal);
 				}
 			}
@@ -306,13 +312,13 @@ public class ViewManagerDialog {
 				if (selectedRows.length == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				synchronized(this) {
-					_dialog.setVisible(false);	// damit niemand auf die Idee kommt, nochmal zu dr¸cken
+					_dialog.setVisible(false);	// damit niemand auf die Idee kommt, nochmal zu dr√ºcken
 					
 					Runnable doSetSplitPaneFromView = new Runnable() {
 						public void run() {
@@ -336,7 +342,7 @@ public class ViewManagerDialog {
 				if (selectedRows.length == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -362,7 +368,7 @@ public class ViewManagerDialog {
 				if (selectedRows.length != 1) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie genau eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie genau eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -386,7 +392,7 @@ public class ViewManagerDialog {
 				if (selectedRows.length != 1) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie genau eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie genau eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -405,7 +411,7 @@ public class ViewManagerDialog {
 				if (selectedRows.length == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -417,7 +423,7 @@ public class ViewManagerDialog {
 						JOptionPane.showMessageDialog(
 								new JFrame(),
 								"Der View " + ViewManager.getInstance().getView(selected).getName() + 
-								" kann nicht gelˆscht werden!",
+								" kann nicht gel√∂scht werden!",
 								"Fehler",
 								JOptionPane.ERROR_MESSAGE);
 					}

@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,16 +14,22 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.coorTransform;
 
 /**
- *  Eine Klasse für WGS84-Koordinaten. Könnte auch für andere Ellipsoid-Koordinaten verwendet werden.
+ *  Eine Klasse fÃ¼r WGS84-Koordinaten. KÃ¶nnte auch fÃ¼r andere Ellipsoid-Koordinaten verwendet werden.
  *  
  * @author Kappich Systemberatung
- * @version $Revision: 7809 $
+ * @version $Revision$
  *
  * @author BitCtrl Systems GmbH, Gieseler
  * 
@@ -31,27 +37,27 @@ package de.kappich.pat.gnd.coorTransform;
 public class WGS84Coordinate {
 
 	/**
-	 * kleinster zulässiger Wert für die Länge.
+	 * kleinster zulÃ¤ssiger Wert fÃ¼r die LÃ¤nge.
 	 */
 	public static final double MIN_LAENGE = -180;
 
 	/**
-	 * größter zulässiger Wert für die Länge.
+	 * grÃ¶ÃŸter zulÃ¤ssiger Wert fÃ¼r die LÃ¤nge.
 	 */
 	public static final double MAX_LAENGE = 180;
 
 	/**
-	 * kleinster zulässiger Wert für die Breite.
+	 * kleinster zulÃ¤ssiger Wert fÃ¼r die Breite.
 	 */
 	public static final double MIN_BREITE = -90;
 
 	/**
-	 * größter zulässiger Wert für die Breite.
+	 * grÃ¶ÃŸter zulÃ¤ssiger Wert fÃ¼r die Breite.
 	 */
 	public static final double MAX_BREITE = 90;
 
 	/**
-	 * Länge.
+	 * LÃ¤nge.
 	 */
 	private double laenge;
 
@@ -61,22 +67,22 @@ public class WGS84Coordinate {
 	private double breite;
 
 	/**
-	 * Konstruktor für eine WGS84-Koordinate.
+	 * Konstruktor fÃ¼r eine WGS84-Koordinate.
 	 * 
 	 * @param laenge
-	 *            geographische Länge in Dezimalgrad
+	 *            geographische LÃ¤nge in Dezimalgrad
 	 * @param breite
 	 *            geographische Breite in Dezimalgrad
 	 */
 	public WGS84Coordinate(double laenge, double breite) {
 		if (testBreite(breite)) {
 			throw new IllegalArgumentException(
-					"Der Wert für die Breite ist ungültig!"); //$NON-NLS-1$
+					"Der Wert fÃ¼r die Breite ist ungÃ¼ltig!"); //$NON-NLS-1$
 		}
 
 		if (testLaenge(laenge)) {
 			throw new IllegalArgumentException(
-					"Der Wert für die Länge ist ungültig!"); //$NON-NLS-1$
+					"Der Wert fÃ¼r die LÃ¤nge ist ungÃ¼ltig!"); //$NON-NLS-1$
 		}
 
 		this.laenge = laenge;
@@ -110,7 +116,7 @@ public class WGS84Coordinate {
 	}
 
 	/**
-	 * Gibt die geographische Breite zurück.
+	 * Gibt die geographische Breite zurÃ¼ck.
 	 * 
 	 * @return geographische Breite in Dezimalgrad
 	 */
@@ -119,9 +125,9 @@ public class WGS84Coordinate {
 	}
 
 	/**
-	 * Gibt die geographische Länge zurück.
+	 * Gibt die geographische LÃ¤nge zurÃ¼ck.
 	 * 
-	 * @return geographische Länge in Dezimalgrad
+	 * @return geographische LÃ¤nge in Dezimalgrad
 	 */
 	public double getLaenge() {
 		return laenge;
@@ -153,29 +159,29 @@ public class WGS84Coordinate {
 	public void setBreite(double neuebreite) {
 		if (testBreite(neuebreite)) {
 			throw new IllegalArgumentException(
-					"Der Wert für die Breite ist ungültig!"); //$NON-NLS-1$
+					"Der Wert fÃ¼r die Breite ist ungÃ¼ltig!"); //$NON-NLS-1$
 		}
 
 		this.breite = neuebreite;
 	}
 
 	/**
-	 * Setzt die geographische Länge.
+	 * Setzt die geographische LÃ¤nge.
 	 * 
 	 * @param neuelaenge
-	 *            neue geographische Länge in Dezimalgrad
+	 *            neue geographische LÃ¤nge in Dezimalgrad
 	 */
 	public void setLaenge(double neuelaenge) {
 		if (testLaenge(neuelaenge)) {
 			throw new IllegalArgumentException(
-					"Der Wert für die Länge ist ungültig!"); //$NON-NLS-1$
+					"Der Wert fÃ¼r die LÃ¤nge ist ungÃ¼ltig!"); //$NON-NLS-1$
 		}
 
 		this.laenge = neuelaenge;
 	}
 
 	/**
-	 * Testet die Breite auf Gültigkeit.
+	 * Testet die Breite auf GÃ¼ltigkeit.
 	 * 
 	 * @param tbreite
 	 *            Breite
@@ -186,10 +192,10 @@ public class WGS84Coordinate {
 	}
 
 	/**
-	 * Testet die Länge auf Gültigkeit.
+	 * Testet die LÃ¤nge auf GÃ¼ltigkeit.
 	 * 
 	 * @param tlaenge
-	 *            Länge
+	 *            LÃ¤nge
 	 * @return true, wenn ok sonst false
 	 */
 	private boolean testLaenge(double tlaenge) {

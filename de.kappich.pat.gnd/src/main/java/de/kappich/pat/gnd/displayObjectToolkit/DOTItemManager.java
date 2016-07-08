@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -38,14 +44,14 @@ import java.util.TreeMap;
  * Ein DOTItemManager dient zur Verwaltung von DisplayObjectTypeItems einer Eigenschaft
  * ({@link DOTProperty}) oder eines Paars bestehend aus einer Grundfigur
  * und einer Eigenschaft ({@link PrimitiveFormPropertyPair}). Der DOTItemManager stellt
- * mehrere effiziente Zugriffsmöglichkeiten zur Verfügung, die im Umfeld mit
- * Datenverteiler-Anwendungen benötigt werden. Dies sind z.B. die Menge aller notwendigen
- * Anmeldungen (s. getSubscriptionData()), die Intervalle mit zugehörigen Items einer Anmeldung
+ * mehrere effiziente ZugriffsmÃ¶glichkeiten zur VerfÃ¼gung, die im Umfeld mit
+ * Datenverteiler-Anwendungen benÃ¶tigt werden. Dies sind z.B. die Menge aller notwendigen
+ * Anmeldungen (s. getSubscriptionData()), die Intervalle mit zugehÃ¶rigen Items einer Anmeldung
  * ({@link #getTreemaps} und {@link #get(String)) und die Verwaltung aller Items mit ihren Intervalls in
  * einer Liste ({@link #get( int)}).
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8094 $
+ * @version $Revision$
  *
  */
 public class DOTItemManager <E extends DisplayObjectTypeItem> {
@@ -61,38 +67,38 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Gibt eine Read-Only-Ansicht aller internen TreeMaps zurück. Jede solche TreeMap
-	 * speichert für eine Anmeldung die notwendigen Intervalle mit zugehörigen Items.
+	 * Gibt eine Read-Only-Ansicht aller internen TreeMaps zurÃ¼ck. Jede solche TreeMap
+	 * speichert fÃ¼r eine Anmeldung die notwendigen Intervalle mit zugehÃ¶rigen Items.
 	 * 
-	 * @return gibt eine Read-Only-Ansicht aller internen TreeMaps zurück
+	 * @return gibt eine Read-Only-Ansicht aller internen TreeMaps zurÃ¼ck
 	 */
 	public Collection<TreeMap<Interval<Double>, E>> getTreeMaps() {
 		return Collections.unmodifiableCollection( _displayObjectTypesItemMap.values());
 	}
 	
 	/**
-	 * Gibt eine Read-Only-Menge mit allen Anmeldeinformation des Managers zurück.
+	 * Gibt eine Read-Only-Menge mit allen Anmeldeinformation des Managers zurÃ¼ck.
 	 * 
-	 * @return gibt eine Read-Only-Menge mit allen Anmeldeinformation des Managers zurück
+	 * @return gibt eine Read-Only-Menge mit allen Anmeldeinformation des Managers zurÃ¼ck
 	 */
 	public Set<DOTSubscriptionData> getSubscriptionData() {
 		return Collections.unmodifiableSet( _attributeNames.keySet());
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn es mindestens eines der verwalteten Items ein Anmeldung
-	 * auf subscriptionData benötigt, sonst <code>false</code>.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn es mindestens eines der verwalteten Items ein Anmeldung
+	 * auf subscriptionData benÃ¶tigt, sonst <code>false</code>.
 	 * 
 	 * @param subscriptionData eine Anmeldung
-	 * @return <code>true</code> genau dann, wenn die Anmeldung benötigt wird
+	 * @return <code>true</code> genau dann, wenn die Anmeldung benÃ¶tigt wird
 	 */
 	public boolean hasSubscriptionData(DOTSubscriptionData subscriptionData) {
 		return _attributeNames.containsKey(subscriptionData);
 	}
 	
 	/**
-	 * Gibt die Menge aller Attributnamen zurück, für die von mindestens einem Item
-	 * zu subscriptionData Daten benötigt werden.
+	 * Gibt die Menge aller Attributnamen zurÃ¼ck, fÃ¼r die von mindestens einem Item
+	 * zu subscriptionData Daten benÃ¶tigt werden.
 	 * 
 	 * @param subscriptionData eine Anmeldung
 	 * @return die verwendeten Attributnamen zu der Anmeldung
@@ -102,8 +108,8 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Gibt die Anzahl der Items in der Liste zurück, die gleichzeitig auch die Summe
-	 * der Anzahl der Items über alle TreeMaps ist. Dient im Wesentlichen zur Begrenzung
+	 * Gibt die Anzahl der Items in der Liste zurÃ¼ck, die gleichzeitig auch die Summe
+	 * der Anzahl der Items Ã¼ber alle TreeMaps ist. Dient im Wesentlichen zur Begrenzung
 	 * von Vorschleifen.
 	 * 
 	 * @return die Anzahl von Items
@@ -117,22 +123,22 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Gibt die möglichen Zugriffsschlüssel für die Methode {@link #get( String}), die eine TreeMap
-	 * liefert, zurück. Ein solcher Zugriffsschlüssel besteht aus den aneinandergehängter und nur durch
+	 * Gibt die mÃ¶glichen ZugriffsschlÃ¼ssel fÃ¼r die Methode {@link #get( String}), die eine TreeMap
+	 * liefert, zurÃ¼ck. Ein solcher ZugriffsschlÃ¼ssel besteht aus den aneinandergehÃ¤ngter und nur durch
 	 * Punkt getrennten Attributgruppenname, Aspektname und Attributname (s. auch {@link #getKeyString}).
 	 * 
-	 * @return alle Zugriffsschlüssel der Methode {@link #get( String})
+	 * @return alle ZugriffsschlÃ¼ssel der Methode {@link #get( String})
 	 */
 	public Set<String> keySet() {
 		return Collections.unmodifiableSet(_displayObjectTypesItemMap.keySet());
 	}
 	
 	/**
-	 * Gibt die TreeMap zu dem Schlüssel <code>key</code> zurück oder <code>null</code>. Ein solcher 
-	 * Zugriffsschlüssel besteht aus den aneinandergehängter und nur durch Punkt getrennten 
+	 * Gibt die TreeMap zu dem SchlÃ¼ssel <code>key</code> zurÃ¼ck oder <code>null</code>. Ein solcher 
+	 * ZugriffsschlÃ¼ssel besteht aus den aneinandergehÃ¤ngter und nur durch Punkt getrennten 
 	 * Attributgruppenname, Aspektname und Attributname ((s. auch {@link #getKeyString}).
 	 * 
-	 * @param key ein Zugriffsschlüssel
+	 * @param key ein ZugriffsschlÃ¼ssel
 	 * @return eine TreeMap, die Intervallen Items zuordnet
 	 */
 	public TreeMap<Interval<Double>, E> get( String key) {
@@ -140,18 +146,18 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn <code>key</code> ein gültiger Schlüssel für eine TreeMap ist.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn <code>key</code> ein gÃ¼ltiger SchlÃ¼ssel fÃ¼r eine TreeMap ist.
 	 * 
-	 * @param ein Zugriffsschlüssel
-	 * @return <code>true</code> genau dann, wenn zum Schlüssel eine TreeMap existiert
+	 * @param ein ZugriffsschlÃ¼ssel
+	 * @return <code>true</code> genau dann, wenn zum SchlÃ¼ssel eine TreeMap existiert
 	 */
 	public boolean containsKey( String key) {
 		return _displayObjectTypesItemMap.containsKey(key);
 	}
 	
 	/**
-	 * Fügt dem Manager das Item für das Werteintervall hinzu oder macht ein Update des Items,
-	 * wenn für die Anmeldedaten des Items (getAttributeGroup, getAspect) das Interval bereits 
+	 * FÃ¼gt dem Manager das Item fÃ¼r das Werteintervall hinzu oder macht ein Update des Items,
+	 * wenn fÃ¼r die Anmeldedaten des Items (getAttributeGroup, getAspect) das Interval bereits 
 	 * benutzt wird.
 	 * 
 	 * @param interval ein Intervall
@@ -178,7 +184,7 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Fügt das Item für das Interval hinzu.
+	 * FÃ¼gt das Item fÃ¼r das Interval hinzu.
 	 * 
 	 * @param interval ein Intervall
 	 * @param item ein Item 
@@ -190,7 +196,7 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Liefert Item und Interval aus der Listenverwaltung des Managers für den Index.
+	 * Liefert Item und Interval aus der Listenverwaltung des Managers fÃ¼r den Index.
 	 * 
 	 * @param index ein Index zwischen 0 und size()-1
 	 * @return das entsprechende DisplayObjectTypeItemWithInterval
@@ -200,7 +206,7 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Entfernt Item und Interval aus der Listenverwaltung des Managers für den Index.
+	 * Entfernt Item und Interval aus der Listenverwaltung des Managers fÃ¼r den Index.
 	 * 
 	 *  @param index ein Index zwischen 0 und size()-1
 	 */
@@ -216,11 +222,11 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Der Schlüssel-String eines Items bzw. der übergebenen Daten entsteht durch Aneinanderhängung
+	 * Der SchlÃ¼ssel-String eines Items bzw. der Ã¼bergebenen Daten entsteht durch AneinanderhÃ¤ngung
 	 * von Attributgruppenname, Aspekt und Attributname, wobei jeweils ein Punkt als Trennzeichen
-	 * verwendet wird. Als Attributnamen kommen aber nicht nur die tatsächlichen Attribute der
+	 * verwendet wird. Als Attributnamen kommen aber nicht nur die tatsÃ¤chlichen Attribute der
 	 * Attributgruppe in Frage, sondern auch spezielle Zeichenketten zur Verwaltung der Stati
-	 * für 'leere Daten', 'keine Daten', 'keine Quelle' und 'keine Rechte' ( diese sind statische 
+	 * fÃ¼r 'leere Daten', 'keine Daten', 'keine Quelle' und 'keine Rechte' ( diese sind statische 
 	 * Member von DynamicDefinitionComponent).
 	 * 
 	 * @param data eine Anmeldung
@@ -292,10 +298,10 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	}
 	
 	/**
-	 * Gibt die Menge der Indizes aus der Listenverwaltung des Managers zurück,
-	 * für die ein anderes überlappendes Interval existiert.
+	 * Gibt die Menge der Indizes aus der Listenverwaltung des Managers zurÃ¼ck,
+	 * fÃ¼r die ein anderes Ã¼berlappendes Interval existiert.
 	 * 
-	 * @return die Menge von Indizes überlappender Intervalle
+	 * @return die Menge von Indizes Ã¼berlappender Intervalle
 	 */
 	public Set<Integer> getConflictingRows() {
 		Set<Integer> conflictingRows = new HashSet<Integer>();
@@ -321,7 +327,7 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 	 * Interval und einem Item.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 8094 $
+	 * @version $Revision$
 	 *
 	 */
 	public class DisplayObjectTypeItemWithInterval {
@@ -329,7 +335,7 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 		private E _item;
 		
 		/**
-		 * Konstruiert ein Objekt mit den übergebenen Daten.
+		 * Konstruiert ein Objekt mit den Ã¼bergebenen Daten.
 		 * 
 		 * @param interval ein Intervall
 		 * @param item ein Item
@@ -341,7 +347,7 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 		}
 		
 		/**
-		 * Gibt das Intervall zurück.
+		 * Gibt das Intervall zurÃ¼ck.
 		 * 
 		 * @return das Intervall
 		 */
@@ -350,7 +356,7 @@ public class DOTItemManager <E extends DisplayObjectTypeItem> {
 		}
 		
 		/**
-		 * Gibt das Item zurück.
+		 * Gibt das Item zurÃ¼ck.
 		 * 
 		 * @return das Item
 		 */

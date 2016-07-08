@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.utils;
 
@@ -23,15 +29,15 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Enthält nur eine Methode, um die Komponenten eines Containers mit Hilfe des SpringLayouts anzuordnen.
+ * EnthÃ¤lt nur eine Methode, um die Komponenten eines Containers mit Hilfe des SpringLayouts anzuordnen.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 8058 $
+ * @version $Revision$
  */
 public class SpringUtilities {
 
 	/**
-	 * Ermittelt die Constraints für eine bestimmte Komponente in einem Container.
+	 * Ermittelt die Constraints fÃ¼r eine bestimmte Komponente in einem Container.
 	 *
 	 * @param row       Zeile der Komponente
 	 * @param column    Spalte der Komponente
@@ -47,12 +53,12 @@ public class SpringUtilities {
 
 	/**
 	 * Ordnet die Komponenten in einem Container in einem Grid so an, dass die Spaltenbreiten der maximalen bevorzugten
-	 * Breite der enthaltenen Komponenten entspricht und die Zeilenhöhen der maximalen bevorzugten Höhe der jeweils
-	 * enthalten Komponenten entspricht. Die Containergröße wird so eingestellt, dass alle Komponenten reinpassen.
+	 * Breite der enthaltenen Komponenten entspricht und die ZeilenhÃ¶hen der maximalen bevorzugten HÃ¶he der jeweils
+	 * enthalten Komponenten entspricht. Die ContainergrÃ¶ÃŸe wird so eingestellt, dass alle Komponenten reinpassen.
 	 *
 	 * @param columns   Anzahl Spalten
-	 * @param columnGap Gewünschter Abstand zwischen den Spalten
-	 * @param rowGap    Gewünschter Abstand zwischen den Zeilen
+	 * @param columnGap GewÃ¼nschter Abstand zwischen den Spalten
+	 * @param rowGap    GewÃ¼nschter Abstand zwischen den Zeilen
 	 * @throws ClassCastException    wenn der Container kein SpringLayout verwendet.
 	 * @throws IllegalStateException wenn die Anzahl der im Container enthaltenen Komponenten nicht ohne Rest durch die
 	 *                               Anzahl Spalten teilbar ist.

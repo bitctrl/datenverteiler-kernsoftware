@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.parameterloader;
@@ -26,7 +32,7 @@ import de.bsvrz.dav.daf.main.Data;
  * Speichert zum Datenaustausch den Aspekt auf der Lokal und Remote-Seite
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9084 $
+ * @version $Revision$
  */
 public class CorrespondingAspect {
 
@@ -59,7 +65,7 @@ public class CorrespondingAspect {
 	}
 
 	/**
-	 * Gibt den lokalen Aspekt zurück
+	 * Gibt den lokalen Aspekt zurÃ¼ck
 	 *
 	 * @return den lokalen Aspekt
 	 */
@@ -68,7 +74,7 @@ public class CorrespondingAspect {
 	}
 
 	/**
-	 * Gibt den Remote-Aspekt zurück
+	 * Gibt den Remote-Aspekt zurÃ¼ck
 	 *
 	 * @return den Remote-Aspekt
 	 */

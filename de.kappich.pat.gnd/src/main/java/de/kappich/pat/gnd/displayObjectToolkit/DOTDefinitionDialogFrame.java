@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -67,12 +73,12 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 
 /**
- * Der äußere Rahmen aller Dialoge zur Darstellungstypendefinition. Dieser Dialog liefert ein Fenster,
+ * Der Ã¤uÃŸere Rahmen aller Dialoge zur Darstellungstypendefinition. Dieser Dialog liefert ein Fenster,
  * in dem schon die wesentlichen Teile zur Darstellungstypdefinition enthalten sind. Die 
  * plugin-spezifischen Panels werden von den Implementationen von {@link DOTDefinitionDialog} geliefert.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8094 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -87,14 +93,14 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	private DisplayObjectType _displayObjectType;
 	
 	private DisplayObjectType _scratchDisplayObjectType;
-	// Eine tiefe Kopie des _displayObjectType, in der alle für die Dialoge 
-	// notwendigen Änderungen eingetragen werden, z.B. die Statisch/Dynamisch-
+	// Eine tiefe Kopie des _displayObjectType, in der alle fÃ¼r die Dialoge 
+	// notwendigen Ã„nderungen eingetragen werden, z.B. die Statisch/Dynamisch-
 	// Informationen oder die TableModels.
-	// Würde man dies im Original machen, so wäre der aktuelle Stand immer
-	// auch der nach dem Drücken des (Gesamt-)Speichern-Knopfs.
+	// WÃ¼rde man dies im Original machen, so wÃ¤re der aktuelle Stand immer
+	// auch der nach dem DrÃ¼cken des (Gesamt-)Speichern-Knopfs.
 	// Das (Gesamt-)Speichern wird (noch) nicht auf Basis dieser Kopie,
-	// sondern auf Basis der sichtbaren Einträge u.a. in den Sub-Componenten
-	// durchgeführt.
+	// sondern auf Basis der sichtbaren EintrÃ¤ge u.a. in den Sub-Componenten
+	// durchgefÃ¼hrt.
 	
 	private boolean _editable;
 	
@@ -120,7 +126,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	
 	final private JButton _newPrimitiveFormButton = new JButton("Neu");
 	
-	final private JButton _deletePrimitiveFormButton = new JButton("Löschen");
+	final private JButton _deletePrimitiveFormButton = new JButton("LÃ¶schen");
 	
 	final private JComboBox _propertyComboBox = new JComboBox();
 	
@@ -138,7 +144,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	
 	private static Debug _debug = Debug.getLogger();
 	
-	// Und nun alles für die speziellen Informationen:
+	// Und nun alles fÃ¼r die speziellen Informationen:
 	
 	private JPanel _specialInformationDefinitionPanel = new JPanel();
 	
@@ -160,7 +166,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	final private JPanel _specialInformationPoint = new JPanel();
 	
 	/**
-	 * Konstruktor für ein vollkommen leeres Objekt.
+	 * Konstruktor fÃ¼r ein vollkommen leeres Objekt.
 	 */
 	
 	public DOTDefinitionDialogFrame() {
@@ -171,14 +177,14 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	}
 
 	/**
-	 * Konstruktor für ein funktionsfähiges Objekt.
+	 * Konstruktor fÃ¼r ein funktionsfÃ¤higes Objekt.
 	 * 
 	 * @param dotManagerDialog ein Dialog der Darstellungstypen-Verwaltung
 	 * @param connection die Datenverteiler-Verbindung
 	 * @param dotManager die Darstellungstypen-Verwaltung
 	 * @param displayObjectType ein Darstellungstyp
-	 * @param editable ist der Darstellungstyp veränderbar
-	 * @param reviseOnly ist die Identität des Darstellungstyps unveränderlich 
+	 * @param editable ist der Darstellungstyp verÃ¤nderbar
+	 * @param reviseOnly ist die IdentitÃ¤t des Darstellungstyps unverÃ¤nderlich 
 	 * @param title die anzuzeigende Titelzeile
 	 */
 	public DOTDefinitionDialogFrame(
@@ -208,7 +214,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 		
 		_staticCheckBox.setEnabled(_editable);
 		
-		addToolTips();	// Dies muss schon recht frühzeitig geschehen, weil die hier festgelegten Tooltipps auch
+		addToolTips();	// Dies muss schon recht frÃ¼hzeitig geschehen, weil die hier festgelegten Tooltipps auch
 						// von dem Dialog, der neue Grundfiguren anlegt (PrimitiveFormDialog) verwendet werden.
 		
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -265,7 +271,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 			
 		JPanel upperPanelUpperPart = new JPanel();
 		upperPanelUpperPart.setLayout(new BoxLayout( upperPanelUpperPart, BoxLayout.Y_AXIS));
-		upperPanelUpperPart.setBorder( BorderFactory.createTitledBorder( "Übergreifend"));
+		upperPanelUpperPart.setBorder( BorderFactory.createTitledBorder( "Ãœbergreifend"));
 		upperPanelUpperPart.add( upperPanelUpperUpperPart);
 		if ( upperPanelUpperLowerPart != null) {
 			upperPanelUpperPart.add( upperPanelUpperLowerPart);
@@ -301,7 +307,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 		};
 		_saveButton.addActionListener( saveActionListener);
 		
-		JButton cancelButton = new JButton("Dialog schließen");
+		JButton cancelButton = new JButton("Dialog schlieÃŸen");
 		
 		ActionListener cancelActionListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -310,7 +316,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 					int n = JOptionPane.showOptionDialog(
 							new JFrame(),
 							"Wollen Sie den Dialog wirklich ohne zu Speichern beenden?",
-							"Es wurden Änderungen vorgenommen.",
+							"Es wurden Ã„nderungen vorgenommen.",
 							JOptionPane.YES_NO_CANCEL_OPTION,
 							JOptionPane.QUESTION_MESSAGE,
 							null,
@@ -341,7 +347,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 					int n = JOptionPane.showOptionDialog(
 							new JFrame(),
 							"Wollen Sie den Dialog wirklich ohne zu Speichern beenden?",
-							"Es wurden Änderungen vorgenommen.",
+							"Es wurden Ã„nderungen vorgenommen.",
 							JOptionPane.YES_NO_CANCEL_OPTION,
 							JOptionPane.QUESTION_MESSAGE,
 							null,
@@ -393,10 +399,10 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	
 	/**
 	 * Setzt den Darstellungstypen des Dialogs. Mit der boolschen Variable wird angegeben, ob der
-	 * Dialog veränderbar ist oder nicht.
+	 * Dialog verÃ¤nderbar ist oder nicht.
 	 * 
 	 * @param displayObjectType ein Darstellungstyp
-	 * @param editable ist der Darstellungstyp veränderbar
+	 * @param editable ist der Darstellungstyp verÃ¤nderbar
 	 */
 	public void setDisplayObjectType(DisplayObjectType displayObjectType, boolean editable) {
 		if ( _dotManagerDialog != null) {
@@ -412,7 +418,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	
 	/**
 	 * Gibt den Darstellungstypen, mit dem der Dialog initialisiert wurde oder der mit
-	 * setDisplayObjectType() zuletzt gesetzt wurde, zurück.
+	 * setDisplayObjectType() zuletzt gesetzt wurde, zurÃ¼ck.
 	 * 
 	 * @return der Darstellungstyp
 	 */
@@ -422,18 +428,18 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	
 	
 	/**
-	 * Gibt den Darstellungstypen des Dialogs zurück, der auch alle vom Benutzer seit der
+	 * Gibt den Darstellungstypen des Dialogs zurÃ¼ck, der auch alle vom Benutzer seit der
 	 * Initialisierung des Dialogs bzw. dem letzten Aufruf von setDisplayObjectType() gemachten
-	 * Änderungen enthält.
+	 * Ã„nderungen enthÃ¤lt.
 	 * 
-	 * @return der vom Benutzer veränderbare Darstellungstyp
+	 * @return der vom Benutzer verÃ¤nderbare Darstellungstyp
      */
     public DisplayObjectType getScratchDisplayObjectType() {
     	return _scratchDisplayObjectType;
     }
 
 	/**
-	 * Legt fest, ob der angezeigte Darstellungstyp veränderbar ist oder nicht.
+	 * Legt fest, ob der angezeigte Darstellungstyp verÃ¤nderbar ist oder nicht.
 	 * 
 	 * @param editable der neue Wert
 	 */
@@ -478,7 +484,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 					_primitiveFormInfoTextField.setText(_scratchDisplayObjectType.getPrimitiveFormInfo(primitiveFormName));
 					DOTPoint dotPoint;
 					try {
-						dotPoint = (DOTPoint) _scratchDisplayObjectType; // Böse! Muss sauberer werden.
+						dotPoint = (DOTPoint) _scratchDisplayObjectType; // BÃ¶se! Muss sauberer werden.
 					} catch ( ClassCastException ex) {
 						_debug.error("DOTDefinitionDialogFrame: falsches Plugin.");
 						return;
@@ -557,8 +563,8 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	}
 	
 	private void initSpecialInformationPanel () {
-		// Für ein Recteck
-		JLabel heightLabel = new JLabel( "Höhe: ");
+		// FÃ¼r ein Recteck
+		JLabel heightLabel = new JLabel( "HÃ¶he: ");
 		JLabel widthLabel = new JLabel( "Breite: ");
 		
 		_specialInformationRectangle.setLayout( new SpringLayout());
@@ -572,7 +578,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 		_specialInformationRectangle.add( _siWidth);
 		SpringUtilities.makeCompactGrid(_specialInformationRectangle, 4, 5, 5);
 		
-		// Für einen Kreis
+		// FÃ¼r einen Kreis
 		JLabel radiusLabel = new JLabel( "Radius: ");
 		
 		_specialInformationCircle.setLayout( new SpringLayout());
@@ -582,7 +588,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 		_specialInformationCircle.add( _siRadius);
 		SpringUtilities.makeCompactGrid(_specialInformationCircle, 2, 5, 5);
 		
-		// Für einen Halbkreis
+		// FÃ¼r einen Halbkreis
 		JLabel semiRadiusLabel = new JLabel( "Radius: ");
 		JLabel orientationLabel = new JLabel( "Orientierung: ");
 		
@@ -597,9 +603,9 @@ public class DOTDefinitionDialogFrame extends JFrame {
 		_specialInformationSemicircle.add( _siOrientation);
 		SpringUtilities.makeCompactGrid(_specialInformationSemicircle, 4, 5, 5);
 		
-		// Für einen Text: im Moment nichts
+		// FÃ¼r einen Text: im Moment nichts
 		
-		// Für einen Punkt: im Moment nichts
+		// FÃ¼r einen Punkt: im Moment nichts
 	}
 	
 	private JPanel getButtonsPanel() {
@@ -638,7 +644,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 			final JButton _savePrimitiveFormButton = new JButton( "Speichern");
 			final JButton _leaveButton = new JButton( "Dialog beenden");
 			
-			// Und nun alles für das variable Panel:
+			// Und nun alles fÃ¼r das variable Panel:
 			final private JPanel _pfdDefinitionPanel = new JPanel();
 			private JPanel _pfdSpecialInformationPanel = new JPanel();
 			final private JPanel _pfdSpecialInformationRectangle = new JPanel();
@@ -752,7 +758,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( (newPrimitiveFormName == null) || (newPrimitiveFormName.length() == 0)) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte geben Sie einen Namen für die Grundfigur an!",
+							"Bitte geben Sie einen Namen fÃ¼r die Grundfigur an!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -761,7 +767,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( newPrimitiveFormType == null) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie einen Typ aus der Liste aus!",
+							"Bitte wÃ¤hlen Sie einen Typ aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -770,7 +776,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				
 				DOTPoint dotPoint;
 				try {
-					dotPoint = (DOTPoint) _scratchDisplayObjectType;	// Das ist böse, ganz böse. Aber ich habe keine Zeit!
+					dotPoint = (DOTPoint) _scratchDisplayObjectType;	// Das ist bÃ¶se, ganz bÃ¶se. Aber ich habe keine Zeit!
 				} catch ( ClassCastException ex) {
 					_debug.error("DOTDefinitionDialogFrame: falsches Plugin.");
 					return;
@@ -899,8 +905,8 @@ public class DOTDefinitionDialogFrame extends JFrame {
 			}
 			
 			private void initPFDSpecialInformationPanels() {
-				// Für ein Rechteck
-				JLabel heightLabel = new JLabel( "Höhe: ");
+				// FÃ¼r ein Rechteck
+				JLabel heightLabel = new JLabel( "HÃ¶he: ");
 				JLabel widthLabel = new JLabel( "Breite: ");
 				_pfdSpecialInformationRectangle.setLayout( new SpringLayout());
 				_pfdSpecialInformationRectangle.add( heightLabel);
@@ -909,14 +915,14 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				_pfdSpecialInformationRectangle.add( _pfdSiWidth);
 				SpringUtilities.makeCompactGrid(_pfdSpecialInformationRectangle, 4, 5, 5);
 				
-				// Für einen Kreis
+				// FÃ¼r einen Kreis
 				JLabel radiusLabel = new JLabel( "Radius: ");
 				_pfdSpecialInformationCircle.setLayout( new SpringLayout());
 				_pfdSpecialInformationCircle.add( radiusLabel);
 				_pfdSpecialInformationCircle.add( _pfdSiRadius);
 				SpringUtilities.makeCompactGrid(_pfdSpecialInformationCircle, 2, 5, 5);
 				
-				// Für einen Halbkreis
+				// FÃ¼r einen Halbkreis
 				JLabel semiRadiusLabel = new JLabel( "Radius: ");
 				JLabel orientationLabel = new JLabel( "Orientierung: ");
 				_pfdSiOrientation.setModel( new DefaultComboBoxModel( SEMI_CIRCLE_ITEMS));
@@ -927,9 +933,9 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				_pfdSpecialInformationSemicircle.add( _pfdSiOrientation);
 				SpringUtilities.makeCompactGrid(_pfdSpecialInformationSemicircle, 4, 5, 5);
 				
-				// Für einen Text: derzeit nichts
+				// FÃ¼r einen Text: derzeit nichts
 				
-				// Für einen Punkt: derzeit nichts
+				// FÃ¼r einen Punkt: derzeit nichts
 				
 				// Und nun noch den Listener, der das Definitions-Panel aktualisiert
 				ActionListener pfTypeListener = new ActionListener() {
@@ -970,7 +976,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( !_scratchDisplayObjectType.getDisplayObjectTypePlugin().getName().equals( "Punkt")) {
 					return;
 				}
-				DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // Böse! Muss sauberer werden.
+				DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // BÃ¶se! Muss sauberer werden.
 				final PrimitiveForm primitiveForm = dotPoint.getPrimitiveForm( (String) _primitiveFormComboBox.getSelectedItem());
 				final String type = (String) _newPrimitiveFormTypeComboBox.getSelectedItem();
 				_pfdDefinitionPanel.removeAll();
@@ -1008,7 +1014,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( !_scratchDisplayObjectType.getDisplayObjectTypePlugin().getName().equals( "Punkt")) {
 					return;
 				}
-				DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // Böse! Muss sauberer werden.
+				DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // BÃ¶se! Muss sauberer werden.
 				final String primitiveFormName = _newPrimitiveFormNameTextField.getText();
 				final PrimitiveForm primitiveForm = dotPoint.getPrimitiveForm(primitiveFormName);
 				final String type = (String) _newPrimitiveFormTypeComboBox.getSelectedItem();
@@ -1059,12 +1065,12 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( !_scratchDisplayObjectType.getDisplayObjectTypePlugin().getName().equals( "Punkt")) {
 					return;
 				}
-				pfDialog.setTextOfSaveButton( "Daten übernehmen");
+				pfDialog.setTextOfSaveButton( "Daten Ã¼bernehmen");
 				final Object selectedItem = _primitiveFormComboBox.getSelectedItem();
 				if ( selectedItem == null) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie eine Grundfigur aus!",
+							"Bitte wÃ¤hlen Sie eine Grundfigur aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -1073,7 +1079,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( name.length() == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie eine Grundfigur aus!",
+							"Bitte wÃ¤hlen Sie eine Grundfigur aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -1100,7 +1106,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				pfDialog.updatePfdSpecialInformationPanel();
 				ActionListener saveButtonListener = new ActionListener() {
 					public void actionPerformed(ActionEvent f) {
-						DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // Das ist böse!
+						DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // Das ist bÃ¶se!
 						final PrimitiveForm primitiveForm = dotPoint.getPrimitiveForm((String)_primitiveFormComboBox.getSelectedItem());
 						final String info = pfDialog.getInfo();
 						primitiveForm.setInfo( info);
@@ -1132,7 +1138,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( selectedItem == null) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie eine Grundfigur aus!",
+							"Bitte wÃ¤hlen Sie eine Grundfigur aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -1141,7 +1147,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 				if ( name.length() == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie eine Grundfigur aus!",
+							"Bitte wÃ¤hlen Sie eine Grundfigur aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -1178,7 +1184,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 						if ( button.isValid()) {	
 							// Ab dem 2ten Anlegen kam ein 2ter ActionEvent, der sich nur darin
 							// unterschied, dass der Button invalid war. Kann sein, dass das nur
-							// darauf zurückzuführen war, dass bei jeder äußeren Action wieder
+							// darauf zurÃ¼ckzufÃ¼hren war, dass bei jeder Ã¤uÃŸeren Action wieder
 							// ein neuer ActionListener hinzukam.
 							pfDialog.storeNewPrimitiveForm();
 							_editPrimitiveFormButton.setEnabled( _editable);
@@ -1280,7 +1286,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 			_primitiveFormTypeTextField.setText( 
 					_scratchDisplayObjectType.getPrimitiveFormType( primitiveFormName));
 			_primitiveFormInfoTextField.setText( _scratchDisplayObjectType.getPrimitiveFormInfo(primitiveFormName));
-			DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // Böse! Muss sauberer werden.
+			DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // BÃ¶se! Muss sauberer werden.
 			PrimitiveForm primitiveForm = dotPoint.getPrimitiveForm(primitiveFormName);
 			final Double x = primitiveForm.getTranslation().getX();
 			_positionX.setText( getAsString(x, 10));
@@ -1303,7 +1309,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
 		if ( !_scratchDisplayObjectType.getDisplayObjectTypePlugin().getName().equals( "Punkt")) {
 			return;
 		}
-		DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // Böse! Muss sauberer werden.
+		DOTPoint dotPoint = (DOTPoint) _scratchDisplayObjectType; // BÃ¶se! Muss sauberer werden.
 		final PrimitiveForm primitiveForm = dotPoint.getPrimitiveForm( (String) _primitiveFormComboBox.getSelectedItem());
 		final String type = _primitiveFormTypeTextField.getText();
 		_specialInformationDefinitionPanel.removeAll();
@@ -1365,17 +1371,17 @@ public class DOTDefinitionDialogFrame extends JFrame {
 	}
 
 	/**
-     * Gibt <code>true</code> zurück, wenn die Identität des Darstellungstyps, also der Name,
-     * nicht verändert werden kann, oder <code>false</code> andernfalls.
+     * Gibt <code>true</code> zurÃ¼ck, wenn die IdentitÃ¤t des Darstellungstyps, also der Name,
+     * nicht verÃ¤ndert werden kann, oder <code>false</code> andernfalls.
      * 
-     * @return <code>true</code> genau dann, wenn die Identität nicht verändert werden kann
+     * @return <code>true</code> genau dann, wenn die IdentitÃ¤t nicht verÃ¤ndert werden kann
      */
     public boolean isReviseOnly() {
     	return _reviseOnly;
     }
 
 	/**
-     * Legt fest, ob die Identität des Darstellungstyps unverändert bleiben muss (<code>true</code>), 
+     * Legt fest, ob die IdentitÃ¤t des Darstellungstyps unverÃ¤ndert bleiben muss (<code>true</code>), 
      * oder aber nicht.
      * 
      * @param reviseOnly der neue Wert
@@ -1385,7 +1391,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
     }
 
 	/**
-     * Gibt die Datenverteiler-Verbindung zurück.
+     * Gibt die Datenverteiler-Verbindung zurÃ¼ck.
      * 
      * @return die Datenverteiler-Verbindung
      */
@@ -1394,7 +1400,7 @@ public class DOTDefinitionDialogFrame extends JFrame {
     }
 
 	/**
-     * Gibt die Darstellungstypen-Verwaltung zurück. Wäre im Moment entbehrlich, weil der DOTManager als Singleton
+     * Gibt die Darstellungstypen-Verwaltung zurÃ¼ck. WÃ¤re im Moment entbehrlich, weil der DOTManager als Singleton
      * implementiert ist.
      * 
      * @return die Darstellungstypen-Verwaltung
@@ -1404,62 +1410,62 @@ public class DOTDefinitionDialogFrame extends JFrame {
     }
 
 	/**
-     * Gibt <code>true</code> zurück, wenn der übergebene Darstellungstyp veränderbar ist, und <code>false</code>
+     * Gibt <code>true</code> zurÃ¼ck, wenn der Ã¼bergebene Darstellungstyp verÃ¤nderbar ist, und <code>false</code>
      * sonst.
      * 
-     * @return ist der Darstellungstyp veränderbar
+     * @return ist der Darstellungstyp verÃ¤nderbar
      */
     public boolean isEditable() {
     	return _editable;
     }
 
 	/**
-     * Gibt den aktuellen Inhalt des Namensfeldes zurück.
+     * Gibt den aktuellen Inhalt des Namensfeldes zurÃ¼ck.
      * 
-     * @return gibt den aktuellen Inhalt des Namensfeldes zurück
+     * @return gibt den aktuellen Inhalt des Namensfeldes zurÃ¼ck
      */
     public String getNameText() {
     	return _nameTextField.getText();
     }
 
 	/**
-     * Gibt den aktuellen Inhalt des Info-Feldes zurück.
+     * Gibt den aktuellen Inhalt des Info-Feldes zurÃ¼ck.
      * 
-     * @return gibt den aktuellen Inhalt des Info-Feldes zurück
+     * @return gibt den aktuellen Inhalt des Info-Feldes zurÃ¼ck
      */
     public String getInfoText() {
     	return _infoTextField.getText();
     }
     
     /**
-     * Gibt den Namen der in der Auswahlbox selektierten Grundfigur zurück.
+     * Gibt den Namen der in der Auswahlbox selektierten Grundfigur zurÃ¼ck.
      * 
-     * @return gibt den Namen der in der Auswahlbox selektierten Grundfigur zurück
+     * @return gibt den Namen der in der Auswahlbox selektierten Grundfigur zurÃ¼ck
      */
     public String getSelectedPrimitiveForm() {
     	return (String) _primitiveFormComboBox.getSelectedItem();
     }
     
     /**
-     * Gibt die in der Auswahlbox selektierte Eigenschaft zurück.
+     * Gibt die in der Auswahlbox selektierte Eigenschaft zurÃ¼ck.
      * 
-     * @return gibt die in der Auswahlbox selektierte Eigenschaft zurück
+     * @return gibt die in der Auswahlbox selektierte Eigenschaft zurÃ¼ck
      */
     public DOTProperty getSelectedProperty() {
 		return (DOTProperty) _propertyComboBox.getSelectedItem();
     }
 
 	/**
-     * Gibt den Status der Statisch-Checkbox zurück.
+     * Gibt den Status der Statisch-Checkbox zurÃ¼ck.
      * 
-     * @return gibt den Status der Statisch-Checkbox zurück
+     * @return gibt den Status der Statisch-Checkbox zurÃ¼ck
      */
     public boolean getStaticCheckBoxState() {
     	return _staticCheckBox.isSelected();
     }
 
 	/**
-     * Notiere, dass sich etwas verändert hat.
+     * Notiere, dass sich etwas verÃ¤ndert hat.
      * 
      * @param somethingChanged der neue Wert
      */
@@ -1468,8 +1474,8 @@ public class DOTDefinitionDialogFrame extends JFrame {
     }
     
     /**
-     * Gibt an, ob die übergebene Eigenschaft statisch ist. Gehört die Eigenschaft zu einer
-     * Grundfigur, so muss deren Name übergeben werden, sonst ist das erste Argument <code>null</code>. 
+     * Gibt an, ob die Ã¼bergebene Eigenschaft statisch ist. GehÃ¶rt die Eigenschaft zu einer
+     * Grundfigur, so muss deren Name Ã¼bergeben werden, sonst ist das erste Argument <code>null</code>. 
      * 
      * @param der Name einer Grundfigur oder <code>null</code>
      * @param eine Visulaisierungs-Eigenschaft
@@ -1480,8 +1486,8 @@ public class DOTDefinitionDialogFrame extends JFrame {
     }
     
     /**
-     * Gibt den Wert der übergebenen Eigenschaftzurück. Gehört die Eigenschaft zu einer
-     * Grundfigur, so muss deren Name übergeben werden, sonst ist das erste Argument <code>null</code>.
+     * Gibt den Wert der Ã¼bergebenen EigenschaftzurÃ¼ck. GehÃ¶rt die Eigenschaft zu einer
+     * Grundfigur, so muss deren Name Ã¼bergeben werden, sonst ist das erste Argument <code>null</code>.
      * 
      * @param der Name einer Grundfigur oder <code>null</code>
      * @param eine Visulaisierungs-Eigenschaft
@@ -1512,17 +1518,17 @@ public class DOTDefinitionDialogFrame extends JFrame {
     	_primitiveFormComboBox.setToolTipText( "Der Name der Grundfigur");
     	_primitiveFormTypeTextField.setToolTipText( "Der Typ der Grundfigur");
     	_primitiveFormInfoTextField.setToolTipText( "Eine Kurzinformation zu der Grundfigur");
-    	_positionX.setToolTipText( "Relative x-Koordinate des Mittelpunkts (außer beim Typ Text)");
-    	_positionY.setToolTipText( "Relative y-Koordinate des Mittelpunkts (außer beim Typ Text)");
+    	_positionX.setToolTipText( "Relative x-Koordinate des Mittelpunkts (auÃŸer beim Typ Text)");
+    	_positionY.setToolTipText( "Relative y-Koordinate des Mittelpunkts (auÃŸer beim Typ Text)");
     	_editPrimitiveFormButton.setToolTipText( "Diese Grundfigur bearbeiten.");
     	_copyPrimitiveFormButton.setToolTipText( "Diese Grundfigur kopieren und die Kopie bearbeiten.");
     	_newPrimitiveFormButton.setToolTipText( "Eine neue Grundfigur anlegen.");
-    	_deletePrimitiveFormButton.setToolTipText( "Diese Grundfigur löschen.");
+    	_deletePrimitiveFormButton.setToolTipText( "Diese Grundfigur lÃ¶schen.");
     	_propertyComboBox.setToolTipText( "Eine Eigenschaft der Grundfigur.");
     	_staticCheckBox.setToolTipText( "Die Eigenschaft ist statisch oder dynamisch.");
     	_saveButton.setToolTipText( "Diesen Darstellungstyp speichern.");
-    	_specialInformationDefinitionPanel.setToolTipText( "Typabhängige Definitionsmerkmale der Grundfigur.");
-    	_siHeight.setToolTipText( "Die Höhe des Rechtecks.");
+    	_specialInformationDefinitionPanel.setToolTipText( "TypabhÃ¤ngige Definitionsmerkmale der Grundfigur.");
+    	_siHeight.setToolTipText( "Die HÃ¶he des Rechtecks.");
     	_siWidth.setToolTipText( "Die Breite des Rechtecks.");
     	_siRadius.setToolTipText( "Der Radius des Kreises.");
     	_siSemiRadius.setToolTipText( "Der Radius des Halbkreises.");
@@ -1531,6 +1537,6 @@ public class DOTDefinitionDialogFrame extends JFrame {
     
 	final private static String[] SEMI_CIRCLE_ITEMS = { DOTPointPainter.LINKER_HALBKREIS,
 		DOTPointPainter.OBERER_HALBKREIS, DOTPointPainter.RECHTER_HALBKREIS,
-		DOTPointPainter.UNTERER_HALBKREIS};	// Böse! S.o.
+		DOTPointPainter.UNTERER_HALBKREIS};	// BÃ¶se! S.o.
 }
 

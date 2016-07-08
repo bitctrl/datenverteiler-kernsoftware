@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.main;
@@ -42,7 +48,7 @@ import java.util.*;
  * Hauptklasse KExDaV
  *
  * @author Kappich Systemberatung
- * @version $Revision: 12677 $
+ * @version $Revision$
  */
 public class KExDaV {
 
@@ -65,11 +71,11 @@ public class KExDaV {
 	private boolean _terminateOnError = true;
 
 	/**
-	 * Konstruktor für das Haupt-KExDaV-Objekt
+	 * Konstruktor fÃ¼r das Haupt-KExDaV-Objekt
 	 *
 	 * @param connection         Lokale Verbindung
 	 * @param kexDavObject       KExDaV-Objekt
-	 * @param authenticationFile Datei mit Passwörtern
+	 * @param authenticationFile Datei mit PasswÃ¶rtern
 	 * @param plugins            Plugins zum Datenaustausch
 	 */
 	public KExDaV(
@@ -134,7 +140,7 @@ public class KExDaV {
 	 *
 	 * @param remoteDaVs Parameterspezifikation der Remote-Datenverteiler-Verbindungen samt auszutauschender Daten
 	 *
-	 * @throws MissingAreaException falls kein gültiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benötigt wurde.
+	 * @throws MissingAreaException falls kein gÃ¼ltiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benÃ¶tigt wurde.
 	 */
 	public synchronized void setNewParameters(final Collection<RemoteDaVParameter> remoteDaVs) throws MissingAreaException {
 		final Collection<ConnectionParameter> connectionParameters = new HashSet<ConnectionParameter>(remoteDaVs.size());
@@ -142,7 +148,7 @@ public class KExDaV {
 			connectionParameters.add(remoteDav.getConnectionParameters());
 		}
 
-		// Ungültige Verbindungen entfernen
+		// UngÃ¼ltige Verbindungen entfernen
 		removeOldConnections(connectionParameters);
 
 		// Neue Verbindungen aufbauen und ggf. vorhandenen neue Parameter mitteilen
@@ -164,7 +170,7 @@ public class KExDaV {
 	}
 
 	/**
-	 * Fügt neue Verbindungen hinzu und aktualisiert beide den Vorhandenen die Parameter
+	 * FÃ¼gt neue Verbindungen hinzu und aktualisiert beide den Vorhandenen die Parameter
 	 * @param remoteDaVs neue Parameter
 	 * @throws MissingAreaException Falls ein Konfigurationsbereich fehlt
 	 */
@@ -190,7 +196,7 @@ public class KExDaV {
 	}
 
 	/**
-	 * Löst den Parameteraustausch per Trigger aus
+	 * LÃ¶st den Parameteraustausch per Trigger aus
 	 *
 	 * @param specification Spezifikation eines Remote-Datenverteilers
 	 * @param direction     Richtung
@@ -209,7 +215,7 @@ public class KExDaV {
 	}
 
 	/**
-	 * Setzt, ob KExDav bei einem schweren Fehler beendet werden soll (Standardmäßig aktiviert)
+	 * Setzt, ob KExDav bei einem schweren Fehler beendet werden soll (StandardmÃ¤ÃŸig aktiviert)
 	 *
 	 * @param terminateOnError true wenn KExDaV beendet werden soll
 	 */
@@ -231,7 +237,7 @@ public class KExDaV {
 	}
 
 	/**
-	 * Gibt das verwendete KExDaV-Objekt zurück
+	 * Gibt das verwendete KExDaV-Objekt zurÃ¼ck
 	 * @return KExDaV-Objekt
 	 */
 	public SystemObject getKExDaVObject() {

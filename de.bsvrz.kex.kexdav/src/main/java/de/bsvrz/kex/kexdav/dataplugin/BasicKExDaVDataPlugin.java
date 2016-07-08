@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataplugin;
@@ -33,10 +39,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Standard-Plugin, für die Übertragung von Daten von einem Datenverteiler/Data-Objekt zu einem anderen Datenverteiler/Data-Objekt.
+ * Standard-Plugin, fÃ¼r die Ãœbertragung von Daten von einem Datenverteiler/Data-Objekt zu einem anderen Datenverteiler/Data-Objekt.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9232 $
+ * @version $Revision$
  */
 public class BasicKExDaVDataPlugin implements KExDaVDataPlugin {
 
@@ -53,7 +59,7 @@ public class BasicKExDaVDataPlugin implements KExDaVDataPlugin {
 	 * Zieldatum nicht existieren. Attribute, die nur im Zieldatum existieren, werden auf dem Standardwert belassen.
 	 *
 	 * @param source        Objekt, das als Vorlage zum kopieren benutzt wird
-	 * @param target        Objekt, das mit dem Daten aus source befüllt wird
+	 * @param target        Objekt, das mit dem Daten aus source befÃ¼llt wird
 	 * @param objectManager Verwaltung korrespondierender Objekte oder null
 	 * @param manager       KExDaV-Verwaltung
 	 *
@@ -69,7 +75,7 @@ public class BasicKExDaVDataPlugin implements KExDaVDataPlugin {
 			copyDataTree(source, target, source.getConnection(), target.getConnection(), objectManager, manager);
 		}
 		catch(IllegalArgumentException e) {
-			// Einige Data-Funktionen generieren bei ungültigen Parametern eine IllegalArgumentException, die wird hier mit abgefangen
+			// Einige Data-Funktionen generieren bei ungÃ¼ltigen Parametern eine IllegalArgumentException, die wird hier mit abgefangen
 			throw new DataCopyException(e);
 		}
 	}
@@ -79,7 +85,7 @@ public class BasicKExDaVDataPlugin implements KExDaVDataPlugin {
 	 * Zieldatum nicht existieren. Attribute, die nur im Zieldatum existieren, werden auf dem Standardwert belassen.
 	 *
 	 * @param source           Objekt, das als Vorlage zum kopieren benutzt wird
-	 * @param target           Objekt, das mit dem Daten aus source befüllt wird
+	 * @param target           Objekt, das mit dem Daten aus source befÃ¼llt wird
 	 * @param sourceConnection Datenverteiler-Verbindung des Source-objekts
 	 * @param targetConnection Datenverteiler-Verbindung ges Target-Objekts
 	 * @param objectManager    Verwaltung korrespondierender Objekte oder null
@@ -97,7 +103,7 @@ public class BasicKExDaVDataPlugin implements KExDaVDataPlugin {
 			final ManagerInterface manager) throws DataCopyException {
 		if(source.isList() && target.isList()) {
 			final Iterator<Data> src = source.iterator();
-			// Erstmal nicht durch foreach ersetzen, DAF-Kompatibilität!
+			// Erstmal nicht durch foreach ersetzen, DAF-KompatibilitÃ¤t!
 			// noinspection WhileLoopReplaceableByForEach
 			while(src.hasNext()) {
 				final Data sourceItem = src.next();
@@ -160,7 +166,7 @@ public class BasicKExDaVDataPlugin implements KExDaVDataPlugin {
 		else if(sourceAttributeType instanceof ReferenceAttributeType && targetAttributeType instanceof ReferenceAttributeType) {
 			final SystemObject systemObject = source.asReferenceValue().getSystemObject();
 			if(objectManager != null && systemObject instanceof DynamicObject) {
-				// Falls die Objektreferenz auf ein dynamisches Objekt zeigt, das dynamische Objekt rüberkopieren
+				// Falls die Objektreferenz auf ein dynamisches Objekt zeigt, das dynamische Objekt rÃ¼berkopieren
 				objectManager.copyObjectIfNecessary(ObjectSpecification.create(systemObject, manager), sourceConnection, targetConnection);
 			}
 			try {
@@ -168,13 +174,13 @@ public class BasicKExDaVDataPlugin implements KExDaVDataPlugin {
 			}
 			catch(IllegalArgumentException e) {
 				// TAnf 4.1.3.2.2
-				// Falls das Systemobjekt auf dem Zielsystem nicht gefunden werden kann, prüfen, ob der Undefiniert-Wert erlaubt ist.
+				// Falls das Systemobjekt auf dem Zielsystem nicht gefunden werden kann, prÃ¼fen, ob der Undefiniert-Wert erlaubt ist.
 				if(((ReferenceAttributeType)targetAttributeType).isUndefinedAllowed()) {
 					// Falls ja, auf undefiniert setzen.
 					target.asReferenceValue().setSystemObject(null);
 				}
 				else {
-					// Falls nein, Exception werfen (Wird später zu Warnung und Betriebsmeldung)
+					// Falls nein, Exception werfen (Wird spÃ¤ter zu Warnung und Betriebsmeldung)
 					throw new DataCopyException(e);
 				}
 			}

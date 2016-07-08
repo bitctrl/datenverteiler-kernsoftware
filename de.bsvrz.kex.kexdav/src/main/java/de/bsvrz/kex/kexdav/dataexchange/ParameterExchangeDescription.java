@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataexchange;
@@ -23,10 +29,10 @@ package de.bsvrz.kex.kexdav.dataexchange;
 import de.bsvrz.kex.kexdav.parameterloader.CorrespondingAttributeGroup;
 
 /**
- * Spezifikation für den Parameteraustausch
+ * Spezifikation fÃ¼r den Parameteraustausch
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9269 $
+ * @version $Revision$
  */
 public class ParameterExchangeDescription {
 
@@ -43,13 +49,13 @@ public class ParameterExchangeDescription {
 	private final boolean _delta;
 
 	/**
-	 * Spezifikation für den Parameteraustausch
+	 * Spezifikation fÃ¼r den Parameteraustausch
 	 * @param objectPid Objekt
 	 * @param strategy Strategie
 	 * @param atg Attributgruppe
 	 * @param simLocal SV lokal
 	 * @param simRemote SV remote
-	 * @param delta Nur geänderte Daten übertragen?
+	 * @param delta Nur geÃ¤nderte Daten Ã¼bertragen?
 	 */
 	public ParameterExchangeDescription(
 			final String objectPid,
@@ -68,7 +74,7 @@ public class ParameterExchangeDescription {
 	}
 
 	/**
-	 * Gibt das Objekt zurück
+	 * Gibt das Objekt zurÃ¼ck
 	 * @return das Objekt
 	 */
 	public String getObjectPid() {
@@ -76,7 +82,7 @@ public class ParameterExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Strategie zurück
+	 * Gibt die Strategie zurÃ¼ck
 	 * @return die Strategie
 	 */
 	public ParameterExchangeStrategy getStrategy() {
@@ -84,7 +90,7 @@ public class ParameterExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Attributgruppe zurück
+	 * Gibt die Attributgruppe zurÃ¼ck
 	 * @return die Attributgruppe
 	 */
 	public CorrespondingAttributeGroup getAtg() {
@@ -92,7 +98,7 @@ public class ParameterExchangeDescription {
 	}
 
 	/**
-	 * Gibt die lokale Simulationsvariante zurück
+	 * Gibt die lokale Simulationsvariante zurÃ¼ck
 	 * @return die lokale Simulationsvariante
 	 */
 	public short getSimLocal() {
@@ -100,7 +106,7 @@ public class ParameterExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Remote Simulationsvariante zurück
+	 * Gibt die Remote Simulationsvariante zurÃ¼ck
 	 * @return die Remote Simulationsvariante
 	 */
 	public short getSimRemote() {
@@ -108,8 +114,8 @@ public class ParameterExchangeDescription {
 	}
 
 	/**
-	 * Gibt den Delta-Parameter zurück
-	 * @return true wenn nur geänderte Daten übertragen werden sollen
+	 * Gibt den Delta-Parameter zurÃ¼ck
+	 * @return true wenn nur geÃ¤nderte Daten Ã¼bertragen werden sollen
 	 */
 	public boolean isDelta() {
 		return _delta;

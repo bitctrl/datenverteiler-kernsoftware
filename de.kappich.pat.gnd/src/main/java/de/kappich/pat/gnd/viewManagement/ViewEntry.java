@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.viewManagement;
@@ -30,22 +36,22 @@ import java.util.prefs.Preferences;
 import javax.swing.JComponent;
 
 /**
- * Eine Klasse für einen Layer einer Ansicht mit dessen ansicht-spezifischen Eigenschaften.
+ * Eine Klasse fÃ¼r einen Layer einer Ansicht mit dessen ansicht-spezifischen Eigenschaften.
  * <p>
  * Ein ViewEntry ist ein Objekt, das einen {@link Layer} und seine Einstellungen innerhalb 
  * einer {@link View Ansicht} beschreibt. Dementsprechend ergeben sich seine Bestandteile 
- * (der Layer, zwei Maßstabsgrenzen zum Ein- und Ausblenden, und zwei Flags, die anzeigen,
+ * (der Layer, zwei MaÃŸstabsgrenzen zum Ein- und Ausblenden, und zwei Flags, die anzeigen,
  * ob die Objekte des Layers sichtbar sind und ob der Layer aktuell eingeblendet ist) und
  * Methoden.
  * <p>
  * Zwei Implementationsdeteils:
  * Obwohl ein ViewEntry ein Bestandteil seiner Ansicht ist, kennt er diese auch, um deren 
- * ChangeListener mit Hilfe der notify-Methoden über Änderungen zu benachrichtigen. Außerdem 
+ * ChangeListener mit Hilfe der notify-Methoden Ã¼ber Ã„nderungen zu benachrichtigen. AuÃŸerdem 
  * wird dem ViewEntry die Swing-Komponente, in der er visualisiert wird, mit einem Setter 
  * bekannt gemacht, wenn er visiualisiert wird.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  */
 public class ViewEntry {
 
@@ -55,11 +61,11 @@ public class ViewEntry {
 	public ViewEntry() {}
 
 	/**
-	 * Konstruiert einen ViewEntry aus den übergebenen Informationen
+	 * Konstruiert einen ViewEntry aus den Ã¼bergebenen Informationen
 	 * 
 	 * @param layer Der Layer des ViewEntry's
-	 * @param zoomIn Der Maßstab, ab dem der Layer des ViewEntry's eingeblendet wird
-	 * @param zoomOut Der Maßstab, ab dem der Layer des ViewEntry's ausgeblendet wird
+	 * @param zoomIn Der MaÃŸstab, ab dem der Layer des ViewEntry's eingeblendet wird
+	 * @param zoomOut Der MaÃŸstab, ab dem der Layer des ViewEntry's ausgeblendet wird
 	 * @param selectable Sind die Objekte des Layers selektierbar? 
 	 * @param visible Wird der Layer aktuell angezeigt?
 	 */
@@ -70,13 +76,13 @@ public class ViewEntry {
 		_selectable = selectable;
 		_visible = visible;
 		if(_zoomIn < _zoomOut) {
-			throw new IllegalArgumentException("zoomIn muss größer zoomOut sein.");
+			throw new IllegalArgumentException("zoomIn muss grÃ¶ÃŸer zoomOut sein.");
 		}
 	}
 
 	
 	/**
-	 * Setzt die Ansicht, zu der der ViewEntry gehört.
+	 * Setzt die Ansicht, zu der der ViewEntry gehÃ¶rt.
 	 * 
 	 * @param view die Ansicht
 	 */
@@ -85,7 +91,7 @@ public class ViewEntry {
 	}
 
 	/**
-	 * Gibt den Layer zurück.
+	 * Gibt den Layer zurÃ¼ck.
 	 * 
 	 * @return den Layer
 	 */
@@ -106,7 +112,7 @@ public class ViewEntry {
 	}
 
 	/**
-	 * Gibt den Wert des Maßstabs zurück, ab dem der Layer eingeblendet wird.
+	 * Gibt den Wert des MaÃŸstabs zurÃ¼ck, ab dem der Layer eingeblendet wird.
 	 * 
 	 * @return den Zoom-In-Wert
 	 */
@@ -115,7 +121,7 @@ public class ViewEntry {
 	}
 
 	/**
-	 * Gibt den Wert des Maßstabs zurück, ab dem der Layer ausgeblendet wird.
+	 * Gibt den Wert des MaÃŸstabs zurÃ¼ck, ab dem der Layer ausgeblendet wird.
 	 * 
 	 * @return den Zoom-Out-wert
 	 */
@@ -124,7 +130,7 @@ public class ViewEntry {
 	}
 
 	/**
-	 * Setzt den Wert des Maßstabs, ab dem der Layer eingeblendet wird.
+	 * Setzt den Wert des MaÃŸstabs, ab dem der Layer eingeblendet wird.
 	 * 
 	 * @param zoomIn der neue Zoom-In-Wert 
 	 */
@@ -136,7 +142,7 @@ public class ViewEntry {
     }
 
     /**
-	 * Setzt den Wert des Maßstabs, ab dem der Layer eingeblendet wird.
+	 * Setzt den Wert des MaÃŸstabs, ab dem der Layer eingeblendet wird.
 	 * 
 	 * @param zoomIn der neue Zoom-Out-Wert
 	 */
@@ -148,7 +154,7 @@ public class ViewEntry {
     }
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn die Objekte des Layers selektierbar sind.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die Objekte des Layers selektierbar sind.
 	 * 
 	 * @return sind die Objekte selektierbar?
 	 */
@@ -170,9 +176,9 @@ public class ViewEntry {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn der Layer aktuell sichtbar ist. Diese Methode 
-	 * überprüft nur das Sichtbarkeitsflag, nicht aber die Zoomstufe (die es
-	 * möglicherweise nicht gibt, wenn nämlich die Ansicht nicht angezeigt wird).
+	 * Gibt <code>true</code> zurÃ¼ck, wenn der Layer aktuell sichtbar ist. Diese Methode 
+	 * Ã¼berprÃ¼ft nur das Sichtbarkeitsflag, nicht aber die Zoomstufe (die es
+	 * mÃ¶glicherweise nicht gibt, wenn nÃ¤mlich die Ansicht nicht angezeigt wird).
 	 * 
 	 * @return ist der Layer sichtbar?
 	 */
@@ -181,12 +187,12 @@ public class ViewEntry {
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn der Layer sichtbar ist und der übergebene Wert zwischen
+	 * Gibt <code>true</code> zurÃ¼ck, wenn der Layer sichtbar ist und der Ã¼bergebene Wert zwischen
 	 * den Werten von getZoomOut und getZoomIn liegt, d.h. wenn der Layer in einer  Karte mit dem 
-	 * entsprechenden Maßstab angezeigt werden soll.
+	 * entsprechenden MaÃŸstab angezeigt werden soll.
 	 * 
-	 * @param scale ein Maßstab
-	 * @return ist der Layer für den übergebenen Maßstab sichtbar?
+	 * @param scale ein MaÃŸstab
+	 * @return ist der Layer fÃ¼r den Ã¼bergebenen MaÃŸstab sichtbar?
 	 */
 	public boolean isVisible( int scale) {
 		if ((getZoomIn() >= scale) && (scale >= getZoomOut())) {
@@ -247,7 +253,7 @@ public class ViewEntry {
 	}
 	
 	/**
-	 * Gibt die Swing-Komponente, die den ViewEntry aktuell visualisiert, zurück.
+	 * Gibt die Swing-Komponente, die den ViewEntry aktuell visualisiert, zurÃ¼ck.
 	 * 
 	 * @return eine Swing-Komponente oder <code>null</code>
      */
@@ -265,8 +271,8 @@ public class ViewEntry {
     }
     
     /**
-     * Gibt einen neuen ViewEntry zurück, der dem aufrufenden Objekt gleicht, abgesehen
-     * davon, dass dieser noch nicht zu einer Ansicht gehört und keine Swing-Komponente,
+     * Gibt einen neuen ViewEntry zurÃ¼ck, der dem aufrufenden Objekt gleicht, abgesehen
+     * davon, dass dieser noch nicht zu einer Ansicht gehÃ¶rt und keine Swing-Komponente,
      * die ihn visualisiert, kennt.
      * 
      * @return die Kopie
@@ -277,7 +283,7 @@ public class ViewEntry {
     }
     
     /**
-     * Gibt die Menge aller von zugehörigen Layer verwendeten Farben zurück.
+     * Gibt die Menge aller von zugehÃ¶rigen Layer verwendeten Farben zurÃ¼ck.
      * 
      * @return die Menge der benutzten Farben
      */
@@ -288,7 +294,7 @@ public class ViewEntry {
 
 	private View _view;
 	private Layer _layer;
-	/** Für den Maßstab m zwischen 1:_zoomIn und 1:_zoomOut wird der layer angezeigt */
+	/** FÃ¼r den MaÃŸstab m zwischen 1:_zoomIn und 1:_zoomOut wird der layer angezeigt */
 	private int _zoomIn;
 	private int _zoomOut;
 	private boolean _selectable;

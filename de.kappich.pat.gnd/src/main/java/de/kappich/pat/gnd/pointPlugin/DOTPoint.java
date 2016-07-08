@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.pointPlugin;
 
@@ -56,20 +62,20 @@ import java.util.prefs.Preferences;
 import javax.swing.table.TableModel;
 
 /**
- * Der Darstellungstyp für Punktobjekte.
+ * Der Darstellungstyp fÃ¼r Punktobjekte.
  * <p>
- * Ein DOTPoint implementiert das Interface DisplayObjectType für das Plugin für Punktobjekte. 
+ * Ein DOTPoint implementiert das Interface DisplayObjectType fÃ¼r das Plugin fÃ¼r Punktobjekte. 
  * Dieser GND-interne Darstellungstyp ist bei weitem der umfangreichste und seine Implementation 
  * beruht NICHT auf DefaultDisplayObjectType.
  * 
- * Jeder DOTPoint hat einen Namen, einen Infotext, einen Verschiebungsfaktor (-länge) und
+ * Jeder DOTPoint hat einen Namen, einen Infotext, einen Verschiebungsfaktor (-lÃ¤nge) und
  * eine interne Variable, die anzeigt, ob eine Verbingslinie zwischen der Lage in der Karte
  * und dem verschobenen Objekt gezeichnet werden soll. Weiterhin kann er beliebig viele
  * {@link PrimitiveForm Grundfiguren} enthalten, die je nach ihrem Typ statische oder
  * dynamische Eigenschaften besitzen. Der DOTPoint besitzt selbst keine Visualisierungs-Eigenschaften.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener {
@@ -116,7 +122,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Der Getter für den Verschiebungsfaktor bzw. -länge.
+	 * Der Getter fÃ¼r den Verschiebungsfaktor bzw. -lÃ¤nge.
 	 * 
 	 * @return der Verschiebungsfaktor
 	 */
@@ -125,7 +131,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Der Setter für den Verschiebungsfaktor bzw. -länge.
+	 * Der Setter fÃ¼r den Verschiebungsfaktor bzw. -lÃ¤nge.
 	 * 
 	 * @param translationFactor der Verschiebungsfaktor
 	 */
@@ -134,7 +140,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn die Lage in der Karte mit dem verschobenen Objekt durch
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die Lage in der Karte mit dem verschobenen Objekt durch
 	 * eine Verbindungslinie verbunden werden soll.
 	 * 
 	 * @return soll eine Verbindungslinie gezeichnet werden
@@ -157,7 +163,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		PrimitiveForm primitiveForm = getPrimitiveForm( primitiveFormName, "isPropertyStatic");
 		final Boolean isStatic = primitiveForm.isPropertyStatic( property);
 		if ( isStatic == null) {
-			throw new IllegalArgumentException("DOTPoint.isPropertyStatic wurde für eine unbekannte Eigenschaft aufgerufen.");
+			throw new IllegalArgumentException("DOTPoint.isPropertyStatic wurde fÃ¼r eine unbekannte Eigenschaft aufgerufen.");
 		}
 		return isStatic;
 	}
@@ -333,7 +339,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 				return treeMap1.values().toArray( new DisplayObjectTypeItem[1])[0];
 			}
 		}
-		// den übergreifenden Status überprüfen
+		// den Ã¼bergreifenden Status Ã¼berprÃ¼fen
 		final String keyString2 = dynamicDOTItemManager.getKeyString( subscriptionData, 
 				DynamicDefinitionComponent.LEERE_DATEN_STATUS);
 		final TreeMap<Interval<Double>, DynamicDOTItem> treeMap2 = 
@@ -360,7 +366,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt für jede bei Grunndfiguren von DOTPoint verwendeten DOTProperty einen Default-Wert zurück.
+	 * Gibt fÃ¼r jede bei Grunndfiguren von DOTPoint verwendeten DOTProperty einen Default-Wert zurÃ¼ck.
 	 * 
 	 * @param property die Eigenschaft
 	 * @return der Default-Wert
@@ -387,7 +393,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Fügt eine Grundfigur hinzu.
+	 * FÃ¼gt eine Grundfigur hinzu.
 	 * 
 	 * @param primitiveForm die Grundfigur
 	 */
@@ -400,7 +406,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Macht ein Update auf die bereits vorhandene Grundfigur oder fügt sie andernfalls hinzu.
+	 * Macht ein Update auf die bereits vorhandene Grundfigur oder fÃ¼gt sie andernfalls hinzu.
 	 * 
 	 * @param primitiveForm die Grundfigur
 	 */
@@ -409,10 +415,10 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt die Grundfigur zurück.
+	 * Gibt die Grundfigur zurÃ¼ck.
 	 * 
 	 * @param primitiveFormName der Name der Grundfigur
-	 * @param methodName der Name der aufrufenden Methode (ursprünglich für eine Fehlermeldung vorgesehen)
+	 * @param methodName der Name der aufrufenden Methode (ursprÃ¼nglich fÃ¼r eine Fehlermeldung vorgesehen)
 	 * @return die Grundfigur oder <code>null</code>
 	 */
 	private PrimitiveForm getPrimitiveForm( String primitiveFormName, final String methodName) {
@@ -421,7 +427,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt die genannte Grundfigur zurück.
+	 * Gibt die genannte Grundfigur zurÃ¼ck.
 	 * 
 	 * @param primitiveFormName der Name der Grundfigur
 	 * @return die Grundfigur oder <code>null</code>
@@ -431,7 +437,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt alle Grundfiguren zurück.
+	 * Gibt alle Grundfiguren zurÃ¼ck.
 	 * 
 	 * @return alle Grundfiguren
 	 */
@@ -440,7 +446,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt die Namen aller Grundfiguren zurück.
+	 * Gibt die Namen aller Grundfiguren zurÃ¼ck.
 	 * 
 	 * @return alle Grundfigurnamen
 	 */
@@ -449,7 +455,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt den Typ der genannten Grundfigur zurück, oder aber einen leeren String.
+	 * Gibt den Typ der genannten Grundfigur zurÃ¼ck, oder aber einen leeren String.
 	 * 
 	 * @param primitiveFormName der Grundfigurname
 	 * @return der Grundfigurtyp
@@ -463,7 +469,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt den Infotext der benannten Grundfigur zurück, oder aber einen leeren String.
+	 * Gibt den Infotext der benannten Grundfigur zurÃ¼ck, oder aber einen leeren String.
 	 * 
 	 * @param primitiveFormName der Grundfigurname
 	 * @return die Kurzinfo
@@ -486,7 +492,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt alle dynamischen Eigenschaften der benannten Grundfigur zurück.
+	 * Gibt alle dynamischen Eigenschaften der benannten Grundfigur zurÃ¼ck.
 	 * 
 	 * @param primitiveFormName der Grundfigurname
 	 * @return alle dynamischen Eigenschaften der Grundfigur
@@ -500,7 +506,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	/**
-	 * Gibt das Tabellenmodel der durch die übergebenen Werte beschriebenen Eigenschaft zurück.
+	 * Gibt das Tabellenmodel der durch die Ã¼bergebenen Werte beschriebenen Eigenschaft zurÃ¼ck.
 	 * 
 	 * @param primitiveForm die Grundfigur
 	 * @param property die Eigenschaft
@@ -513,7 +519,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	
 	/**
 	 * Gibt die Indizes aller in Konflikt stehenden Zeilen des Tabellenmodells an. Ein Konflikt
-	 * besteht, wenn zwei Zeilen sich hinsichtlich der Wertebereiche überlappen.
+	 * besteht, wenn zwei Zeilen sich hinsichtlich der Wertebereiche Ã¼berlappen.
 	 * 
 	 * @param primitiveForm die Grundfigur
 	 * @param property die Eigenschaft
@@ -530,15 +536,15 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	/**
 	 * PrimitiveForm-Objekte sind die Grundfiguren in der Darstellung der DOTPoints. 
 	 * <p>
-	 * Jede Grundfigur hat einen Namen, einen von fünf vorgegebenen Typen (Rechteck, Kreis, Halbkreis,
+	 * Jede Grundfigur hat einen Namen, einen von fÃ¼nf vorgegebenen Typen (Rechteck, Kreis, Halbkreis,
 	 * Textdarstellung oder Punkt), einen Infotext, einen Punkt in der Ebene, der einen Verschiebungvektor 
-	 * beschreibt, und abhängig vom Typ spezifische definierende Eigenschaften (Höhe, Breite, Radius, 
+	 * beschreibt, und abhÃ¤ngig vom Typ spezifische definierende Eigenschaften (HÃ¶he, Breite, Radius, 
 	 * Orientierung, Durchmesser usw.
 	 * <p>
 	 * Die Klasse ist statisch, damit sie statische Methoden haben kann (s. {@link #getDefaultSpecificInformation).
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 8080 $
+	 * @version $Revision$
 	 *
 	 */
 	public static class PrimitiveForm {
@@ -577,7 +583,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den Namen der Grundfigur zurück.
+		 * Gibt den Namen der Grundfigur zurÃ¼ck.
 		 * 
 		 * @return den Namen
 		 */
@@ -595,7 +601,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den Typ der Grundfigur zurück.
+		 * Gibt den Typ der Grundfigur zurÃ¼ck.
 		 * 
 		 * @return der Grundfigurtyp
 		 */
@@ -613,7 +619,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den Infotext zurück.
+		 * Gibt den Infotext zurÃ¼ck.
 		 * 
 		 * @return die Kurzinfo
 		 */
@@ -631,7 +637,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den die lokale Verschiebung beschreibenden Vektor zurück.
+		 * Gibt den die lokale Verschiebung beschreibenden Vektor zurÃ¼ck.
 		 * 
 		 * @return den Verschiebungsvektor
 		 */
@@ -649,7 +655,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt die spezifische definierende Eigenschaft mit dem übergebenen Namen zurück.
+		 * Gibt die spezifische definierende Eigenschaft mit dem Ã¼bergebenen Namen zurÃ¼ck.
 		 * 
 		 * @param name der Name der spezifischen Eigenschaft
 		 * @return die spezifischen Eigenschaft
@@ -659,7 +665,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Setzt die spezifische definiernde Eigenschaft mit dem übergebenen Namen.
+		 * Setzt die spezifische definiernde Eigenschaft mit dem Ã¼bergebenen Namen.
 		 * 
 		 * @param name der Name
 		 * @param o die Eigenschaft
@@ -671,7 +677,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den Wert <code>true</true> zurück, wenn die übergebene Eigenschaft statisch ist,
+		 * Gibt den Wert <code>true</true> zurÃ¼ck, wenn die Ã¼bergebene Eigenschaft statisch ist,
 		 * <code>false</code>, wenn sie dynamisch ist, und <code>null</code> wenn sie nicht
 		 * bei dieser Grundfigur auftritt. 
 		 * 
@@ -682,7 +688,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Legt fest, ob die übergebene Eigenschaft statisch oder dynamisch ist.
+		 * Legt fest, ob die Ã¼bergebene Eigenschaft statisch oder dynamisch ist.
 		 * 
 		 * @param property die Eigenschaft
 		 * @param b der neue Wert
@@ -702,7 +708,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt <code>true</code> zurück, wenn die Grundfigur mindestens ein dynamische Eigenschaft besitzt.
+		 * Gibt <code>true</code> zurÃ¼ck, wenn die Grundfigur mindestens ein dynamische Eigenschaft besitzt.
 		 * 
 		 * @return gibt es dynamische Eigenschaften?
 		 */
@@ -716,7 +722,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt eine Liste aller dynamischen Eigenschaften der Grundfigur zurück.
+		 * Gibt eine Liste aller dynamischen Eigenschaften der Grundfigur zurÃ¼ck.
 		 * 
 		 * @return alle dynamischen Eigenschaften
 		 */
@@ -731,7 +737,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den Wert (Farbe, Tranzparens, Textstil etc.) der statischen Eigenschaft der Grundfigur zurück.
+		 * Gibt den Wert (Farbe, Tranzparens, Textstil etc.) der statischen Eigenschaft der Grundfigur zurÃ¼ck.
 		 * 
 		 * @param property die Eigenschaft
 		 * @return den Wert der statischen Eigenschaft
@@ -806,7 +812,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Initialisiert die Grundfigur aus den Präferenzen.
+		 * Initialisiert die Grundfigur aus den PrÃ¤ferenzen.
 		 * 
 		 * @param prefs der Knoten, unter dem die Initialisierung beginnt
 		 */
@@ -915,7 +921,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 						try {
 							dynamicItem = new DynamicDOTItem( objectItemPrefs);
 						} catch (IllegalAccessError iae) {
-							_debug.error( "Ein benutzer-definierter Darstellungstyp kann nicht vollständig initialisiert werden.");
+							_debug.error( "Ein benutzer-definierter Darstellungstyp kann nicht vollstÃ¤ndig initialisiert werden.");
 							continue;
 						}
 						if ( dynamicItem.isValid()) {
@@ -929,9 +935,9 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Löscht die Präferenzen der Grundfigur.
+		 * LÃ¶scht die PrÃ¤ferenzen der Grundfigur.
 		 * 
-		 * @param prefs der Knoten, unter dem gelöscht wird
+		 * @param prefs der Knoten, unter dem gelÃ¶scht wird
 		 */
 		public void deletePreferences( Preferences prefs) {
 			Preferences objectPrefs = prefs.node( prefs.absolutePath() + "/" + getName());
@@ -945,7 +951,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Speichert die Präferenzen der Grundfigur.
+		 * Speichert die PrÃ¤ferenzen der Grundfigur.
 		 * 
 		 * @param prefs der Knoten, unter dem die Speicherung beginnt
 		 */
@@ -1052,8 +1058,8 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt eine Liste mit allen Attributnamen zurück, die für die Eigenschaft und die
-		 * durch DOTSubscriptionData gekapselte Attributgruppe und den Aspekt für diese
+		 * Gibt eine Liste mit allen Attributnamen zurÃ¼ck, die fÃ¼r die Eigenschaft und die
+		 * durch DOTSubscriptionData gekapselte Attributgruppe und den Aspekt fÃ¼r diese
 		 * Grundfigur relevant sind.
 		 * 
 		 * @param property die Eigenschaft
@@ -1074,7 +1080,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt das Item zurück, das für die übergebenen Werte verwendet werden kann, oder <code>null</code>,
+		 * Gibt das Item zurÃ¼ck, das fÃ¼r die Ã¼bergebenen Werte verwendet werden kann, oder <code>null</code>,
 		 * wenn ein solches nicht existiert.
 		 * 
 		 * @param property die Eigenschaft
@@ -1174,7 +1180,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt Default-Werte für die spezifisch definiernden Informationen zurück.
+		 * Gibt Default-Werte fÃ¼r die spezifisch definiernden Informationen zurÃ¼ck.
 		 * 
 		 * @param primitiveFormName der Name einer Grundfigur
 		 * @return die Default-Werte
@@ -1196,38 +1202,38 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		private void checkSpecificInformation() {
 			if ( _typeOfPrimitiveForm == PrimitiveFormType.RECHTECK) {
 				if ( _specificInformation.size() != 2) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein ungültiges Rechteck.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein ungÃ¼ltiges Rechteck.");
 				}
 				if ( !_specificInformation.containsKey( HEIGHT)) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein Rechteck ohne Höhe.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein Rechteck ohne HÃ¶he.");
 				}
 				if ( !_specificInformation.containsKey( WIDTH)) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein Rechteck ohne Breite.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein Rechteck ohne Breite.");
 				}
 			} else if ( _typeOfPrimitiveForm == PrimitiveFormType.KREIS) {
 				if ( _specificInformation.size() != 1) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein ungültiger Kreis.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein ungÃ¼ltiger Kreis.");
 				}
 				if ( !_specificInformation.containsKey( RADIUS)) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein Kreis ohne Radius.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein Kreis ohne Radius.");
 				}
 			} else if ( _typeOfPrimitiveForm == PrimitiveFormType.HALBKREIS) {
 				if ( _specificInformation.size() != 2) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein ungültiger Halbkreis.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein ungÃ¼ltiger Halbkreis.");
 				}
 				if ( !_specificInformation.containsKey( RADIUS)) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein Halbkreis ohne Radius.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein Halbkreis ohne Radius.");
 				}
 				if ( !_specificInformation.containsKey( ORIENTATION)) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein Halbkreis ohne Orientation.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein Halbkreis ohne Orientation.");
 				}
 			} else if ( _typeOfPrimitiveForm == PrimitiveFormType.TEXTDARSTELLUNG) {
 				if ( _specificInformation.size() != 0) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": eine ungültige Textdarstellung.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": eine ungÃ¼ltige Textdarstellung.");
 				}
 			} else if ( _typeOfPrimitiveForm == PrimitiveFormType.PUNKT) {
 				if ( _specificInformation.size() != 0) {
-					_debug.warning("PrimitiveForm.checkSpecificInformation() für " + getName() + ": ein ungültiger Punkt.");
+					_debug.warning("PrimitiveForm.checkSpecificInformation() fÃ¼r " + getName() + ": ein ungÃ¼ltiger Punkt.");
 				}
 			}
 		}
@@ -1243,7 +1249,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den Item-Manager der Eigenschaft zurück.
+		 * Gibt den Item-Manager der Eigenschaft zurÃ¼ck.
 		 * 
 		 * @param property die Eigenschaft
 		 * @return den ItemManager
@@ -1288,7 +1294,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt eine Menge mit allen von dieser Grundfigur für die übergebene Eigenschaft benutzten Farben zurück.
+		 * Gibt eine Menge mit allen von dieser Grundfigur fÃ¼r die Ã¼bergebene Eigenschaft benutzten Farben zurÃ¼ck.
 		 * 
 		 * @param property die Eigenschaft
 		 * @return die Menge der benutzten Farben
@@ -1312,7 +1318,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt eine Menge mit allen von dieser Grundfigur benutzten Farben zurück.
+		 * Gibt eine Menge mit allen von dieser Grundfigur benutzten Farben zurÃ¼ck.
 		 * 
 		 * @return die Menge der benutzten Farben
 		 */
@@ -1348,7 +1354,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	 * Eine Enumeration aller Grundfigurtypen. Jeder Grundfigurtyp hat nur einen eindeutigen Namen.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 8080 $
+	 * @version $Revision$
 	 *
 	 */
 	static public class PrimitiveFormType {
@@ -1360,7 +1366,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		}
 		
 		/**
-		 * Gibt den Namen zurück.
+		 * Gibt den Namen zurÃ¼ck.
 		 * 
 		 * @return den Namen
 		 */
@@ -1412,7 +1418,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 	}
 	
 	@Override
-	public final boolean equals( Object o) {	// Nicht ändern!
+	public final boolean equals( Object o) {	// Nicht Ã¤ndern!
 		return super.equals(o);
 	}
 	
@@ -1421,7 +1427,7 @@ public class DOTPoint implements DisplayObjectType, DOTManager.DOTChangeListener
 		String s = "[DOTPoint: [Name:" + _name + "][Info:" + _info + "][Verschiebungsfaktor:" + _translationFactor +
 		"][Verbindungslinie:" + _joinByLine + "]";
 		final Set<String> keySet = _primitiveForms.keySet();
-		// Wir müssen die Reihenfolge normieren, damit auch der String-Vergleich geht!
+		// Wir mÃ¼ssen die Reihenfolge normieren, damit auch der String-Vergleich geht!
 		final SortedSet<String> sortedKeySet = new TreeSet<String>();
 		sortedKeySet.addAll( keySet);
 		for ( String key : sortedKeySet) {

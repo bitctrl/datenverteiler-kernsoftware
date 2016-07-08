@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.gnd;
@@ -50,10 +56,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Eine Klasse, um die GND als GTM-Plugin zur Verfügung zu stellen.
+ * Eine Klasse, um die GND als GTM-Plugin zur VerfÃ¼gung zu stellen.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 12083 $
+ * @version $Revision$
  */
 public class GNDPlugin extends ExternalModuleAdapter implements SelectionListener {
 
@@ -64,7 +70,7 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 
 	private static final Debug _debug = Debug.getLogger();
 
-	/** Kennzeichnet, ob eine neue Instanz des GND geöffnet werden soll. */
+	/** Kennzeichnet, ob eine neue Instanz des GND geÃ¶ffnet werden soll. */
 	private boolean _newInstanceOfGnd = false;
 
 	private JCheckBox _checkInstance;
@@ -85,12 +91,12 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 		if(objects != null) {
 			for(SystemObject systemObject : objects) {
 				if(! systemObject.getType().inheritsFrom(type)) {
-					_tooltipText = "Es muss ein Georeferenzobjekt ausgewählt werden.";
+					_tooltipText = "Es muss ein Georeferenzobjekt ausgewÃ¤hlt werden.";
 					return false;
 				}
 			}
 		}
-		_tooltipText = "Auswahl übernehmen";
+		_tooltipText = "Auswahl Ã¼bernehmen";
 		return true;
 	}
 
@@ -134,7 +140,7 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 		private JComboBox _displayViewsComboBox;
 
 		/**
-		 * Getter für die Ansicht.
+		 * Getter fÃ¼r die Ansicht.
 		 *
 		 * @return der Ansichtsname
 		 */
@@ -144,7 +150,7 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 		}
 
 		/**
-		 * Setter für die Ansicht.
+		 * Setter fÃ¼r die Ansicht.
 		 *
 		 * @param view der Ansichtsname
 		 */
@@ -153,14 +159,14 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 			_displayViewsComboBox.setSelectedItem(view);
 		}
 
-		/** diese Methode schließt den Dialog */
+		/** diese Methode schlieÃŸt den Dialog */
 		public void doCancel() {
 
 			_settingsDialog.setVisible(false);
 			_settingsDialog.dispose();
 		}
 
-		/** Durch betätigen des "OK"-Buttons wird die GND gestartet und dieser Dialog wird geschlossen. Die Parameter werden gespeichert. */
+		/** Durch betÃ¤tigen des "OK"-Buttons wird die GND gestartet und dieser Dialog wird geschlossen. Die Parameter werden gespeichert. */
 		public void doOK() {
 
 			SettingsData settingsData = getSettings("");
@@ -183,7 +189,7 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 		/**
 		 * Erstellt die Einstellungsdaten.
 		 *
-		 * @param title der Name für die Einstellungen
+		 * @param title der Name fÃ¼r die Einstellungen
 		 *
 		 * @return die Einstellungsdaten
 		 */
@@ -252,7 +258,7 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 			//gndOptionsPanel.setLayout(new BoxLayout(gndOptionsPanel, BoxLayout.X_AXIS));
 			gndOptionsPanel.setLayout(new BorderLayout());
 			gndOptionsPanel.setBorder(BorderFactory.createTitledBorder("Fensteroptionen"));
-			_checkInstance = new JCheckBox("GND im neuen Fenster öffnen.");
+			_checkInstance = new JCheckBox("GND im neuen Fenster Ã¶ffnen.");
 
 			if(_checkInstance.isSelected()) {
 				_newInstanceOfGnd = true;
@@ -292,7 +298,7 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 		}
 
 		/**
-		 * Diese Methode zeigt den Dialog an und trägt die Einstellungsdaten in die entsprechenden Felder ein.
+		 * Diese Methode zeigt den Dialog an und trÃ¤gt die Einstellungsdaten in die entsprechenden Felder ein.
 		 *
 		 * @param data die Einstellungsdaten
 		 */
@@ -376,13 +382,13 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 								final ClientDavInterface connection = getApplication().getConnection();
 
 								GenericNetDisplay genericNetDisplay = GenericNetDisplay.getInstance();
-								// wenn es noch keine Instanz der GND-Klasse gibt oder Ctrl gedrückt wird, wird ein neuer GND erzeugt
+								// wenn es noch keine Instanz der GND-Klasse gibt oder Ctrl gedrÃ¼ckt wird, wird ein neuer GND erzeugt
 								if(genericNetDisplay == null || _newInstanceOfGnd || (genericNetDisplay != null && ! genericNetDisplay.isVisible())) {
 									GenericNetDisplay gnd = new GenericNetDisplay(view, connection, objects, false);
 									gnd.addSelectionListener(GNDPlugin.this);
 									gnd.setVisible(true);
 								}
-								// existiert ein GND wird er mit der ausgewählten Ansicht in den Vordergrund geholt
+								// existiert ein GND wird er mit der ausgewÃ¤hlten Ansicht in den Vordergrund geholt
 								else {
 									String nameOfActualView = genericNetDisplay.getView().getName();
 									if(! nameOfActualView.equals(view.getName())) {
@@ -416,9 +422,9 @@ public class GNDPlugin extends ExternalModuleAdapter implements SelectionListene
 		}
 
 		/**
-		 * Mit dieser Methode können die Datenidentifikationsdaten übergeben werden. Der Dialog wird mit Default-Werten dargestellt.
+		 * Mit dieser Methode kÃ¶nnen die Datenidentifikationsdaten Ã¼bergeben werden. Der Dialog wird mit Default-Werten dargestellt.
 		 *
-		 * @param settingsData enthält die ausgewählte Datenidentifikation
+		 * @param settingsData enthÃ¤lt die ausgewÃ¤hlte Datenidentifikation
 		 */
 		public void setDataIdentification(SettingsData settingsData) {
 

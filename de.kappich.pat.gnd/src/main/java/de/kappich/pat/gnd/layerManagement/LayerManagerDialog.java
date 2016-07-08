@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.layerManagement;
 
@@ -54,12 +60,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 
 /**
- * Eine Dialog, der alle Layer auflistet und über Schaltflächen Möglichkeiten bietet, Layer zu betrachten,
- * zu bearbeiten, zu löschen oder neu einzuführen. Der LayerManagerDialog zeigt die Inhalte der 
+ * Eine Dialog, der alle Layer auflistet und Ã¼ber SchaltflÃ¤chen MÃ¶glichkeiten bietet, Layer zu betrachten,
+ * zu bearbeiten, zu lÃ¶schen oder neu einzufÃ¼hren. Der LayerManagerDialog zeigt die Inhalte der 
  * {@link LayerManager Layerverwaltung}. 
 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 public class LayerManagerDialog {
@@ -71,8 +77,8 @@ public class LayerManagerDialog {
 	private LayerDefinitionDialog _layerDefinitionDialog = null;
 	
 	/**
-	 * Konstruiert einen neuen LayerManagerDialog. Das ClientDavInterface ist z.B. notwendig, um über das
-	 * DataModel Informationen zu den Geo-Referenz-Objekten bekommen zu können.
+	 * Konstruiert einen neuen LayerManagerDialog. Das ClientDavInterface ist z.B. notwendig, um Ã¼ber das
+	 * DataModel Informationen zu den Geo-Referenz-Objekten bekommen zu kÃ¶nnen.
 	 * 
 	 * @param die Datenverteiler-Verbindung
 	 */
@@ -93,8 +99,8 @@ public class LayerManagerDialog {
 		final JButton buttonCopy = new JButton("Layer kopieren");
 		buttonCopy.setActionCommand("Kopieren");
 		
-		final JButton buttonLoeschen = new JButton("Layer löschen");
-		buttonLoeschen.setActionCommand("Löschen");
+		final JButton buttonLoeschen = new JButton("Layer lÃ¶schen");
+		buttonLoeschen.setActionCommand("LÃ¶schen");
 		
 		final JButton buttonHilfe = new JButton("Hilfe");
 		buttonHilfe.setActionCommand("Hilfe");
@@ -130,7 +136,7 @@ public class LayerManagerDialog {
 		buttonsPanelSouth.setLayout(new SpringLayout());
 		buttonsPanelSouth.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 		
-		JButton schliessenButton = new JButton("Dialog schließen");
+		JButton schliessenButton = new JButton("Dialog schlieÃŸen");
 		buttonsPanelSouth.add( schliessenButton);
 		SpringUtilities.makeCompactGrid(buttonsPanelSouth, 1, 20, 5);
 		
@@ -139,7 +145,7 @@ public class LayerManagerDialog {
 		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
 		table.setFillsViewportHeight(true);
 		table.setDefaultRenderer(Object.class, new ComboTableCellRendererLayer());
-		// vordefinierte Darstellungstypen dürfen nicht bearbeitet oder gelöscht werden
+		// vordefinierte Darstellungstypen dÃ¼rfen nicht bearbeitet oder gelÃ¶scht werden
 		final ListSelectionModel selectionModel = table.getSelectionModel();
 		
 		final List<Layer> layerList = LayerManager.getInstance().getLayers();
@@ -149,31 +155,31 @@ public class LayerManagerDialog {
 				final int selectedRow = table.getSelectedRow();
 				
 				if(selectedRow == -1) {
-					buttonBearbeiten.setToolTipText( "Es ist keine Ansicht ausgewählt worden");
+					buttonBearbeiten.setToolTipText( "Es ist keine Ansicht ausgewÃ¤hlt worden");
 					buttonBearbeiten.setEnabled( false);
-					buttonCopy.setToolTipText( "Es ist keine Ansicht ausgewählt worden");
+					buttonCopy.setToolTipText( "Es ist keine Ansicht ausgewÃ¤hlt worden");
 					buttonCopy.setEnabled( false);
-					buttonLoeschen.setToolTipText( "Es ist keine Ansicht ausgewählt worden");
+					buttonLoeschen.setToolTipText( "Es ist keine Ansicht ausgewÃ¤hlt worden");
 					buttonLoeschen.setEnabled( false);
 				}
 				else {
 					final boolean changeable = LayerManager.getInstance().isChangeable(layerList.get(selectedRow));
 					if(!changeable) {
 						buttonBearbeiten.setText("Layer betrachten");
-						buttonBearbeiten.setToolTipText("Details des augewählten Layers betrachten");
+						buttonBearbeiten.setToolTipText("Details des augewÃ¤hlten Layers betrachten");
 						buttonBearbeiten.setEnabled( true);
-						buttonCopy.setToolTipText("Kopie des ausgewählten Layers erstellen und bearbeiten");
+						buttonCopy.setToolTipText("Kopie des ausgewÃ¤hlten Layers erstellen und bearbeiten");
 						buttonCopy.setEnabled( true);
-						buttonLoeschen.setToolTipText("Der ausgewählte Layer ist nicht löschbar");
+						buttonLoeschen.setToolTipText("Der ausgewÃ¤hlte Layer ist nicht lÃ¶schbar");
 						buttonLoeschen.setEnabled( false);
 					}
 					else {
 						buttonBearbeiten.setText("Layer bearbeiten");
-						buttonBearbeiten.setToolTipText("Details des augewählten Layers bearbeiten");
+						buttonBearbeiten.setToolTipText("Details des augewÃ¤hlten Layers bearbeiten");
 						buttonBearbeiten.setEnabled( true);
-						buttonCopy.setToolTipText("Kopie des ausgewählten Layers erstellen und bearbeiten");
+						buttonCopy.setToolTipText("Kopie des ausgewÃ¤hlten Layers erstellen und bearbeiten");
 						buttonCopy.setEnabled( true);
-						buttonLoeschen.setToolTipText("Den ausgewählten Layer löschen");
+						buttonLoeschen.setToolTipText("Den ausgewÃ¤hlten Layer lÃ¶schen");
 						buttonLoeschen.setEnabled( true);
 					}
 				}
@@ -199,7 +205,7 @@ public class LayerManagerDialog {
 		_frame.add(buttonsPanelSouth, BorderLayout.SOUTH);
 		_frame.add( new JScrollPane(table), BorderLayout.CENTER);
 		
-		// Neu, Bearbeiten, Kopieren, Löschen
+		// Neu, Bearbeiten, Kopieren, LÃ¶schen
 		ActionListener actionListenerNew = new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -222,7 +228,7 @@ public class LayerManagerDialog {
 				if ( table.getSelectedRowCount() == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie mindestens eine Zeile aus der Liste aus!",
+							"Bitte wÃ¤hlen Sie mindestens eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -240,7 +246,7 @@ public class LayerManagerDialog {
 				if ( !allLayersRemoved) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Es konnten nicht alle ausgewählten Layer gelöscht werden!",
+							"Es konnten nicht alle ausgewÃ¤hlten Layer gelÃ¶scht werden!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -254,7 +260,7 @@ public class LayerManagerDialog {
 				if ( table.getSelectedRowCount() != 1) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie genau eine Zeile aus der Liste aus!",
+							"Bitte wÃ¤hlen Sie genau eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -282,7 +288,7 @@ public class LayerManagerDialog {
 				if ( selectedRow == -1) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie mindestens eine Zeile aus der Liste aus!",
+							"Bitte wÃ¤hlen Sie mindestens eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -324,8 +330,8 @@ public class LayerManagerDialog {
 			@Override
             public void windowClosing(WindowEvent e) {
 				/*
-				 * wenn nur noch ein einziges Fenster geöffnet ist 
-				 * beendet sich das Programm beim Schließen des Fensters
+				 * wenn nur noch ein einziges Fenster geÃ¶ffnet ist 
+				 * beendet sich das Programm beim SchlieÃŸen des Fensters
 				 */
 				final Frame[] frames = JFrame.getFrames();
 				int length = frames.length - 1;
@@ -352,10 +358,10 @@ public class LayerManagerDialog {
 	}
 	
 	/**
-	 * CellRenderer für die JTable im Verwaltungsdialog
+	 * CellRenderer fÃ¼r die JTable im Verwaltungsdialog
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 8080 $
+	 * @version $Revision$
 	 * 
 	 */
 	private class ComboTableCellRendererLayer extends DefaultTableCellRenderer {

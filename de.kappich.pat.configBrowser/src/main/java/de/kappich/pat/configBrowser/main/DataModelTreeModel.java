@@ -1,12 +1,12 @@
 /*
  * Copyright 2007 by Kappich Systemberatung, Aachen
- * Copyright 2005 by Kappich+Kniß Systemberatung Aachen (K2S)
+ * Copyright 2005 by Kappich+KniÃŸ Systemberatung Aachen (K2S)
  * 
  * This file is part of de.kappich.pat.configBrowser.
  * 
- * de.kappich.pat.configBrowser is free software; you can redistribute it and/or modify
+ * de.kappich.pat.configBrowser is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.configBrowser is distributed in the hope that it will be useful,
@@ -15,8 +15,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.configBrowser; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.configBrowser.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.configBrowser.main;
@@ -55,10 +61,10 @@ import de.bsvrz.dav.daf.main.config.TimeAttributeType;
 import java.util.*;
 
 /**
- * Modell für ein JTree-Objekt zur Darstellung der Konfiguration.
+ * Modell fÃ¼r ein JTree-Objekt zur Darstellung der Konfiguration.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 5762 $
+ * @version $Revision$
  */
 public class DataModelTreeModel implements javax.swing.tree.TreeModel {
 
@@ -1506,15 +1512,15 @@ public class DataModelTreeModel implements javax.swing.tree.TreeModel {
 		/**
 		 * Compares its two arguments for order.  Returns a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater
 		 * than the second.<p>
-		 * <p/>
+		 * <p>
 		 * The implementor must ensure that <tt>sgn(compare(x, y)) == -sgn(compare(y, x))</tt> for all <tt>x</tt> and <tt>y</tt>.  (This implies that <tt>compare(x,
 		 * y)</tt> must throw an exception if and only if <tt>compare(y, x)</tt> throws an exception.)<p>
-		 * <p/>
+		 * <p>
 		 * The implementor must also ensure that the relation is transitive: <tt>((compare(x, y)&gt;0) &amp;&amp; (compare(y, z)&gt;0))</tt> implies <tt>compare(x,
 		 * z)&gt;0</tt>.<p>
-		 * <p/>
+		 * <p>
 		 * Finally, the implementer must ensure that <tt>compare(x, y)==0</tt> implies that <tt>sgn(compare(x, z))==sgn(compare(y, z))</tt> for all <tt>z</tt>.<p>
-		 * <p/>
+		 * <p>
 		 * It is generally the case, but <i>not</i> strictly required that <tt>(compare(x, y)==0) == (x.equals(y))</tt>.  Generally speaking, any comparator that
 		 * violates this condition should clearly indicate this fact.  The recommended language is "Note: this comparator imposes orderings that are inconsistent with
 		 * equals."
@@ -1531,14 +1537,14 @@ public class DataModelTreeModel implements javax.swing.tree.TreeModel {
 		}
 
 		/**
-		 * Liefert einen String der in Vergleichsfunktionen benutzt werden kann um die Sortierreihenfolge festzulegen. Der String enthält den Namen, die Pid und die
-		 * Id des Objekts mit zwei bzw. einem Leerzeichen getrennt. Die Leerzeichen zwischen Name, Pid und Id sorgen dafür, dass zuerst nach Name und nur bei Namensgleichheit
+		 * Liefert einen String der in Vergleichsfunktionen benutzt werden kann um die Sortierreihenfolge festzulegen. Der String enthÃ¤lt den Namen, die Pid und die
+		 * Id des Objekts mit zwei bzw. einem Leerzeichen getrennt. Die Leerzeichen zwischen Name, Pid und Id sorgen dafÃ¼r, dass zuerst nach Name und nur bei Namensgleichheit
 		 * nach Pid respektive Id sortiert wird. Zwischen Name und Pid werden zwei Leerzeichen benutzt, um eine falsche Sortierung zu vermeiden, wenn in den Namen selbst
-		 * auch Leerzeichen vorkommen. Anstelle von leeren Namen und Pids wird das Pipezeichen "|" benutzt, das dafür sorgt, dass die Objekte mit leeren
+		 * auch Leerzeichen vorkommen. Anstelle von leeren Namen und Pids wird das Pipezeichen "|" benutzt, das dafÃ¼r sorgt, dass die Objekte mit leeren
 		 * Namen bzw. leeren Pids hinter denen mit nicht leeren Namen respektive nicht leeren Pids einsortiert werden.
-		 * Umlaute werden durch ihre Zweibuchstaben-Äquivalente ersetzt, damit Objekte die Umlaute enthalten an einer sinnvollen Stelle einsortiert werden.
+		 * Umlaute werden durch ihre Zweibuchstaben-Ã„quivalente ersetzt, damit Objekte die Umlaute enthalten an einer sinnvollen Stelle einsortiert werden.
 		 * Die einmal berechneten Vergleichsstrings werden in einer HashMap gespeichert um die Sortierzeit dramatisch zu verbessern.
-		 * @param object Systemobjekt für das ein Vergleichstring bestimmt werden soll.
+		 * @param object Systemobjekt fÃ¼r das ein Vergleichstring bestimmt werden soll.
 		 *
 		 * @return Vergleichsstring
 		 */
@@ -1554,7 +1560,7 @@ public class DataModelTreeModel implements javax.swing.tree.TreeModel {
 				stringBuilder.append("  ");
 				stringBuilder.append(object.getId());
 				//System.out.println("stringBuilder = " + stringBuilder);
-				compareString = stringBuilder.toString().replace("Ä","Ae").replace("Ö", "Oe").replace("Ü", "Ue").replace("ä","ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss");
+				compareString = stringBuilder.toString().replace("Ã„","Ae").replace("Ã–", "Oe").replace("Ãœ", "Ue").replace("Ã¤","ae").replace("Ã¶", "oe").replace("Ã¼", "ue").replace("ÃŸ", "ss");
 				_compareStrings.put(object, compareString);
 			}
 			return compareString;

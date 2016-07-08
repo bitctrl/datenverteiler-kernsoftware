@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.gnd;
 
@@ -38,13 +44,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * Die Kartenansicht der Kartendarstellung.
  * <p>
- * Ein MapPane steht für die Kartenansicht der GND. Um die einzelnen Layer darzustellen, ist
- * MapPane von JLayeredPane abgeleitet. Jeder nicht-leere Layer des JLayeredPane enthält genau
+ * Ein MapPane steht fÃ¼r die Kartenansicht der GND. Um die einzelnen Layer darzustellen, ist
+ * MapPane von JLayeredPane abgeleitet. Jeder nicht-leere Layer des JLayeredPane enthÃ¤lt genau
  * eine Komponente der Klasse {@link MapPane.LayerPanel}, das die Objekte eines GND-Layers
  * darstellt.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9288 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -74,9 +80,9 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	final public static String _newline = System.getProperty("line.separator");
 
 	/**
-	 * Konstruiert eine neue Kartenansicht für das übergebene GenericNetDisplay mit
-	 * der übergebenen Ansicht. Das Objekt wird zunächst aber nur konstruiert, die
-	 * eigentliche Initialisierung muss mit {@link #init} noch ausgeführt werden.
+	 * Konstruiert eine neue Kartenansicht fÃ¼r das Ã¼bergebene GenericNetDisplay mit
+	 * der Ã¼bergebenen Ansicht. Das Objekt wird zunÃ¤chst aber nur konstruiert, die
+	 * eigentliche Initialisierung muss mit {@link #init} noch ausgefÃ¼hrt werden.
 	 *
 	 * @param gnd die Netzdarstellung
 	 * @param view die aktuelle Ansicht
@@ -91,7 +97,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 
 	/**
 	 * Der Konstruktor dient der Klasses GenericNetDisplay dazu, das MapPane schon anordnen
-	 * zu können. In der folgenden init-Methode und ihren Initialisierungen wird JComponent.getBounds()
+	 * zu kÃ¶nnen. In der folgenden init-Methode und ihren Initialisierungen wird JComponent.getBounds()
 	 * aufgerufen, was erst sinnvoll ist, wenn das MapPane schon in im GenericNetDisplay mit
 	 * pack() gepackt wurde.
 	 */
@@ -110,10 +116,10 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 		_showNothing = false;
 
 		ToolTipManager.sharedInstance().setInitialDelay( 200);
-		ToolTipManager.sharedInstance().registerComponent( this);	// Registrieren ist notwendig, unregister bewirkt nichts, solange getTooltiptext einen nicht-leeren String zurückliefert.
+		ToolTipManager.sharedInstance().registerComponent( this);	// Registrieren ist notwendig, unregister bewirkt nichts, solange getTooltiptext einen nicht-leeren String zurÃ¼ckliefert.
 		setTooltip( _gnd.isMapsTooltipOn());
 
-		// Vor der Anmeldung sollte man mal den Maßstab berechnen, wozu auch eine Initialisierung der AT gehört.
+		// Vor der Anmeldung sollte man mal den MaÃŸstab berechnen, wozu auch eine Initialisierung der AT gehÃ¶rt.
 		initAffineMapTransform();
 		determineCurrentScale();
 
@@ -163,7 +169,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 		}
 
 		/**
-		 * Gibt die DisplayObjects des LayerPanels zurück.
+		 * Gibt die DisplayObjects des LayerPanels zurÃ¼ck.
 		 *
 		 * @return die DisplayObjects
 		 */
@@ -207,15 +213,15 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 		}
 
 		/**
-		 * Erzeugt eine Liste von DisplayObjects, die in der Nähe des Punktes p liegen.
-		 * Mit preferredUpperSize kann man eine angestrebte obere Grenze für die Anzahl
-		 * der Objekte angeben. Ist die Anzahl der Objekte zunächst zu groß, so wird
+		 * Erzeugt eine Liste von DisplayObjects, die in der NÃ¤he des Punktes p liegen.
+		 * Mit preferredUpperSize kann man eine angestrebte obere Grenze fÃ¼r die Anzahl
+		 * der Objekte angeben. Ist die Anzahl der Objekte zunÃ¤chst zu groÃŸ, so wird
 		 * versucht eine kleinere Liste zu erzeugen, bis die angestrebte obere Grenze
-		 * unterschritten wird. Gelingt aber keine Verkleinerung der Liste, so erhält
-		 * man die größere Liste.
+		 * unterschritten wird. Gelingt aber keine Verkleinerung der Liste, so erhÃ¤lt
+		 * man die grÃ¶ÃŸere Liste.
 		 *
 		 * @param p der Punkt
-		 * @param preferredUpperSize die angestrebte obere Grenze der Rückgabeliste
+		 * @param preferredUpperSize die angestrebte obere Grenze der RÃ¼ckgabeliste
 		 * @return eine Liste mit DisplayObjects
 		 */
 		public List<DisplayObject> getDisplayObjectsCloseToPoint( Point p, int preferredUpperSize) {
@@ -349,12 +355,12 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 		int n = viewEntries.size();
 		for(ViewEntry entry : viewEntries) {
 			counter++;
-			// Hiermit wird bei 4 Layern und 4 Notizlayern zweimal von 1 bis 4 gezählt. Das ist vermutlich besser als von 1 bis 8, weil
-			// der Benutzer sich wundern könnte, dass er gar nicht 8 Layer definiert hat.
+			// Hiermit wird bei 4 Layern und 4 Notizlayern zweimal von 1 bis 4 gezÃ¤hlt. Das ist vermutlich besser als von 1 bis 8, weil
+			// der Benutzer sich wundern kÃ¶nnte, dass er gar nicht 8 Layer definiert hat.
 			if(counter > viewEntries.size() / 2) {
 				counter = 1;
 				// Warnung: Diese Ausgabe ist nicht hundertprozentig korrekt, weil die Notizen eigentlich zuerst initialisiert werden,
-				// es macht aber für den Benutzer keinen Unterschied!
+				// es macht aber fÃ¼r den Benutzer keinen Unterschied!
 				textLabel.setText("Die Notizen werden initialisiert.");
 			}
 			counterLabel.setText("Layer " + counter + " von " + viewEntries.size() / 2);
@@ -386,7 +392,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/*
-	 * Gehört zur Implementation des View.ChangeListeners.
+	 * GehÃ¶rt zur Implementation des View.ChangeListeners.
 	 */
 	public void viewEntriesSwitched(View view, int i, int j) {
 		if (i == j) {
@@ -481,7 +487,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 
 
 	/*
-		 * Gehört zur Implementation des View.ChangeListeners.
+		 * GehÃ¶rt zur Implementation des View.ChangeListeners.
 		 */
 	public void viewEntryInserted(View view, final int newIndex) {
 		int max = view.getViewEntries().size() - 2;
@@ -499,7 +505,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/*
-	 * Gehört zur Implementation des View.ChangeListeners.
+	 * GehÃ¶rt zur Implementation des View.ChangeListeners.
 	 */
 	public void viewEntryChanged(View view, int i) {
 		final int j = view.getViewEntries().size()-1-i;
@@ -511,7 +517,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/*
-	 * Gehört zur Implementation des View.ChangeListeners.
+	 * GehÃ¶rt zur Implementation des View.ChangeListeners.
 	 */
 	public void viewEntryRemoved(View view, int i) {
 		final int j = view.getViewEntries().size()-i;
@@ -563,7 +569,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Methode zur besseren Auflösung beim Drucken
+	 * Methode zur besseren AuflÃ¶sung beim Drucken
 	 *
 	 * @param c eine Component
 	 */
@@ -573,7 +579,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Methode zum Zurücksetzen der Auflösung für die Ausgabe in der Oberfläche
+	 * Methode zum ZurÃ¼cksetzen der AuflÃ¶sung fÃ¼r die Ausgabe in der OberflÃ¤che
 	 *
 	 * @param c eine Component
 	 */
@@ -583,7 +589,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Diese Methode berechnet den Maßstab der Kartenansicht in Metern pro Pixel.
+	 * Diese Methode berechnet den MaÃŸstab der Kartenansicht in Metern pro Pixel.
 	 */
 	public double meterProPixel() {
 		if ( _showNothing ) {
@@ -629,7 +635,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 		AffineTransform oldTransform = g2D.getTransform();
 		g2D.setTransform(affineTransform);
 
-		// zur besseren Auflösung
+		// zur besseren AuflÃ¶sung
 		g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 		g2D.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
@@ -829,20 +835,20 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 					int wheelRotation = e.getWheelRotation();
 					Double c = - _mysticalFactor * wheelRotation;
 					Double factor = _zoomScale / (_zoomScale+c);
-					if ( factor > 2. || factor < 0. || factor.isInfinite() || factor.isNaN()) {	// Beschränkung des Herauszoomen auf das Doppelte
+					if ( factor > 2. || factor < 0. || factor.isInfinite() || factor.isNaN()) {	// BeschrÃ¤nkung des Herauszoomen auf das Doppelte
 						factor = 2.;
 						c = - _zoomScale / 2.;
 					}
-					if ( factor <.5) {	// Beschränkung des Hineinzoomen auf die Hälfte
+					if ( factor <.5) {	// BeschrÃ¤nkung des Hineinzoomen auf die HÃ¤lfte
 						factor = .5;
 						c = _zoomScale;
 					}
 					final double nextMapScale = getMapScale() * factor;
 					// Weiteres rein- oder rauszoomen unterbinden!
-					// Die Grenzen sind etwas willkürlich gewählt. Tatsächlich wurden Probleme bei Werten
+					// Die Grenzen sind etwas willkÃ¼rlich gewÃ¤hlt. TatsÃ¤chlich wurden Probleme bei Werten
 					// um die 30 beobachtet (der Mechanismus geht dort kaputt!) ... wahrscheinlich, weil dann 
 					// beim Integer-Runden immer wieder derselbe Wert kommt. 1 : 100 ist aber okay, weil dabei 
-					// 1 cm auf dem Bildschirm genau 1 Meter in der Realität entspricht.
+					// 1 cm auf dem Bildschirm genau 1 Meter in der RealitÃ¤t entspricht.
 					if ( (nextMapScale < 200000000.)&& (nextMapScale > 100.)) {
 						Point2D p = new Point2D.Double(e.getX(), e.getY());
 						AffineTransform at = new AffineTransform();
@@ -873,26 +879,26 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Ein Interface für Listener, die an Maßstabs-Änderungen der Kartenansicht interessiert sind.
+	 * Ein Interface fÃ¼r Listener, die an MaÃŸstabs-Ã„nderungen der Kartenansicht interessiert sind.
 	 *
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 9288 $
+	 * @version $Revision$
 	 *
 	 */
 	public interface MapScaleListener {
 		/**
-		 * Diese Methode wird für die Listener aufgerufen, wenn eine Maßstabsänderung mitgeteilt werden muss.
+		 * Diese Methode wird fÃ¼r die Listener aufgerufen, wenn eine MaÃŸstabsÃ¤nderung mitgeteilt werden muss.
 		 *
-		 * @param scale der neue Maßstabsfaktor
+		 * @param scale der neue MaÃŸstabsfaktor
 		 */
 		void mapScaleChanged( double scale);
 	};
 
 	/**
-	 * Aktualisiert den Maßstab der Kartenansicht, informiert alle MapScaleListeners und
-	 * veranlaßt ein Neuzeichnen der Kartenansicht.
+	 * Aktualisiert den MaÃŸstab der Kartenansicht, informiert alle MapScaleListeners und
+	 * veranlaÃŸt ein Neuzeichnen der Kartenansicht.
 	 *
-	 * @param scale der neue Maßstabsfaktor
+	 * @param scale der neue MaÃŸstabsfaktor
 	 */
 	private void setMapScale(double mapScale) {
 		_mapScale = mapScale;
@@ -910,16 +916,16 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Gibt den aktuellen Maßstab zurück.
+	 * Gibt den aktuellen MaÃŸstab zurÃ¼ck.
 	 *
-	 * @return der Maßstabsfaktor
+	 * @return der MaÃŸstabsfaktor
 	 */
 	public Double getMapScale() {
 		return _mapScale;
 	}
 
 	/**
-	 * Fügt die übergebenen Objekte der Menge der auf Änderungen des Maßstabs angemeldeten Objekte hinzu.
+	 * FÃ¼gt die Ã¼bergebenen Objekte der Menge der auf Ã„nderungen des MaÃŸstabs angemeldeten Objekte hinzu.
 	 *
 	 * @param listeners die neuen Listener
 	 */
@@ -930,9 +936,9 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Entfernt die übergebenen Objekte aus der Menge der auf Änderungen des Maßstabs angemeldeten Objekte.
+	 * Entfernt die Ã¼bergebenen Objekte aus der Menge der auf Ã„nderungen des MaÃŸstabs angemeldeten Objekte.
 	 *
-	 * @param listeners die zu löschenden Listener
+	 * @param listeners die zu lÃ¶schenden Listener
 	 */
 	public void removeMapScaleListeners( final Collection<MapScaleListener> listeners) {
 		if ( listeners == null) {
@@ -1048,7 +1054,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn die Kartenansicht mit Anti-Aliasing gezeichnet wird.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die Kartenansicht mit Anti-Aliasing gezeichnet wird.
 	 *
 	 * @return <code>true</code> genau dann, wenn die Kartenansicht mit Anti-Aliasing gezeichnet wird
 	 */
@@ -1066,7 +1072,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, falls der Tooltipp auf der Kartenansicht aktiviert ist.
+	 * Gibt <code>true</code> zurÃ¼ck, falls der Tooltipp auf der Kartenansicht aktiviert ist.
 	 *
 	 * @return <code>true</code> genau dann, wenn der Tooltipp auf der Kartenansicht aktiviert ist
 	 */
@@ -1077,14 +1083,14 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	/**
 	 * Schaltet den Tooltipp auf der Kartenansicht ab oder an.
 	 *
-	 * @param tooltip der neue Wert für die Tooltipp-Aktivität
+	 * @param tooltip der neue Wert fÃ¼r die Tooltipp-AktivitÃ¤t
 	 */
 	public void setTooltip( boolean tooltip) {
 		_isTooltipOn = tooltip;
 	}
 
 	/**
-	 * Veranlaßt eine Aktualisierung der Darstellung des übergebenen DisplayObjects.
+	 * VeranlaÃŸt eine Aktualisierung der Darstellung des Ã¼bergebenen DisplayObjects.
 	 *
 	 * @param displayObject das DisplayObject
 	 */
@@ -1109,7 +1115,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 	}
 
 	/**
-	 * Gibt die Menge der aktuell in der Kartenansicht selektierten Objekte zurück.
+	 * Gibt die Menge der aktuell in der Kartenansicht selektierten Objekte zurÃ¼ck.
 	 *
 	 * @return die Menge der aktuell in der Kartenansicht selektierten Objekte
 	 */
@@ -1135,7 +1141,7 @@ public class MapPane extends JLayeredPane implements View.ViewChangeListener, Pr
 			}
 			remove(component);
 		}
-		// ViewEntries den Rückwärtsverweis auf die Component nehmen
+		// ViewEntries den RÃ¼ckwÃ¤rtsverweis auf die Component nehmen
 		for ( ViewEntry entry : _view.getViewEntries()) {
 			entry.setComponent( null);
 		}

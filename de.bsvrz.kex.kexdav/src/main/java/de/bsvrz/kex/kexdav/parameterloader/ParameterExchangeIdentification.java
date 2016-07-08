@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.parameterloader;
@@ -29,7 +35,7 @@ import java.util.List;
  * Parameteraustausch-Spezifikation
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9084 $
+ * @version $Revision$
  */
 public class ParameterExchangeIdentification {
 
@@ -48,7 +54,7 @@ public class ParameterExchangeIdentification {
 	 * @param attributeGroups Attributgruppen
 	 * @param simLocal Lokale Simulationsvariante
 	 * @param simRemote Remote Simulationsvariante
-	 * @param delta Nur geänderte Parameter übertragen?
+	 * @param delta Nur geÃ¤nderte Parameter Ã¼bertragen?
 	 * @param strategy Strategie
 	 */
 	public ParameterExchangeIdentification(
@@ -65,7 +71,7 @@ public class ParameterExchangeIdentification {
 	}
 
 	/**
-	 * Gibt die Attributgruppen zurück
+	 * Gibt die Attributgruppen zurÃ¼ck
 	 * @return die Attributgruppen
 	 */
 	public List<CorrespondingAttributeGroup> getAttributeGroups() {
@@ -73,7 +79,7 @@ public class ParameterExchangeIdentification {
 	}
 
 	/**
-	 * Gibt die lokale Simulationsvariante zurück
+	 * Gibt die lokale Simulationsvariante zurÃ¼ck
 	 * @return die lokale Simulationsvariante
 	 */
 	public short getSimLocal() {
@@ -81,7 +87,7 @@ public class ParameterExchangeIdentification {
 	}
 
 	/**
-	 * Gibt die remote Simulationsvariante zurück
+	 * Gibt die remote Simulationsvariante zurÃ¼ck
 	 * @return die remote Simulationsvariante
 	 */
 	public short getSimRemote() {
@@ -89,15 +95,15 @@ public class ParameterExchangeIdentification {
 	}
 
 	/**
-	 * Gibt den Deltapararameter zurück
-	 * @return true wenn nur geänderte Daten ausgetauscht werden sollen
+	 * Gibt den Deltapararameter zurÃ¼ck
+	 * @return true wenn nur geÃ¤nderte Daten ausgetauscht werden sollen
 	 */
 	public boolean isDelta() {
 		return _delta;
 	}
 
 	/**
-	 * Gibt die Strategie zurück
+	 * Gibt die Strategie zurÃ¼ck
 	 * @return die Strategie
 	 */
 	public ParameterExchangeStrategy getStrategy() {

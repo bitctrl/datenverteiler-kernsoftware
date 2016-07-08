@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,15 +14,21 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.main;
 
 /**
  * @author Kappich Systemberatung
- * @version $Revision: 9274 $
+ * @version $Revision$
  */
 public class Constants {
 
@@ -30,14 +36,14 @@ public class Constants {
 	public static final String RemoteApplicationName = "KExDaVRemoteApplication";
 
 	/**
-	 * Zeit in ms, die mindestens gewartet wird, bis eine Parameter¸bertragung in Gegenrichtung zu der vorherigen Parameter¸bertragung vorgenommen wird. Dieser
-	 * Wert sollte grˆﬂer sein, als die Dauer, die eine solche ‹bertragung ¸blicherweise braucht. Wird dieser Wert zu klein gew‰hlt, kann es passieren, dass auf
-	 * beiden Systemen ann‰hrend gleichzeitig Parameter gesetzt werden und diese st‰ndig Wechselseitig ausgetauscht werden. Ein groﬂer Wert bremst die ‹bertragung
-	 * aus, falls von beiden Systemen h‰ufig wechselseitig Parameter gesetzt werden
+	 * Zeit in ms, die mindestens gewartet wird, bis eine Parameter√ºbertragung in Gegenrichtung zu der vorherigen Parameter√ºbertragung vorgenommen wird. Dieser
+	 * Wert sollte gr√∂√üer sein, als die Dauer, die eine solche √úbertragung √ºblicherweise braucht. Wird dieser Wert zu klein gew√§hlt, kann es passieren, dass auf
+	 * beiden Systemen ann√§hrend gleichzeitig Parameter gesetzt werden und diese st√§ndig Wechselseitig ausgetauscht werden. Ein gro√üer Wert bremst die √úbertragung
+	 * aus, falls von beiden Systemen h√§ufig wechselseitig Parameter gesetzt werden
 	 */
 	public static final int ParameterExchangeReverseDelay = 30000;
 	/**
-	 * Wenn insgesamt mehr als die angegebene Anzahl an Datens‰tzen auf das Versenden warten wird eine Warnung ausgegeben
+	 * Wenn insgesamt mehr als die angegebene Anzahl an Datens√§tzen auf das Versenden warten wird eine Warnung ausgegeben
 	 */
 	public static final int WarnSendQueueCapacity = 100000;
 

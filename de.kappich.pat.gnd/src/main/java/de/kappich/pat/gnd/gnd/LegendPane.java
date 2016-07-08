@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.gnd;
 
@@ -34,17 +40,17 @@ import java.util.HashMap;
 /**
  * Die Legende der Kartendarstellung.
  * <p>
- * Das LegendPane steht für den Legendenbaum in der Kartendarstellung der GND. Es ist als
+ * Das LegendPane steht fÃ¼r den Legendenbaum in der Kartendarstellung der GND. Es ist als
  * JTree realisiert und besitzt die von DefaultTreeModel abgeleitete Klasse LegendTreeModel,
- * die aus den LegendTreeNodes der Layer bei jeder Änderungkomplett neu zusammengebaut werden.
- * Dies geschieht im Konstruktor von LegendTreeModel. Ein Update wird durch eine Änderung
- * einer Ansicht oder des Anzeigemaßstabs augelöst.
+ * die aus den LegendTreeNodes der Layer bei jeder Ã„nderungkomplett neu zusammengebaut werden.
+ * Dies geschieht im Konstruktor von LegendTreeModel. Ein Update wird durch eine Ã„nderung
+ * einer Ansicht oder des AnzeigemaÃŸstabs augelÃ¶st.
  * <p>
  * Beim Neuaufbau des Legendenbaums bleiben alle nicht-expandierten Knoten in diesem Zustand,
- * während alle anderen, also insbesondere neu hinzugefügte Knoten, expandiert werden. 
+ * wÃ¤hrend alle anderen, also insbesondere neu hinzugefÃ¼gte Knoten, expandiert werden. 
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 9145 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -57,7 +63,7 @@ public class LegendPane extends JTree implements View.ViewChangeListener, MapPan
 	private TreeModel _treeModel;
 	
 	/**
-	 * Konstruiert ein Objekt aus der übergebenen Ansicht, wobei allerdings die Initialisierung
+	 * Konstruiert ein Objekt aus der Ã¼bergebenen Ansicht, wobei allerdings die Initialisierung
 	 * noch ausbleibt (s. {@link #init}).
 	 * 
 	 * @param view eine Ansicht
@@ -71,7 +77,7 @@ public class LegendPane extends JTree implements View.ViewChangeListener, MapPan
 	/**
 	 * Initialisiert das Objekt.
 	 * 
-	 * @param mapScale der Maßstab für die Kartendarstellung
+	 * @param mapScale der MaÃŸstab fÃ¼r die Kartendarstellung
 	 */
 	public void init( final Double mapScale) {
 		_mapScale = mapScale;
@@ -114,7 +120,7 @@ public class LegendPane extends JTree implements View.ViewChangeListener, MapPan
 	 * in dem die Daten aus den Membern von LegendPane ermittelt werden.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 9145 $
+	 * @version $Revision$
 	 */
 	public class LegendTreeModel extends DefaultTreeModel {
 		/**
@@ -154,7 +160,7 @@ public class LegendPane extends JTree implements View.ViewChangeListener, MapPan
 	 * Der LegendCellRenderer legt fest wie die Teile der Legende angezeigt werden.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 9145 $
+	 * @version $Revision$
 	 */
 	public class LegendCellRenderer extends DefaultTreeCellRenderer {
 		public LegendCellRenderer(){
@@ -244,9 +250,9 @@ public class LegendPane extends JTree implements View.ViewChangeListener, MapPan
 	}
 	
 	/**
-	 * Setzt den Maßstabsfaktor.
+	 * Setzt den MaÃŸstabsfaktor.
 	 * 
-	 * @param mapScale den neue Maßstabsfaktor
+	 * @param mapScale den neue MaÃŸstabsfaktor
 	 */
 	public void setMapScale(double mapScale) {
 		_mapScale = mapScale;

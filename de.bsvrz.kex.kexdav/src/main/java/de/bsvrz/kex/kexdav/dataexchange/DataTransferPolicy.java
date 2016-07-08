@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataexchange;
@@ -27,15 +33,15 @@ import de.bsvrz.sys.funclib.concurrent.UnboundedQueue;
 import de.bsvrz.sys.funclib.debug.Debug;
 
 /**
- * Eine abstrakte Klasse, die das Verfahren angibt, mit der Daten zwischen 2 Datenverteilern ausgetauscht werden. Diese Klasse ist nicht für die Kopie des
- * Data-Objektes zuständig, darum kümmert sich das {@link de.bsvrz.kex.kexdav.dataplugin.KExDaVDataPlugin}, mit ihr könnte man stattdessen z.B. verhindern, dass
- * leere Daten übertragen werden oder eine Art Rechteprüfung implementieren. Derzeit wird diese Klasse benutzt, um bei beidseitigen
- * Parameter-Daten-Übertragungen festzustellen, wenn beide Seiten annährend gleichzeitig Parameter senden. Dann wird das lokale System priorisiert und ein
- * unendlichen hin und her-wechseln der Daten verhindert. Siehe dazu {@link ParameterDataTransferPolicy}. Außerdem werden die beiden Datenverteilersysteme über
- * den Threadpool entkoppelt, sodass z.B. ein hängenbleiben im sendData() die Empfangsqueue des anderen Datenverteilers nicht blockiert.
+ * Eine abstrakte Klasse, die das Verfahren angibt, mit der Daten zwischen 2 Datenverteilern ausgetauscht werden. Diese Klasse ist nicht fÃ¼r die Kopie des
+ * Data-Objektes zustÃ¤ndig, darum kÃ¼mmert sich das {@link de.bsvrz.kex.kexdav.dataplugin.KExDaVDataPlugin}, mit ihr kÃ¶nnte man stattdessen z.B. verhindern, dass
+ * leere Daten Ã¼bertragen werden oder eine Art RechteprÃ¼fung implementieren. Derzeit wird diese Klasse benutzt, um bei beidseitigen
+ * Parameter-Daten-Ãœbertragungen festzustellen, wenn beide Seiten annÃ¤hrend gleichzeitig Parameter senden. Dann wird das lokale System priorisiert und ein
+ * unendlichen hin und her-wechseln der Daten verhindert. Siehe dazu {@link ParameterDataTransferPolicy}. AuÃŸerdem werden die beiden Datenverteilersysteme Ã¼ber
+ * den Threadpool entkoppelt, sodass z.B. ein hÃ¤ngenbleiben im sendData() die Empfangsqueue des anderen Datenverteilers nicht blockiert.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9274 $
+ * @version $Revision$
  */
 public abstract class DataTransferPolicy {
 
@@ -58,14 +64,15 @@ public abstract class DataTransferPolicy {
 								dataAndPipe.getDataPipe().sendDataToReceiver(
 										dataPackage.getData(),
 										dataPackage.getDataState(),
-										dataPackage.getDataTime()
+										dataPackage.getDataTime(),
+										dataPackage.getIsDelayed()
 								);
 								final int queueSize = _queue.size();
-								if(queueSize > Constants.WarnSendQueueCapacity && System.currentTimeMillis() > _lastWarnTime + Constants.WarnSendQueueInterval){
+								if(queueSize > Constants.WarnSendQueueCapacity && System.currentTimeMillis() > _lastWarnTime + Constants.WarnSendQueueInterval) {
 									_lastWarnTime = System.currentTimeMillis();
 									_debug.warning(
-											"In der Sende-Warteschlange befinden sich über " + Constants.WarnSendQueueCapacity + " Datensätze (" + queueSize
-											+ "). Vermutlich nimmt ein Datenverteiler die Daten nicht schnell genug ab."
+											"In der Sende-Warteschlange befinden sich Ã¼ber " + Constants.WarnSendQueueCapacity + " DatensÃ¤tze (" + queueSize
+													+ "). Vermutlich nimmt ein Datenverteiler die Daten nicht schnell genug ab."
 									);
 								}
 							}
@@ -84,7 +91,7 @@ public abstract class DataTransferPolicy {
 	/**
 	 * Konstruktor
 	 *
-	 * @param lowLevelDataPipe Zugehöriger Datenkanal, in den die Daten eingespeist werden sollen
+	 * @param lowLevelDataPipe ZugehÃ¶riger Datenkanal, in den die Daten eingespeist werden sollen
 	 */
 	public DataTransferPolicy(final LowLevelDataPipe lowLevelDataPipe) {
 		_lowLevelDataPipe = lowLevelDataPipe;
@@ -92,13 +99,13 @@ public abstract class DataTransferPolicy {
 
 	/**
 	 * Wird aufgerufen, wenn Daten eintreffen
-	 *
-	 * @param sourceData Daten (können null sein)
+	 * @param sourceData Daten (kÃ¶nnen null sein)
 	 * @param dataState  Daten-Zustand
 	 * @param dataTime   Daten-Zeit
+	 * @param isDelayed  <code>true</code>, wenn der im Ergebnis enthaltene Datensatz als nachgeliefert gekennzeichnet ist.    
 	 */
-	public final void handleData(final KExDaVAttributeGroupData sourceData, final DataState dataState, final long dataTime) {
-		handleData(new DataPackage(sourceData, dataState, dataTime));
+	public final void handleData(final KExDaVAttributeGroupData sourceData, final DataState dataState, final long dataTime, final boolean isDelayed) {
+		handleData(new DataPackage(sourceData, dataState, dataTime, isDelayed));
 	}
 
 	/**
@@ -117,7 +124,7 @@ public abstract class DataTransferPolicy {
 		_queue.put(new DataAndPipe(dataPackage, _lowLevelDataPipe));
 	}
 
-	class DataPackage {
+	static class DataPackage {
 
 		private final KExDaVAttributeGroupData _data;
 
@@ -126,23 +133,26 @@ public abstract class DataTransferPolicy {
 		private final long _dataTime;
 
 		private final long _creationTime;
+		
+		private final boolean _isDelayed;
 
 		/**
-		 * Klasse, die ein Datenpaket speichert (Ähnlich einem {@link de.bsvrz.dav.daf.main.ResultData})
-		 *
-		 * @param data      Datum
+		 * Klasse, die ein Datenpaket speichert (Ã„hnlich einem {@link de.bsvrz.dav.daf.main.ResultData})
+		 *  @param data      Datum
 		 * @param dataState Datenzustand
 		 * @param dataTime  Datenzeit
+		 * @param isDelayed  <code>true</code>, wenn der im Ergebnis enthaltene Datensatz als nachgeliefert gekennzeichnet werden soll.    
 		 */
-		public DataPackage(final KExDaVAttributeGroupData data, final DataState dataState, final long dataTime) {
+		public DataPackage(final KExDaVAttributeGroupData data, final DataState dataState, final long dataTime, final boolean isDelayed) {
 			_data = data;
 			_dataState = dataState;
 			_dataTime = dataTime;
+			_isDelayed = isDelayed;
 			_creationTime = System.currentTimeMillis();
 		}
 
 		/**
-		 * Gibt das Datum zurück
+		 * Gibt das Datum zurÃ¼ck
 		 *
 		 * @return das Datum
 		 */
@@ -151,7 +161,7 @@ public abstract class DataTransferPolicy {
 		}
 
 		/**
-		 * Gibt den Zustand zurück
+		 * Gibt den Zustand zurÃ¼ck
 		 *
 		 * @return den Zustand
 		 */
@@ -160,7 +170,7 @@ public abstract class DataTransferPolicy {
 		}
 
 		/**
-		 * Gibt die Datenzeit zurück
+		 * Gibt die Datenzeit zurÃ¼ck
 		 *
 		 * @return die Datenzeit
 		 */
@@ -169,7 +179,7 @@ public abstract class DataTransferPolicy {
 		}
 
 		/**
-		 * Gibt die Zeit der Ankunft des Datums bei KExDaV zurück
+		 * Gibt die Zeit der Ankunft des Datums bei KExDaV zurÃ¼ck
 		 *
 		 * @return die Zeit der Ankunft des Datums bei KExDaV
 		 */
@@ -197,6 +207,10 @@ public abstract class DataTransferPolicy {
 		@Override
 		public String toString() {
 			return "DataPackage{" + "_data=" + _data + ", _dataState=" + _dataState + ", _dataTime=" + _dataTime + ", _creationTime=" + _creationTime + '}';
+		}
+
+		public boolean getIsDelayed() {
+			return _isDelayed;
 		}
 	}
 

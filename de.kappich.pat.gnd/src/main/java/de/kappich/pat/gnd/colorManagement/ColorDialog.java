@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.colorManagement;
 
@@ -42,10 +48,10 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 /**
- * Dieser Dialog zeigt alle verfügbaren Farben der Farbenverwaltung an.
+ * Dieser Dialog zeigt alle verfÃ¼gbaren Farben der Farbenverwaltung an.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 7864 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -101,7 +107,7 @@ public class ColorDialog extends JFrame {
 		add( centerPanel, BorderLayout.CENTER);
 		
 		JButton newColorButton = new JButton("Neue Farbe");
-		JButton deleteColorButton = new JButton("Farbe löschen");
+		JButton deleteColorButton = new JButton("Farbe lÃ¶schen");
 		JButton cancelButton = new JButton("Dialog beenden");
 		JButton helpButton = new JButton("Hilfe");
 		addButtonListeners( newColorButton, deleteColorButton, cancelButton, helpButton);
@@ -184,7 +190,7 @@ public class ColorDialog extends JFrame {
 						if ( colorName.length() == 0) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Bitte geben Sie einen Namen für die Farbe an!",
+									"Bitte geben Sie einen Namen fÃ¼r die Farbe an!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -203,7 +209,7 @@ public class ColorDialog extends JFrame {
 						if ( newColor == null ) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Bitte wählen Sie eine Farbe aus!",
+									"Bitte wÃ¤hlen Sie eine Farbe aus!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -260,7 +266,7 @@ public class ColorDialog extends JFrame {
 					if ( !ColorManager.getInstance().deleteColor( colorName)) {
 						JOptionPane.showMessageDialog(
 								new JFrame(),
-								"Die Farbe kann nicht gelöscht werden, weil sie verwendet wird!",
+								"Die Farbe kann nicht gelÃ¶scht werden, weil sie verwendet wird!",
 								"Fehler",
 								JOptionPane.ERROR_MESSAGE);
 						return;

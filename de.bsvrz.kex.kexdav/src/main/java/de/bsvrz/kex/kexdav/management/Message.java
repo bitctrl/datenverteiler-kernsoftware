@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,17 +14,23 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.management;
 
 /**
- * Benachrichtigung an die KExDaV-Verwaltung. Wird je nach den installierten Observern z.B. auf der Debug-Ausgabe oder über Betriebsmeldungen verschickt
+ * Benachrichtigung an die KExDaV-Verwaltung. Wird je nach den installierten Observern z.B. auf der Debug-Ausgabe oder Ã¼ber Betriebsmeldungen verschickt
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9269 $
+ * @version $Revision$
  */
 public class Message {
 
@@ -55,7 +61,7 @@ public class Message {
 	 * Neue Informations-Meldung mit geringer Dringlichkeit. Wird nicht als Betriebsmeldung verschickt
 	 *
 	 * @param description Nachricht als String
-	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehängt.
+	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehÃ¤ngt.
 	 *
 	 * @return Benachrichtigung (Z.B. weiterzugeben an das {@link ManagerInterface})
 	 */
@@ -78,7 +84,7 @@ public class Message {
 	 * Neue Warnung mit geringer Dringlichkeit. Wird nicht als Betriebsmeldung verschickt
 	 *
 	 * @param description Nachricht als String
-	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehängt.
+	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehÃ¤ngt.
 	 *
 	 * @return Benachrichtigung (Z.B. weiterzugeben an das {@link ManagerInterface})
 	 */
@@ -101,7 +107,7 @@ public class Message {
 	 * Neue Warnung mit hoher Dringlichkeit. Wird auch als Betriebsmeldung verschickt
 	 *
 	 * @param description Nachricht als String
-	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehängt.
+	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehÃ¤ngt.
 	 *
 	 * @return Benachrichtigung (Z.B. weiterzugeben an das {@link ManagerInterface})
 	 */
@@ -135,7 +141,7 @@ public class Message {
 	 * Neue Fehlermeldung mit hoher Dringlichkeit. Wird auch als Betriebsmeldung verschickt
 	 *
 	 * @param description Nachricht als String
-	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehängt.
+	 * @param throwable   Exception. Der Stacktrace kann von den Observern abgefragt werden und die Fehlernachricht wird der description angehÃ¤ngt.
 	 *
 	 * @return Benachrichtigung (Z.B. weiterzugeben an das {@link ManagerInterface})
 	 */
@@ -155,7 +161,7 @@ public class Message {
 	}
 
 	/**
-	 * Gibt die Fehlerbeschreibung zurück
+	 * Gibt die Fehlerbeschreibung zurÃ¼ck
 	 *
 	 * @return Fehlerbeschreibung
 	 */
@@ -164,7 +170,7 @@ public class Message {
 	}
 
 	/**
-	 * Gibt den Stacktrace zurück
+	 * Gibt den Stacktrace zurÃ¼ck
 	 *
 	 * @return den Stacktrace oder null falls keine Exception vorliegt
 	 */
@@ -174,7 +180,7 @@ public class Message {
 	}
 
 	/**
-	 * Gibt die Exception zurück
+	 * Gibt die Exception zurÃ¼ck
 	 *
 	 * @return Exception
 	 */
@@ -183,7 +189,7 @@ public class Message {
 	}
 
 	/**
-	 * Gibt die Dringlichkeit zurück
+	 * Gibt die Dringlichkeit zurÃ¼ck
 	 *
 	 * @return die Dringlichkeit
 	 */
@@ -197,7 +203,7 @@ public class Message {
 	}
 
 	/**
-	 * Gibt ein Throwable als String zurück
+	 * Gibt ein Throwable als String zurÃ¼ck
 	 *
 	 * @param throwable Throwable
 	 *
@@ -240,19 +246,19 @@ public class Message {
 
 	/** Dringlichkeit einer Warnung */
 	public enum ErrorLevel {
-		/** Einfache Meldung über den Programmzustand */
+		/** Einfache Meldung Ã¼ber den Programmzustand */
 		INFO,
-		/** Geringfügige Warnung oder Hinweis, keine Betriebsmeldung notwendig */
+		/** GeringfÃ¼gige Warnung oder Hinweis, keine Betriebsmeldung notwendig */
 		MINOR,
-		/** Wichtige Warnung oder ein (voraussichtlich) vorübergehendes Problem, Betriebsmeldung notwendig */
+		/** Wichtige Warnung oder ein (voraussichtlich) vorÃ¼bergehendes Problem, Betriebsmeldung notwendig */
 		MAJOR,
-		/** Fehler oder anhaltendes, schweres Problem, z.B. Parameterierungsfehler, Fehler beim Verbindungsaufbau u.ä. */
+		/** Fehler oder anhaltendes, schweres Problem, z.B. Parameterierungsfehler, Fehler beim Verbindungsaufbau u.Ã¤. */
 		ERROR;
 
 		/**
-		 * Ist die Warnung unwichtig? Sie wird dann z.B. nicht über die Betriebsmeldung verschickt.
+		 * Ist die Warnung unwichtig? Sie wird dann z.B. nicht Ã¼ber die Betriebsmeldung verschickt.
 		 *
-		 * @return True wenn geringfügig.
+		 * @return True wenn geringfÃ¼gig.
 		 */
 		public boolean isMinor() {
 			return ordinal() < MAJOR.ordinal();

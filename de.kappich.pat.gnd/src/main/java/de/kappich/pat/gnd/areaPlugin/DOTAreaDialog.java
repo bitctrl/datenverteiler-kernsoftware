@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.areaPlugin;
 
@@ -64,10 +70,10 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
- * Der Definitionsdialog f¸r Darstellungstypen von Fl‰chenobjekten.
+ * Der Definitionsdialog f√ºr Darstellungstypen von Fl√§chenobjekten.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8092 $
+ * @version $Revision$
  *
  */
 public class DOTAreaDialog implements DOTDefinitionDialog {
@@ -94,10 +100,10 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 			throw new IllegalArgumentException();
 		}
 		// Die Strategie ist bei den folgenden Membern wie folgt: es werden alle Center-Panels,
-		// also alle statischen und nicht-statischen initialisiert, damit beim Umschalten mˆglichst
-		// wenig Informationen verloren gehen. Das Scratch-DOT dient den Dialogen zun‰chst zur
-		// Initialisierung, und anschlieﬂend werden alle ƒnderungen, die duch die Dialoge
-		// vorgenommen werden, dort nachgezogen. Beim Speichern m¸ssen die Informationen aus
+		// also alle statischen und nicht-statischen initialisiert, damit beim Umschalten m√∂glichst
+		// wenig Informationen verloren gehen. Das Scratch-DOT dient den Dialogen zun√§chst zur
+		// Initialisierung, und anschlie√üend werden alle √Ñnderungen, die duch die Dialoge
+		// vorgenommen werden, dort nachgezogen. Beim Speichern m√ºssen die Informationen aus
 		// beiden Quellen kombiniert werden.
 		initAllPanelsAndTables();
 	}
@@ -167,7 +173,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 		
 		JButton newDOTItemButton = new JButton("Neue Zeile");
 		newDOTItemButton.setEnabled( _dotDefinitionDialogFrame.isEditable());
-		JButton deleteDOTItemButton = new JButton("Lˆschen");
+		JButton deleteDOTItemButton = new JButton("L√∂schen");
 		deleteDOTItemButton.setEnabled( false);
 		JButton showConflictsButton = new JButton("Zeige Konflikte");
 		
@@ -196,7 +202,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 		if ( property == null) {
 			JOptionPane.showMessageDialog(
 					new JFrame(),
-					"Bitte w‰hlen Sie eine Eigenschaft aus!",
+					"Bitte w√§hlen Sie eine Eigenschaft aus!",
 					"Fehler",
 					JOptionPane.ERROR_MESSAGE);
 			return null;
@@ -298,7 +304,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 				
 				JButton saveButton = new JButton("Speichern");
 				saveButton.setEnabled( _dotDefinitionDialogFrame.isEditable());
-				JButton cancelButton = new JButton("Dialog schlieﬂen");
+				JButton cancelButton = new JButton("Dialog schlie√üen");
 				
 				JPanel buttonsPanel = new JPanel();
 				buttonsPanel.setLayout(new SpringLayout());
@@ -310,7 +316,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 				SpringUtilities.makeCompactGrid(buttonsPanel, 2, 20, 5);
 				addButtonListeners( saveButton, cancelButton);
 				
-				setTitle("GND: Darstellungsfestlegung f¸r Fl‰chen");
+				setTitle("GND: Darstellungsfestlegung f√ºr Fl√§chen");
 				setLayout(new BorderLayout());
 				add( new JScrollPane( panel), BorderLayout.NORTH);
 				add( new JScrollPane( _dynamicDefinitionComponent), BorderLayout.CENTER);
@@ -358,7 +364,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 							if ( colorItem == null ) {
 								JOptionPane.showMessageDialog(
 										new JFrame(),
-										"Bitte w‰hlen Sie eine Farbe aus!",
+										"Bitte w√§hlen Sie eine Farbe aus!",
 										"Fehler",
 										JOptionPane.ERROR_MESSAGE);
 								return;
@@ -380,7 +386,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 						if ( attributeGroupName == null ) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Bitte w‰hlen Sie eine Attributgruppe aus!",
+									"Bitte w√§hlen Sie eine Attributgruppe aus!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -390,7 +396,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 						if ( aspectName == null ) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Bitte w‰hlen Sie einen Aspekt aus!",
+									"Bitte w√§hlen Sie einen Aspekt aus!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -402,14 +408,14 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 							if ( error == 1) {
 								JOptionPane.showMessageDialog(
 										new JFrame(),
-										"Bitte w‰hlen Sie ein Attribut aus!",
+										"Bitte w√§hlen Sie ein Attribut aus!",
 										"Fehler",
 										JOptionPane.ERROR_MESSAGE);
 								return;
 							} else if ( error == 2) {
 								JOptionPane.showMessageDialog(
 										new JFrame(),
-										"Der Attributname ist ung¸ltig!",
+										"Der Attributname ist ung√ºltig!",
 										"Fehler",
 										JOptionPane.ERROR_MESSAGE);
 								return;
@@ -459,7 +465,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 						if ( (fromValue != null) && (toValue !=null) && (fromValue > toValue)) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Der Von-Wert ist grˆﬂer als der Bis-Wert!",
+									"Der Von-Wert ist gr√∂√üer als der Bis-Wert!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -511,7 +517,7 @@ public class DOTAreaDialog implements DOTDefinitionDialog {
 				if ( selectedRows.length == 0 ) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie eine Zeile aus!",
+							"Bitte w√§hlen Sie eine Zeile aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;

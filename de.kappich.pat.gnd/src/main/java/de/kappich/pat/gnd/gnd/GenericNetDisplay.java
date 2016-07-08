@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.gnd;
@@ -64,17 +70,17 @@ import java.util.prefs.Preferences;
 
 
 /**
- * Ein GenericNetDisplay-Objekt ist ein Top-Level-Fenster, das eine Menüzeile besitzt und die Kartendarstellung zeigt. Diese Klasse wird wahlweise aus RunGND
+ * Ein GenericNetDisplay-Objekt ist ein Top-Level-Fenster, das eine MenÃ¼zeile besitzt und die Kartendarstellung zeigt. Diese Klasse wird wahlweise aus RunGND
  * heraus instanziiert (Stand-Alone-Anwendung) oder aus dem GNDPlugin (Plugin in einer anderen Anwendung, z.B. dem GTM).
- * <p/>
- * Die Initialisierung eines Objekts erfolgt mit Hilfe einer {@link View Ansicht}, die eine geordnete Reihenfolge von Layern enthält. Diese Layer werden in der
+ * <p>
+ * Die Initialisierung eines Objekts erfolgt mit Hilfe einer {@link View Ansicht}, die eine geordnete Reihenfolge von Layern enthÃ¤lt. Diese Layer werden in der
  * Reihenfolge von oben nach unten in der Legende angeben und in der Kartenansicht gezeichnet. Um die Konfigurationsdaten und eventuell dynamische Daten
- * erhalten zu können, bekommt ein GenericNetDisplay-Objekt eine Datenverteilerverbindung übergeben. Eine Liste von Systemobjekten beeinflußt den
- * Kartenausschnitt, mit dem die Kartenansicht anfänglich gezeigt wird: ist die Liste leer, so wird die ganze Karte gezeichnet, andernfalls wird aus den
- * Koordinaten der übergebenen Systemobjekte ein diese Objekte umfassendes Rechteck berechnet und angezeigt.
+ * erhalten zu kÃ¶nnen, bekommt ein GenericNetDisplay-Objekt eine Datenverteilerverbindung Ã¼bergeben. Eine Liste von Systemobjekten beeinfluÃŸt den
+ * Kartenausschnitt, mit dem die Kartenansicht anfÃ¤nglich gezeigt wird: ist die Liste leer, so wird die ganze Karte gezeichnet, andernfalls wird aus den
+ * Koordinaten der Ã¼bergebenen Systemobjekte ein diese Objekte umfassendes Rechteck berechnet und angezeigt.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 13038 $
+ * @version $Revision$
  */
 @SuppressWarnings("serial")
 public class GenericNetDisplay extends JFrame {
@@ -135,13 +141,13 @@ public class GenericNetDisplay extends JFrame {
 	private static GenericNetDisplay _instance;
 
 	/**
-	 * Konstruiert ein Objekt aus den übergebenen Informationen. Der Stand-Alone-Wert gibt der Netzdarstellung die Information, ob sie sich als eigenständige
-	 * Anwendung betrachten kann oder nicht. Im Falle des Schließens des Fensters wird sie im Stand-Alone-Fall komplett beendet.
+	 * Konstruiert ein Objekt aus den Ã¼bergebenen Informationen. Der Stand-Alone-Wert gibt der Netzdarstellung die Information, ob sie sich als eigenstÃ¤ndige
+	 * Anwendung betrachten kann oder nicht. Im Falle des SchlieÃŸens des Fensters wird sie im Stand-Alone-Fall komplett beendet.
 	 *
 	 * @param view          eine Ansicht
 	 * @param connection    eine Datenverteiler-Verbindung
 	 * @param systemObjects eine Liste mit Systemobjekten
-	 * @param standAlone    <code>true</code> genau dann, wenn sie sich als eigenständige Anwendung betrachten soll
+	 * @param standAlone    <code>true</code> genau dann, wenn sie sich als eigenstÃ¤ndige Anwendung betrachten soll
 	 */
 	public GenericNetDisplay(
 			final View view, final ClientDavInterface connection, final List<SystemObject> systemObjects, final boolean standAlone) {
@@ -216,7 +222,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt die Instanz der Klasse zurück.
+	 * Gibt die Instanz der Klasse zurÃ¼ck.
 	 *
 	 * @return Instanz der Klasse.
 	 */
@@ -226,9 +232,9 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn das GenericNetDisplay-Objekt sich als eigenständige Anwendung betrachtet.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn das GenericNetDisplay-Objekt sich als eigenstÃ¤ndige Anwendung betrachtet.
 	 *
-	 * @return gibt <code>true</code> zurück, wenn das sich this als eigenständige Anwendung betrachtet
+	 * @return gibt <code>true</code> zurÃ¼ck, wenn das sich this als eigenstÃ¤ndige Anwendung betrachtet
 	 */
 	public boolean isStandAlone() {
 
@@ -236,7 +242,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt die aktuelle Ansicht zurück.
+	 * Gibt die aktuelle Ansicht zurÃ¼ck.
 	 *
 	 * @return aktuelle Ansicht
 	 */
@@ -261,7 +267,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Diese Methode zeigt die übergebene Ansicht in der Kartendarstellung des GenericNetDisplay-Objekts, d.h. in seiner Legende und der Kartenansicht.
+	 * Diese Methode zeigt die Ã¼bergebene Ansicht in der Kartendarstellung des GenericNetDisplay-Objekts, d.h. in seiner Legende und der Kartenansicht.
 	 *
 	 * @param view die neue Ansicht
 	 */
@@ -324,9 +330,9 @@ public class GenericNetDisplay extends JFrame {
 		_mapPane.setTooltip(_isMapsTooltipOn);
 		_splitPane.setRightComponent(_mapPane);
 
-		// Legende erst jetzt, weil sie den Maßstab benötigt
+		// Legende erst jetzt, weil sie den MaÃŸstab benÃ¶tigt
 		ScaleTextField scaleTextField = new ScaleTextField();
-		scaleTextField.setBorder(new TitledBorder("Maßstab"));
+		scaleTextField.setBorder(new TitledBorder("MaÃŸstab"));
 		scaleAndLegendPanel.add(scaleTextField, BorderLayout.SOUTH);
 		_legendPane = new LegendPane(_view);
 		scaleAndLegendPanel.add(makeLeftPanel(), BorderLayout.CENTER);
@@ -334,7 +340,7 @@ public class GenericNetDisplay extends JFrame {
 
 		add(_splitPane);
 		pack();
-		setVisible(false);	// Sonst kann man beim Wechseln der Ansicht ein repaint auslösen ...
+		setVisible(false);	// Sonst kann man beim Wechseln der Ansicht ein repaint auslÃ¶sen ...
 		_mapPane.init();
 		_legendPane.init(_mapPane.getMapScale());
 
@@ -366,8 +372,8 @@ public class GenericNetDisplay extends JFrame {
 		_objectList.setModel(_selectedObjects);
 
 		/**
-		 *  Hack: Eigentlich sollte man den {@link ListSelectionListener} benutzen, aber der reagiert auch, wenn durch Zoomen o.ä. der dargestellte Inhalt geändert wird.
-		 *  Daher wird hier manuell bei Tastatur oder Mauseingaben das ausgewählte Element geändert
+		 *  Hack: Eigentlich sollte man den {@link ListSelectionListener} benutzen, aber der reagiert auch, wenn durch Zoomen o.Ã¤. der dargestellte Inhalt geÃ¤ndert wird.
+		 *  Daher wird hier manuell bei Tastatur oder Mauseingaben das ausgewÃ¤hlte Element geÃ¤ndert
 		 */
 		ObjectListListener l = new ObjectListListener();
 		_objectList.addMouseListener(l);
@@ -440,7 +446,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt die Datenverteilerverbindung zurück.
+	 * Gibt die Datenverteilerverbindung zurÃ¼ck.
 	 *
 	 * @return die Datenverteilerverbindung
 	 */
@@ -501,8 +507,8 @@ public class GenericNetDisplay extends JFrame {
 			menuItem.getAccessibleContext().setAccessibleDescription("Beendet das Programm.");
 		}
 		else {
-			menuItem = new JMenuItem("GND schließen");
-			menuItem.getAccessibleContext().setAccessibleDescription("Schließt nur dieses GND-Fenster");
+			menuItem = new JMenuItem("GND schlieÃŸen");
+			menuItem.getAccessibleContext().setAccessibleDescription("SchlieÃŸt nur dieses GND-Fenster");
 		}
 		fileMenu.add(menuItem);
 		menuItem.addActionListener(
@@ -648,7 +654,7 @@ public class GenericNetDisplay extends JFrame {
 								if(csvFile.exists()) {
 									int n = JOptionPane.showConfirmDialog(
 											new JFrame(),
-											"Die Datei '" + csvFile.getName() + "' existiert bereits.\nDatei überschreiben?",
+											"Die Datei '" + csvFile.getName() + "' existiert bereits.\nDatei Ã¼berschreiben?",
 											"Warning",
 											JOptionPane.YES_NO_OPTION
 									);
@@ -677,9 +683,9 @@ public class GenericNetDisplay extends JFrame {
 		);
 
 
-		menuItem = new JMenuItem("Notizen löschen");
+		menuItem = new JMenuItem("Notizen lÃ¶schen");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		menuItem.getAccessibleContext().setAccessibleDescription("Löscht alle Notizen.");
+		menuItem.getAccessibleContext().setAccessibleDescription("LÃ¶scht alle Notizen.");
 		if(_standAlone) {
 			menuItem.setEnabled(true);
 		}
@@ -692,11 +698,11 @@ public class GenericNetDisplay extends JFrame {
 
 					public void actionPerformed(ActionEvent e) {
 
-						Object[] options = {"Löschen", "Abbrechen"};
+						Object[] options = {"LÃ¶schen", "Abbrechen"};
 						int n = JOptionPane.showOptionDialog(
 								new JFrame(),
-								"Alle Notizen werden unwiderruflich gelöscht.",
-								"Notizen löschen",
+								"Alle Notizen werden unwiderruflich gelÃ¶scht.",
+								"Notizen lÃ¶schen",
 								JOptionPane.YES_NO_OPTION,
 								JOptionPane.QUESTION_MESSAGE,
 								null,
@@ -716,7 +722,7 @@ public class GenericNetDisplay extends JFrame {
 
 		menuItem = new JMenuItem("Farbenverwaltung");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		menuItem.getAccessibleContext().setAccessibleDescription("Öffnet den Farbdefinitionsdialog.");
+		menuItem.getAccessibleContext().setAccessibleDescription("Ã–ffnet den Farbdefinitionsdialog.");
 		menuItem.setEnabled(true);
 		extrasMenu.add(menuItem);
 		menuItem.addActionListener(
@@ -732,7 +738,7 @@ public class GenericNetDisplay extends JFrame {
 
 		extrasMenu.add(new JSeparator());
 
-		menuItem = new JMenuItem("Präferenzen exportieren");
+		menuItem = new JMenuItem("PrÃ¤ferenzen exportieren");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		menuItem.getAccessibleContext().setAccessibleDescription("Exportiert alle Benutzer-Einstellungen.");
 		menuItem.setEnabled(true);
@@ -747,7 +753,7 @@ public class GenericNetDisplay extends JFrame {
 						extensions.add("xml");
 						MyFileNameExtensionFilter filter = new MyFileNameExtensionFilter("XML-Datei", extensions);
 						fileChooser.setFileFilter(filter);
-						fileChooser.setDialogTitle("GND: Präferenzen exportieren");
+						fileChooser.setDialogTitle("GND: PrÃ¤ferenzen exportieren");
 						fileChooser.setApproveButtonText("Exportieren");
 
 						File xmlFile;
@@ -765,7 +771,7 @@ public class GenericNetDisplay extends JFrame {
 								if(xmlFile.exists()) {
 									int n = JOptionPane.showConfirmDialog(
 											new JFrame(),
-											"Die Datei '" + xmlFile.getName() + "' existiert bereits.\nDatei überschreiben?",
+											"Die Datei '" + xmlFile.getName() + "' existiert bereits.\nDatei Ã¼berschreiben?",
 											"Warning",
 											JOptionPane.YES_NO_OPTION
 									);
@@ -801,7 +807,7 @@ public class GenericNetDisplay extends JFrame {
 				}
 		);
 
-		menuItem = new JMenuItem("Präferenzen importieren");
+		menuItem = new JMenuItem("PrÃ¤ferenzen importieren");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		menuItem.getAccessibleContext().setAccessibleDescription("Importiert alle Benutzer-Einstellungen.");
 		menuItem.setEnabled(true);
@@ -814,8 +820,8 @@ public class GenericNetDisplay extends JFrame {
 						Object[] options = {"Weiter", "Abbrechen", "Hilfe"};
 						int n = JOptionPane.showOptionDialog(
 								new JFrame(),
-								"Nach dem Import ist eine erneute Initialisierung oder ein Neustart nötig.",
-								"Präferenzen importieren",
+								"Nach dem Import ist eine erneute Initialisierung oder ein Neustart nÃ¶tig.",
+								"PrÃ¤ferenzen importieren",
 								JOptionPane.YES_NO_CANCEL_OPTION,
 								JOptionPane.QUESTION_MESSAGE,
 								null,
@@ -831,8 +837,8 @@ public class GenericNetDisplay extends JFrame {
 						}
 						n = JOptionPane.showOptionDialog(
 								new JFrame(),
-								"Ihre alten Präferrenzen werden komplett gelöscht. Noch können Sie sie sichern.",
-								"Präferenzen importieren",
+								"Ihre alten PrÃ¤ferrenzen werden komplett gelÃ¶scht. Noch kÃ¶nnen Sie sie sichern.",
+								"PrÃ¤ferenzen importieren",
 								JOptionPane.YES_NO_CANCEL_OPTION,
 								JOptionPane.QUESTION_MESSAGE,
 								null,
@@ -848,7 +854,7 @@ public class GenericNetDisplay extends JFrame {
 						extensions.add("xml");
 						MyFileNameExtensionFilter filter = new MyFileNameExtensionFilter("XML-Datei", extensions);
 						fileChooser.setFileFilter(filter);
-						fileChooser.setDialogTitle("GND: Präferenzen importieren");
+						fileChooser.setDialogTitle("GND: PrÃ¤ferenzen importieren");
 						fileChooser.setApproveButtonText("Importieren");
 
 						int returnVal = fileChooser.showOpenDialog(GenericNetDisplay.this);
@@ -937,9 +943,9 @@ public class GenericNetDisplay extends JFrame {
 				}
 		);
 
-		menuItem = new JMenuItem("Präferenzen löschen");
+		menuItem = new JMenuItem("PrÃ¤ferenzen lÃ¶schen");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		menuItem.getAccessibleContext().setAccessibleDescription("Löscht alle Benutzer-Einstellungen.");
+		menuItem.getAccessibleContext().setAccessibleDescription("LÃ¶scht alle Benutzer-Einstellungen.");
 		if(_standAlone) {
 			menuItem.setEnabled(true);
 		}
@@ -952,11 +958,11 @@ public class GenericNetDisplay extends JFrame {
 
 					public void actionPerformed(ActionEvent e) {
 
-						Object[] options = {"Löschen und beenden", "Nicht löschen", "Hilfe"};
+						Object[] options = {"LÃ¶schen und beenden", "Nicht lÃ¶schen", "Hilfe"};
 						int n = JOptionPane.showOptionDialog(
 								new JFrame(),
-								"Alle Benutzereinstellungen werden unwiderruflich gelöscht und das Programm beendet.",
-								"Präferenzen löschen",
+								"Alle Benutzereinstellungen werden unwiderruflich gelÃ¶scht und das Programm beendet.",
+								"PrÃ¤ferenzen lÃ¶schen",
 								JOptionPane.YES_NO_CANCEL_OPTION,
 								JOptionPane.QUESTION_MESSAGE,
 								null,
@@ -983,9 +989,9 @@ public class GenericNetDisplay extends JFrame {
 
 		extrasMenu.add(new JSeparator());
 
-		menuItem = new JMenuItem("Ausgewählte Objekte an den GTM übergeben");
+		menuItem = new JMenuItem("AusgewÃ¤hlte Objekte an den GTM Ã¼bergeben");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		menuItem.getAccessibleContext().setAccessibleDescription("Übergibt dem GTM die ausgewählten Objekte.");
+		menuItem.getAccessibleContext().setAccessibleDescription("Ãœbergibt dem GTM die ausgewÃ¤hlten Objekte.");
 		if(_standAlone) {
 			menuItem.setEnabled(false);
 		}
@@ -1071,9 +1077,9 @@ public class GenericNetDisplay extends JFrame {
 
 		extrasMenu.add(new JSeparator());
 
-		menuItem = new JMenuItem("Bildschirmauflösung einstellen");
+		menuItem = new JMenuItem("BildschirmauflÃ¶sung einstellen");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		menuItem.getAccessibleContext().setAccessibleDescription("Bildschirmauflösung in Dots-per-Inch");
+		menuItem.getAccessibleContext().setAccessibleDescription("BildschirmauflÃ¶sung in Dots-per-Inch");
 		menuItem.setEnabled(true);
 		extrasMenu.add(menuItem);
 		menuItem.addActionListener(
@@ -1081,9 +1087,9 @@ public class GenericNetDisplay extends JFrame {
 
 					public void actionPerformed(ActionEvent outerE) {
 
-						final JFrame resolutionFrame = new JFrame("Bildschirmauflösung einstellen");
+						final JFrame resolutionFrame = new JFrame("BildschirmauflÃ¶sung einstellen");
 
-						final JLabel textLabel = new JLabel("Geben sie den Wert für die Bildschirmauflösung in Dots per Inch an: ");
+						final JLabel textLabel = new JLabel("Geben sie den Wert fÃ¼r die BildschirmauflÃ¶sung in Dots per Inch an: ");
 						Double dpi = getScreenResolution();
 						if(dpi == null) {
 							dpi = new Double(Toolkit.getDefaultToolkit().getScreenResolution());
@@ -1091,7 +1097,7 @@ public class GenericNetDisplay extends JFrame {
 						if(dpi == null || dpi.isNaN() || dpi.isInfinite()) {
 							dpi = 72.;
 						}
-						final Double currentResolution = dpi;	// Wir brauchen diese Variable als 'final' in der nächsten Zeile!
+						final Double currentResolution = dpi;	// Wir brauchen diese Variable als 'final' in der nÃ¤chsten Zeile!
 						final SpinnerNumberModel numberModel = new SpinnerNumberModel((double)currentResolution, 1., 1000., 0.1);
 						final JSpinner resolutionSpinner = new JSpinner(numberModel);
 
@@ -1103,10 +1109,10 @@ public class GenericNetDisplay extends JFrame {
 						resolutionPanel.add(resolutionSpinner);
 
 						final JPanel acceptPanel = new JPanel();
-						final JButton acceptButton = new JButton("Übernehmen");
-						final JButton clearButton = new JButton("Zurücksetzen");
-						acceptButton.setToolTipText("Wert zur Maßstabsberechnung übernehmen");
-						clearButton.setToolTipText("Benutzer-Präferenz löschen und berechneten Wert anzeigen");
+						final JButton acceptButton = new JButton("Ãœbernehmen");
+						final JButton clearButton = new JButton("ZurÃ¼cksetzen");
+						acceptButton.setToolTipText("Wert zur MaÃŸstabsberechnung Ã¼bernehmen");
+						clearButton.setToolTipText("Benutzer-PrÃ¤ferenz lÃ¶schen und berechneten Wert anzeigen");
 						acceptPanel.add(acceptButton);
 						acceptPanel.add(Box.createRigidArea(new Dimension(10, 10)));
 						acceptPanel.add(clearButton);
@@ -1118,7 +1124,7 @@ public class GenericNetDisplay extends JFrame {
 								final Double newScreenResolution = (Double)resolutionSpinner.getValue();
 								if(newScreenResolution < 10.) {
 									JOptionPane.showMessageDialog(
-											null, "Bitte geben Sie einen Wert größer oder gleich 10 an.", "Fehlermeldung", JOptionPane.ERROR_MESSAGE
+											null, "Bitte geben Sie einen Wert grÃ¶ÃŸer oder gleich 10 an.", "Fehlermeldung", JOptionPane.ERROR_MESSAGE
 									);
 									return;
 								}
@@ -1174,9 +1180,9 @@ public class GenericNetDisplay extends JFrame {
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 		helpMenu.getAccessibleContext().setAccessibleDescription("Das Hilfe-Menue");
 
-		menuItem = new JMenuItem("Online-Hilfe öffnen");
+		menuItem = new JMenuItem("Online-Hilfe Ã¶ffnen");
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		menuItem.getAccessibleContext().setAccessibleDescription("Öffnet ein Browser-Fenster mit der Online-Hilfe");
+		menuItem.getAccessibleContext().setAccessibleDescription("Ã–ffnet ein Browser-Fenster mit der Online-Hilfe");
 		menuItem.setEnabled(true);
 		helpMenu.add(menuItem);
 		menuItem.addActionListener(
@@ -1226,7 +1232,7 @@ public class GenericNetDisplay extends JFrame {
 								if(htmlFile.exists()) {
 									int n = JOptionPane.showConfirmDialog(
 											new JFrame(),
-											"Die Datei '" + htmlFile.getName() + "' existiert bereits.\nDatei überschreiben?",
+											"Die Datei '" + htmlFile.getName() + "' existiert bereits.\nDatei Ã¼berschreiben?",
 											"Warning",
 											JOptionPane.YES_NO_OPTION
 									);
@@ -1348,7 +1354,7 @@ public class GenericNetDisplay extends JFrame {
 	/**
 	 * Methode zum Abspeichern  der Grafik.
 	 *
-	 * @throws IOException wird geworfen, wenn etwas beim Speichern fehlschlägt
+	 * @throws IOException wird geworfen, wenn etwas beim Speichern fehlschlÃ¤gt
 	 */
 	public void saveGrafic() throws IOException {
 
@@ -1363,7 +1369,7 @@ public class GenericNetDisplay extends JFrame {
 		// Dialog zum Speichern einer Datei
 		fileChooser.showSaveDialog(fileChooser);
 
-		// Höhe und Breite mithilfe des Rechteckes aus der Grafik werden festgelegt
+		// HÃ¶he und Breite mithilfe des Rechteckes aus der Grafik werden festgelegt
 		Rectangle imageRectangle = _mapPane.getBounds();
 		int width = imageRectangle.width;
 		int height = imageRectangle.height;
@@ -1395,9 +1401,9 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt die Systemobjekte, die im Konstruktor angegeben wurden, zurück.
+	 * Gibt die Systemobjekte, die im Konstruktor angegeben wurden, zurÃ¼ck.
 	 *
-	 * @return gibt die Systemobjekte, die im Konstruktor angegeben wurden, zurück
+	 * @return gibt die Systemobjekte, die im Konstruktor angegeben wurden, zurÃ¼ck
 	 */
 	public List<SystemObject> getSystemObjects() {
 
@@ -1405,7 +1411,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn die Kartenansicht mit Doppelpufferung ( double buffering) betrieben wird.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die Kartenansicht mit Doppelpufferung ( double buffering) betrieben wird.
 	 *
 	 * @return <code>true</code> genau dann, wenn die Doppelpufferung aktiv ist
 	 */
@@ -1416,7 +1422,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn die Kartenansicht mit Anti-Aliasing betrieben wird.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die Kartenansicht mit Anti-Aliasing betrieben wird.
 	 *
 	 * @return <code>true</code> genau dann, wenn die Anti-Aliasing aktiv ist
 	 */
@@ -1426,7 +1432,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn die Kartenansicht mit Tooltipp betrieben wird.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die Kartenansicht mit Tooltipp betrieben wird.
 	 *
 	 * @return <code>true</code> genau dann, wenn der Tooltipp der Kartenansicht aktiv ist
 	 */
@@ -1436,9 +1442,9 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt die Bildschirmauflösung zurück, mit deren Hilfe das GenericNetDisplay den Maßstab zu bestimmen versucht.
+	 * Gibt die BildschirmauflÃ¶sung zurÃ¼ck, mit deren Hilfe das GenericNetDisplay den MaÃŸstab zu bestimmen versucht.
 	 *
-	 * @return die aktuelle Bildschirmauflösung
+	 * @return die aktuelle BildschirmauflÃ¶sung
 	 */
 	public Double getScreenResolution() {
 
@@ -1446,10 +1452,10 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Gibt den Ausgangknoten zum Abspeichern der Benutzer-Präferenzen zurück.
+	 * Gibt den Ausgangknoten zum Abspeichern der Benutzer-PrÃ¤ferenzen zurÃ¼ck.
 	 *
-	 * @return den Ausgangknoten zum Abspeichern der Benutzer-Präferenzen
-	 * @param connection Datenverteilerverbindung zum ermitteln des zugehörigen Einstellungs-Knotens (KV-Abhängig)
+	 * @return den Ausgangknoten zum Abspeichern der Benutzer-PrÃ¤ferenzen
+	 * @param connection Datenverteilerverbindung zum ermitteln des zugehÃ¶rigen Einstellungs-Knotens (KV-AbhÃ¤ngig)
 	 */
 	private static Preferences getPreferenceStartPath(final ClientDavInterface connection) {
 //		final String kvPid = GenericNetDisplay.getConnection().getLocalConfigurationAuthority().getPid();
@@ -1460,10 +1466,10 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Holt die Bildschirmauflösung aus den Präferenzen, wenn sie dort hinterlegt ist, oder berechnet sie andernfalls.
+	 * Holt die BildschirmauflÃ¶sung aus den PrÃ¤ferenzen, wenn sie dort hinterlegt ist, oder berechnet sie andernfalls.
 	 *
-	 * @return die Bildschirmauflösung
-	 * @param connection Datenverteilerverbindung zum ermitteln des zugehörigen Einstellungs-Knotens (KV-Abhängig)
+	 * @return die BildschirmauflÃ¶sung
+	 * @param connection Datenverteilerverbindung zum ermitteln des zugehÃ¶rigen Einstellungs-Knotens (KV-AbhÃ¤ngig)
 	 */
 	public static Double getScreenResolutionFromPreferences(final ClientDavInterface connection) {
 		final Preferences gndPrefs = getPreferenceStartPath(connection);
@@ -1472,10 +1478,10 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Holt den Namen der Startansicht aus den Präferenzen, wenn er dort hinterlegt ist.
+	 * Holt den Namen der Startansicht aus den PrÃ¤ferenzen, wenn er dort hinterlegt ist.
 	 *
 	 * @return der Name der Startansicht
-	 * @param connection Datenverteilerverbindung zum ermitteln des zugehörigen Einstellungs-Knotens (KV-Abhängig)
+	 * @param connection Datenverteilerverbindung zum ermitteln des zugehÃ¶rigen Einstellungs-Knotens (KV-AbhÃ¤ngig)
 	 */
 	public static String getStartViewNameFromPreferences(final ClientDavInterface connection) {
 		final Preferences gndPrefs = getPreferenceStartPath(connection);
@@ -1484,7 +1490,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/*
-		 * Liest die Benutzer-Präferenzen ein.
+		 * Liest die Benutzer-PrÃ¤ferenzen ein.
 		 */
 	private void readPreferences() {
 
@@ -1493,7 +1499,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/*
-		 * Speichert die Benutzer-Präferenzen zur Bildschirmauflösung.
+		 * Speichert die Benutzer-PrÃ¤ferenzen zur BildschirmauflÃ¶sung.
 		 */
 	private void writeResolutionPreference(final Double screenResolution) {
 
@@ -1503,7 +1509,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/*
-		 * Löscht die Benutzer-Präferenzen zur Bildschirmauflösung.
+		 * LÃ¶scht die Benutzer-PrÃ¤ferenzen zur BildschirmauflÃ¶sung.
 		 */
 	private void clearResolutionPreference() {
 
@@ -1519,7 +1525,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Speichert den Namen der Startansicht in den Benutzer-Präferenzen.
+	 * Speichert den Namen der Startansicht in den Benutzer-PrÃ¤ferenzen.
 	 *
 	 * @param startViewName der Name der Startansicht
 	 */
@@ -1541,14 +1547,14 @@ public class GenericNetDisplay extends JFrame {
 		}
 		_selectedObjects.setElements(visibleNoticeObjects);
 
-		// Bewirkt, dass das ausgewählte Objekt wieder in der liste selektiert wird
+		// Bewirkt, dass das ausgewÃ¤hlte Objekt wieder in der liste selektiert wird
 		final Collection<SystemObject> selectedSystemObjects = _mapPane.getSelectedSystemObjects();
 		_objectList.setSelectedIndices(_selectedObjects.getElementIndizes(selectedSystemObjects));
 	}
 
 	public void selectionChanged() {
 
-		String text = "Ein Objekt auswählen um eine Notiz einzugeben";
+		String text = "Ein Objekt auswÃ¤hlen um eine Notiz einzugeben";
 		final Collection<SystemObject> selectedSystemObjects = _mapPane.getSelectedSystemObjects();
 		final boolean validObjectSelected = selectedSystemObjects.size() == 1;
 		if(validObjectSelected) {
@@ -1579,27 +1585,27 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Eine Listener-Interface für Objekte, die sich auf Änderungen der Bildschirmauflösung anmelden wollen.
+	 * Eine Listener-Interface fÃ¼r Objekte, die sich auf Ã„nderungen der BildschirmauflÃ¶sung anmelden wollen.
 	 *
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 13038 $
+	 * @version $Revision$
 	 */
 	interface ResolutionListener {
 
 		/**
-		 * Diese Methode wird aufgerufen, wenn die Auflösung geändert wird. Aufgrund der Übergabe des alten und neuen Wertes können auch relative Änderungen vollzogen
+		 * Diese Methode wird aufgerufen, wenn die AuflÃ¶sung geÃ¤ndert wird. Aufgrund der Ãœbergabe des alten und neuen Wertes kÃ¶nnen auch relative Ã„nderungen vollzogen
 		 * werden.
 		 *
-		 * @param newValue die neue Bildschirmauflösung
-		 * @param oldValue die alte Bildschirmauflösung
+		 * @param newValue die neue BildschirmauflÃ¶sung
+		 * @param oldValue die alte BildschirmauflÃ¶sung
 		 */
 		void resolutionChanged(final Double newValue, final Double oldValue);
 	}
 
 	/**
-	 * Fügt das übergebene Objekt der Liste der auf Änderungen der Bildschirmauflösung angemeldeten Objekte hinzu.
+	 * FÃ¼gt das Ã¼bergebene Objekt der Liste der auf Ã„nderungen der BildschirmauflÃ¶sung angemeldeten Objekte hinzu.
 	 *
-	 * @param listener der hinzuzufügende Listener
+	 * @param listener der hinzuzufÃ¼gende Listener
 	 */
 	public void addResolutionListener(final ResolutionListener listener) {
 
@@ -1607,7 +1613,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Entfernt das übergebene Objekt aus der Liste der auf Änderungen der Bildschirmauflösung angemeldeten Objekte und gibt <code>true</code> zurück, wenn dies
+	 * Entfernt das Ã¼bergebene Objekt aus der Liste der auf Ã„nderungen der BildschirmauflÃ¶sung angemeldeten Objekte und gibt <code>true</code> zurÃ¼ck, wenn dies
 	 * erfolgreich war, und <code>false</code> sonst.
 	 *
 	 * @param listener der zu entfernende Listener
@@ -1620,10 +1626,10 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Benachrichtigt alle Objekte, die auf Änderungen der Bildschirmauflösung angemeldet sind.
+	 * Benachrichtigt alle Objekte, die auf Ã„nderungen der BildschirmauflÃ¶sung angemeldet sind.
 	 *
-	 * @param newResolution die neue Bildschirmauflösung
-	 * @param oldResulotion die alte Bildschirmauflösung
+	 * @param newResolution die neue BildschirmauflÃ¶sung
+	 * @param oldResulotion die alte BildschirmauflÃ¶sung
 	 */
 	private void notifyResolutionListenersResolutionChanged(final Double newResolution, final Double oldResulotion) {
 
@@ -1633,7 +1639,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Fügt das übergebene Objekt der Liste der auf Änderungen der Selektion angemeldeten Objekte hinzu.
+	 * FÃ¼gt das Ã¼bergebene Objekt der Liste der auf Ã„nderungen der Selektion angemeldeten Objekte hinzu.
 	 *
 	 * @param listener der neue Listener
 	 */
@@ -1643,7 +1649,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Entfernt das übergebene Objekt aus der Liste der auf Änderungen der Selektion angemeldeten Objekte.
+	 * Entfernt das Ã¼bergebene Objekt aus der Liste der auf Ã„nderungen der Selektion angemeldeten Objekte.
 	 *
 	 * @param listener der zu entfernende Listener
 	 */
@@ -1653,7 +1659,7 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Benachrichtigt alle Objekte, die auf Änderungen der Selektion angemeldet sind.
+	 * Benachrichtigt alle Objekte, die auf Ã„nderungen der Selektion angemeldet sind.
 	 *
 	 * @param systemObjects die neue Selektion
 	 */
@@ -1666,7 +1672,7 @@ public class GenericNetDisplay extends JFrame {
 
 	private class MyFileNameExtensionFilter extends FileFilter {
 
-		// Ähnlich zu FileNameExtensionFilter aus java.swing.JFileChooser, aber der ist Java 1.6!
+		// Ã„hnlich zu FileNameExtensionFilter aus java.swing.JFileChooser, aber der ist Java 1.6!
 		final String _description;
 
 		final List<String> _extensions = new ArrayList<String>();
@@ -1714,9 +1720,9 @@ public class GenericNetDisplay extends JFrame {
 	}
 
 	/**
-	 * Diese Methode macht die externen Plugins bekannt, indem die vollständigen Namen der Klassen, die DisplayObjectTypePlugin implementieren, übergeben werden.
-	 * Sie muss vor dem ersten Zugriff auf Teile dieser Plugins aufgerufen werden; der beste Moment dafür ist, bevor der erste Konstruktor von GenericNetDisplay
-	 * aufgerufen wird, denn sonst könnte schon die Initialisierung aus den Präferenzen scheitern. Die Arbeit wird an den PluginManager delegiert. Durch das
+	 * Diese Methode macht die externen Plugins bekannt, indem die vollstÃ¤ndigen Namen der Klassen, die DisplayObjectTypePlugin implementieren, Ã¼bergeben werden.
+	 * Sie muss vor dem ersten Zugriff auf Teile dieser Plugins aufgerufen werden; der beste Moment dafÃ¼r ist, bevor der erste Konstruktor von GenericNetDisplay
+	 * aufgerufen wird, denn sonst kÃ¶nnte schon die Initialisierung aus den PrÃ¤ferenzen scheitern. Die Arbeit wird an den PluginManager delegiert. Durch das
 	 * Anbieten dieser Methode muss der Benutzer (also z.B. GTM oder RunGND) der GND nur mit GenericNetDisplay arbeiten.
 	 *
 	 * @param plugins die neuen externen Plugins

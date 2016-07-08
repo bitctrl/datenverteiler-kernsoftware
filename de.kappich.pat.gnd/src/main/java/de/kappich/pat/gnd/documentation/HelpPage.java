@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.documentation;
 
@@ -53,7 +59,7 @@ import javax.swing.text.html.ImageView;
  * Das Fenster zur Darstellung der Online-Hilfe.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 public class HelpPage {
@@ -96,7 +102,7 @@ public class HelpPage {
 	}
 	
 	/**
-	 * Diese Methode öffnet die Dokumentation an der übergebenen Stelle.
+	 * Diese Methode Ã¶ffnet die Dokumentation an der Ã¼bergebenen Stelle.
 	 * 
 	 * @param href eine Hypertext-Referenz
 	 */
@@ -115,9 +121,9 @@ public class HelpPage {
 				_debug.error("HelpPage.openHelp(): MalformedURLException ohne detailliere Ursache.");
 			}
 			if ( documentationPage == null) {
-				_debug.error("HelpPage.openHelp(): die Variable für die HTML-Dokumentationsdatei ist leer.");
+				_debug.error("HelpPage.openHelp(): die Variable fÃ¼r die HTML-Dokumentationsdatei ist leer.");
 			} else {
-				_debug.info("HelpPage.openHelp(): die Variable für die HTML-Dokumentationsdatei ist okay.");
+				_debug.info("HelpPage.openHelp(): die Variable fÃ¼r die HTML-Dokumentationsdatei ist okay.");
 			}
 			if ( href == null) {
 				_debug.warning("HelpPage.openHelp(): die Hypertext-Referenz in der HTML-Dokumentationsdatei ist leer.");
@@ -168,7 +174,7 @@ public class HelpPage {
 	private static final HTMLEditorKit.HTMLFactory _factory = new HTMLEditorKit.HTMLFactory();
 	
 	/**
-	 * Liefert eine Map zurück, deren Schlüssel die Dateinamen und Werte die PNG-Dateien
+	 * Liefert eine Map zurÃ¼ck, deren SchlÃ¼ssel die Dateinamen und Werte die PNG-Dateien
 	 * des lokalen Verzeichnisses sind.
 	 * 
 	 * @return die oben beschriebene Map
@@ -232,7 +238,7 @@ public class HelpPage {
 			try {
 				final URLConnection connection = url.openConnection();
 				if ( connection == null) {
-					_debug.error("HelpPage.getPngNames(): URL.openConnection() scheiterte für " + url.getPath() + ".");
+					_debug.error("HelpPage.getPngNames(): URL.openConnection() scheiterte fÃ¼r " + url.getPath() + ".");
 					return result;
 				}
 				if ( !(connection instanceof JarURLConnection)) {

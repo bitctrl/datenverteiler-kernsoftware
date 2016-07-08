@@ -1,12 +1,12 @@
 /*
  * Copyright 2007 by Kappich Systemberatung, Aachen
- * Copyright 2004 by Kappich+Kniß Systemberatung Aachen (K2S)
+ * Copyright 2004 by Kappich+KniÃŸ Systemberatung Aachen (K2S)
  * 
  * This file is part of de.kappich.sys.funclib.profile.
  * 
- * de.kappich.sys.funclib.profile is free software; you can redistribute it and/or modify
+ * de.kappich.sys.funclib.profile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.sys.funclib.profile is distributed in the hope that it will be useful,
@@ -15,8 +15,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.sys.funclib.profile; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.sys.funclib.profile.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.sys.funclib.profile;
@@ -24,7 +30,7 @@ package de.kappich.sys.funclib.profile;
 /**
  * Messung und Ausgabe von Zeit- und Speicherverbrauch.  
  * @author Kappich Systemberatung
- * @version $Revision: 5009 $
+ * @version $Revision$
  */
 public class LapStatistic {
 	private final int _alignNumberColumn;
@@ -87,7 +93,7 @@ public class LapStatistic {
 	}
 
 	/**
-	 * Der Rückgabewert entspricht der Ausgabe der Methode {@link #printLapResult(String)}.
+	 * Der RÃ¼ckgabewert entspricht der Ausgabe der Methode {@link #printLapResult(String)}.
 	 *
 	 * @param title Titel der Ausgabezeile
 	 * @return Ergebnis der Messung
@@ -98,7 +104,7 @@ public class LapStatistic {
 	}
 
 	/**
-	 * Der Rückgabewert entspricht der Ausgabe der Methode {@link #printLapResultWithGc(String)}.
+	 * Der RÃ¼ckgabewert entspricht der Ausgabe der Methode {@link #printLapResultWithGc(String)}.
 	 *
 	 * @param title Titel der Ausgabezeile
 	 * @return Ergebnis der Messung

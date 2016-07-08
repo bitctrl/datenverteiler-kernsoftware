@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.layerManagement;
 
@@ -46,10 +52,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
- * Ein Dialog zum Hinzuf¸gen eines Layers zu einer Ansicht.
+ * Ein Dialog zum Hinzuf√ºgen eines Layers zu einer Ansicht.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8058 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -67,13 +73,13 @@ public class AddLayerDialog extends JFrame {
 	 *            DOT - Verwaltung
 	 */
 	public AddLayerDialog( final LayerManager layerManager, View view) {
-		super("GND: Layer zur Ansicht hinzuf¸gen");
+		super("GND: Layer zur Ansicht hinzuf√ºgen");
 
 		_view = view;
 		
 		setLayout(new BorderLayout());
 		
-		JButton hinzufuegenButton = new JButton("Layer hinzuf¸gen");
+		JButton hinzufuegenButton = new JButton("Layer hinzuf√ºgen");
 		
 		JButton helpButton = new JButton("Hilfe");
 		
@@ -119,7 +125,7 @@ public class AddLayerDialog extends JFrame {
 			}
 		});
 		
-		JButton closeButton = new JButton("Dialog schlieﬂen");
+		JButton closeButton = new JButton("Dialog schlie√üen");
 		
 		JPanel closeButtonPanel = new JPanel();
 		closeButtonPanel.setLayout(new BoxLayout(closeButtonPanel, BoxLayout.Y_AXIS));
@@ -138,7 +144,7 @@ public class AddLayerDialog extends JFrame {
 				if (selectedRows.length == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie mindestens eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie mindestens eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -176,8 +182,8 @@ public class AddLayerDialog extends JFrame {
 			}
 			
 			public void windowClosing(WindowEvent e) {
-				/* wenn nur noch ein einziges Fenster geˆffnet ist 
-				 * beendet sich das Programm beim Schlieﬂen des Fensters */
+				/* wenn nur noch ein einziges Fenster ge√∂ffnet ist 
+				 * beendet sich das Programm beim Schlie√üen des Fensters */
 				final Frame[] frames = JFrame.getFrames();
 				int length = frames.length - 1;
 				

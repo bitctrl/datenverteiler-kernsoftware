@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -27,24 +33,24 @@ import java.util.prefs.Preferences;
 
 /**
  * Ein DynamicDOTItem ist die kleinste Einheit bei der Verkapselung der Verwaltung 
- * der Informationen zu einer veränderlichen Größe. Dazu kennt das Item Attributgruppe,
+ * der Informationen zu einer verÃ¤nderlichen GrÃ¶ÃŸe. Dazu kennt das Item Attributgruppe,
  * Aspekt und Attribut, die die Dynamik beschreiben, besitzt eine Kurzbeschreibung
- * seiner Information und kennt gegebenenfalls den Wert für die dynamische Eigenschaft
- * (z.B. eine Zahlwert für Strichbreite, eine Farbe oder einen Text).
- * Die Implementation besteht ausschließlich aus Gettern, Settern und einfachen
- * Dienstleistungsmethoden wie dem Abspeichern in den Präferenzen. 
+ * seiner Information und kennt gegebenenfalls den Wert fÃ¼r die dynamische Eigenschaft
+ * (z.B. eine Zahlwert fÃ¼r Strichbreite, eine Farbe oder einen Text).
+ * Die Implementation besteht ausschlieÃŸlich aus Gettern, Settern und einfachen
+ * Dienstleistungsmethoden wie dem Abspeichern in den PrÃ¤ferenzen. 
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8076 $
+ * @version $Revision$
  *
  */
 public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object> {
 	
 	/**
-	 * Konstruiert ein DynamicDOTItem aus den übergebenen Informationen. Ein DynamicDOTItem ist
-	 * gültig, wenn der übergebene Wert <code>propertyValue</code> vom Typ Integer, Double,
+	 * Konstruiert ein DynamicDOTItem aus den Ã¼bergebenen Informationen. Ein DynamicDOTItem ist
+	 * gÃ¼ltig, wenn der Ã¼bergebene Wert <code>propertyValue</code> vom Typ Integer, Double,
 	 * String oder Color ist. Ist er nicht von diesem Typ, so wird derzeit eine IllegalArgumentException
-	 * ausgelöst, da es sich höchstwahrscheinlich um eine unvollständige Erweiterung des Kodes
+	 * ausgelÃ¶st, da es sich hÃ¶chstwahrscheinlich um eine unvollstÃ¤ndige Erweiterung des Kodes
 	 * handelt: die vier Klassen sind gerade die Wertebereiche aller im Moment definierten
 	 * {@link DOTProperty Eigenschaften}.
 	 * 
@@ -76,13 +82,13 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 			_propertyValueClass = "Color";
 		} else {
 			_isValid = false;
-			throw new IllegalArgumentException( "Die Klasse des Property-Werts wird nicht unterstützt.");
+			throw new IllegalArgumentException( "Die Klasse des Property-Werts wird nicht unterstÃ¼tzt.");
 		}
 		_isValid = true;
 	}
 	
 	/**
-	 * Gibt die Attributgruppe zurück.
+	 * Gibt die Attributgruppe zurÃ¼ck.
 	 * 
 	 * @return die Attributgruppe 
 	 */
@@ -90,7 +96,7 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 		return _attributeGroup;
 	}
 	/**
-	 * Gibt den Aspekt zurück.
+	 * Gibt den Aspekt zurÃ¼ck.
 	 * 
 	 * @return den Aspekt
 	 */
@@ -99,7 +105,7 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 	}
 	
 	/**
-	 * Gibt den Namen des Attributs zurück.
+	 * Gibt den Namen des Attributs zurÃ¼ck.
 	 * 
 	 *  @return den Attributnamen
 	 */
@@ -108,7 +114,7 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 	}
 	
 	/**
-	 * Gibt die Beschreibung zurück.
+	 * Gibt die Beschreibung zurÃ¼ck.
 	 * 
 	 * @return die Beschreibung
 	 */
@@ -117,7 +123,7 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 	}
 	
 	/**
-	 * Gibt den Wert der Eigenschaft zurück. 
+	 * Gibt den Wert der Eigenschaft zurÃ¼ck. 
 	 * 
 	 * @return den Eigenschaftswert
 	 */
@@ -126,9 +132,9 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn das Objekt gültig ist, und <code>false</code> sonst. 
+	 * Gibt <code>true</code> zurÃ¼ck, wenn das Objekt gÃ¼ltig ist, und <code>false</code> sonst. 
 	 * 
-	 * @return ist das Item gültig?
+	 * @return ist das Item gÃ¼ltig?
 	 */
 	public boolean isValid() {
 		return _isValid;
@@ -201,7 +207,7 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 		}
 	}
 	/**
-	 * Speichert das Item unter dem übergebenen Knoten ab.
+	 * Speichert das Item unter dem Ã¼bergebenen Knoten ab.
 	 * 
 	 * @param prefs der Knoten, unter dem die Speicherung beginnt
 	 */
@@ -229,7 +235,7 @@ public class DynamicDOTItem implements DisplayObjectTypeItem, Comparable<Object>
 	}
 	
 	/**
-	 * Initialisiert das Item aus dem übergebenen Knoten.
+	 * Initialisiert das Item aus dem Ã¼bergebenen Knoten.
 	 * 
 	 * @param prefs der Knoten, unter dem die Initialisierung beginnt
 	 */

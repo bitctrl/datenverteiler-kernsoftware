@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.layerManagement;
@@ -29,26 +35,26 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 /**
- * Ein Klasse, die für einen geo-referenzierten Objekttyp festgelegt, wie dessen Objekte dargestellt werden sollen.
+ * Ein Klasse, die fÃ¼r einen geo-referenzierten Objekttyp festgelegt, wie dessen Objekte dargestellt werden sollen.
  * <p>
  * Ein Layer hat vier wesentliche Bestandteile: seinen Namen, der als eindeutige Kennung
  * verwendet wird, einen Infotext, den Namen einer von GeoReferenzObjekt abgeleiteten Klasse
- * und eine DOTCollection, die die Informationen über die Darstellung des Layers beinhaltet.
+ * und eine DOTCollection, die die Informationen Ã¼ber die Darstellung des Layers beinhaltet.
  *  
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  */
 public class Layer {
 	
 	/**
-	 * Ein Default-Konstruktor, der z.B. für die Initialisierung mit initializeFromPreferences()
-	 * benötigt wird.
+	 * Ein Default-Konstruktor, der z.B. fÃ¼r die Initialisierung mit initializeFromPreferences()
+	 * benÃ¶tigt wird.
 	 */
 	public Layer() {}
 
 	/**
-	 * Im folgenden Konstruktor werden dem Layer seine ersten drei Bestandteile mitgegeben, während die
-	 * DOTCollection über verschiedene Methoden später bearbeitet werden kann.
+	 * Im folgenden Konstruktor werden dem Layer seine ersten drei Bestandteile mitgegeben, wÃ¤hrend die
+	 * DOTCollection Ã¼ber verschiedene Methoden spÃ¤ter bearbeitet werden kann.
 	 * 
 	 * @param layerName der Name des Layers
 	 * @param info der Infotext zum Layer
@@ -61,7 +67,7 @@ public class Layer {
 	}
 	
 	/**
-	 * Der Getter für den Namen.
+	 * Der Getter fÃ¼r den Namen.
 	 * 
 	 * @return den Namen
 	 */
@@ -70,7 +76,7 @@ public class Layer {
 	}
 	
 	/**
-	 * Der Setter für den Namen.
+	 * Der Setter fÃ¼r den Namen.
 	 * 
 	 * @param layerName der Name des Layers
 	 */
@@ -79,7 +85,7 @@ public class Layer {
 	}
 	
 	/**
-	 * Der Getter für den Infotext.
+	 * Der Getter fÃ¼r den Infotext.
 	 * 
 	 * @return der Infotext des Layers
 	 */
@@ -88,7 +94,7 @@ public class Layer {
 	}
 	
 	/**
-	 * Der Setter für den Infotext.
+	 * Der Setter fÃ¼r den Infotext.
 	 * 
 	 * @param der Infotext
 	 */
@@ -97,7 +103,7 @@ public class Layer {
 	}
 	
 	/**
-	 * Der Getter für den Namen der von GeoReferenzObject abgeleiteten Klasse, deren Objekte
+	 * Der Getter fÃ¼r den Namen der von GeoReferenzObject abgeleiteten Klasse, deren Objekte
 	 * der Layer darstellt.
 	 * 
 	 * @return der Name der von GeoReferenzObject abgeleiteten Klasse
@@ -107,7 +113,7 @@ public class Layer {
 	}
 	
 	/**
-	 * Der Setter für den Namen der von GeoReferenzObject abgeleiteten Klasse, deren Objekte
+	 * Der Setter fÃ¼r den Namen der von GeoReferenzObject abgeleiteten Klasse, deren Objekte
 	 * der Layer darstellt.
 	 * 
 	 * @param geoReferenceType der Name der von GeoReferenzObject abgeleiteten Klasse
@@ -118,9 +124,9 @@ public class Layer {
 	
 	/**
 	 * Mit dieser Methode kann man der DOTCollection des Layers einen Darstellungstypen
-	 * hinzufügen, und muss dabei das Intervall für das er gelten soll, angeben. Der
+	 * hinzufÃ¼gen, und muss dabei das Intervall fÃ¼r das er gelten soll, angeben. Der
 	 * Darstellungstyp muss von <code>null</code> verschieden sein, und lowerScale muss mindestens
-	 * so groß wie upperScale sein (es handelt sich um die Xe der 1:X-Werte von Maßstäben).
+	 * so groÃŸ wie upperScale sein (es handelt sich um die Xe der 1:X-Werte von MaÃŸstÃ¤ben).
 	 */
 	public void addDisplayObjectType( DisplayObjectType type, int lowerScale, int upperScale) {
 		_dotCollection.addDisplayObjectType(type, lowerScale, upperScale);
@@ -134,7 +140,7 @@ public class Layer {
 	}
 
 	/**
-	 * Gibt die DOTCollection des Layers zurück.
+	 * Gibt die DOTCollection des Layers zurÃ¼ck.
 	 * 
 	 * @return die DOTCollection des Layers
 	 */
@@ -151,21 +157,21 @@ public class Layer {
     }
     
     /**
-     * Gibt einen Darstellungstypen für den übergebenen 1:X-Maßstabswert zurück, falls es in der 
-     * DOTCollection einen solchen für diesen Wert gibt. Gibt es mehr als einen, so ist nicht 
-     * festgelegt, welchen man erhält. Gibt es keinen, so erhält man null als Rückgabewert.
+     * Gibt einen Darstellungstypen fÃ¼r den Ã¼bergebenen 1:X-MaÃŸstabswert zurÃ¼ck, falls es in der 
+     * DOTCollection einen solchen fÃ¼r diesen Wert gibt. Gibt es mehr als einen, so ist nicht 
+     * festgelegt, welchen man erhÃ¤lt. Gibt es keinen, so erhÃ¤lt man null als RÃ¼ckgabewert.
      * 
-     * @param scale ein Maßstabswert
-     * @return ein zugehöriger Darstellungstyp
+     * @param scale ein MaÃŸstabswert
+     * @return ein zugehÃ¶riger Darstellungstyp
      */
 	public DisplayObjectType getDisplayObjectType( int scale) {
 		return _dotCollection.getDisplayObjectType(scale);
 	}
 	
 	/**
-	 * Speichert die Präferenzen des Layers unter dem übergebenen Knoten.
+	 * Speichert die PrÃ¤ferenzen des Layers unter dem Ã¼bergebenen Knoten.
 	 * 
-	 * @param prefs der Knoten, unter dem die Präferenzen gespeichert werden
+	 * @param prefs der Knoten, unter dem die PrÃ¤ferenzen gespeichert werden
 	 */
 	public void putPreferences ( Preferences prefs) {
 		deletePreferences( prefs);
@@ -181,9 +187,9 @@ public class Layer {
 	}
 	
 	/**
-	 * Löscht die Präferenzen des Layers unter dem Knoten.
+	 * LÃ¶scht die PrÃ¤ferenzen des Layers unter dem Knoten.
 	 * 
-	 * @param prefs der Knoten, unter dem die Präferenzen gelöscht werden
+	 * @param prefs der Knoten, unter dem die PrÃ¤ferenzen gelÃ¶scht werden
 	 */
 	public void deletePreferences (Preferences prefs) {
 		Preferences objectPrefs = prefs.node( prefs.absolutePath() + "/" + getName());
@@ -196,9 +202,9 @@ public class Layer {
         }
 	}
 	/**
-	 * Initialisiert den Layer aus den Präferenzen unter dem übergebenen Knoten.
+	 * Initialisiert den Layer aus den PrÃ¤ferenzen unter dem Ã¼bergebenen Knoten.
 	 * 
-	 * @param prefs der Knoten, unter dem die Präferenzen gesucht werden
+	 * @param prefs der Knoten, unter dem die PrÃ¤ferenzen gesucht werden
 	 */
 	public boolean initializeFromPreferences(Preferences prefs) {
 		_name = prefs.name();
@@ -210,7 +216,7 @@ public class Layer {
 	
 	/**
 	 * Gibt die Menge aller Namen aller Farben, die von den Darstellungstypen in der DOTCollection
-	 * des Layers verwendet werden, zurück.
+	 * des Layers verwendet werden, zurÃ¼ck.
 	 * 
 	 * @return die Namen aller benutzten Farben
 	 */
@@ -227,7 +233,7 @@ public class Layer {
 	}
 	
 	/**
-	 * Diese Methode gibt eine Kopie des Layers zurück.
+	 * Diese Methode gibt eine Kopie des Layers zurÃ¼ck.
 	 * 
 	 * @return die Kopie
 	 */

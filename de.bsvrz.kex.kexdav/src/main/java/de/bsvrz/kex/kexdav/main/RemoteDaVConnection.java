@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.main;
@@ -41,7 +47,7 @@ import java.util.Properties;
  * Verbindung zu einem Remote-Datenverteiler
  *
  * @author Kappich Systemberatung
- * @version $Revision: 12913 $
+ * @version $Revision$
  */
 public class RemoteDaVConnection {
 
@@ -67,7 +73,7 @@ public class RemoteDaVConnection {
 	 * Konstruktor
 	 *
 	 * @param parameters         Datenverteiler-Parameter
-	 * @param authenticationFile Datei mit Passwörtern
+	 * @param authenticationFile Datei mit PasswÃ¶rtern
 	 * @param localConnection    lokale Verbindung
 	 * @param manager            KExDaV-Verwaltung
 	 * @param plugins            Plugins zum Datenaustausch
@@ -94,7 +100,7 @@ public class RemoteDaVConnection {
 	/**
 	 * Versucht eine Verbindung herzustellen und startet den Datenaustausch. Falls keine Verbindung hergestellt werden kann, wird periodisch versucht die Verbindung neu herzustellen.
 	 *
-	 * @throws MissingAreaException ein benötigter Konfigurationsbereich fehlt
+	 * @throws MissingAreaException ein benÃ¶tigter Konfigurationsbereich fehlt
 	 */
 	public synchronized void start() throws MissingAreaException {
 		if(_remoteConnection != null) {
@@ -171,12 +177,12 @@ public class RemoteDaVConnection {
 	}
 
 	/**
-	 * Gibt das Passwort für die Dav-authentifizierung zurück
+	 * Gibt das Passwort fÃ¼r die Dav-authentifizierung zurÃ¼ck
 	 * @param davPid Datenverteiler-Pid
 	 * @param user Benutzer
 	 * @param authFile passwd-datei
 	 * @return Passwort
-	 * @throws MissingParameterException Falls die passwd kein solches Passwort enthält
+	 * @throws MissingParameterException Falls die passwd kein solches Passwort enthÃ¤lt
 	 */
 	private static String getUserPassword(final String davPid, final String user, final File authFile) throws MissingParameterException {
 		try {
@@ -189,7 +195,7 @@ public class RemoteDaVConnection {
 				userPassword = properties.getProperty(key);
 				if((userPassword == null) || (userPassword.length() == 0)) {
 					throw new MissingParameterException(
-							"Das Passwort für den Benutzer " + key + " ist in der Authentifizierungsdatei " + authFile.getAbsolutePath() + " nicht vorhanden"
+							"Das Passwort fÃ¼r den Benutzer " + key + " ist in der Authentifizierungsdatei " + authFile.getAbsolutePath() + " nicht vorhanden"
 					);
 				}
 			}
@@ -225,7 +231,7 @@ public class RemoteDaVConnection {
 	 *
 	 * @param parameter Parameter
 	 *
-	 * @throws MissingAreaException ein benötigter Konfigurationsbereich fehlt
+	 * @throws MissingAreaException ein benÃ¶tigter Konfigurationsbereich fehlt
 	 */
 	public synchronized void setNewParameter(final RemoteDaVParameter parameter) throws MissingAreaException {
 		if(_kExDaVExchange != null){
@@ -241,7 +247,7 @@ public class RemoteDaVConnection {
 	}
 
 	/**
-	 * Gibt die Wiederverbindungs-Wartezeit zurück
+	 * Gibt die Wiederverbindungs-Wartezeit zurÃ¼ck
 	 * @return Wartezeit
 	 * @param parameters
 	 */
@@ -252,7 +258,7 @@ public class RemoteDaVConnection {
 	}
 
 	/**
-	 * Löst den einmaligen Austausch von Parameterdaten aus
+	 * LÃ¶st den einmaligen Austausch von Parameterdaten aus
 	 *
 	 * @param direction Richtung
 	 */
@@ -263,7 +269,7 @@ public class RemoteDaVConnection {
 	}
 
 	/**
-	 * Gibt zurück, ob die Verbindung hergestellt ist
+	 * Gibt zurÃ¼ck, ob die Verbindung hergestellt ist
 	 * @return True wenn die Verbindung hergestellt ist
 	 */
 	public synchronized boolean isConnected() {

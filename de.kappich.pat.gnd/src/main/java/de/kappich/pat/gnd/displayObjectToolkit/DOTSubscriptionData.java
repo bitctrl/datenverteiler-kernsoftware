@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,24 +14,30 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
 /**
- * Ein DOTSubscriptionData kapselt die für eine Anmeldung auf dynamische Daten
+ * Ein DOTSubscriptionData kapselt die fÃ¼r eine Anmeldung auf dynamische Daten
  * notwendige Informationen, also Attributgrupope und Aspekt.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8076 $
+ * @version $Revision$
  *
  */
 public class DOTSubscriptionData implements Comparable<Object>{
 	
 	
 	/**
-	 * Ein DOTSubscriptionData kapselt die für eine Anmeldung auf dynamische Daten
+	 * Ein DOTSubscriptionData kapselt die fÃ¼r eine Anmeldung auf dynamische Daten
 	 * notwendige Informationen, d.h. Attributgrupope und Aspekt.
 	 * 
      * @param attributeGroup
@@ -44,7 +50,7 @@ public class DOTSubscriptionData implements Comparable<Object>{
     }
 	
 	/**
-     * Gibt die Attributgruppe zurück.
+     * Gibt die Attributgruppe zurÃ¼ck.
      * 
      * @return die Attributgruppe
      */
@@ -60,7 +66,7 @@ public class DOTSubscriptionData implements Comparable<Object>{
     	_attributeGroup = attributeGroup;
     }
 	/**
-     * Gibt den Aspekt zurück.  
+     * Gibt den Aspekt zurÃ¼ck.  
      * 
      * @return der Aspekt
      */

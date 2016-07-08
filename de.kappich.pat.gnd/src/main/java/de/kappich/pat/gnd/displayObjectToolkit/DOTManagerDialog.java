@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -64,10 +70,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 
 /**
- * Der Verwaltungsdialog f¸r alle Darstellungstypen.
+ * Der Verwaltungsdialog f√ºr alle Darstellungstypen.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8076 $
+ * @version $Revision$
  *
  */
 public class DOTManagerDialog {
@@ -78,9 +84,9 @@ public class DOTManagerDialog {
 	
 	private JFrame _frame = null;
 	
-	// Im Moment landen alle Frames, die zum Betrachten/Bearbeiten bestehender DOTs geˆffnet
-	// werden, in der folgenden Liste. Falls zu einem solchen DOT wieder ein Frame geˆffnet werden
-	// soll, so bekommt der bereits geˆffnete den Fokus.
+	// Im Moment landen alle Frames, die zum Betrachten/Bearbeiten bestehender DOTs ge√∂ffnet
+	// werden, in der folgenden Liste. Falls zu einem solchen DOT wieder ein Frame ge√∂ffnet werden
+	// soll, so bekommt der bereits ge√∂ffnete den Fokus.
 	final private Map<String, DOTDefinitionDialogFrame> _dotDefinitionDialogFrames = 
 		new HashMap<String, DOTDefinitionDialogFrame>();
 	
@@ -105,7 +111,7 @@ public class DOTManagerDialog {
 		
 		final JButton editButton = new JButton("Darstellungstyp bearbeiten");
 		final JButton copyButton = new JButton("Darstellungstyp kopieren");
-		final JButton deleteButton = new JButton("Darstellungstyp lˆschen");
+		final JButton deleteButton = new JButton("Darstellungstyp l√∂schen");
 		final JButton helpButton = new JButton("Hilfe");
 		
 		JPanel buttonPanelEast = new JPanel();
@@ -139,7 +145,7 @@ public class DOTManagerDialog {
 		buttonsPanelSouth.setLayout(new SpringLayout());
 		buttonsPanelSouth.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 		
-		JButton schliessenButton = new JButton("Dialog schlieﬂen");
+		JButton schliessenButton = new JButton("Dialog schlie√üen");
 		buttonsPanelSouth.add( schliessenButton);
 		SpringUtilities.makeCompactGrid(buttonsPanelSouth, 1, 20, 5);
 		
@@ -148,7 +154,7 @@ public class DOTManagerDialog {
 		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
 		table.setFillsViewportHeight(true);
 		table.setDefaultRenderer(Object.class, new ComboTableCellRendererLayer());
-		// vordefinierte Darstellungsobjekttypen d¸rfen nicht bearbeitet oder gelˆscht werden
+		// vordefinierte Darstellungsobjekttypen d√ºrfen nicht bearbeitet oder gel√∂scht werden
 		final ListSelectionModel selectionModel = table.getSelectionModel();
 		
 		ListSelectionListener listSelctionListener = new ListSelectionListener() {
@@ -156,31 +162,31 @@ public class DOTManagerDialog {
 				final int selectedRow = table.getSelectedRow();
 				if(selectedRow == -1) {
 					editButton.setEnabled(false);
-					editButton.setToolTipText( "Es ist kein Darstellungstyp ausgew‰hlt worden");
+					editButton.setToolTipText( "Es ist kein Darstellungstyp ausgew√§hlt worden");
 					copyButton.setEnabled(false);
-					copyButton.setToolTipText( "Es ist kein Darstellungstyp ausgew‰hlt worden");
+					copyButton.setToolTipText( "Es ist kein Darstellungstyp ausgew√§hlt worden");
 					deleteButton.setEnabled(false);
-					deleteButton.setToolTipText( "Es ist kein Darstellungstyp ausgew‰hlt worden");
+					deleteButton.setToolTipText( "Es ist kein Darstellungstyp ausgew√§hlt worden");
 				}
 				else {
 					final boolean changeable = _dotManager.isChangeable( _dotManager.getDisplayObjectType(selectedRow));
 					if(!changeable) {
 						editButton.setText("Darstellungstyp betrachten");
 						editButton.setEnabled(true);
-						editButton.setToolTipText("Details des ausgew‰hlten Darstellungstypen betrachten");
+						editButton.setToolTipText("Details des ausgew√§hlten Darstellungstypen betrachten");
 						copyButton.setEnabled(true);
-						copyButton.setToolTipText("Kopie des ausgew‰hlten Darstellungstypen erstellen und bearbeiten");
+						copyButton.setToolTipText("Kopie des ausgew√§hlten Darstellungstypen erstellen und bearbeiten");
 						deleteButton.setEnabled(false);
-						deleteButton.setToolTipText("Der ausgew‰hlte Darstellungstyp kann nicht gelˆscht werden");
+						deleteButton.setToolTipText("Der ausgew√§hlte Darstellungstyp kann nicht gel√∂scht werden");
 					}
 					else {
 						editButton.setText("Darstellungstypen bearbeiten");
 						editButton.setEnabled(true);
-						editButton.setToolTipText("Den ausgew‰hlten Darstellungstypen bearbeiten");
+						editButton.setToolTipText("Den ausgew√§hlten Darstellungstypen bearbeiten");
 						copyButton.setEnabled(true);
-						copyButton.setToolTipText("Kopie des ausgew‰hlten Darstellungstypen erstellen und bearbeiten");
+						copyButton.setToolTipText("Kopie des ausgew√§hlten Darstellungstypen erstellen und bearbeiten");
 						deleteButton.setEnabled(true);
-						deleteButton.setToolTipText("Den ausgew‰hlten Darstellungstypen lˆschen");
+						deleteButton.setToolTipText("Den ausgew√§hlten Darstellungstypen l√∂schen");
 					}
 					deleteButton.setEnabled(changeable);
 				}
@@ -207,18 +213,18 @@ public class DOTManagerDialog {
 		_frame.add(buttonsPanelSouth, BorderLayout.SOUTH);
 		_frame.add( new JScrollPane(table), BorderLayout.CENTER);
 		
-		// Neu, Bearbeiten, Kopieren, Lˆschen
+		// Neu, Bearbeiten, Kopieren, L√∂schen
 		ActionListener actionListenerNew = new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				final JLabel label = new JLabel( "Bitte w‰hlen Sie eine Art aus:");
+				final JLabel label = new JLabel( "Bitte w√§hlen Sie eine Art aus:");
 				final JPanel labelPanel = new JPanel();
 				labelPanel.setLayout( new SpringLayout());
 				labelPanel.add( label);
 				SpringUtilities.makeCompactGrid(labelPanel, 1, 20, 5);
 				final Vector<String> items = PluginManager.getAllPluginNames();
 				final JComboBox pluginComboBox = new JComboBox( items);
-				final JButton chooseButton = new JButton( "Ausw‰hlen");
+				final JButton chooseButton = new JButton( "Ausw√§hlen");
 				final JButton localHelpButton = new JButton("Hilfe");
 				final JPanel choicePanel = new JPanel();
 				choicePanel.setLayout( new SpringLayout());
@@ -233,7 +239,7 @@ public class DOTManagerDialog {
 				allPanel.add( choicePanel);
 				allPanel.setBorder( BorderFactory.createEmptyBorder(10, 10, 10, 10));
 				final JDialog newDialog = new JDialog(_frame, true);
-				newDialog.setTitle( "Art des Darstellungstyps ausw‰hlen");
+				newDialog.setTitle( "Art des Darstellungstyps ausw√§hlen");
 				newDialog.add( allPanel);
 				newDialog.pack();
 				newDialog.setLocation( 900, 80);
@@ -244,7 +250,7 @@ public class DOTManagerDialog {
 						if ( selectedItem == null) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Bitte w‰hlen Sie eine Zeile aus der Liste aus!",
+									"Bitte w√§hlen Sie eine Zeile aus der Liste aus!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -280,7 +286,7 @@ public class DOTManagerDialog {
 				if ( table.getSelectedRowCount() == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie mindestens eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie mindestens eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -299,7 +305,7 @@ public class DOTManagerDialog {
 					List<String> layerNames = LayerManager.getInstance().getLayersUsingTheDisplayObjectType( 
 							notRemovableDOT.getName());
 					String infoString = "Der Darstellungstyp '" + notRemovableDOT.getName() + 
-						"' kann nicht gelˆscht werden, weil er in folgenden Layern verwendet wird: ";
+						"' kann nicht gel√∂scht werden, weil er in folgenden Layern verwendet wird: ";
 					boolean commaNeeded = false;
 					for ( String layerName : layerNames) {
 						if ( commaNeeded ) {
@@ -325,7 +331,7 @@ public class DOTManagerDialog {
 				if ( table.getSelectedRowCount() != 1) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie genau eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie genau eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -346,7 +352,7 @@ public class DOTManagerDialog {
 				if ( table.getSelectedRowCount() != 1) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie genau eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie genau eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -395,8 +401,8 @@ public class DOTManagerDialog {
 			@Override
             public void windowClosing(WindowEvent e) {
 				/*
-				 * wenn nur noch ein einziges Fenster geˆffnet ist 
-				 * beendet sich das Programm beim Schlieﬂen des Fensters
+				 * wenn nur noch ein einziges Fenster ge√∂ffnet ist 
+				 * beendet sich das Programm beim Schlie√üen des Fensters
 				 */
 				final Frame[] frames = JFrame.getFrames();
 				int length = frames.length - 1;
@@ -423,7 +429,7 @@ public class DOTManagerDialog {
 	}
 	
 	/*
-	 * CellRenderer f¸r die JTable im Verwaltungsdialog
+	 * CellRenderer f√ºr die JTable im Verwaltungsdialog
 	 * 
 	 */
 	private class ComboTableCellRendererLayer extends DefaultTableCellRenderer {
@@ -479,7 +485,7 @@ public class DOTManagerDialog {
 	}
 	
 	/**
-	 * Schlieﬂt den DOTManagerDialog.
+	 * Schlie√üt den DOTManagerDialog.
 	 */
 	public void closeDialog() {
 		_frame.setVisible( false);
@@ -487,7 +493,7 @@ public class DOTManagerDialog {
 	}
 	
 	/**
-	 * Der ¸bergebene DOTDefinitionDialogFrame wurde geschlossen und muss aus der Verwaltung gelˆscht werden.
+	 * Der √ºbergebene DOTDefinitionDialogFrame wurde geschlossen und muss aus der Verwaltung gel√∂scht werden.
 	 * 
 	 * @param dotDDFrame der geschlossene DOTDefinitionDialogFrame
 	 */
@@ -499,7 +505,7 @@ public class DOTManagerDialog {
 	}
 	
 	/**
-	 * Der Darstellungstyp wurde ver‰ndert.
+	 * Der Darstellungstyp wurde ver√§ndert.
 	 * 
 	 * @param formerDisplayObjectType der alte Darstellungstyp
 	 * @param newDisplayObjectType der neue Darstellungstyp

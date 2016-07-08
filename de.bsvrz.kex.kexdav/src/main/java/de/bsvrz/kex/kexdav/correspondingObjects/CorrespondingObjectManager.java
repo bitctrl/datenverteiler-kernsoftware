@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.correspondingObjects;
@@ -50,7 +56,7 @@ import java.util.Map;
  * Verwaltung korrespondierender Objekte, der Konfigurationsbereiche um diese abzuspeichern, und der Plug-Ins um die Attributgruppen zu konvertieren
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9309 $
+ * @version $Revision$
  */
 public class CorrespondingObjectManager implements ObjectManagerInterface {
 
@@ -145,7 +151,7 @@ public class CorrespondingObjectManager implements ObjectManagerInterface {
 	}
 
 	/**
-	 * Gibt zu einer Pid ein korrespondierendes Objekt zurück, ohne dieses zu kopieren o.ä.
+	 * Gibt zu einer Pid ein korrespondierendes Objekt zurÃ¼ck, ohne dieses zu kopieren o.Ã¤.
 	 *
 	 * @param objectSpecification Pid
 	 *
@@ -198,7 +204,7 @@ public class CorrespondingObjectManager implements ObjectManagerInterface {
 			return configurationArea;
 		}
 		if(_remoteDefaultArea == null) {
-			throw new MissingAreaException("Es wurde für das Remote-System kein Konfigurationsbereich angegeben um Objekte vom Typ " + typePid + " anzulegen.");
+			throw new MissingAreaException("Es wurde fÃ¼r das Remote-System kein Konfigurationsbereich angegeben um Objekte vom Typ " + typePid + " anzulegen.");
 		}
 		return _remoteDefaultArea;
 	}
@@ -209,7 +215,7 @@ public class CorrespondingObjectManager implements ObjectManagerInterface {
 			return configurationArea;
 		}
 		if(_localDefaultArea == null) {
-			throw new MissingAreaException("Es wurde für das lokale System kein Konfigurationsbereich angegeben um Objekte vom Typ " + typePid + " anzulegen.");
+			throw new MissingAreaException("Es wurde fÃ¼r das lokale System kein Konfigurationsbereich angegeben um Objekte vom Typ " + typePid + " anzulegen.");
 		}
 		return _localDefaultArea;
 	}
@@ -221,16 +227,16 @@ public class CorrespondingObjectManager implements ObjectManagerInterface {
 		final AttributeGroupPair attributeGroupPair = new AttributeGroupPair(atgSource, atgTarget);
 		final KExDaVDataPlugin plugin = _plugins.get(attributeGroupPair);
 		if(plugin != null) return plugin;
-		throw new MissingPluginException("Kann kein Plugin für die " + attributeGroupPair.toString() + " finden.");
+		throw new MissingPluginException("Kann kein Plugin fÃ¼r die " + attributeGroupPair.toString() + " finden.");
 	}
 
 	/**
 	 * Setzt die Konfigurationsbereiche, in denen die Objekte angelegt werden sollen
 	 *
-	 * @param localDefaultArea  Standardbereich Lokal (oder null für keinen Standardbereich)
-	 * @param remoteDefaultArea Standardbereich Remote (oder null für keinen Standardbereich)
-	 * @param localAreas        Lokale zusätzliche Bereiche nach Typ
-	 * @param remoteAreas       Remote zusätzliche Bereiche nach Typ
+	 * @param localDefaultArea  Standardbereich Lokal (oder null fÃ¼r keinen Standardbereich)
+	 * @param remoteDefaultArea Standardbereich Remote (oder null fÃ¼r keinen Standardbereich)
+	 * @param localAreas        Lokale zusÃ¤tzliche Bereiche nach Typ
+	 * @param remoteAreas       Remote zusÃ¤tzliche Bereiche nach Typ
 	 */
 	public void setConfigurationAreas(
 			final ConfigurationArea localDefaultArea,
@@ -246,10 +252,10 @@ public class CorrespondingObjectManager implements ObjectManagerInterface {
 	}
 
 	/**
-	 * Löscht Objekte aus den Austauschbereichen, die dort nichts zu suchen haben.
-	 * @param onRemoteSystem true wenn das Objekt auf dem Remotesystem, false wenn es auf dem Lokalsystem gelöscht werden soll
+	 * LÃ¶scht Objekte aus den Austauschbereichen, die dort nichts zu suchen haben.
+	 * @param onRemoteSystem true wenn das Objekt auf dem Remotesystem, false wenn es auf dem Lokalsystem gelÃ¶scht werden soll
 	 * @param targetArea Standardbereich
-	 * @param additionalTargetAreas Zusätzliche Bereiche
+	 * @param additionalTargetAreas ZusÃ¤tzliche Bereiche
 	 */
 	private void removeIllegalObjects(
 			final boolean onRemoteSystem, final ConfigurationArea targetArea, final Collection<ConfigurationArea> additionalTargetAreas) {
@@ -270,14 +276,14 @@ public class CorrespondingObjectManager implements ObjectManagerInterface {
 	}
 
 	/**
-	 * Löscht ein Objekt. Objekte werden nur gelöscht, wenn sie ausgetauscht wurden, dynamische Objekte sind und eine Pid haben.
-	 * @param onRemoteSystem true wenn das Objekt auf dem Remotesystem, false wenn es auf dem Lokalsystem gelöscht werden soll
+	 * LÃ¶scht ein Objekt. Objekte werden nur gelÃ¶scht, wenn sie ausgetauscht wurden, dynamische Objekte sind und eine Pid haben.
+	 * @param onRemoteSystem true wenn das Objekt auf dem Remotesystem, false wenn es auf dem Lokalsystem gelÃ¶scht werden soll
 	 * @param systemObject Objekt.
 	 */
 	private void removeObject(final boolean onRemoteSystem, final SystemObject systemObject) throws MissingKExDaVAttributeGroupException {
 		if(systemObject instanceof DynamicObject) {
 			final CorrespondingObject correspondingObject = getObject(ObjectSpecification.create(systemObject, _manager));
-			// Falls das Objekt im Austauschbereich nur in einem System existiert (also im Austauschbereich) -> Löschen
+			// Falls das Objekt im Austauschbereich nur in einem System existiert (also im Austauschbereich) -> LÃ¶schen
 			try {
 				final KExDaVObject remoteObject = correspondingObject.getRemoteObject();
 				final KExDaVObject localObject = correspondingObject.getLocalObject();
@@ -289,7 +295,7 @@ public class CorrespondingObjectManager implements ObjectManagerInterface {
 				}
 			}
 			catch(ConfigurationChangeException e) {
-				_manager.addMessage(Message.newMajor("Kann ein dynamisches Objekt nicht löschen", e));
+				_manager.addMessage(Message.newMajor("Kann ein dynamisches Objekt nicht lÃ¶schen", e));
 			}
 		}
 	}

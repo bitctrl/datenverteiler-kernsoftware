@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.pluginInterfaces;
 
@@ -30,58 +36,58 @@ import java.util.Set;
 import java.util.prefs.Preferences;
 
 /**
- * Das Interface für die Darstellungstypen der Plugins.
+ * Das Interface fÃ¼r die Darstellungstypen der Plugins.
  * <p>
  * Der Name eines Darstellungstypen wird bei der Definition vom Benutzer festgelegt. Er wird als 
  * eindeutiges Erkennungszeichen in den Verwaltungsdialogen verwendet, und auch bei der Anzeige in der Legende.
- * Außerdem hat ein Darstellungstyp eine 'Info', die als Tooltipp etwa in der Legende benutzt wird.
+ * AuÃŸerdem hat ein Darstellungstyp eine 'Info', die als Tooltipp etwa in der Legende benutzt wird.
  * <p>
  * Ein Darstellungstyp legt fest wie die {@link DisplayObject DisplayObjects} eines Layers dargestellt
- * werden. Darstellungstypen können {@link PrimitiveForm Grundfiguren} besitzen, müssen es aber nicht.
- * Beispiele für Darstellungstypen ohne Grundfiguren sind {@link DOTArea}, {@link DOTComplex} und 
- * {@link DOTLine}. Bei diesen Klassen hängen alle {@link DOTProperty Eigenschaften} der Visualisierung 
- * (z.B. die Farbe) direkt am Darstellungstypen. Anders verhält es sich bei der Klasse {@link DOTPoint}: 
- * dieser Darstellungstyp hat selbst keine Eigenschaften, sondern ausschließlich benutzerdefinierte 
- * Grundfiguren (z.B. ein Rechteck festgelegter Größe) und nur an diesen hängen die Eigenschaften.
- * Bei der Implementation sollte der Zugriff auf Eigenschaften, die direkt am Darstellungstypen hängen,
- * durch <code>null</code> als Wert für die Grundfigur geschehen.
+ * werden. Darstellungstypen kÃ¶nnen {@link PrimitiveForm Grundfiguren} besitzen, mÃ¼ssen es aber nicht.
+ * Beispiele fÃ¼r Darstellungstypen ohne Grundfiguren sind {@link DOTArea}, {@link DOTComplex} und 
+ * {@link DOTLine}. Bei diesen Klassen hÃ¤ngen alle {@link DOTProperty Eigenschaften} der Visualisierung 
+ * (z.B. die Farbe) direkt am Darstellungstypen. Anders verhÃ¤lt es sich bei der Klasse {@link DOTPoint}: 
+ * dieser Darstellungstyp hat selbst keine Eigenschaften, sondern ausschlieÃŸlich benutzerdefinierte 
+ * Grundfiguren (z.B. ein Rechteck festgelegter GrÃ¶ÃŸe) und nur an diesen hÃ¤ngen die Eigenschaften.
+ * Bei der Implementation sollte der Zugriff auf Eigenschaften, die direkt am Darstellungstypen hÃ¤ngen,
+ * durch <code>null</code> als Wert fÃ¼r die Grundfigur geschehen.
  * <p>
- * Jede Grundfigur hat einen Typ, der einerseits definiernde Größen (z.B. den Radius bei dem Typ Kreis), 
- * aber auch die möglichen Visualisierungs-Eigenschaften festlegt (z.B. die Füllfarbe).
+ * Jede Grundfigur hat einen Typ, der einerseits definiernde GrÃ¶ÃŸen (z.B. den Radius bei dem Typ Kreis), 
+ * aber auch die mÃ¶glichen Visualisierungs-Eigenschaften festlegt (z.B. die FÃ¼llfarbe).
  * <p>
- * Eine Visualisierungs-Eigenschaft ist entweder statisch, d.h. unveränderbar, oder dynamisch, d.h.
- * sie verändert sich in Abhängigkeit von Online-Daten.
+ * Eine Visualisierungs-Eigenschaft ist entweder statisch, d.h. unverÃ¤nderbar, oder dynamisch, d.h.
+ * sie verÃ¤ndert sich in AbhÃ¤ngigkeit von Online-Daten.
  *  
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 public interface DisplayObjectType {
 	
 	
 	/**
-	 * Getter für den Namen.
+	 * Getter fÃ¼r den Namen.
 	 * 
 	 * @return der Name
 	 */
 	public String getName();
 	
 	/**
-	 * Setter für den Namen.
+	 * Setter fÃ¼r den Namen.
 	 * 
 	 * @param der Name
 	 */
 	public void setName( String name);
 	
 	/**
-	 * Getter für die Info.
+	 * Getter fÃ¼r die Info.
 	 * 
 	 * @return die Kurzinfo
 	 */
 	public String getInfo();
 	
 	/**
-	 *  Setter für die Info.
+	 *  Setter fÃ¼r die Info.
 	 *  
 	 * @param info die Kurzinfo
 	 */
@@ -95,7 +101,7 @@ public interface DisplayObjectType {
 	public Set<String> getPrimitiveFormNames();
 	
 	/**
-	 * Gibt den Grundfigurtyp der Grundfigur zurück.
+	 * Gibt den Grundfigurtyp der Grundfigur zurÃ¼ck.
 	 * 
 	 * @param primitiveFormName der Name einer Grundfigur
 	 * @return der Typ der Grundfigur 
@@ -103,7 +109,7 @@ public interface DisplayObjectType {
 	public String getPrimitiveFormType( String primitiveFormName);
 	
 	/**
-	 * Gibt die Kurzinfo zu der Grundfigur zurück.
+	 * Gibt die Kurzinfo zu der Grundfigur zurÃ¼ck.
 	 * 
 	 * @param primitiveFormName der Name einer Grundfigur
 	 * @return die Kurzinfo zu der Grundfigur
@@ -111,7 +117,7 @@ public interface DisplayObjectType {
 	public String getPrimitiveFormInfo( String primitiveFormName);
 	
 	/**
-	 * Löscht die entsprechende Grundfigur.
+	 * LÃ¶scht die entsprechende Grundfigur.
 	 * 
 	 * @param primitiveFormName der Name einer Grundfigur
 	 */
@@ -126,8 +132,8 @@ public interface DisplayObjectType {
 	public List<DOTProperty> getDynamicProperties( String primitiveFormName);
 	
 	/**
-	 * Ist die DOTProperty zu der als Object übergebenen Grundfigur statisch, so erhält man
-	 * <code>true</code> zurück; andernfalls ist die Eigenschaft dynamisch und man erhält
+	 * Ist die DOTProperty zu der als Object Ã¼bergebenen Grundfigur statisch, so erhÃ¤lt man
+	 * <code>true</code> zurÃ¼ck; andernfalls ist die Eigenschaft dynamisch und man erhÃ¤lt
 	 * <code>false</code>.
 	 * 
 	 * @param primitiveFormName der Name einer Grundfigur oder <code>null</code>
@@ -137,9 +143,9 @@ public interface DisplayObjectType {
 	public Boolean isPropertyStatic( String primitiveFormName, DOTProperty property);
 	
 	/**
-	 * Setzt die Eigenschaft statisch bzw dynamisch zu sein der übergebenen Eigenschaft, die gegebenenfalls 
-	 * zu der genannten Grundfigur gehört. Diese Methode sollte so implementiert werden, dass sie beim Ändern 
-	 * die nicht mehr gültigen Werte der Eigenschaft nicht löscht (dadurch wird es möglich, dass der Benutzer 
+	 * Setzt die Eigenschaft statisch bzw dynamisch zu sein der Ã¼bergebenen Eigenschaft, die gegebenenfalls 
+	 * zu der genannten Grundfigur gehÃ¶rt. Diese Methode sollte so implementiert werden, dass sie beim Ã„ndern 
+	 * die nicht mehr gÃ¼ltigen Werte der Eigenschaft nicht lÃ¶scht (dadurch wird es mÃ¶glich, dass der Benutzer 
 	 * diese zwischen statisch und dynamisch hin- und herschaltet ohne seine vorherigen Einstellungen zu
 	 * verlieren).
 	 * 
@@ -150,7 +156,7 @@ public interface DisplayObjectType {
 	public void setPropertyStatic( String primitiveFormName, DOTProperty property, boolean b);
 	
 	/**
-	 * Gibt den Wert der übergebenen DOTProperty zurück, die gegebenenfalls zu der genannten Grundfigur gehört.
+	 * Gibt den Wert der Ã¼bergebenen DOTProperty zurÃ¼ck, die gegebenenfalls zu der genannten Grundfigur gehÃ¶rt.
 	 *  
 	 *  @param primitiveFormName der Name einer Grundfigur oder <code>null</code>
 	 *  @param property eine Eigenschaft
@@ -159,9 +165,9 @@ public interface DisplayObjectType {
 	public Object getValueOfStaticProperty( String primitiveFormName, DOTProperty property);
 	
 	/**
-	 * Setzt den Wert der übergebenen DOTProperty, die gegebenenfalls zu der genannten Grundfigur gehört.
-	 * Diese Methode sollte so implementiert werden, dass sie auch auch dann den übergebenen Wert behält, 
-	 * wenn die DOTProperty aktuell nicht statisch ist (dadurch wird es möglich, dass der Benutzer 
+	 * Setzt den Wert der Ã¼bergebenen DOTProperty, die gegebenenfalls zu der genannten Grundfigur gehÃ¶rt.
+	 * Diese Methode sollte so implementiert werden, dass sie auch auch dann den Ã¼bergebenen Wert behÃ¤lt, 
+	 * wenn die DOTProperty aktuell nicht statisch ist (dadurch wird es mÃ¶glich, dass der Benutzer 
 	 * diese zwischen statisch und dynamisch hin- und herschaltet ohne seine vorherigen Einstellungen zu
 	 * verlieren). 
 	 * 
@@ -172,10 +178,10 @@ public interface DisplayObjectType {
 	public void setValueOfStaticProperty( String primitiveFormName, DOTProperty property, Object value);
 	
 	/**
-	 * Setzt den Wert der übergebenen DOTProperty, die gegebenenfalls zu der genannten Grundfigur gehört, für 
-	 * das übergebene Intervall auf das übergebene DisplayObjectTypeItem. Diese Methode sollte so implementiert 
-	 * werden, dass sie auch auch dann den übergebenen Wert behält, wenn die DOTProperty aktuell nicht dynamisch ist
-	 * (dadurch wird es möglich, dass der Benutzer diese zwischen statisch und dynamisch hin- und herschaltet 
+	 * Setzt den Wert der Ã¼bergebenen DOTProperty, die gegebenenfalls zu der genannten Grundfigur gehÃ¶rt, fÃ¼r 
+	 * das Ã¼bergebene Intervall auf das Ã¼bergebene DisplayObjectTypeItem. Diese Methode sollte so implementiert 
+	 * werden, dass sie auch auch dann den Ã¼bergebenen Wert behÃ¤lt, wenn die DOTProperty aktuell nicht dynamisch ist
+	 * (dadurch wird es mÃ¶glich, dass der Benutzer diese zwischen statisch und dynamisch hin- und herschaltet 
 	 * ohne seine vorherigen Einstellungen zu verlieren). 
 	 * 
 	 *  @param primitiveFormName der Name einer Grundfigur oder <code>null</code>
@@ -188,10 +194,10 @@ public interface DisplayObjectType {
 			DisplayObjectTypeItem dItem, Double lowerBound, Double upperBound);
 	
 	/**
-	 * Macht eine tiefe Kopie des DisplayObjectTypes und setzt den Namen um, falls der übergebene String nicht
+	 * Macht eine tiefe Kopie des DisplayObjectTypes und setzt den Namen um, falls der Ã¼bergebene String nicht
 	 * <code>null</code> ist. Diese Methode wird beim Erstellen und Bearbeiten von Darstellungstypen verwendet: 
-	 * dem Bearbeitungs-Dialog wird eine tiefe Kopie übergeben und alle Änderungen werden an diesem 
-	 * Objekt durchgeführt.
+	 * dem Bearbeitungs-Dialog wird eine tiefe Kopie Ã¼bergeben und alle Ã„nderungen werden an diesem 
+	 * Objekt durchgefÃ¼hrt.
 	 * 
 	 * @param name der neue Name oder <code>null</code>
 	 * @return eine Kopie
@@ -199,50 +205,50 @@ public interface DisplayObjectType {
 	public DisplayObjectType getCopy( String name);
 	
 	/**
-	 * Speichert die Informationen des DisplayObjectTypes unter dem übergebenen Knoten.
+	 * Speichert die Informationen des DisplayObjectTypes unter dem Ã¼bergebenen Knoten.
 	 * 
-	 * @param prefs der Knoten, unter dem die Speicherung durchgeführt werden soll
+	 * @param prefs der Knoten, unter dem die Speicherung durchgefÃ¼hrt werden soll
 	 */
 	public void putPreferences(Preferences prefs);
 	
 	/**
-	 * Initialisiert den DisplayObjectType aus dem übergebenen Knoten.
+	 * Initialisiert den DisplayObjectType aus dem Ã¼bergebenen Knoten.
 	 * 
-	 * @param prefs der Knoten, unter dem die Initialisierung durchgeführt werden soll
+	 * @param prefs der Knoten, unter dem die Initialisierung durchgefÃ¼hrt werden soll
 	 */
 	public void initializeFromPreferences(Preferences prefs);
 	
 	/**
-	 * Löscht den DisplayObjectType unter dem übergebenen Knoten.
+	 * LÃ¶scht den DisplayObjectType unter dem Ã¼bergebenen Knoten.
 	 * 
-	 * @param prefs der Knoten, unter dem die Löschung durchgeführt werden soll
+	 * @param prefs der Knoten, unter dem die LÃ¶schung durchgefÃ¼hrt werden soll
 	 */
 	public void deletePreferences(Preferences prefs);
 	
 	/**
-	 * Gibt die Selebstbeschreibung des Plugins, zu dem dieser DisplayObjectType gehört, zurück.
+	 * Gibt die Selebstbeschreibung des Plugins, zu dem dieser DisplayObjectType gehÃ¶rt, zurÃ¼ck.
 	 * 
 	 * @return die Selbstbeschreibung
 	 */
 	public DisplayObjectTypePlugin getDisplayObjectTypePlugin();
 	
 	/**
-	 * Erzeugt den Teilbaum der Legende, für diesen Darstellungstyp.
+	 * Erzeugt den Teilbaum der Legende, fÃ¼r diesen Darstellungstyp.
 	 * 
 	 * @return der Teilbaum der Legende
 	 */
 	public LegendTreeNodes getLegendTreeNodes();
 	
 	/**
-	 * Gibt alle Anmeldungen, die dieser DisplayObjectTyp benötigt, zurück.
+	 * Gibt alle Anmeldungen, die dieser DisplayObjectTyp benÃ¶tigt, zurÃ¼ck.
 	 * 
 	 * @return alle Anmeldungen 
 	 */
 	public Set<DOTSubscriptionData> getSubscriptionData();
 	
 	/**
-	 * Gibt die Attributnamen, für die Werte benötigt werden, zu der übergebenen Eigenschaft
-	 * und der übergebenen Anmeldung zurück.
+	 * Gibt die Attributnamen, fÃ¼r die Werte benÃ¶tigt werden, zu der Ã¼bergebenen Eigenschaft
+	 * und der Ã¼bergebenen Anmeldung zurÃ¼ck.
 	 * 
 	 *  @param primitiveFormName der Name einer Grundfigur oder <code>null</code>
 	 *  @param property eine Eigenschaft
@@ -253,18 +259,18 @@ public interface DisplayObjectType {
 			DOTSubscriptionData subscriptionData);
 	
 	/**
-	 * Gibt die Namen aller von diesem DisplayObject verwendeten Farben zurück.
+	 * Gibt die Namen aller von diesem DisplayObject verwendeten Farben zurÃ¼ck.
 	 * 
 	 * @return Die Menge aller Namen aller benutzten Farben
 	 */
 	public Set<String> getUsedColors();
 	
 	/**
-	 * Ein Interface für die kleinste Einheit beim Zuordnen von Anmeldedaten (Attributgruppe, Aspekt,
+	 * Ein Interface fÃ¼r die kleinste Einheit beim Zuordnen von Anmeldedaten (Attributgruppe, Aspekt,
 	 * Attribut) zu Eigenschaftswerten und deren Beschreibung.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 8080 $
+	 * @version $Revision$
 	 *
 	 */
 	public interface DisplayObjectTypeItem {
@@ -281,19 +287,19 @@ public interface DisplayObjectType {
 		 */
 		public String getAspect();
 		/**
-		 * Getter für den Attributnamen.
+		 * Getter fÃ¼r den Attributnamen.
 		 * 
 		 * @return der Attributname
 		 */
 		public String getAttributeName();
 		/**
-		 * Getter für die Beschreibung.
+		 * Getter fÃ¼r die Beschreibung.
 		 * 
 		 * @return die Beschreibung
 		 */
 		public String getDescription();
 		/**
-		 * Getter für den aktuellen Wert der Eigenschaft, für die dieser DisplayObjectTypeItem Daten verwaltet.
+		 * Getter fÃ¼r den aktuellen Wert der Eigenschaft, fÃ¼r die dieser DisplayObjectTypeItem Daten verwaltet.
 		 * 
 		 * @return der Wert der Eigenscahft
 		 */
@@ -307,9 +313,9 @@ public interface DisplayObjectType {
 	}
 	
 	/**
-	 * Ist der Rückgabewert nicht null, so ist dieser DisplayObjectTypeItem für die übergebenen Daten anwendbar.
+	 * Ist der RÃ¼ckgabewert nicht null, so ist dieser DisplayObjectTypeItem fÃ¼r die Ã¼bergebenen Daten anwendbar.
 	 * Diese Methode wird von einem {@link DisplayObject} aufgerufen, wenn neue Online-Daten vorliegen, die
-	 * eine Änderung der Visualisierungs-Eigenschaft zur Folge haben könnte. Der im Rückgabewert enthaltene
+	 * eine Ã„nderung der Visualisierungs-Eigenschaft zur Folge haben kÃ¶nnte. Der im RÃ¼ckgabewert enthaltene
 	 * Wert (z.B. eine Farbe) wird dann vom {@link DisplayObjectTypePainter Painter} zur Visualisierung verwendet.
 	 * 
 	 * @param primitiveFormName der Name einer Grundfigur oder <code>null</code> 
@@ -323,10 +329,10 @@ public interface DisplayObjectType {
 			String attributeName, double value);
 	
 	/**
-	 * Ist der Rückgabewert nicht null, so ist dieser DisplayObjectTypeItem für die übergebenen Daten anwendbar.
+	 * Ist der RÃ¼ckgabewert nicht null, so ist dieser DisplayObjectTypeItem fÃ¼r die Ã¼bergebenen Daten anwendbar.
 	 * Diese Methode wird von einem {@link DisplayObject} aufgerufen, wenn zur gegebenen {@link DOTSubscriptionData
-	 * Anmeldung} neue Daten geschickt wurden, die aber keine Werte für die Attribute enthalten, sondern Informationen
-	 * über den {@link DataState Zustand}. Der im Rückgabewert enthaltene Wert (z.B. eine Farbe) wird dann vom 
+	 * Anmeldung} neue Daten geschickt wurden, die aber keine Werte fÃ¼r die Attribute enthalten, sondern Informationen
+	 * Ã¼ber den {@link DataState Zustand}. Der im RÃ¼ckgabewert enthaltene Wert (z.B. eine Farbe) wird dann vom 
 	 * {@link DisplayObjectTypePainter Painter} zur Visualisierung verwendet.
 	 * 
 	 * @param primitiveFormName der Name einer Grundfigur oder <code>null</code>

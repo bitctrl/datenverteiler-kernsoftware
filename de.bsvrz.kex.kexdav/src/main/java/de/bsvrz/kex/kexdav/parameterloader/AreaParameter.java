@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.parameterloader;
@@ -26,10 +32,10 @@ import de.bsvrz.dav.daf.main.config.SystemObjectType;
 import java.util.*;
 
 /**
- * Parameter zur Festlegung der zusätzlichen Austausch-Bereiche
+ * Parameter zur Festlegung der zusÃ¤tzlichen Austausch-Bereiche
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9193 $
+ * @version $Revision$
  */
 public class AreaParameter {
 
@@ -52,7 +58,7 @@ public class AreaParameter {
 	}
 
 	/**
-	 * Gibt den Konfigurationsbereich zurück
+	 * Gibt den Konfigurationsbereich zurÃ¼ck
 	 * @return den Konfigurationsbereich
 	 */
 	public String getConfigurationAreaPid() {
@@ -60,7 +66,7 @@ public class AreaParameter {
 	}
 
 	/**
-	 * Gibt die Typen zurück
+	 * Gibt die Typen zurÃ¼ck
 	 * @return die Typen
 	 */
 	public List<SystemObjectType> getTypes() {

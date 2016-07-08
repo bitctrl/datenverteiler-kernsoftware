@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.main;
@@ -38,11 +44,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Diese Klasse kümmert sich darum, beim Eintreffen neuer Parameter die einzelnen Klassen zum Austausch von Daten, Parametern, Objekten usw. zu instantiieren
+ * Diese Klasse kÃ¼mmert sich darum, beim Eintreffen neuer Parameter die einzelnen Klassen zum Austausch von Daten, Parametern, Objekten usw. zu instantiieren
  * und gegebenenfalls wieder zu entsorgen. Diese Klasse gibt es einmal pro Remote-DaV-Verbindung
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9270 $
+ * @version $Revision$
  */
 class KExDaVExchange {
 
@@ -95,7 +101,7 @@ class KExDaVExchange {
 	 * Startet den Austausch
 	 *
 	 * @throws de.bsvrz.kex.kexdav.correspondingObjects.MissingAreaException
-	 *          falls kein gültiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benötigt wurde.
+	 *          falls kein gÃ¼ltiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benÃ¶tigt wurde.
 	 */
 	public void start() throws MissingAreaException {
 		refreshParameters(_parameter);
@@ -111,7 +117,7 @@ class KExDaVExchange {
 	}
 
 	/**
-	 * Löst den Trigger für den Parameteraustausch aus
+	 * LÃ¶st den Trigger fÃ¼r den Parameteraustausch aus
 	 * @param direction Austauschrichtung
 	 */
 	public void triggerParameterExchange(final Direction direction) {
@@ -126,7 +132,7 @@ class KExDaVExchange {
 	 * @param newParameters Neue Parameter, die die auszutauschenden Daten und Objekte festlegen
 	 *
 	 * @throws de.bsvrz.kex.kexdav.correspondingObjects.MissingAreaException
-	 *          falls kein gültiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benötigt wurde.
+	 *          falls kein gÃ¼ltiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benÃ¶tigt wurde.
 	 */
 	public void setParameter(final RemoteDaVParameter newParameters) throws MissingAreaException {
 		refreshParameters(newParameters);
@@ -136,7 +142,7 @@ class KExDaVExchange {
 	/**
 	 * Aktualisiert die Parameter
 	 * @param parameters Neue Parameter
-	 * @throws MissingAreaException Ein benötigter KB fehlt
+	 * @throws MissingAreaException Ein benÃ¶tigter KB fehlt
 	 */
 	private void refreshParameters(final RemoteDaVParameter parameters) throws MissingAreaException {
 		refreshConfigurationAreas(parameters);
@@ -149,7 +155,7 @@ class KExDaVExchange {
 	/**
 	 * Aktualisiert die Konfigurationsbereiche und gibt diese an den {@link CorrespondingObjectManager} weiter
 	 * @param parameters Parameter
-	 * @throws MissingAreaException Es sing ungültige Konfigurationsbereiche in den Parametern
+	 * @throws MissingAreaException Es sing ungÃ¼ltige Konfigurationsbereiche in den Parametern
 	 */
 	private void refreshConfigurationAreas(final RemoteDaVParameter parameters) throws MissingAreaException {
 
@@ -160,17 +166,17 @@ class KExDaVExchange {
 
 
 		if(localArea == null) {
-			_manager.addMessage(Message.newMinor("Es wurde kein Default-Konfigurationsbereich für die lokale Verbindung angegeben"));
+			_manager.addMessage(Message.newMinor("Es wurde kein Default-Konfigurationsbereich fÃ¼r die lokale Verbindung angegeben"));
 		}
 
 		ConfigurationArea remoteArea = null;
 		if(parameters.getRemoteArea().length() == 0) {
-			_manager.addMessage(Message.newMinor("Es wurde kein Default-Konfigurationsbereich für die Remote-Verbindung angegeben"));
+			_manager.addMessage(Message.newMinor("Es wurde kein Default-Konfigurationsbereich fÃ¼r die Remote-Verbindung angegeben"));
 		}
 		else {
 			remoteArea = _remoteConnection.getDataModel().getConfigurationArea(parameters.getRemoteArea());
 			if(remoteArea == null) {
-				throw new MissingAreaException("Es wurde ein ungültiger Default-Konfigurationsbereich für die Remote-Verbindung angegeben");
+				throw new MissingAreaException("Es wurde ein ungÃ¼ltiger Default-Konfigurationsbereich fÃ¼r die Remote-Verbindung angegeben");
 			}
 		}
 
@@ -188,7 +194,7 @@ class KExDaVExchange {
 			}
 			else {
 				throw new MissingAreaException(
-						"Es wurde ein ungültiger Konfigurationsbereich für die lokale Verbindung angegeben: " + parameter.getConfigurationAreaPid()
+						"Es wurde ein ungÃ¼ltiger Konfigurationsbereich fÃ¼r die lokale Verbindung angegeben: " + parameter.getConfigurationAreaPid()
 				);
 			}
 		}
@@ -204,7 +210,7 @@ class KExDaVExchange {
 			}
 			else {
 				throw new MissingAreaException(
-						"Es wurde ein ungültiger Konfigurationsbereich für die Remote-Verbindung angegeben: " + parameter.getConfigurationAreaPid()
+						"Es wurde ein ungÃ¼ltiger Konfigurationsbereich fÃ¼r die Remote-Verbindung angegeben: " + parameter.getConfigurationAreaPid()
 				);
 			}
 		}
@@ -216,7 +222,7 @@ class KExDaVExchange {
 	}
 
 	/**
-	 * Prüft ob ein Konfigurationsbereich beschreibbar ist und wirfst sonst einen Fehler
+	 * PrÃ¼ft ob ein Konfigurationsbereich beschreibbar ist und wirfst sonst einen Fehler
 	 * @param connection Verbindung
 	 * @param configurationArea KB
 	 * @throws MissingAreaException Falls der KB nicht beschreibbar ist

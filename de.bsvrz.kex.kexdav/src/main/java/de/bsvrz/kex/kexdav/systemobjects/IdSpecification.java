@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.systemobjects;
@@ -31,20 +37,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Die IdSpecification wählt Systemobjekte aus, die entweder die angenommene Id haben oder von einem Objekt kopiert wurden, das diese Id hat.
+ * Die IdSpecification wÃ¤hlt Systemobjekte aus, die entweder die angenommene Id haben oder von einem Objekt kopiert wurden, das diese Id hat.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9238 $
+ * @version $Revision$
  */
 public class IdSpecification extends ObjectSpecification {
 
 	private final long _id;
 
 	/**
-	 * Dieser Cache ist static und wird für alle Verbindungen benutzt, kann also höchstwahrscheinlich viel Unsinn enthalten. Daher muss alles was damit ermittelt
-	 * wurde extra überprüft werden. Auf der anderen Seite sollte der Geschwindigkeitsvorteil enorm sein, weil sonst ständig alle dynamischen Objekte durchsucht
-	 * werden müssten.
-	 * <p/>
+	 * Dieser Cache ist static und wird fÃ¼r alle Verbindungen benutzt, kann also hÃ¶chstwahrscheinlich viel Unsinn enthalten. Daher muss alles was damit ermittelt
+	 * wurde extra Ã¼berprÃ¼ft werden. Auf der anderen Seite sollte der Geschwindigkeitsvorteil enorm sein, weil sonst stÃ¤ndig alle dynamischen Objekte durchsucht
+	 * werden mÃ¼ssten.
+	 * <p>
 	 * Enthalten sind Originale Objekt-Ids zu Echten Objekt-Ids
 	 */
 	private static final Map<Long, Long> _idCache = new HashMap<Long, Long>();
@@ -73,7 +79,7 @@ public class IdSpecification extends ObjectSpecification {
 
 		try {
 
-			// versuchen, etwas aus dem Cache zu lesen. Die Informationen darin können falsch oder veraltet sein, müssen also exakt geprüft werden
+			// versuchen, etwas aus dem Cache zu lesen. Die Informationen darin kÃ¶nnen falsch oder veraltet sein, mÃ¼ssen also exakt geprÃ¼ft werden
 			final Long maybeObjectId = _idCache.get(_id);
 			if(maybeObjectId != null) {
 				final SystemObject maybeCachedObject = dataModel.getObject(maybeObjectId);
@@ -98,7 +104,7 @@ public class IdSpecification extends ObjectSpecification {
 			return result;
 		}
 		catch(MissingKExDaVAttributeGroupException ignored) {
-			// Die Attributgruppe mit den Konfigurationsdaten wurde nicht gefunden. Folglich wurde kein Objekt übertragen.
+			// Die Attributgruppe mit den Konfigurationsdaten wurde nicht gefunden. Folglich wurde kein Objekt Ã¼bertragen.
 			return null;
 		}
 	}
@@ -118,7 +124,7 @@ public class IdSpecification extends ObjectSpecification {
 			properties = KExDaVObject.getExchangeProperties(object);
 		}
 		catch(MissingKExDaVAttributeGroupException ignored) {
-			// Die Attributgruppe mit den Konfigurationsdaten wurde nicht gefunden. Folglich gibt es kein Übertragenes Objekt.
+			// Die Attributgruppe mit den Konfigurationsdaten wurde nicht gefunden. Folglich gibt es kein Ãœbertragenes Objekt.
 			return false;
 		}
 		return properties != null && matchesProperties(properties);

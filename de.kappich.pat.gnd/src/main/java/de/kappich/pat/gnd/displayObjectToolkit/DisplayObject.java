@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -44,13 +50,13 @@ import java.util.Map;
  * Ein DisplayObject ist ein georeferenziertes SystemObject mit allen Informationen zu seiner Darstellung.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 9139 $
+ * @version $Revision$
  *
  */
 public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleListener {
 	
 	/**
-	 * Gibt das zugrundeliegende {@link SystemObject} zurück.
+	 * Gibt das zugrundeliegende {@link SystemObject} zurÃ¼ck.
 	 * 
 	 * @return das Systemobjekt
 	 */
@@ -59,10 +65,10 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
     
     /**
-     * Gibt das aktuell gültige {@link DisplayObjectTypeItem} für das {@link PrimitiveFormPropertyPair pair} zurück.
+     * Gibt das aktuell gÃ¼ltige {@link DisplayObjectTypeItem} fÃ¼r das {@link PrimitiveFormPropertyPair pair} zurÃ¼ck.
      * 
      * @param pair das Paar
-     * @return das aktuell gültige DisplayObjectTypeItem oder <code>null</code>, wenn kein solches existiert
+     * @return das aktuell gÃ¼ltige DisplayObjectTypeItem oder <code>null</code>, wenn kein solches existiert
      */
     public DisplayObjectTypeItem getDisplayObjectTypeItem( PrimitiveFormPropertyPair pair) {
     	if ( _displayObjectTypeItems != null) {
@@ -71,10 +77,10 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     	return null;
     }
     /**
-     * Gibt den aktuell gültigen Wert für das {@link PrimitiveFormPropertyPair pair} zurück.
+     * Gibt den aktuell gÃ¼ltigen Wert fÃ¼r das {@link PrimitiveFormPropertyPair pair} zurÃ¼ck.
      * 
      * @param pair das Paar
-     * @return der aktuell gültige Wert oder <code>null</code>, wenn kein solcher existiert
+     * @return der aktuell gÃ¼ltige Wert oder <code>null</code>, wenn kein solcher existiert
      */
     public Data getValue( PrimitiveFormPropertyPair pair) {
     	if ( _displayObjectTypeItems != null) {
@@ -84,7 +90,7 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
 
     /**
-     * Gibt die Koordinaten zu dem dem übergebenen (Koordinaten-)Typ zurück. Bei Linien ist der 
+     * Gibt die Koordinaten zu dem dem Ã¼bergebenen (Koordinaten-)Typ zurÃ¼ck. Bei Linien ist der 
      * Typ gleich dem Verschiebungswert.
      * 
      * @param type der Koordinatentyp 
@@ -98,7 +104,7 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
 	
     /**
-	 * Gibt die Koordinaten zum Default(-Koordinaten)-Typ zurück.
+	 * Gibt die Koordinaten zum Default(-Koordinaten)-Typ zurÃ¼ck.
 	 * 
 	 * @return die Default-Koordinaten
 	 */
@@ -107,7 +113,7 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
 
 	/**
-	 * Gibt das Painter-Objekt {@link DisplayObjectPainter} zu dieses DisplayObject zurück.
+	 * Gibt das Painter-Objekt {@link DisplayObjectPainter} zu dieses DisplayObject zurÃ¼ck.
      * 
      * @return den Painter
      */
@@ -116,7 +122,7 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
 
 	/**
-	 * Gibt die {@link DOTCollection} zu diesem DisplayObject zurück.
+	 * Gibt die {@link DOTCollection} zu diesem DisplayObject zurÃ¼ck.
 	 * 
      * @return die DOTCollection
      */
@@ -125,13 +131,13 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
 
 	/**
-	 * Gibt die umgebende Rechteck zu diesem DisplayObject für den angebenen (Koordinaten-)Typ zurück.
+	 * Gibt die umgebende Rechteck zu diesem DisplayObject fÃ¼r den angebenen (Koordinaten-)Typ zurÃ¼ck.
 	 * 
      * @return das umgebende Rechteck
      */
     public Rectangle getBoundingRectangle( int type) {
 	    if(_painter instanceof DOTNeedlePainter){
-		    // Nadel-koordinaten nicht zwischenspeichern, da Nadeln in der Größe veränderlich sind
+		    // Nadel-koordinaten nicht zwischenspeichern, da Nadeln in der GrÃ¶ÃŸe verÃ¤nderlich sind
 		    return _painter.getBoundingRectangle( this, type);
 	    }
     	if ( !_boundingRectangles.containsKey( type)) {
@@ -141,7 +147,7 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
     
 	/**
-	 * Gibt die umgebende Rechteck zu diesem DisplayObject für den Default-(Koordinaten-)Typ zurück.
+	 * Gibt die umgebende Rechteck zu diesem DisplayObject fÃ¼r den Default-(Koordinaten-)Typ zurÃ¼ck.
 	 * 
      * @return das umgebende Rechteck
      */
@@ -150,10 +156,10 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
     
 	/**
-	 * Konstruiert ein DisplayObject. Hierzu müssen das zugehörige Systemobjekt, die Koordinaten,
+	 * Konstruiert ein DisplayObject. Hierzu mÃ¼ssen das zugehÃ¶rige Systemobjekt, die Koordinaten,
 	 * ein Painter, die {@link DOTCollection}, eine speziell-aufbereitete Map mit mit Informationen
-	 * welche {@link PrimitiveFormPropertyPair}-Objekte zu welchen Darstellungstypen gehören, und
-	 * schließlich die Kartenansicht, in der das Objekt gezeichnet werden soll, angegeben werden.
+	 * welche {@link PrimitiveFormPropertyPair}-Objekte zu welchen Darstellungstypen gehÃ¶ren, und
+	 * schlieÃŸlich die Kartenansicht, in der das Objekt gezeichnet werden soll, angegeben werden.
 	 * Die Konstruktion dieser Objekte ist eine der Aufgaben der Klasse {@link DisplayObjectManager}.
 	 * 
 	 * @param systemObject ein Systemobjekt
@@ -194,16 +200,16 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
 
     /*
-     * Dies ist die Methode, die für das ClientReceiverInterface implementiert wird.
+     * Dies ist die Methode, die fÃ¼r das ClientReceiverInterface implementiert wird.
      */
 	public void update(ResultData[] results) {
 		try {
 			int mapScale = _mapPane.getMapScale().intValue();
-			// Wen die folgende Schleife überrascht: sie sollte tatsächlich NIE ausgeführt
-			// werden, denn das mapPane kennt seinen Maßstab bevor überhaupt Anmeldungen
-			// durchgeführt werden. Man könnte auch eine Exception werfen, aber zu so
+			// Wen die folgende Schleife Ã¼berrascht: sie sollte tatsÃ¤chlich NIE ausgefÃ¼hrt
+			// werden, denn das mapPane kennt seinen MaÃŸstab bevor Ã¼berhaupt Anmeldungen
+			// durchgefÃ¼hrt werden. Man kÃ¶nnte auch eine Exception werfen, aber zu so
 			// drastischen Mitteln besteht kein Grund. Den SubscriptionDeliveryThread
-			// zu blockieren ist natürlich nur eine Ausnahmelösung.
+			// zu blockieren ist natÃ¼rlich nur eine AusnahmelÃ¶sung.
 			while ( mapScale == 0) {
 				_debug.warning( "Warten auf die Kartenansicht.");
 				Thread.sleep( 100);
@@ -225,7 +231,7 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
 				updateResultCache( result, subscriptionData);
 			}
 		} catch(Exception e) {
-			_debug.warning("DisplayObject.update(): ein Update konnte nicht durchgeführt werden.", e);
+			_debug.warning("DisplayObject.update(): ein Update konnte nicht durchgefÃ¼hrt werden.", e);
 		}
     }
 	
@@ -322,7 +328,7 @@ public class DisplayObject implements ClientReceiverInterface, MapPane.MapScaleL
     }
 
     /*
-     * Das ist die Methode, die für den MapPane.MapScaleListener implementiert werden muss.
+     * Das ist die Methode, die fÃ¼r den MapPane.MapScaleListener implementiert werden muss.
      */
 	public void mapScaleChanged(double scale) {
 		final DisplayObjectType displayObjectType = _dotCollection.getDisplayObjectType( _mapPane.getMapScale().intValue());

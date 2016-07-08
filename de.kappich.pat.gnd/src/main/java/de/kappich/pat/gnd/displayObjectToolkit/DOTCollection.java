@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -42,13 +48,13 @@ import javax.swing.table.TableModel;
  * Ein Klasse zur Verwaltung der Darstellungstypen eines Layers.
  * <p>
  * Eine DOTCollection verkapselt die Darstellungstypen eines Layers. Jeder Darstellungstyp
- * eines Layers hat eine untere und obere Maßstabsgrenze, zwischen denen der Darstellungstyp
+ * eines Layers hat eine untere und obere MaÃŸstabsgrenze, zwischen denen der Darstellungstyp
  * angewandt werden kann. Die kombinierten Informationen bestehend aus Darstellungstyp
- * und Maßstabsgrenzen werden im Hinblick auf schnellen Zugriff von der DOTCellection auf
+ * und MaÃŸstabsgrenzen werden im Hinblick auf schnellen Zugriff von der DOTCellection auf
  * zwei Arten verwaltet: als Liste und als Map.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8094 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -62,7 +68,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 		_dotTreeMap = new TreeMap<Interval<Integer>, DisplayObjectType>();
 	}
 	/**
-	 * Fügt den Darstellungstyp für die übergebenen Maßstabsgrenzen hinzu.
+	 * FÃ¼gt den Darstellungstyp fÃ¼r die Ã¼bergebenen MaÃŸstabsgrenzen hinzu.
 	 */
 	public void addDisplayObjectType( DisplayObjectType type, int lowerScale, int upperScale) {
 		if (type == null) {
@@ -84,7 +90,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/**
-	 * Entfernt den Darstellungstyp für die übergebenen Maßstabsgrenzen.
+	 * Entfernt den Darstellungstyp fÃ¼r die Ã¼bergebenen MaÃŸstabsgrenzen.
 	 * 
 	 * @param type der zu entfernende DisplayObjectType
 	 * @param lowerScale die untere Intervallgrenze
@@ -100,7 +106,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 		} 
 	}
 	/**
-	 * Leert die DOTCollection vollständig.
+	 * Leert die DOTCollection vollstÃ¤ndig.
 	 */
 	public void clear( ) {
 		_dotList.clear();
@@ -109,7 +115,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn die DOTCollection leer ist, <code>false</code> sonst.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die DOTCollection leer ist, <code>false</code> sonst.
 	 * 
 	 * @return <code>true</code> genau dann, wenn die DOTCollection leer ist
 	 */
@@ -133,7 +139,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/**
-	 * Gibt eine Kopie der DOTCollection zurück. 
+	 * Gibt eine Kopie der DOTCollection zurÃ¼ck. 
 	 * 
 	 * @return eine Kopie
 	 */
@@ -142,11 +148,11 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/**
-	 * Gibt einen Darstellungstypen für den mit scale angebenen Maßstabswert zurück, wenn 
+	 * Gibt einen Darstellungstypen fÃ¼r den mit scale angebenen MaÃŸstabswert zurÃ¼ck, wenn 
 	 * ein solcher existiert, sonst <code>null</code>.
 	 * 
-	 * @param scale ein Maßstabswert
-	 * @return eine DisplayObjectType zum Maßstabswert oder <code>null</code>, wenn kein solcher existiert
+	 * @param scale ein MaÃŸstabswert
+	 * @return eine DisplayObjectType zum MaÃŸstabswert oder <code>null</code>, wenn kein solcher existiert
 	 */
 	public DisplayObjectType getDisplayObjectType( int scale) {
 		Interval<Integer> interval = new Interval<Integer>( scale, scale);
@@ -196,7 +202,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 			return false;
 		}
 		for ( String interval: intervals) {
-			if (!interval.startsWith("interval")) {	// im Moment ein Fehler, aber wer weiß was noch kommt
+			if (!interval.startsWith("interval")) {	// im Moment ein Fehler, aber wer weiÃŸ was noch kommt
 				continue;
 			}
 			Preferences intervalPrefs = prefs.node( prefs.absolutePath() + "/" + interval);
@@ -228,7 +234,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/**
-	 * Gibt eine Read-Only-Ansicht aller Darstellungstypen der DOTCollection zurück.
+	 * Gibt eine Read-Only-Ansicht aller Darstellungstypen der DOTCollection zurÃ¼ck.
 	 * 
 	 * @return alle auftretenden DisplayObjectTypes
 	 */
@@ -237,26 +243,26 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/*
-	 * Gehört zur Implementation von TableModel.
+	 * GehÃ¶rt zur Implementation von TableModel.
 	 */
 	public int getColumnCount() {
 		return columnNames.length;
 	}
 	/*
-	 * Gehört zur Implementation von TableModel.
+	 * GehÃ¶rt zur Implementation von TableModel.
 	 */
 	public int getRowCount() {
 		return _dotTreeMap.size();
 	}
 	/*
-	 * Gehört zur Implementation von TableModel.
+	 * GehÃ¶rt zur Implementation von TableModel.
 	 */
 	@Override
 	public String getColumnName(int columnIndex) {
 		return columnNames[columnIndex];
 	}
 	/*
-	 * Gehört zur Implementation von TableModel.
+	 * GehÃ¶rt zur Implementation von TableModel.
 	 */
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if ( columnIndex == 0) {
@@ -271,7 +277,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	
 	/**
 	 * Ein DOTCollectionItem verkapselt die Information der DOTCollection bestehend aus einem
-	 * Darstellungstypen und den Maßstabsgrenzen für die Listenverwaltung.
+	 * Darstellungstypen und den MaÃŸstabsgrenzen fÃ¼r die Listenverwaltung.
 	 */
 	private class DOTCollectionItem {
 		private DisplayObjectType _displayObjectType;
@@ -295,7 +301,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 			_upperScale = upperScale;
 		}
 		/**
-		 * Der Getter für den DisplayObjectType.
+		 * Der Getter fÃ¼r den DisplayObjectType.
 		 * 
 		 * @return der DisplayObjectType
 		 */
@@ -303,7 +309,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 			return _displayObjectType;
 		}
 		/**
-		 * Der Getter für die untere Intervallgrenze.
+		 * Der Getter fÃ¼r die untere Intervallgrenze.
 		 * 
 		 * @return die untere Intervallgrenze
 		 */
@@ -311,7 +317,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 			return _lowerScale;
 		}
 		/**
-		 * Der Getter für die obere Intervallgrenze.
+		 * Der Getter fÃ¼r die obere Intervallgrenze.
 		 * 
 		 * @return die obere Intervallgrenze
 		 */
@@ -353,7 +359,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/**
-	 * Gibt eine Menge mit den Namen aller in den Darstellungstypen der DOTCollection verwendeten Farben zurück.
+	 * Gibt eine Menge mit den Namen aller in den Darstellungstypen der DOTCollection verwendeten Farben zurÃ¼ck.
 	 * 
 	 * @return eine Menge mit den Namen aller in den Darstellungstypen der DOTCollection verwendeten Farben
 	 */
@@ -366,7 +372,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn der Darstellungstyp mit dem übergebenen Namen in der DOTCollection
+	 * Gibt <code>true</code> zurÃ¼ck, wenn der Darstellungstyp mit dem Ã¼bergebenen Namen in der DOTCollection
 	 * auftritt.
 	 * 
 	 * @param displayObjectTypeName der Name eines DisplayObjectTypes
@@ -389,13 +395,13 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	 */
 	@SuppressWarnings("unused")
 	private void printAll() {
-		System.out.println("Größe der Liste: " + _dotList.size());
-		System.out.println("Größe der Map: " + _dotTreeMap.size());
-		System.out.println("Listeneinträge");
+		System.out.println("GrÃ¶ÃŸe der Liste: " + _dotList.size());
+		System.out.println("GrÃ¶ÃŸe der Map: " + _dotTreeMap.size());
+		System.out.println("ListeneintrÃ¤ge");
 		for ( DOTCollectionItem item : _dotList) {
 			System.out.println( item.toString());
 		}
-		System.out.println("Mapeinträge");
+		System.out.println("MapeintrÃ¤ge");
 		for ( Interval<Integer> interval: _dotTreeMap.keySet()) {
 			System.out.println("Lower bound: " + interval.getLowerBound() + ", upper bound: " +
 					interval.getUpperBound() + ", DisplayObjectType: " + _dotTreeMap.get(interval).getName());
@@ -403,17 +409,17 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 	}
 	
 	/*
-	 * Interne Übrerprüfung mit Ausgabe der Ergebnisse auf dem Standardausgabekanal.
+	 * Interne ÃœbrerprÃ¼fung mit Ausgabe der Ergebnisse auf dem Standardausgabekanal.
 	 */
 	@SuppressWarnings("unused")
 	private void checkAll() {
 		if ( _dotList.size() != _dotTreeMap.size() ) {
-			System.out.println("Fehler: die Liste hat " + _dotList.size() + " Einträge, die Map " + _dotTreeMap.size());
+			System.out.println("Fehler: die Liste hat " + _dotList.size() + " EintrÃ¤ge, die Map " + _dotTreeMap.size());
 		}
 		for ( DOTCollectionItem item : _dotList) {
 			Interval<Integer> interval = new Interval<Integer>( item.getUpperScale(), item.getLowerScale());
 			if ( !_dotTreeMap.containsKey(interval)) {
-				System.out.println("Fehler: die Liste hat einen Eintrag für das Interval [" + 
+				System.out.println("Fehler: die Liste hat einen Eintrag fÃ¼r das Interval [" + 
 						interval.getLowerBound() + ", " + interval.getUpperBound() + "], die TreeMap aber nicht!");
 			} else {
 				if ( item.getDisplayObjectType().getName() != _dotTreeMap.get( interval).getName()) {
@@ -429,7 +435,7 @@ public class DOTCollection extends AbstractTableModel implements TableModel, Clo
 			DOTCollectionItem item = new DOTCollectionItem(_dotTreeMap.get(interval), 
 					interval.getUpperBound(), interval.getLowerBound());
 			if ( !_dotList.contains( item)) {
-				System.out.println("Fehler: die TreeMap enthält einen Eintrag zu " + item.toString() +
+				System.out.println("Fehler: die TreeMap enthÃ¤lt einen Eintrag zu " + item.toString() +
 				", der in der Liste nicht auftritt!");
 			}
 		}

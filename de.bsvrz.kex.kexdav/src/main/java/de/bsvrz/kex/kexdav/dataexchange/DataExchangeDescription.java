@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataexchange;
@@ -27,7 +33,7 @@ import de.bsvrz.kex.kexdav.parameterloader.CorrespondingAttributeGroup;
  * Spezifikationen zum Austausch von Online-Daten
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9269 $
+ * @version $Revision$
  */
 class DataExchangeDescription {
 
@@ -56,8 +62,8 @@ class DataExchangeDescription {
 	 * @param aspect Aspekt
 	 * @param simLocal Simulationsvariante Lokal
 	 * @param simRemote Simulationsvariante Remote
-	 * @param delayed Auch nachgelieferte Daten übertragen?
-	 * @param delta Nur geänderte Daten übertragen?
+	 * @param delayed Auch nachgelieferte Daten Ã¼bertragen?
+	 * @param delta Nur geÃ¤nderte Daten Ã¼bertragen?
 	 */
 	public DataExchangeDescription(
 			final String objectPid,
@@ -80,7 +86,7 @@ class DataExchangeDescription {
 	}
 
 	/**
-	 * Gibt das Systemobjekt zurück
+	 * Gibt das Systemobjekt zurÃ¼ck
 	 * @return Systemobjekt
 	 */
 	public String getObjectPid() {
@@ -88,7 +94,7 @@ class DataExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Austauschrichtung zurück
+	 * Gibt die Austauschrichtung zurÃ¼ck
 	 * @return die Austauschrichtung
 	 */
 	public DataExchangeStrategy getDirection() {
@@ -96,7 +102,7 @@ class DataExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Attributgruppe zurück
+	 * Gibt die Attributgruppe zurÃ¼ck
 	 * @return die Attributgruppe
 	 */
 	public CorrespondingAttributeGroup getAttributeGroup() {
@@ -104,7 +110,7 @@ class DataExchangeDescription {
 	}
 
 	/**
-	 * Gibt den Aspekt zurück
+	 * Gibt den Aspekt zurÃ¼ck
 	 * @return den Aspekt
 	 */
 	public CorrespondingAspect getAspect() {
@@ -112,7 +118,7 @@ class DataExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Lokale Simulationsvariante zurück
+	 * Gibt die Lokale Simulationsvariante zurÃ¼ck
 	 * @return die Lokale Simulationsvariante
 	 */
 	public short getSimLocal() {
@@ -120,7 +126,7 @@ class DataExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Remote-Simulationsvariante zurück
+	 * Gibt die Remote-Simulationsvariante zurÃ¼ck
 	 * @return die Remote-Simulationsvariante
 	 */
 	public short getSimRemote() {
@@ -128,16 +134,16 @@ class DataExchangeDescription {
 	}
 
 	/**
-	 * Gibt zurück ob auch nachgelieferte Daten übertragen werden sollen
-	 * @return true wenn Delayed-Daten übertragen werden sollen
+	 * Gibt zurÃ¼ck ob auch nachgelieferte Daten Ã¼bertragen werden sollen
+	 * @return true wenn Delayed-Daten Ã¼bertragen werden sollen
 	 */
 	public boolean isDelayed() {
 		return _delayed;
 	}
 
 	/**
-	 * Gibt zurück ob nur geänderte Daten übertragen werden sollen
-	 * @return true wenn nur geänderte Daten übertragen werden sollen
+	 * Gibt zurÃ¼ck ob nur geÃ¤nderte Daten Ã¼bertragen werden sollen
+	 * @return true wenn nur geÃ¤nderte Daten Ã¼bertragen werden sollen
 	 */
 	public boolean isDelta() {
 		return _delta;

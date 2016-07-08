@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.main;
@@ -28,17 +34,17 @@ import de.bsvrz.kex.kexdav.parameterloader.RemoteDaVParameter;
 import java.util.*;
 
 /**
- * Abstrakte Klasse, die den Austausch von Objekten zwischen 2 Datenverteilern kapselt. Diese Klasse erhält Parameter, Und erstellt daraus eine beliebige anzahl
+ * Abstrakte Klasse, die den Austausch von Objekten zwischen 2 Datenverteilern kapselt. Diese Klasse erhÃ¤lt Parameter, Und erstellt daraus eine beliebige anzahl
  * von Definitionen (generischer Parameter D). Beim erneuten Eintreffen von Parametern werden diese Definitionen aktualisiert und mit den alten Definitionen
- * verglichen. Für jede neue Definition wird ein neues Austausch-Objekt erstellt (generischer Parameter E). Für jede weggefallene Definition wird das zugehörige
- * Austauschobjekt entsorgt. Wenn eine Definition unverändert bleibt, wird auch am Austauschobjekt nichts gemacht. So werden nur die Austausche von
- * Parameteränderungen beeinflusst, wo auch wirklich die Parameter geändert werden. Hinweis: Definitionen und Austauschobjekte sollten weitgehend immutable
+ * verglichen. FÃ¼r jede neue Definition wird ein neues Austausch-Objekt erstellt (generischer Parameter E). FÃ¼r jede weggefallene Definition wird das zugehÃ¶rige
+ * Austauschobjekt entsorgt. Wenn eine Definition unverÃ¤ndert bleibt, wird auch am Austauschobjekt nichts gemacht. So werden nur die Austausche von
+ * ParameterÃ¤nderungen beeinflusst, wo auch wirklich die Parameter geÃ¤ndert werden. Hinweis: Definitionen und Austauschobjekte sollten weitgehend immutable
  * sein.
- * <p/>
+ * <p>
  * Descriptions sollten sinnvolle implementierungen von equals und hashcode haben, da sie hier in einer HashMap gespeichert werden und bei bedarf verglichen werden.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9269 $
+ * @version $Revision$
  */
 public abstract class AbstractKExDaVExchange<D, E> {
 
@@ -64,7 +70,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 	 * Startet den Austausch, aktualisiert den Austausch falls bereits gestartet
 	 *
 	 * @throws de.bsvrz.kex.kexdav.correspondingObjects.MissingAreaException
-	 *          falls kein gültiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benötigt wurde.
+	 *          falls kein gÃ¼ltiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benÃ¶tigt wurde.
 	 */
 	protected void start() throws MissingAreaException {
 		refreshExchanges(_parameter);
@@ -84,7 +90,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 	 * @param newParameters Neue Parameter, die die auszutauschenden Daten und Objekte festlegen
 	 *
 	 * @throws de.bsvrz.kex.kexdav.correspondingObjects.MissingAreaException
-	 *          falls kein gültiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benötigt wurde.
+	 *          falls kein gÃ¼ltiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benÃ¶tigt wurde.
 	 */
 	public void setParameter(final RemoteDaVParameter newParameters) throws MissingAreaException {
 		refreshExchanges(newParameters);
@@ -94,7 +100,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 	/**
 	 * Aktualisiert die bestehenden Austauschmodule
 	 * @param parameters Parameter
-	 * @throws MissingAreaException falls kein gültiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benötigt wurde.
+	 * @throws MissingAreaException falls kein gÃ¼ltiger Konfigurationsbereich zum Erstellen von Objekten angegeben wurde, aber einer benÃ¶tigt wurde.
 	 */
 	private void refreshExchanges(final RemoteDaVParameter parameters) throws MissingAreaException {
 		final Collection<D> obsoleteEntries = new ArrayList<D>();
@@ -117,7 +123,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 
 		notifyNewExchangeDescriptions(newExchangeDescriptions);
 
-		// Neue Elemente hinzufügen
+		// Neue Elemente hinzufÃ¼gen
 		for(final D description : newExchangeDescriptions) {
 			try {
 				final E exchange = createExchange(description);
@@ -133,7 +139,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 	}
 
 	/**
-	 * Benachrichtigung über neue Asutausche, damit z.B. Systemobjekte geladen werden können
+	 * Benachrichtigung Ã¼ber neue Asutausche, damit z.B. Systemobjekte geladen werden kÃ¶nnen
 	 * @param newExchangeDescriptions neue Austauschbeschreibungen
 	 */
 	protected void notifyNewExchangeDescriptions(final Set<D> newExchangeDescriptions){
@@ -141,7 +147,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 	}
 
 	/**
-	 * Gibt den KExDaV-Manager zurück
+	 * Gibt den KExDaV-Manager zurÃ¼ck
 	 * @return Manager
 	 */
 	protected final ManagerInterface getManager() {
@@ -149,7 +155,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 	}
 
 	/**
-	 * Gibt die Descriptions und zugehörigen Austauschobjekte zurück, die zur Zeit in dieser Klasse gespeichert sind
+	 * Gibt die Descriptions und zugehÃ¶rigen Austauschobjekte zurÃ¼ck, die zur Zeit in dieser Klasse gespeichert sind
 	 * @return Map mit Descriptions und Austauschobjekten
 	 */
 	public Map<D, E> getExchangeMap() {
@@ -171,7 +177,7 @@ public abstract class AbstractKExDaVExchange<D, E> {
 	protected abstract void removeExchange(final E exchange);
 
 	/**
-	 * Template-Methode, die für einen Parameter-Datensatz alle Datenbeschreibungen zurückgeben soll
+	 * Template-Methode, die fÃ¼r einen Parameter-Datensatz alle Datenbeschreibungen zurÃ¼ckgeben soll
 	 * @param parameters Parameter
 	 * @return Set mit Datenbeschreibungen
 	 */

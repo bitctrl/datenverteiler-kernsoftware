@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.pointPlugin;
 
@@ -54,7 +60,7 @@ import java.util.List;
  * Die Implementation von DisplayObjectPainter zum Zeichnen von Punktobjekten.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 9139 $
+ * @version $Revision$
  *
  */
 public class DOTPointPainter implements DisplayObjectPainter {
@@ -184,8 +190,8 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	}
 	
 	/*
-	 * Gibt true zurück, wenn die übergebene Linie mindestens eines der Rechtecke, die von
-	 * Shape.getBounds() für dieübergebenen Shapes zurückgegeben werden, schneidet. 
+	 * Gibt true zurÃ¼ck, wenn die Ã¼bergebene Linie mindestens eines der Rechtecke, die von
+	 * Shape.getBounds() fÃ¼r dieÃ¼bergebenen Shapes zurÃ¼ckgegeben werden, schneidet. 
 	 */
 	private boolean lineIntersectsWithShapes( final Line2D line, final List<Shape> shapes) {
 		for ( Shape shape : shapes) {
@@ -198,8 +204,8 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	}
 	
 	/*
-	 * Verkürzt oder verlängert die übergebene Linie an ihrem Anfang um den übegebenen
-	 * Stretchfaktor. Beispiel: ein Strechtfaktor von 0,95 führt zu einer Linie, an deren
+	 * VerkÃ¼rzt oder verlÃ¤ngert die Ã¼bergebene Linie an ihrem Anfang um den Ã¼begebenen
+	 * Stretchfaktor. Beispiel: ein Strechtfaktor von 0,95 fÃ¼hrt zu einer Linie, an deren
 	 * Anfang 5 % abgeschnitten wurden.
 	 */
 	private void stretchLineAtTheBeginning( final Line2D line, double stretchFactor) {
@@ -210,8 +216,8 @@ public class DOTPointPainter implements DisplayObjectPainter {
 				p2.getX(), p2.getY());
 	}
 	/*
-	 * Verkürzt oder verlängert die übergebene Linie an ihrem Ende um den übegebenen
-	 * Stretchfaktor. Beispiel: ein Strechtfaktor von 0,95 führt zu einer Linie, an deren
+	 * VerkÃ¼rzt oder verlÃ¤ngert die Ã¼bergebene Linie an ihrem Ende um den Ã¼begebenen
+	 * Stretchfaktor. Beispiel: ein Strechtfaktor von 0,95 fÃ¼hrt zu einer Linie, an deren
 	 * Ende 5 % abgeschnitten wurden.
 	 */
 	private void stretchLineAtTheEnd( final Line2D line, double stretchFactor) {
@@ -223,8 +229,8 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	}
 	
 	/*
-	 * Liefert eine affine Transformation zurück, die eine Translation der Länge translationFactor
-	 * in Richtung des Winkels angle, der zur x-Achse berechnet wird, durchführt.
+	 * Liefert eine affine Transformation zurÃ¼ck, die eine Translation der LÃ¤nge translationFactor
+	 * in Richtung des Winkels angle, der zur x-Achse berechnet wird, durchfÃ¼hrt.
 	 */
 	private AffineTransform getAngleTransformation( 
 			final Double translationFactor,
@@ -242,13 +248,13 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	 * Referenzpunkt.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 9139 $
+	 * @version $Revision$
 	 *
 	 */
 	private static class ShapeWithReferencePoint {
 		
 		/**
-		 * Konstruiert ein ShapeWithReferencePoint aus den übergebenen Informationen 
+		 * Konstruiert ein ShapeWithReferencePoint aus den Ã¼bergebenen Informationen 
          */
         public ShapeWithReferencePoint(Shape shape, Point2D.Double referencePoint) {
 	        super();
@@ -257,14 +263,14 @@ public class DOTPointPainter implements DisplayObjectPainter {
         }
 		
         /**
-         * Gibt das Shape zurück. 
+         * Gibt das Shape zurÃ¼ck. 
          */
         public Shape getShape() {
         	return _shape;
         }
         
 		/**
-         * Gibt den ReferenzPunkt zurück. 
+         * Gibt den ReferenzPunkt zurÃ¼ck. 
          */
         @SuppressWarnings("unused")
         public Point2D.Double getReferencePoint() {
@@ -275,7 +281,7 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	}
 	
 	/*
-	 * Liefert eine ShapeWithReferencePoint-Objekt für die übergebenen Daten zurück, das
+	 * Liefert eine ShapeWithReferencePoint-Objekt fÃ¼r die Ã¼bergebenen Daten zurÃ¼ck, das
 	 * in paintDisplayObject zum Zeichnen verwendet wird.
 	 */
 	private ShapeWithReferencePoint getShape( Point2D point, PrimitiveForm primitiveForm) {
@@ -359,7 +365,7 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	}
 
 	/*
-	 * Gibt den Durchmesser zurück.
+	 * Gibt den Durchmesser zurÃ¼ck.
 	 */
 	private Double determineDiameter( DisplayObject displayObject, 
 			DOTPoint dotPoint, String primitiveFormName) {
@@ -399,7 +405,7 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				diameter = 0.;
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung kann hier unterschieden werden.
 			
 		}
@@ -407,7 +413,7 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	}
 	
 	/*
-	 * Gibt die Strichbreite zurück.
+	 * Gibt die Strichbreite zurÃ¼ck.
 	 */
 	private Double determineStrokeWidth( DisplayObject displayObject, 
 			DOTPoint dotPoint, String primitiveFormName) {
@@ -431,14 +437,14 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				strokeWidth = 0.;
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung muss hier unterschieden werden.
 		}
 		return strokeWidth;
 	}
 	
 	/*
-	 * Gibt die Farbe zurück.
+	 * Gibt die Farbe zurÃ¼ck.
 	 */
 	private Color determineFillColor( DisplayObject displayObject, 
 			DOTPoint dotPoint, String primitiveFormName) {
@@ -467,14 +473,14 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				color = ColorManager.getInstance().getColor( "keine");
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung kann hier unterschieden werden.
 		}
 		return color;
 	}
 	
 	/*
-	 * Gibt die Tranzparenz zurück.
+	 * Gibt die Tranzparenz zurÃ¼ck.
 	 */
 	private Integer determineTransparency( DisplayObject displayObject, 
 			DOTPoint dotPoint, String primitiveFormName) {
@@ -504,14 +510,14 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				transparency = 0;
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung kann hier unterschieden werden.
 		}
 		return transparency;
 	}
 	
 	/*
-	 * Gibt den Textstil zurück.
+	 * Gibt den Textstil zurÃ¼ck.
 	 */
 	private int determineTextStyle( DisplayObject displayObject,
 			DOTPoint dotPoint, String primitiveFormName) {
@@ -535,14 +541,14 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				style = Font.PLAIN;
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung muss hier unterschieden werden.
 		}
 		return style;
 	}
 	
 	/*
-	 * Gibt die Textgröße zurück.
+	 * Gibt die TextgrÃ¶ÃŸe zurÃ¼ck.
 	 */
 	private int determineTextSize( DisplayObject displayObject,
 			DOTPoint dotPoint, String primitiveFormName) {
@@ -572,14 +578,14 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				size = 0;
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung kann hier unterschieden werden.
 		}
 		return size;
 	}
 	
 	/*
-	 * Gibt die Farbe zurück.
+	 * Gibt die Farbe zurÃ¼ck.
 	 */
 	private Color determineColor( DisplayObject displayObject, 
 			DOTPoint dotPoint, String primitiveFormName) {
@@ -608,19 +614,19 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				color = ColorManager.getInstance().getColor( "keine");
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung kann hier unterschieden werden.
 		}
 		return color;
 	}
 	
 	/*
-	 * Gibt den Text zurück.
+	 * Gibt den Text zurÃ¼ck.
 	 */
 	private String determineText( DisplayObject displayObject, 
 			DOTPoint dotPoint, String primitiveFormName) {
 		// Text hat eine Besonderheit: im Fall einer statischen Eigenschaft kommen die 'vordefinierten
-		// Funktionen' und ein konstanter, vom Benutzer definierter Text in Frage, während im Fall
+		// Funktionen' und ein konstanter, vom Benutzer definierter Text in Frage, wÃ¤hrend im Fall
 		// einer dynamischen Eigenschaft auch das angemeldete Attribut dargestellt werden kann.
 		final String text;
 		final PrimitiveFormPropertyPair primitiveFormPropertyPair;
@@ -628,7 +634,7 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			text = (String) dotPoint.getValueOfStaticProperty( primitiveFormName, DOTProperty.TEXT);
 			primitiveFormPropertyPair = null;
 			if ( text.equals( DYNAMIC_ATTRIBUTE_UNSCALED) ||
-					text.equals( DYNAMIC_ATTRIBUTE_SCALED)) {	// das wäre ein Fehler
+					text.equals( DYNAMIC_ATTRIBUTE_SCALED)) {	// das wÃ¤re ein Fehler
 				return "";
 			}
 		} else {
@@ -647,7 +653,7 @@ public class DOTPointPainter implements DisplayObjectPainter {
 			} else {
 				return null;
 			}
-			// Die letzten drei Fälle werden noch gleichbehandelt, aber bei einer kommenden
+			// Die letzten drei FÃ¤lle werden noch gleichbehandelt, aber bei einer kommenden
 			// Erweiterung kann hier unterschieden werden.
 		}
 		if ( text.equals( DOTPointPainter.DYNAMIC_ATTRIBUTE_UNSCALED)) {
@@ -680,8 +686,8 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	}
 
 	/*
-	 * Gibt zu dem Darstellungsobjekt und dem Typ das umschließende achsen-parallele Rechteck
-	 * zurück.
+	 * Gibt zu dem Darstellungsobjekt und dem Typ das umschlieÃŸende achsen-parallele Rechteck
+	 * zurÃ¼ck.
 	 */
 	public Rectangle getBoundingRectangle(DisplayObject displayObject, int type) {
 		// Provisorische Implementation
@@ -697,10 +703,10 @@ public class DOTPointPainter implements DisplayObjectPainter {
 		}
 		return rectangle;
 		
-		// Anfang einer optimierten Implementation; optional besteht auch die Möglichkeit, den
+		// Anfang einer optimierten Implementation; optional besteht auch die MÃ¶glichkeit, den
 		// Kode von paintDisplayObject() dahingehend zu gebrauchen, dass man aus all den dortigen
-		// Shapes das umfassende Rechteck bereits berechnet, dem DisplayObject es verrät, und es
-		// so wieder zurückbekommt.
+		// Shapes das umfassende Rechteck bereits berechnet, dem DisplayObject es verrÃ¤t, und es
+		// so wieder zurÃ¼ckbekommt.
 		/*
 		Rectangle primitiveFormsRect = null;
 		for ( DisplayObjectType displayObjectType : displayObject.getDOTCollection().values()) {
@@ -721,13 +727,13 @@ public class DOTPointPainter implements DisplayObjectPainter {
 				} else if ( pfType == PrimitiveFormType.RECHTECK) {
 					// ToDo 
 				}
-				// Weitere Fälle ToDo
+				// Weitere FÃ¤lle ToDo
 			}
 		}*/
     }
 
 	/**
-	 * Gibt zu dem Darstellungsobjekt und dem Typ die Koordinaten zurück.
+	 * Gibt zu dem Darstellungsobjekt und dem Typ die Koordinaten zurÃ¼ck.
 	 */
 	public List<Object> getCoordinates(List<Object> coordinates, int type) {
 		// Bisher gibt es beim Punkt-Plugin keine Typ-Unterscheidung.
@@ -748,9 +754,9 @@ public class DOTPointPainter implements DisplayObjectPainter {
 	
 	final public static String[] STATIC_TEXT_ITEMS = { DOTPointPainter.GET_NAME_OR_PID_OR_ID,
 		DOTPointPainter.GET_NAME, DOTPointPainter.GET_PID_OR_ID, DOTPointPainter.GET_INFO_GET_DESCRIPTION,
-		"Ein veränderbarer Text"};
+		"Ein verÃ¤nderbarer Text"};
 	
 	final public static String[] DYNAMIC_TEXT_ITEMS = { 
 		DYNAMIC_ATTRIBUTE_UNSCALED, DYNAMIC_ATTRIBUTE_SCALED, GET_NAME_OR_PID_OR_ID,
-		GET_NAME, GET_PID_OR_ID, GET_INFO_GET_DESCRIPTION, "Ein veränderbarer Text"};
+		GET_NAME, GET_PID_OR_ID, GET_INFO_GET_DESCRIPTION, "Ein verÃ¤nderbarer Text"};
 }

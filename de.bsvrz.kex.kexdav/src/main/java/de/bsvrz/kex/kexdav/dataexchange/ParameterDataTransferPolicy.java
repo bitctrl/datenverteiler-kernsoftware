@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataexchange;
@@ -29,25 +35,25 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Diese Klasse wird  benutzt, um bei beidseitigen Parameter-Daten-Übetragungen festzustellen, wenn beide Seiten annährend gleichzeitig Parameter senden. Dann
+ * Diese Klasse wird  benutzt, um bei beidseitigen Parameter-Daten-Ãœbetragungen festzustellen, wenn beide Seiten annÃ¤hrend gleichzeitig Parameter senden. Dann
  * wird das lokale System priorisiert und ein unendlichen hin und her-wechseln der Daten verhindert.
- * <p/>
- * Funktionsweise der Klasse: Es gibt 2 innere {@link DataTransferPolicy}-Klassen, die jeweils für den Datenverkehr in eine Richtung zuständig sind. Falls Daten
- * eintreffen, wird über einen ThreadPool der Task {@link #_task} gestartet, der sich um die eingetroffenen Daten kümmert.
+ * <p>
+ * Funktionsweise der Klasse: Es gibt 2 innere {@link DataTransferPolicy}-Klassen, die jeweils fÃ¼r den Datenverkehr in eine Richtung zustÃ¤ndig sind. Falls Daten
+ * eintreffen, wird Ã¼ber einen ThreadPool der Task {@link #_task} gestartet, der sich um die eingetroffenen Daten kÃ¼mmert.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9274 $
+ * @version $Revision$
  */
 @SuppressWarnings({"ObjectEquality"})
 public final class ParameterDataTransferPolicy {
 
-	/** Die Transfer-Klasse für die Verbindung Lokal nach Remote */
+	/** Die Transfer-Klasse fÃ¼r die Verbindung Lokal nach Remote */
 	private final Policy _localRemotePolicy;
 
-	/** Die Transfer-Klasse für Remote nach Lokal */
+	/** Die Transfer-Klasse fÃ¼r Remote nach Lokal */
 	private final Policy _remoteLocalPolicy;
 
-	/** Der Task, der die Daten weiterleitet und dabei verhindert, dass in beide Richtungen annährend gleichzeitg Daten übertragen werden. */
+	/** Der Task, der die Daten weiterleitet und dabei verhindert, dass in beide Richtungen annÃ¤hrend gleichzeitg Daten Ã¼bertragen werden. */
 	private final Runnable _task = new Runnable() {
 
 		private long _lastSendTime = System.currentTimeMillis();
@@ -56,8 +62,8 @@ public final class ParameterDataTransferPolicy {
 
 		public void run() {
 			try {
-				// Auf this synchronisieren: Den Task immer nur einmal gleichzeitig ausführen.
-				// Falls der task mehrmals ausgeführt wird, müssen die weiteren Threads warten.
+				// Auf this synchronisieren: Den Task immer nur einmal gleichzeitig ausfÃ¼hren.
+				// Falls der task mehrmals ausgefÃ¼hrt wird, mÃ¼ssen die weiteren Threads warten.
 				// Da nach dem Warten remoteData und localData fast immer null sind (die Daten wurden ja schon verarbeitet),
 				// wird nichts weiter dadurch passieren.
 				synchronized(this) {
@@ -66,7 +72,7 @@ public final class ParameterDataTransferPolicy {
 					DataTransferPolicy.DataPackage localData = _localRemotePolicy.retrieveData();
 					DataTransferPolicy.DataPackage remoteData = _remoteLocalPolicy.retrieveData();
 
-					// Zuerst auf Daten aus dem Lokalsystem prüfen (dieses bevorzugen)
+					// Zuerst auf Daten aus dem Lokalsystem prÃ¼fen (dieses bevorzugen)
 					if(localData != null) {
 
 						// Falls zuletzt aus dem Remote-System gesendet wurde, muss gegebenenfalls gewartet werden,
@@ -96,7 +102,7 @@ public final class ParameterDataTransferPolicy {
 							// Neue lokale Daten werden bevorzugt behandelt.
 							if(localData != null) {
 								// Daten senden.
-								// Speichern, dass zuletzt vom Lokalsystem gesendet wurde, ist nicht nötig weil _mainPolicy ist schon == _localRemotePolicy
+								// Speichern, dass zuletzt vom Lokalsystem gesendet wurde, ist nicht nÃ¶tig weil _mainPolicy ist schon == _localRemotePolicy
 								_localRemotePolicy.sendData(localData);
 								_lastSendTime = System.currentTimeMillis();
 								return;
@@ -156,7 +162,7 @@ public final class ParameterDataTransferPolicy {
 	}
 
 	/**
-	 * Gibt das Verbindungsverfahren für die Lokal-Remote-Datenleitung zurück
+	 * Gibt das Verbindungsverfahren fÃ¼r die Lokal-Remote-Datenleitung zurÃ¼ck
 	 * @return Verbindungsverfahren, das sicherstellt, dass es zu keinem wechselseitigen Parameteraustausch kommt.
 	 */
 	public DataTransferPolicy getLocalRemotePolicy() {
@@ -164,7 +170,7 @@ public final class ParameterDataTransferPolicy {
 	}
 
 	/**
-	 * Gibt das Verbindungsverfahren für die Remote-Lokal-Datenleitung zurück
+	 * Gibt das Verbindungsverfahren fÃ¼r die Remote-Lokal-Datenleitung zurÃ¼ck
 	 * @return Verbindungsverfahren, das sicherstellt, dass es zu keinem wechselseitigen Parameteraustausch kommt.
 	 */
 	public DataTransferPolicy getRemoteLocalPolicy() {

@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.coorTransform;
 
@@ -23,7 +29,7 @@ package de.kappich.pat.gnd.coorTransform;
  * Eine Klasse zur Koordinatentransformation.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8094 $
+ * @version $Revision$
  * 
  * License: GPL. Copyright 2007 by Immanuel Scholz and others, see and taken from
  * http://josm.openstreetmap.de/browser/trunk/src/org/openstreetmap/josm/data/projection/UTM.java
@@ -47,7 +53,7 @@ public final class GeoTransformation {
 	private static final double R_M = 6371000.8;
 	
 	/**
-	 * Einige Grˆﬂen des WGS84-Ellipsoiden
+	 * Einige Gr√∂√üen des WGS84-Ellipsoiden
 	 */
 	private static final double n = (WGS84_A - WGS84_B) / (WGS84_A + WGS84_B);
 	private static final double n_square = n * n;
@@ -65,15 +71,15 @@ public final class GeoTransformation {
 	private static final double epsilon = (315.0 * n_power_4 / 512.0);
 	
 	/**
-	 * Die Meridianbogenl‰nge
+	 * Die Meridianbogenl√§nge
 	 * 
 	 * Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
 	 * GPS: Theory and Practice, 3rd ed. New York: Springer-Verlag Wien, 1994.
 	 * 
 	 * @param phi
-	 *            Breite des Punkts im Bogenmaﬂ
+	 *            Breite des Punkts im Bogenma√ü
 	 * 
-	 * @return  Die Distanz vom ƒquator bis zu einem Punkt gegebener Breite.
+	 * @return  Die Distanz vom √Ñquator bis zu einem Punkt gegebener Breite.
 	 * 
 	 */
 	private static double arcLengthOfMeridian(double phi) {
@@ -99,14 +105,14 @@ public final class GeoTransformation {
 	private static final double epsilonF = (1097.0 * n_power_4 / 512.0);
 	
 	/**
-	 * Die Fuﬂpunkt-Breite.
+	 * Die Fu√üpunkt-Breite.
 	 * 
 	 * Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
 	 * GPS: Theory and Practice, 3rd ed. New York: Springer-Verlag Wien, 1994.
 	 * 
 	 * @param y
 	 *            Der UTM-Hochwert.
-	 * @return Die Fuﬂpunkt-Breite.
+	 * @return Die Fu√üpunkt-Breite.
 	 * 
 	 */
 	private static double footpointLatitude(double y) {
@@ -122,13 +128,13 @@ public final class GeoTransformation {
 	}
 	
 	/**
-	 * Umrechnung von WGS84-L‰nge und -Breite im Bogenmaﬂ in eine UTM-Koordinate.
+	 * Umrechnung von WGS84-L√§nge und -Breite im Bogenma√ü in eine UTM-Koordinate.
 	 * Der Zentralmeridian wird aus der Zone der UTM-Koordinate berechnet.
 	 * 
 	 * @param lat
-	 *            Die Breite im Bogenmaﬂ.
+	 *            Die Breite im Bogenma√ü.
 	 * @param lon
-	 *            Die L‰nge im Bogenmaﬂ.
+	 *            Die L√§nge im Bogenma√ü.
 	 * 
 	 */
 	private static void latLonToUTMXY(double lat, double lon, UTMCoordinate utm) {
@@ -145,18 +151,18 @@ public final class GeoTransformation {
 	private static final double ep2 = (Math.pow(WGS84_A, 2.0) - Math.pow(WGS84_B, 2.0)) / Math.pow(WGS84_B, 2.0);
 	
 	/**
-	 * Umrechnung von WGS84-L‰nge und -Breite im Bogenmaﬂ in eine UTM-Koordinate, wobei
+	 * Umrechnung von WGS84-L√§nge und -Breite im Bogenma√ü in eine UTM-Koordinate, wobei
 	 * der Zentralmeridian angegeben wird.
 	 * 
 	 * Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
 	 * GPS: Theory and Practice, 3rd ed. New York: Springer-Verlag Wien, 1994.
 	 * 
 	 * @param phi
-	 *             Die Breite im Bogenmaﬂ.
+	 *             Die Breite im Bogenma√ü.
 	 * @param lambda
-	 *             Die L‰ngee im Bogenmaﬂ.
+	 *             Die L√§ngee im Bogenma√ü.
 	 * @param lambda0
-	 *            L‰nge des Zentralmeridians im Bogenmaﬂ.
+	 *            L√§nge des Zentralmeridians im Bogenma√ü.
 	 * 
 	 */
 	private static void mapLatLonToXY(double phi, double lambda, double lambda0, UTMCoordinate utm) {
@@ -222,7 +228,7 @@ public final class GeoTransformation {
 	}
 	
 	/**
-	 * Berechnung einer WGS84-Koordinate (L‰nge/Breite) aus einem x- und y-Wert
+	 * Berechnung einer WGS84-Koordinate (L√§nge/Breite) aus einem x- und y-Wert
 	 * einer UTM-Koordinate unter Angabe des Zentralmeridians.
 	 * 
 	 * Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
@@ -233,7 +239,7 @@ public final class GeoTransformation {
 	 * @param y
 	 *            Der Hochwert in Metern.
 	 * @param lambda0
-	 *            L‰nge des Zentralmeridians im Bogenmaﬂ.
+	 *            L√§nge des Zentralmeridians im Bogenma√ü.
 	 * 
 	 */
 	private static void mapXYToLatLon(double x, double y, double lambda0, WGS84Coordinate wgs) {
@@ -302,7 +308,7 @@ public final class GeoTransformation {
 				* x4 + x6frac * x6poly * x6 + x8frac * x8poly * x8
 		);
 		
-		/* L‰nge */
+		/* L√§nge */
 		wgs.setLaenge( lambda0 + x1frac * x + x3frac * x3poly * x * x2
 				+ x5frac * x5poly * x* x4 + x7frac * x7poly	* x * x6
 		);
@@ -330,7 +336,7 @@ public final class GeoTransformation {
 	private static double _centralMeridian;
 	
 	/**
-	 * Setzt den Zentralmeridian von auﬂen und unterbindet damit die automatische interne Berechnung.
+	 * Setzt den Zentralmeridian von au√üen und unterbindet damit die automatische interne Berechnung.
 	 * 
 	 * @param centralMeridian der neue Zentralmeridian
 	 */
@@ -359,7 +365,7 @@ public final class GeoTransformation {
 	}
 	
 	/**
-	 * Berechnet eine WGS84-Koordinate (L‰nge/Breite) aus einer UTM-Koordinate.
+	 * Berechnet eine WGS84-Koordinate (L√§nge/Breite) aus einer UTM-Koordinate.
 	 * 
 	 * @param x
 	 *            Der Rechtswert in Metern.
@@ -368,7 +374,7 @@ public final class GeoTransformation {
 	 * @param utmzone
 	 *            Die UTM-Zone des Punktes.
 	 * @param southhemi
-	 *            True, falls der Punkt auf der S¸dhalbkugel liegt.
+	 *            True, falls der Punkt auf der S√ºdhalbkugel liegt.
 	 * 
 	 */
 	private static void uTMXYToLatLon(UTMCoordinate utm, boolean southhemi, WGS84Coordinate wgs) {
@@ -407,11 +413,11 @@ public final class GeoTransformation {
 	}
 	
 	/**
-	 * Berechnet die L‰nge des Kreisbogens auf der Erdoberfl‰che zu dem Winkel.
+	 * Berechnet die L√§nge des Kreisbogens auf der Erdoberfl√§che zu dem Winkel.
 	 * 
 	 * @param arc
 	 *            Winkel in Grad
-	 * @return die L‰nge des Kreisbogens auf der Erdoberfl‰che zu
+	 * @return die L√§nge des Kreisbogens auf der Erdoberfl√§che zu
 	 *            dem Winkel.
 	 */
 	public static double lengthOfCircleArc(double arc) {

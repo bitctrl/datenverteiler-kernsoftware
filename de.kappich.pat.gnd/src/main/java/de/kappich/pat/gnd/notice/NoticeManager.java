@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.notice;
@@ -32,7 +38,7 @@ import java.util.prefs.Preferences;
 
 /**
  * @author Kappich Systemberatung
- * @version $Revision: 9139 $
+ * @version $Revision$
  */
 public class NoticeManager {
 
@@ -58,7 +64,7 @@ public class NoticeManager {
 					}
 				}
 				if(object == null) {
-					_debug.info("Es ist eine Notiz zu " + object + " gespeichert, das zugehörige Objekt kann aber nicht gefunden werden.");
+					_debug.info("Es ist eine Notiz zu " + object + " gespeichert, das zugehÃ¶rige Objekt kann aber nicht gefunden werden.");
 				}
 				Preferences node = _preferences.node(s);
 				String notice = node.get("text", "");
@@ -127,7 +133,7 @@ public class NoticeManager {
 	public void exportToFile(final File file) throws IOException {
 		final FileWriter fileWriter = new FileWriter(file);
 		try {
-			fileWriter.write("Objekt;Text;Erstellt;Geändert\n");
+			fileWriter.write("Objekt;Text;Erstellt;GeÃ¤ndert\n");
 			for(final Map.Entry<SystemObject, Notice> noticeEntry : _noticeMap.entrySet()) {
 				fileWriter.write(
 						'"' + noticeEntry.getKey().getPidOrId() + "\";\"" + noticeEntry.getValue().getMessage().replaceAll("\"", "\"\"") + "\";\""
@@ -150,7 +156,7 @@ public class NoticeManager {
 			_noticeMap.clear();
 		}
 		catch(BackingStoreException e) {
-			_debug.warning("Fehler beim Löschen der Notizen", e);
+			_debug.warning("Fehler beim LÃ¶schen der Notizen", e);
 		}
 	}
 }

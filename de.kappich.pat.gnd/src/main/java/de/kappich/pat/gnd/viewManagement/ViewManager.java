@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.viewManagement;
 
@@ -43,12 +49,12 @@ import javax.swing.table.TableModel;
  * damit es vom {@link ViewDialog Ansichtsdialog} angezeigt werden kann.
  * <p>
  * Diese Klasse ist wie auch die {@link DOTManager Darstellungstyp-} und die {@link LayerManager Layerverwaltung}
- * als Singleton implementiert, um den Programmieraufwand für die Kommunikation verschiedener Objekte dieser 
- * Klasse untereinader, der andernfalls notwendig wäre, einzusparen. Es kann in Zukunft notwendig sein, dies
- * zu ändern.
+ * als Singleton implementiert, um den Programmieraufwand fÃ¼r die Kommunikation verschiedener Objekte dieser 
+ * Klasse untereinader, der andernfalls notwendig wÃ¤re, einzusparen. Es kann in Zukunft notwendig sein, dies
+ * zu Ã¤ndern.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 10225 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -57,7 +63,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	private static final ViewManager _instance = new ViewManager();
 
 	/**
-	 * Die übliche getInstance-Methode eines Singletons.
+	 * Die Ã¼bliche getInstance-Methode eines Singletons.
 	 */
 	public static ViewManager getInstance() {
 		return _instance;
@@ -65,7 +71,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	
 	/**
 	 * Mit Hilfe dieser Methode kann man den ViewManager dazu zwingen, sich erneut zu
-	 * konstruieren, was etwa nach dem Importieren von Präferenzen sinnvoll ist.
+	 * konstruieren, was etwa nach dem Importieren von PrÃ¤ferenzen sinnvoll ist.
 	 */
 	public static void refreshInstance() {
 		_instance._views.clear();
@@ -98,14 +104,14 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	
 	private void initDefaultViewsForLines( final View defaultView) {
 		String s;
-		s = "Störfällzustand OLSIM 1";
+		s = "StÃ¶rfÃ¤llzustand OLSIM 1";
 		final Layer layer1 = LayerManager.getInstance().getLayer(s);
 		if ( layer1 == null) {
 			_debug.warning( "ViewManager.initDefaultViewsForLines: ein Layer namens '" + s + "' konnte nicht gefunden werden.");
 		} else {
 			defaultView.addLayer(layer1);
 		}
-		s = "Straßennetz";
+		s = "StraÃŸennetz";
 		final Layer layer2 = LayerManager.getInstance().getLayer( s);
 		if ( layer2 == null) {
 			_debug.warning( "ViewManager.initDefaultViewsForLines(): ein Layer namens '" + s + "' konnte nicht gefunden werden.");
@@ -144,22 +150,22 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn die übergebene Ansicht eine benutzer-definierte Ansicht ist, 
-	 * und demzufolge verändert werden kann; andernfalls ist der Rückgabewert <code>false</code>, wenn 
-	 * nämlich die Ansicht im Programmkode festgelegt wurde, und deshalb unveränderbar ist.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn die Ã¼bergebene Ansicht eine benutzer-definierte Ansicht ist, 
+	 * und demzufolge verÃ¤ndert werden kann; andernfalls ist der RÃ¼ckgabewert <code>false</code>, wenn 
+	 * nÃ¤mlich die Ansicht im Programmkode festgelegt wurde, und deshalb unverÃ¤nderbar ist.
 	 * <p>
-	 * Die aktuell eingeblendete Ansicht kann immer verändert werden, auch wenn sie im Programmkode festgelegt
-	 * wurde; allerdings werden die Änderungen nicht gespeichert.
+	 * Die aktuell eingeblendete Ansicht kann immer verÃ¤ndert werden, auch wenn sie im Programmkode festgelegt
+	 * wurde; allerdings werden die Ã„nderungen nicht gespeichert.
 	 * 
 	 * @param view eine Ansicht
-	 * @return ist die Ansicht änderbar?
+	 * @return ist die Ansicht Ã¤nderbar?
 	 */
 	public boolean isChangeable(final View view) {
 		return !(_notChangables.contains( view.getName()));
 	}
 	
 	/**
-	 * Fügt die übergebene Ansicht hinzu, wenn noch keine Ansicht mit demselben Namen existiert.
+	 * FÃ¼gt die Ã¼bergebene Ansicht hinzu, wenn noch keine Ansicht mit demselben Namen existiert.
 	 * 
 	 * @param view eine Ansicht
 	 */
@@ -180,7 +186,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 	
 	/**
-	 * Entfernt die übergebene Ansicht aus der Ansichtverwaltung, die den Namen von view besitzt,
+	 * Entfernt die Ã¼bergebene Ansicht aus der Ansichtverwaltung, die den Namen von view besitzt,
 	 * falls eine solche existiert und diese nicht im Programmkode definiert wurde.
 	 * 
 	 * @param view eine Ansicht
@@ -213,7 +219,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 			views = classPrefs.childrenNames();
         }
         catch(BackingStoreException e) {
-        	_debug.error("Die benutzer-definierten Ansichten können nicht initialisiert werden, " + 
+        	_debug.error("Die benutzer-definierten Ansichten kÃ¶nnen nicht initialisiert werden, " + 
 					"BackingStoreException: " + e.toString());
 			return;
         }
@@ -226,18 +232,18 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, falls die Ansichtsverwaltung eine Ansicht mit diesem Namen besitzt,
+	 * Gibt <code>true</code> zurÃ¼ck, falls die Ansichtsverwaltung eine Ansicht mit diesem Namen besitzt,
 	 * und <code>false</code> sonst.
 	 * 
 	 * @param viewName ein Ansichtsname
-	 * @return <code>true</code> genau dann, wenn ein View mit dem übergebenen Namen existiert
+	 * @return <code>true</code> genau dann, wenn ein View mit dem Ã¼bergebenen Namen existiert
 	 */
 	public boolean hasView( String viewName) {
 		return _viewsHashMap.containsKey( viewName);
 	}
 	
 	/**
-	 * Gibt die Ansicht der Ansichtsverwaltung zurück, falls die Ansichtsverwaltung eine 
+	 * Gibt die Ansicht der Ansichtsverwaltung zurÃ¼ck, falls die Ansichtsverwaltung eine 
 	 * Ansicht mit diesem Namen besitzt, und <code>null</code> sonst.
 	 * 
 	 * @param viewName ein Ansichtsname
@@ -248,7 +254,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 	
 	/**
-	 * Gibt die i-te Ansicht zurück (die Zählung beginnt bei 0).
+	 * Gibt die i-te Ansicht zurÃ¼ck (die ZÃ¤hlung beginnt bei 0).
 	 * 
 	 * @param i ein Index
 	 * @return die i-te Ansicht
@@ -278,7 +284,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 	
 	/**
-	 * Gibt eine Menge aller Ansichtsnamen zurück.
+	 * Gibt eine Menge aller Ansichtsnamen zurÃ¼ck.
 	 * 
 	 * @return eine Menge aller Ansichtsnamen 
 	 */
@@ -286,20 +292,20 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 		return _viewsHashMap.keySet();
 	}
 	/**
-	 * Gibt die Anzahl der Spalten der Tabellendarstellung zurück.
+	 * Gibt die Anzahl der Spalten der Tabellendarstellung zurÃ¼ck.
 	 */
 	public int getColumnCount() {
 		return columnNames.length;
 	}
 	/**
-	 * Gibt die Anzahl der Zeilen der Tabellendarstellung zurück.
+	 * Gibt die Anzahl der Zeilen der Tabellendarstellung zurÃ¼ck.
 	 */
 	public int getRowCount() {
 		return _views.size();
 	}
 	
 	/**
-	 * Gibt den Spaltennamen der entsprechenden Spalte in der Tabellendarstellung zurück.
+	 * Gibt den Spaltennamen der entsprechenden Spalte in der Tabellendarstellung zurÃ¼ck.
 	 * 
 	 * @param columnIndex ein Spaltenindex
 	 */
@@ -309,7 +315,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 
 	/**
-	 * Gibt den Wert des Feldes in der Tabellendarstellung zurück.
+	 * Gibt den Wert des Feldes in der Tabellendarstellung zurÃ¼ck.
 	 * 
 	 * @param rowIndex ein Zeilenindex
 	 * @param columnIndex ein Spaltenindex
@@ -319,7 +325,7 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 	
 	/**
-	 * Gibt den Ausgangspunkt der Präferenzen der Ansichtsverwaltung zurück.
+	 * Gibt den Ausgangspunkt der PrÃ¤ferenzen der Ansichtsverwaltung zurÃ¼ck.
 	 * 
 	 * @return der Knoten, unter dem die Views gespeichert werden
 	 */
@@ -360,14 +366,14 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 			s += "[" + view.getName() + "]";
 		}
 		System.out.println("Anzahl Views: " + _views.size() + "  " + s);
-		System.out.println("Anzahl unveränderbarer Views: " + _notChangables.size());
+		System.out.println("Anzahl unverÃ¤nderbarer Views: " + _notChangables.size());
 		if ( _views.size() != _viewsHashMap.size()) {
 			System.out.println("Interne Strukturen kaputt!");
 		}
 	}
 	
 	/**
-	 * Gibt eine Menge mit allen Namen aller in den Ansichten verwendeten Farben zurück.
+	 * Gibt eine Menge mit allen Namen aller in den Ansichten verwendeten Farben zurÃ¼ck.
 	 * 
 	 * @return eine Menge mit allen benutzten Farben
 	 */
@@ -380,12 +386,12 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
 	}
 	
 	/*
-	 * Gehört zur Implementation von LayerManagerChangeListener und tut nichts.
+	 * GehÃ¶rt zur Implementation von LayerManagerChangeListener und tut nichts.
 	 */
 	public void layerAdded(Layer layer) {}
 	
 	/*
-	 * Gehört zur Implementation von LayerManagerChangeListener.
+	 * GehÃ¶rt zur Implementation von LayerManagerChangeListener.
 	 */
 	public void layerChanged(Layer layer) {
 		for ( View view : _views) {
@@ -394,10 +400,10 @@ public class ViewManager extends AbstractTableModel implements TableModel, Layer
     }
 	
 	/*
-	 * Gehört zur Implementation von LayerManagerChangeListener.
+	 * GehÃ¶rt zur Implementation von LayerManagerChangeListener.
 	 */
 	public void layerRemoved(String layerName) {
-		for ( View view : _views) { // Löschen ohne Veränderung des something-has-changed Status.
+		for ( View view : _views) { // LÃ¶schen ohne VerÃ¤nderung des something-has-changed Status.
 			final boolean changed = view.hasSomethingChanged();
 			view.removeLayer( layerName);
 			view.setSomethingChanged( changed);

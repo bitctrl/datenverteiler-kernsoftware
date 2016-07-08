@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataexchange;
@@ -35,7 +41,7 @@ import static de.bsvrz.kex.kexdav.main.Constants.Pids.*;
  * Klasse zum Austausch von Parameterdaten einer Datenidentifikation eines Objektes. (diese Klasse gibt es einmal pro Attributgruppe und Objekt)
  *
  * @author Kappich Systemberatung
- * @version $Revision: 12677 $
+ * @version $Revision$
  */
 public class ParameterExchange {
 
@@ -50,9 +56,9 @@ public class ParameterExchange {
 	/**
 	 * Erstellt einen neuen Parameterdaten-Austausch
 	 *
-	 * @param description            Beschreibung über Objekt, Attributgruppe usw.
+	 * @param description            Beschreibung Ã¼ber Objekt, Attributgruppe usw.
 	 * @param objectManagerInterface Verwaltung korrespondierender Objekte
-	 * @param manager                KExDaV-Manager-Objekt, an das Benachrichtigungen gesendet werden können
+	 * @param manager                KExDaV-Manager-Objekt, an das Benachrichtigungen gesendet werden kÃ¶nnen
 	 */
 	public ParameterExchange(
 			final ParameterExchangeDescription description, final ObjectManagerInterface objectManagerInterface, final ManagerInterface manager) {
@@ -141,7 +147,7 @@ public class ParameterExchange {
 			case LocalAndRemoteManagementWithTrigger:
 
 				_isUsingTrigger = true;
-				// kein break, die gleichen Datenkanäle erstellen, wie im LocalAndRemoteManagement-modus
+				// kein break, die gleichen DatenkanÃ¤le erstellen, wie im LocalAndRemoteManagement-modus
 			case LocalAndRemoteManagement:
 				_pipeLocalRemote = LowLevelDataPipe.createLowLevelDataPipe(
 						object.getLocalObject(),
@@ -181,7 +187,7 @@ public class ParameterExchange {
 		}
 
 		if(description.getStrategy() == ParameterExchangeStrategy.LocalAndRemoteManagement) {
-			// Transfer-Richtlinie einrichten, mit der der ständige wechselseitige Austausch von Parametern verhindert wird.
+			// Transfer-Richtlinie einrichten, mit der der stÃ¤ndige wechselseitige Austausch von Parametern verhindert wird.
 			final ParameterDataTransferPolicy parameterDataTransferPolicy = new ParameterDataTransferPolicy(_pipeLocalRemote, _pipeRemoteLocal);
 			_pipeLocalRemote.setPolicy(parameterDataTransferPolicy.getLocalRemotePolicy());
 			_pipeRemoteLocal.setPolicy(parameterDataTransferPolicy.getRemoteLocalPolicy());

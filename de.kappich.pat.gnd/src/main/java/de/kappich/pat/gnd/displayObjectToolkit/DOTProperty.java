@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,17 +14,23 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
 /**
- * Die Klasse ist ein typsicheres Enum-Muster für die Visualisierungseigenschaften der darzustellenden
+ * Die Klasse ist ein typsicheres Enum-Muster fÃ¼r die Visualisierungseigenschaften der darzustellenden
  * Objekte oder ihrer Grundfiguren wie Farbe, Transparenz, Abstand, Textstil usw.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8076 $
+ * @version $Revision$
  */
 
 
@@ -38,7 +44,7 @@ public class DOTProperty {
     }
     
     /**
-     * Gibt nur den Namen der Eigenschaft zurück.
+     * Gibt nur den Namen der Eigenschaft zurÃ¼ck.
      */
     @Override
     public String toString() {
@@ -46,7 +52,7 @@ public class DOTProperty {
     }
     
     /**
-     * Die Implementation hier verhindert versehentliches Überschreiben (nach J. Bloch).
+     * Die Implementation hier verhindert versehentliches Ãœberschreiben (nach J. Bloch).
      */
     @Override
     public final boolean equals( Object o) {
@@ -54,7 +60,7 @@ public class DOTProperty {
     }
    
     /**
-     * Die Implementation hier verhindert versehentliches Überschreiben (nach J. Bloch).
+     * Die Implementation hier verhindert versehentliches Ãœberschreiben (nach J. Bloch).
      */
     @Override
     public final int hashCode() {
@@ -62,7 +68,7 @@ public class DOTProperty {
     }
     
     /**
-     * Gibt die gewünschte Eigenschaft zurück, wenn sie existiert, und <code>null</code> sonst.
+     * Gibt die gewÃ¼nschte Eigenschaft zurÃ¼ck, wenn sie existiert, und <code>null</code> sonst.
      */
     public static DOTProperty getProperty( String name) {
     	if ( name.equals( "Farbe") || name.equals( "color")) {
@@ -73,9 +79,9 @@ public class DOTProperty {
     		return STRICHBREITE;
     	} else if ( name.equals( "Durchmesser") || name.equals( "diameter")) {
     		return DURCHMESSER;
-    	} else if ( name.equals( "Füllung") || name.equals( "fill")) {
+    	} else if ( name.equals( "FÃ¼llung") || name.equals( "fill")) {
     		return FUELLUNG;
-    	} else if ( name.equals( "Größe") || name.equals( "size")) {
+    	} else if ( name.equals( "GrÃ¶ÃŸe") || name.equals( "size")) {
     		return GROESSE;
     	} else if ( name.equals( "Transparenz") || name.equals( "transparency")) {
     		return TRANSPARENZ;
@@ -91,8 +97,8 @@ public class DOTProperty {
     public static final DOTProperty ABSTAND = new DOTProperty( "Abstand");
     public static final DOTProperty STRICHBREITE = new DOTProperty( "Strichbreite");
     public static final DOTProperty DURCHMESSER = new DOTProperty( "Durchmesser");
-    public static final DOTProperty FUELLUNG = new DOTProperty( "Füllung");
-    public static final DOTProperty GROESSE = new DOTProperty( "Größe");
+    public static final DOTProperty FUELLUNG = new DOTProperty( "FÃ¼llung");
+    public static final DOTProperty GROESSE = new DOTProperty( "GrÃ¶ÃŸe");
     public static final DOTProperty TRANSPARENZ = new DOTProperty( "Transparenz");
     public static final DOTProperty TEXT = new DOTProperty("Text");
     public static final DOTProperty TEXTSTIL = new DOTProperty( "Textstil");

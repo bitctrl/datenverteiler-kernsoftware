@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.dataexchange;
@@ -26,6 +32,7 @@ import de.bsvrz.dav.daf.main.ReceiverRole;
 import de.bsvrz.dav.daf.main.SenderRole;
 import de.bsvrz.kex.kexdav.correspondingObjects.ObjectManagerInterface;
 import de.bsvrz.kex.kexdav.dataplugin.KExDaVDataPlugin;
+import de.bsvrz.kex.kexdav.main.KExDaVLocalApplication;
 import de.bsvrz.kex.kexdav.management.ManagerInterface;
 import de.bsvrz.kex.kexdav.management.Message;
 import de.bsvrz.kex.kexdav.systemobjects.KExDaVAttributeGroupData;
@@ -33,11 +40,11 @@ import de.bsvrz.kex.kexdav.systemobjects.KExDaVObject;
 import de.bsvrz.kex.kexdav.systemobjects.MissingObjectException;
 
 /**
- * Implementierung der {@link de.bsvrz.kex.kexdav.dataexchange.LowLevelDataPipe}, bei der zuerst ein Empfänger angemeldet wird
- * und wo dann je nach empfangenen Datensätzen (Keine Quelle oder nicht) die Quelle an- oder abgemeldet wird.
+ * Implementierung der {@link de.bsvrz.kex.kexdav.dataexchange.LowLevelDataPipe}, bei der zuerst ein EmpfÃ¤nger angemeldet wird
+ * und wo dann je nach empfangenen DatensÃ¤tzen (Keine Quelle oder nicht) die Quelle an- oder abgemeldet wird.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 12677 $
+ * @version $Revision$
  */
 public class LowLevelDataPipeSource extends LowLevelDataPipe {
 
@@ -52,13 +59,13 @@ public class LowLevelDataPipeSource extends LowLevelDataPipe {
 	 * @param aspTarget               Ziel-Aspekt
 	 * @param simulationVariantSource Quell-Simulationsvariante
 	 * @param simulationVariantTarget Ziel-Simulationsvariante
-	 * @param receiveOptions          Nur geänderte Daten übertragen?
+	 * @param receiveOptions          Nur geÃ¤nderte Daten Ã¼bertragen?
 	 * @param receiverRole            Art der Anmeldung im Quellsystem
 	 * @param senderRole              Art der Anmeldung im Zielsystem
-	 * @param plugin                  Modul, das das Kopieren und gegebenenfalls anpassen der Daten übernimmt. Im einfachsten Fall eine Instanz des {@link
+	 * @param plugin                  Modul, das das Kopieren und gegebenenfalls anpassen der Daten Ã¼bernimmt. Im einfachsten Fall eine Instanz des {@link
 	 *                                de.bsvrz.kex.kexdav.dataplugin.BasicKExDaVDataPlugin}.
 	 * @param objectManagerInterface  Verwaltung korrespondierender Objekte (optional)
-	 * @param manager                 Callback für Ereignisse und Warnungen
+	 * @param manager                 Callback fÃ¼r Ereignisse und Warnungen
 	 */
 	protected LowLevelDataPipeSource(
 			final KExDaVObject source,
@@ -88,14 +95,16 @@ public class LowLevelDataPipeSource extends LowLevelDataPipe {
 
 	public void start() {
 		if(_hasReceiver) return;
-		_manager.addMessage(Message.newInfo("Starte Empfänger: " + this));
+		_manager.addMessage(Message.newInfo("Starte EmpfÃ¤nger: " + this));
 		_hasReceiver = true;
 		try {
-			
-			try {
-				Thread.sleep(10);
-			}
-			catch(InterruptedException ignored) {
+			if(KExDaVLocalApplication.sleepWorkaround) {
+				
+				try {
+					Thread.sleep(10);
+				}
+				catch(InterruptedException ignored) {
+				}
 			}
 			if(!_source.registerReceiver(_atgSource, _aspSource, _simulationVariantSource, _receiverRole, _receiveOptions, _receiver)){
 				_hasReceiver = false;
@@ -108,7 +117,7 @@ public class LowLevelDataPipeSource extends LowLevelDataPipe {
 		}
 	}
 
-	protected void sendDataToReceiver(final KExDaVAttributeGroupData sourceData, final DataState dataState, final long dataTime) {
+	protected void sendDataToReceiver(final KExDaVAttributeGroupData sourceData, final DataState dataState, final long dataTime, final boolean delayed) {
 		boolean dataOk = (dataState == DataState.NO_DATA || dataState == DataState.DATA);
 		if(dataOk && !_hasSender) {
 			try {
@@ -118,7 +127,7 @@ public class LowLevelDataPipeSource extends LowLevelDataPipe {
 				}
 			}
 			catch(MissingObjectException e) {
-				// Empfängerobjekt (oder atg/asp) existiert nicht
+				// EmpfÃ¤ngerobjekt (oder atg/asp) existiert nicht
 				_manager.addMessage(Message.newError(e));
 				return;
 			}
@@ -133,7 +142,7 @@ public class LowLevelDataPipeSource extends LowLevelDataPipe {
 			_manager.addMessage(Message.newMajor("Keine Rechte zum Empfang von Daten: " +  this));
 		}
 		else if(dataState == DataState.INVALID_SUBSCRIPTION){
-			_manager.addMessage(Message.newMajor("Ungültige Anmeldung des Empfängers: " +  this));
+			_manager.addMessage(Message.newMajor("UngÃ¼ltige Anmeldung des EmpfÃ¤ngers: " +  this));
 		}
 
 		if(!_hasSender) {
@@ -152,14 +161,14 @@ public class LowLevelDataPipeSource extends LowLevelDataPipe {
 				_manager.addMessage(Message.newError(e));
 			}
 			catch(DataCopyException e) {
-				// Data konnte nicht kopiert werden. Kann z.B. von Plugins ausgelöst werden oder tritt auf wenn die Attributgruppen in grob
+				// Data konnte nicht kopiert werden. Kann z.B. von Plugins ausgelÃ¶st werden oder tritt auf wenn die Attributgruppen in grob
 				// unterschiedlichen, inkompatiblen Versionen vorlegen (z.B. ein Attribut ist einmal ein Array und einmal ein einfacher Wert)
-				// Falls einfach nur Werte fehlen wird weiter unten eine weniger schwerwiegende Meldung ausgelöst.
+				// Falls einfach nur Werte fehlen wird weiter unten eine weniger schwerwiegende Meldung ausgelÃ¶st.
 				_manager.addMessage(Message.newMajor("Kann Daten nicht kopieren", e));
 			}
 		}
 		if(targetData == null || targetData.isDefined()) {
-			_target.sendData(_sender, targetData, dataTime);
+			_target.sendData(_sender, targetData, dataTime, delayed);
 			if(targetData != null && _stopOnNextData) {
 				stop();
 				_stopOnNextData = false;
@@ -168,11 +177,11 @@ public class LowLevelDataPipeSource extends LowLevelDataPipe {
 		else {
 			_manager.addMessage(
 					Message.newMajor(
-							"Ein Datensatz konnte nicht übertragen werden, da für erforderliche Attribute keine Daten bereitstehen: \n"
+							"Ein Datensatz konnte nicht Ã¼bertragen werden, da fÃ¼r erforderliche Attribute keine Daten bereitstehen: \n"
 							+ LowLevelDataPipeSource.this.toString() + "\n" + targetData
 					)
 			);
-			_target.sendData(_sender, null, dataTime);
+			_target.sendData(_sender, null, dataTime, delayed);
 		}
 	}
 

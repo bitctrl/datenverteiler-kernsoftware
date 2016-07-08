@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -58,10 +64,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Der DisplayObjectManager initialisiert die DisplayObjects und stellt sie zur Verfügung.
+ * Der DisplayObjectManager initialisiert die DisplayObjects und stellt sie zur VerfÃ¼gung.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 9278 $
+ * @version $Revision$
  *
  */
 public class DisplayObjectManager {
@@ -136,7 +142,7 @@ public class DisplayObjectManager {
 		
 		SystemObjectType pointType = _configuration.getType( "typ.punkt");
 		SystemObjectType lineType = _configuration.getType( "typ.linie");
-		SystemObjectType areaType = _configuration.getType( "typ.fläche");
+		SystemObjectType areaType = _configuration.getType( "typ.flÃ¤che");
 		SystemObjectType complexType = _configuration.getType( "typ.komplex");
 		
 		if ( systemObjectType.inheritsFrom(pointType)) {
@@ -167,8 +173,8 @@ public class DisplayObjectManager {
 	}
 	
 	/**
-	 * Gibt das die SystemObjects umgebende Rechteck zurück. Ist die Liste leer, so wird
-	 * das Gesamtrechteck zurückgegeben.
+	 * Gibt das die SystemObjects umgebende Rechteck zurÃ¼ck. Ist die Liste leer, so wird
+	 * das Gesamtrechteck zurÃ¼ckgegeben.
 	 * 
 	 * @param systemObjects eine Liste von Systemobjekten oder <code>null</code>
 	 * @return das anzuzeigende Rechteck 
@@ -182,9 +188,9 @@ public class DisplayObjectManager {
 			SystemObjectType systemObjectType = systemObject.getType();
 			SystemObjectType pointType = _configuration.getType( "typ.punkt");
 			SystemObjectType lineType = _configuration.getType( "typ.linie");
-			SystemObjectType areaType = _configuration.getType("typ.fläche");
+			SystemObjectType areaType = _configuration.getType("typ.flÃ¤che");
 			SystemObjectType complexType = _configuration.getType( "typ.komplex");
-			// ToDo Flächen und Kompexe
+			// ToDo FlÃ¤chen und Kompexe
 			if ( systemObjectType.inheritsFrom(pointType)) {
 				List<Object> coordinatesList = getPointCoordinates( systemObject);
 				if ( !coordinatesList.isEmpty()) {
@@ -274,7 +280,7 @@ public class DisplayObjectManager {
 		for ( DisplayObjectType displayObjectType : dotCollection.values()) {
 			List<PrimitiveFormPropertyPair> list = new ArrayList<PrimitiveFormPropertyPair>();
 			final int length = displayObjectType.getDisplayObjectTypePlugin().getPrimitiveFormTypes().length;
-			if ( length == 0) {	// bei Linien und Flächen
+			if ( length == 0) {	// bei Linien und FlÃ¤chen
 				final List<DOTProperty> dynamicProperties = displayObjectType.getDynamicProperties( null);
 				for ( DOTProperty dynamicProperty: dynamicProperties) {
 					PrimitiveFormPropertyPair pfpPair = new PrimitiveFormPropertyPair( null, dynamicProperty);
@@ -506,13 +512,13 @@ public class DisplayObjectManager {
 	 * Diese Klasse kapselt ein Paar bestehend aus einem Punkt und einem Winkel.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 9278 $
+	 * @version $Revision$
 	 *
 	 */
 	public class PointWithAngle {
 		
 		/**
-		 * Konstruiert ein Objekt mit den übergebenen Werten.
+		 * Konstruiert ein Objekt mit den Ã¼bergebenen Werten.
 		 */
 		public PointWithAngle(Point2D point, Double angle) {
 			super();
@@ -521,14 +527,14 @@ public class DisplayObjectManager {
 		}
 		
 		/**
-		 * Gibt den Punkt zurück.
+		 * Gibt den Punkt zurÃ¼ck.
 		 */
 		public Point2D getPoint() {
 			return _point;
 		}
 		
 		/**
-		 * Gibt den Winkel zurück.
+		 * Gibt den Winkel zurÃ¼ck.
 		 */
 		public Double getAngle() {
 			return _angle;
@@ -539,10 +545,10 @@ public class DisplayObjectManager {
 	}
 	
 	private List<Object> getPointCoordinates(SystemObject systemObject) {
-		// Für jedes Systemobjekt wird höchstens eine Koordinate berechnet.
+		// FÃ¼r jedes Systemobjekt wird hÃ¶chstens eine Koordinate berechnet.
 		// Existieren sowohl eine Linie+Offset-Information als auch eine
 		// Koordinate, so wird die Linie+Offset-Information verwendet.
-		// In diesem Fall wird der Winkel der Linie an diesem Punkt näherungs-
+		// In diesem Fall wird der Winkel der Linie an diesem Punkt nÃ¤herungs-
 		// weise berechnet und auch in die Koordinatenliste gesteckt.
 		List<Object> pointCoordinate = new ArrayList<Object>();
 		if (systemObject.isOfType( _pointOnLineType)) {
@@ -677,9 +683,9 @@ public class DisplayObjectManager {
 	}
 	
 	private void appendCoordinates(SystemObject systemObject, List<Path2D.Double> polylines) {
-		// Für jedes Systemobjekt werden entweder nur Koordinaten aus der Komposition
-		// oder aus den Koordinatendaten übernommen. Besitzt eine Linie beiderlei Informationen,
-		// so werden die Daten der Kompostion gewählt.
+		// FÃ¼r jedes Systemobjekt werden entweder nur Koordinaten aus der Komposition
+		// oder aus den Koordinatendaten Ã¼bernommen. Besitzt eine Linie beiderlei Informationen,
+		// so werden die Daten der Kompostion gewÃ¤hlt.
 		if ( systemObject == null) {
 			return;
 		}
@@ -731,36 +737,36 @@ public class DisplayObjectManager {
 	}
 	
 	/**
-	 * Gibt die kleinste bisher gefundene x-Koordinate zurück.
+	 * Gibt die kleinste bisher gefundene x-Koordinate zurÃ¼ck.
 	 * 
-	 * @return gibt die kleinste bisher gefundene x-Koordinate zurück
+	 * @return gibt die kleinste bisher gefundene x-Koordinate zurÃ¼ck
 	 */
 	public double getxMin() {
 		return _xMin;
 	}
 	
 	/**
-	 * Gibt die kleinste bisher gefundene y-Koordinate zurück. 
+	 * Gibt die kleinste bisher gefundene y-Koordinate zurÃ¼ck. 
 	 * 
-	 * @return gibt die kleinste bisher gefundene y-Koordinate zurück
+	 * @return gibt die kleinste bisher gefundene y-Koordinate zurÃ¼ck
 	 */
 	public double getyMin() {
 		return _yMin;
 	}
 	
 	/**
-	 * Gibt die größte bisher gefundene x-Koordinate zurück.
+	 * Gibt die grÃ¶ÃŸte bisher gefundene x-Koordinate zurÃ¼ck.
 	 * 
-	 * @return gibt die größte bisher gefundene x-Koordinate zurück
+	 * @return gibt die grÃ¶ÃŸte bisher gefundene x-Koordinate zurÃ¼ck
 	 */
 	public double getxMax() {
 		return _xMax;
 	}
 	
 	/**
-	 * Gibt die größte bisher gefundene y-Koordinate zurück.
+	 * Gibt die grÃ¶ÃŸte bisher gefundene y-Koordinate zurÃ¼ck.
 	 * 
-	 * @return gibt die größte bisher gefundene y-Koordinate zurück
+	 * @return gibt die grÃ¶ÃŸte bisher gefundene y-Koordinate zurÃ¼ck
 	 */
 	public double getyMax() {
 		return _yMax;
@@ -790,14 +796,14 @@ public class DisplayObjectManager {
 	}
 	
 	private void simplifyCoordinates(List<Path2D.Double> rawPolylines, List<Object> polylines) {
-		// Die Koordinaten in rawPolylines werden folgendermaßen vereinfacht:
+		// Die Koordinaten in rawPolylines werden folgendermaÃŸen vereinfacht:
 		// 1. Doppelte aufeinanderfolgende Punkte werden eliminiert.
 		// 2. Leere Polylines werden ignoriert.
 		Double lastX = Double.MIN_VALUE;
 		Double lastY = Double.MAX_VALUE;
 		// An dieser Stelle wurde auf Basis einer hprof-Analyse eine Optimierung mit Hilfe 
 		// des Konstruktors Path2D.Double( int winding_rule, int initialCapacity) versucht;
-		// das Ergebnis war nicht überzeugend: nach wie vor wurde der double[]-Konstruktor
+		// das Ergebnis war nicht Ã¼berzeugend: nach wie vor wurde der double[]-Konstruktor
 		// um die 25% der Zeit aufgerufen, nur von 2 Stellen aus.
 		Path2D.Double polyline = new Path2D.Double();
 		boolean moveTo = true;
@@ -896,9 +902,9 @@ public class DisplayObjectManager {
 	}
 	
 	/**
-	 * Mit dieser Methode werden alle Anmeldungen beim Datenverteiler zurückgenommen,
-	 * die sich vom DisplayObjectManager in der Methode subscribeDisplayObjects() für
-	 * die übergebenen DisplayObjects gemacht wurden.
+	 * Mit dieser Methode werden alle Anmeldungen beim Datenverteiler zurÃ¼ckgenommen,
+	 * die sich vom DisplayObjectManager in der Methode subscribeDisplayObjects() fÃ¼r
+	 * die Ã¼bergebenen DisplayObjects gemacht wurden.
 	 * 
 	 * @param displayObjects eine Menge von DisplayObjects
 	 */
@@ -949,7 +955,7 @@ public class DisplayObjectManager {
 		_lineWithCoordinatesType = _configuration.getType("typ.linieXY");
 		_composedOfLinesAttributeGroup = _configuration.getAttributeGroup("atg.bestehtAusLinienObjekten");
 		_lineCoordinatesAttributeGroup = _configuration.getAttributeGroup("atg.linienKoordinaten");
-		_areaCoordinatesAttributeGroup = _configuration.getAttributeGroup("atg.flächenKoordinaten");
+		_areaCoordinatesAttributeGroup = _configuration.getAttributeGroup("atg.flÃ¤chenKoordinaten");
 		_complexCoordinatesAttributeGroup = _configuration.getAttributeGroup("atg.komplexKoordinaten");
 
 		final DOTCollection dotCollection = entry.getLayer().getDotCollection();
@@ -986,7 +992,7 @@ public class DisplayObjectManager {
 				SystemObject lineSystemObject = lineReferences.getSystemObject( index);
 				complexCoordinates.addAll( getPointCoordinates(lineSystemObject));
 			}
-			final ReferenceArray areaReferences = coordinatesData.getReferenceArray( "FlächenReferenz");
+			final ReferenceArray areaReferences = coordinatesData.getReferenceArray( "FlÃ¤chenReferenz");
 			for ( int index = 0; index < areaReferences.getLength(); index++) {
 				SystemObject areaReference = areaReferences.getSystemObject( index);
 				complexCoordinates.addAll( getAreaCoordinates(areaReference));
@@ -1002,7 +1008,7 @@ public class DisplayObjectManager {
 	
 	private void initializeAreas(
 			ViewEntry entry, List<SystemObject> systemObjects, List<DisplayObject> returnList, final JProgressBar progressBar) {
-		_areaCoordinatesAttributeGroup = _configuration.getAttributeGroup("atg.flächenKoordinaten");
+		_areaCoordinatesAttributeGroup = _configuration.getAttributeGroup("atg.flÃ¤chenKoordinaten");
 		
 		final DOTCollection dotCollection = entry.getLayer().getDotCollection();
 		final Iterator<DisplayObjectType> iterator = dotCollection.values().iterator();
@@ -1033,7 +1039,7 @@ public class DisplayObjectManager {
 			int length = Math.min(xArray.getLength(), yArray.getLength());
 			Polygon polygon = new Polygon();
 			final UTMCoordinate utm = new UTMCoordinate();
-			// Im Moment unterscheiden wir hier noch nicht zwischen Punkten, Linien und Flächen.
+			// Im Moment unterscheiden wir hier noch nicht zwischen Punkten, Linien und FlÃ¤chen.
 			for(int i = 0; i < length; i++) {
 				final Data.NumberValue xValue = xArray.getValue(i);
 				final Data.NumberValue yValue = yArray.getValue(i);

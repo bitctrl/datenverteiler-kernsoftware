@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.objectexchange;
@@ -40,10 +46,10 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Klasse zum Austausch von veränderlichen Mengen
+ * Klasse zum Austausch von verÃ¤nderlichen Mengen
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9232 $
+ * @version $Revision$
  */
 public class DynamicSetExchange {
 
@@ -72,7 +78,7 @@ public class DynamicSetExchange {
 	 * @param remoteSetName              Remote-Mengenname
 	 * @param strategy                   Austauschrichtung
 	 * @param correspondingObjectManager Verwaltung korrespondierender Objekte
-	 * @param manager                    KExDaV-Manager an den Benachrichtigungen usw. geschickt werden können
+	 * @param manager                    KExDaV-Manager an den Benachrichtigungen usw. geschickt werden kÃ¶nnen
 	 *
 	 * @throws MissingObjectException Falls ein notwendiges Objekt oder eine Menge Fehlt
 	 */
@@ -108,7 +114,7 @@ public class DynamicSetExchange {
 	 * @param object Objekt
 	 * @param setName Mengenname
 	 * @return Menge
-	 * @throws MissingObjectException die Menge kann nicht gefunden werden oder ist nicht änderbar
+	 * @throws MissingObjectException die Menge kann nicht gefunden werden oder ist nicht Ã¤nderbar
 	 */
 	private static MutableSet getSet(final ConfigurationObject object, final String setName) throws MissingObjectException {
 		final ObjectSet objectSet = object.getObjectSet(setName);
@@ -118,7 +124,7 @@ public class DynamicSetExchange {
 		if(objectSet instanceof MutableSet) {
 			return (MutableSet)objectSet;
 		}
-		throw new MissingObjectException("Die angegebene Menge ist nicht veränderbar: " + object + ":" + setName);
+		throw new MissingObjectException("Die angegebene Menge ist nicht verÃ¤nderbar: " + object + ":" + setName);
 	}
 
 	/**
@@ -145,7 +151,7 @@ public class DynamicSetExchange {
 	}
 
 	/**
-	 * Prüft ob das Objekt in den Spezifikationen enthalten ist
+	 * PrÃ¼ft ob das Objekt in den Spezifikationen enthalten ist
 	 * @param object Objekt
 	 * @param objectSpecifications Spezifikationen
 	 * @return false wenn das objekt zu mindestens einer ObjectSpecification passt, sonst true
@@ -163,9 +169,9 @@ public class DynamicSetExchange {
 	}
 
 	/**
-	 * Fügt der Menge ein Objekt hinzu
+	 * FÃ¼gt der Menge ein Objekt hinzu
 	 * @param objectSpecification Objekt-Spezifizierung
-	 * @throws MissingAreaException Es fehlt ein KB für das Objekt
+	 * @throws MissingAreaException Es fehlt ein KB fÃ¼r das Objekt
 	 */
 	private void addObject(final ObjectSpecification objectSpecification) throws MissingAreaException {
 
@@ -179,12 +185,12 @@ public class DynamicSetExchange {
 			_target.add(newObject);
 		}
 		catch(ConfigurationChangeException e) {
-			_manager.addMessage(Message.newMajor("Kann dynamische Menge nicht verändern: " + _myDisplayNameTarget, e));
+			_manager.addMessage(Message.newMajor("Kann dynamische Menge nicht verÃ¤ndern: " + _myDisplayNameTarget, e));
 		}
 	}
 
 	/**
-	 * Löscht ein Objekt aus der Menge
+	 * LÃ¶scht ein Objekt aus der Menge
 	 * @param object Objekt
 	 */
 	private void removeObject(final SystemObject object) {
@@ -200,7 +206,7 @@ public class DynamicSetExchange {
 			_target.remove(systemObject);
 		}
 		catch(Exception e) {
-			_manager.addMessage(Message.newMajor("Kann dynamische Menge nicht verändern: " + _myDisplayNameTarget, e));
+			_manager.addMessage(Message.newMajor("Kann dynamische Menge nicht verÃ¤ndern: " + _myDisplayNameTarget, e));
 		}
 	}
 

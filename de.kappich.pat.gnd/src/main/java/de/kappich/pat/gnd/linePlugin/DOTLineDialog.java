@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.linePlugin;
 
@@ -70,10 +76,10 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
- * Der Definitionsdialog für Darstellungstypen von Linienobjekten.
+ * Der Definitionsdialog fÃ¼r Darstellungstypen von Linienobjekten.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8092 $
+ * @version $Revision$
  *
  */
 public class DOTLineDialog implements DOTDefinitionDialog {
@@ -99,10 +105,10 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 			throw new IllegalArgumentException();
 		}
 		// Die Strategie ist bei den folgenden Membern wie folgt: es werden alle Center-Panels,
-		// also alle statischen und nicht-statischen initialisiert, damit beim Umschalten möglichst
-		// wenig Informationen verloren gehen. Das Scratch-DOT dient den Dialogen zunächst zur
-		// Initialisierung, und anschließend werden alle Änderungen, die duch die Dialoge
-		// vorgenommen werden, dort nachgezogen. Beim Speichern müssen die Informationen aus
+		// also alle statischen und nicht-statischen initialisiert, damit beim Umschalten mÃ¶glichst
+		// wenig Informationen verloren gehen. Das Scratch-DOT dient den Dialogen zunÃ¤chst zur
+		// Initialisierung, und anschlieÃŸend werden alle Ã„nderungen, die duch die Dialoge
+		// vorgenommen werden, dort nachgezogen. Beim Speichern mÃ¼ssen die Informationen aus
 		// beiden Quellen kombiniert werden.
 		initAllPanelsAndTables();
 	}
@@ -183,7 +189,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 				
 				JButton saveButton = new JButton("Speichern");
 				saveButton.setEnabled( _dotDefinitionDialogFrame.isEditable());
-				JButton cancelButton = new JButton("Dialog schließen");
+				JButton cancelButton = new JButton("Dialog schlieÃŸen");
 				
 				JPanel buttonsPanel = new JPanel();
 				buttonsPanel.setLayout(new SpringLayout());
@@ -195,7 +201,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 				SpringUtilities.makeCompactGrid(buttonsPanel, 2, 20, 5);
 				addButtonListeners( saveButton, cancelButton);
 				
-				setTitle("GND: Darstellungsfestlegung für Linien");
+				setTitle("GND: Darstellungsfestlegung fÃ¼r Linien");
 				setLayout(new BorderLayout());
 				add( new JScrollPane( panel), BorderLayout.NORTH);
 				add( new JScrollPane( _dynamicDefinitionComponent), BorderLayout.CENTER);
@@ -247,7 +253,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 							if ( colorItem == null ) {
 								JOptionPane.showMessageDialog(
 										new JFrame(),
-										"Bitte wählen Sie eine Farbe aus!",
+										"Bitte wÃ¤hlen Sie eine Farbe aus!",
 										"Fehler",
 										JOptionPane.ERROR_MESSAGE);
 								return;
@@ -287,7 +293,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 						if ( attributeGroupName == null ) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Bitte wählen Sie eine Attributgruppe aus!",
+									"Bitte wÃ¤hlen Sie eine Attributgruppe aus!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -297,7 +303,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 						if ( aspectName == null ) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Bitte wählen Sie einen Aspekt aus!",
+									"Bitte wÃ¤hlen Sie einen Aspekt aus!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -309,14 +315,14 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 							if ( error == 1) {
 								JOptionPane.showMessageDialog(
 										new JFrame(),
-										"Bitte wählen Sie ein Attribut aus!",
+										"Bitte wÃ¤hlen Sie ein Attribut aus!",
 										"Fehler",
 										JOptionPane.ERROR_MESSAGE);
 								return;
 							} else if ( error == 2) {
 								JOptionPane.showMessageDialog(
 										new JFrame(),
-										"Der Attributname ist ungültig!",
+										"Der Attributname ist ungÃ¼ltig!",
 										"Fehler",
 										JOptionPane.ERROR_MESSAGE);
 								return;
@@ -366,7 +372,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 						if ( (fromValue != null) && (toValue !=null) && (fromValue > toValue)) {
 							JOptionPane.showMessageDialog(
 									new JFrame(),
-									"Der Von-Wert ist größer als der Bis-Wert!",
+									"Der Von-Wert ist grÃ¶ÃŸer als der Bis-Wert!",
 									"Fehler",
 									JOptionPane.ERROR_MESSAGE);
 							return;
@@ -426,7 +432,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 				if ( selectedRows.length == 0 ) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie eine Zeile aus!",
+							"Bitte wÃ¤hlen Sie eine Zeile aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -506,7 +512,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 		if ( property == null) {
 			JOptionPane.showMessageDialog(
 					new JFrame(),
-					"Bitte wählen Sie eine Eigenschaft aus!",
+					"Bitte wÃ¤hlen Sie eine Eigenschaft aus!",
 					"Fehler",
 					JOptionPane.ERROR_MESSAGE);
 			return null;
@@ -555,7 +561,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 		} else if ( propertyName.equals( "Strichbreite")) {
 			return _staticStrokeWidthCenterPanel;
 		} else {
-			_debug.warning( "DOTLineDialog: Die Eigenschaft " + propertyName + " wird nicht unterstützt.");
+			_debug.warning( "DOTLineDialog: Die Eigenschaft " + propertyName + " wird nicht unterstÃ¼tzt.");
 			return null;
 		}
 	}
@@ -654,7 +660,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 		} else if ( property == DOTProperty.STRICHBREITE) {
 			return _nonStaticStrokeWidthCenterPanel;
 		} else {
-			_debug.warning( "DOTLineDialog: Die Eigenschaft " + property.toString() + " wird nicht unterstützt.");
+			_debug.warning( "DOTLineDialog: Die Eigenschaft " + property.toString() + " wird nicht unterstÃ¼tzt.");
 			return null;
 		}
 	}
@@ -700,7 +706,7 @@ public class DOTLineDialog implements DOTDefinitionDialog {
 		
 		JButton newDOTItemButton = new JButton("Neue Zeile");
 		newDOTItemButton.setEnabled( _dotDefinitionDialogFrame.isEditable());
-		JButton deleteDOTItemButton = new JButton("Löschen");
+		JButton deleteDOTItemButton = new JButton("LÃ¶schen");
 		deleteDOTItemButton.setEnabled( false);
 		JButton showConflictsButton = new JButton("Zeige Konflikte");
 		

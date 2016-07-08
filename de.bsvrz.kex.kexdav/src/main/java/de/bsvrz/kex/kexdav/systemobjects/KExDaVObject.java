@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.systemobjects;
@@ -32,12 +38,12 @@ import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * Kapselt ein Systemobjekt auf einem Datenverteiler. Bietet allgemeine Funktionen wie Prüfung auf Existenz und das Senden und Empfangen von Daten. Im Gegensatz
- * zu normalen Systemobjekten kann man sich mit dieser Klasse auch als Sender/Empfänger anmelden, wenn das zugehörige Objekt nicht auf dem Datenverteiler
+ * Kapselt ein Systemobjekt auf einem Datenverteiler. Bietet allgemeine Funktionen wie PrÃ¼fung auf Existenz und das Senden und Empfangen von Daten. Im Gegensatz
+ * zu normalen Systemobjekten kann man sich mit dieser Klasse auch als Sender/EmpfÃ¤nger anmelden, wenn das zugehÃ¶rige Objekt nicht auf dem Datenverteiler
  * existiert. Die wirkliche Anmeldung wird dann nachgetragen, sobald das Objekt erstellt wird.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 12677 $
+ * @version $Revision$
  */
 public class KExDaVObject {
 
@@ -60,7 +66,7 @@ public class KExDaVObject {
 	 *
 	 * @param pid        Objekt-Pid
 	 * @param connection Datenverteiler-Verbindung
-	 * @param manager    KExDaV-Manager-Objekt, an das Benachrichtigungen gesendet werden können
+	 * @param manager    KExDaV-Manager-Objekt, an das Benachrichtigungen gesendet werden kÃ¶nnen
 	 */
 	public KExDaVObject(final String pid, final ClientDavInterface connection, final ManagerInterface manager) {
 		this(new PidSpecification(pid), connection, manager);
@@ -71,7 +77,7 @@ public class KExDaVObject {
 	 *
 	 * @param objectSpecification Objekt-Spezifikation
 	 * @param connection          Datenverteiler-Verbindung
-	 * @param manager             KExDaV-Manager-Objekt, an das Benachrichtigungen gesendet werden können
+	 * @param manager             KExDaV-Manager-Objekt, an das Benachrichtigungen gesendet werden kÃ¶nnen
 	 */
 	public KExDaVObject(
 			final ObjectSpecification objectSpecification, final ClientDavInterface connection, final ManagerInterface manager) {
@@ -85,11 +91,11 @@ public class KExDaVObject {
 		final SystemObject object = objectSpecification.getObject(_connection.getDataModel());
 		setWrappedObject(object);
 
-		// Anmeldung auf Erstellung/Löschung des Objektes (nicht nötig bei schon vorhandenen Konfigurationsobjekten)
+		// Anmeldung auf Erstellung/LÃ¶schung des Objektes (nicht nÃ¶tig bei schon vorhandenen Konfigurationsobjekten)
 		if(object == null || object.getType() instanceof DynamicObjectType) {
-			/** Direkt beim typ.dynamischesObject anmelden. Das Anmelden beim eigentlichen Typ dieses Objektes funktioniert nicht immer zuverlässig, weil unter Umständen dieses
-			 Objekt noch gar nicht vorhanden und deshalb kein Typ ermittelbar ist, oder weil evtl. jemand das Objekt mit diesem Typ löschen könnte und ein anderes
-			 Objekt mit der gleichen Pid von einem anderen Typ erstellen könnte */
+			/** Direkt beim typ.dynamischesObject anmelden. Das Anmelden beim eigentlichen Typ dieses Objektes funktioniert nicht immer zuverlÃ¤ssig, weil unter UmstÃ¤nden dieses
+			 Objekt noch gar nicht vorhanden und deshalb kein Typ ermittelbar ist, oder weil evtl. jemand das Objekt mit diesem Typ lÃ¶schen kÃ¶nnte und ein anderes
+			 Objekt mit der gleichen Pid von einem anderen Typ erstellen kÃ¶nnte */
 			final DynamicObjectType dynamicObjectType = (DynamicObjectType)connection.getDataModel().getType(Constants.Pids.TypeDynamicObject);
 			if(dynamicObjectType == null) throw new IllegalStateException(Constants.Pids.TypeDynamicObject + " konnte nicht gefunden werden");
 			final Listener objectCreateDeleteListener = new Listener();
@@ -99,13 +105,13 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Anmeldung als Empfänger/Senke
+	 * Anmeldung als EmpfÃ¤nger/Senke
 	 *
 	 *
 	 * @param atg               Attributgruppe
 	 * @param asp               Aspekt
 	 * @param simulationVariant Simulationsvariante
-	 * @param receiverRole      (Empfänger oder Senke)
+	 * @param receiverRole      (EmpfÃ¤nger oder Senke)
 	 * @param receiveOptions    (Delta oder Nachgeliefert oder Normal)
 	 * @param receiver          Objekt an das Empfangene Daten gesendet werden. Jedes Objekt ist einer Datenidentifikation fest zugeordnet und kann nur einmal
 	 *                          angemeldet werden.
@@ -124,7 +130,7 @@ public class KExDaVObject {
 		if(receiverRole == null) throw new IllegalArgumentException("receiverRole ist null");
 		if(receiver == null) throw new IllegalArgumentException("receiver ist null");
 
-		if(_receivers.containsKey(receiver)) throw new IllegalArgumentException("Der Empfänger " + receiver + " ist bereits angemeldet.");
+		if(_receivers.containsKey(receiver)) throw new IllegalArgumentException("Der EmpfÃ¤nger " + receiver + " ist bereits angemeldet.");
 
 		final DataDescription dataDescription = makeDataDescription(atg, asp, simulationVariant);
 		final InnerReceiver innerReceiver = new InnerReceiver(receiver, receiverRole, dataDescription, receiveOptions);
@@ -193,7 +199,7 @@ public class KExDaVObject {
 	private void registerSender(final InnerSender innerSender, final SystemObject systemObject) {
 		try {
 			if(innerSender.getSenderRole() != SenderRole.source()) {
-				// Quellen werden verzögert beim ersten Datensatz angemeldet
+				// Quellen werden verzÃ¶gert beim ersten Datensatz angemeldet
 				_connection.subscribeSender(
 						innerSender, systemObject, innerSender.getDataDescription(), innerSender.getSenderRole()
 				);
@@ -215,18 +221,18 @@ public class KExDaVObject {
 
 	/**
 	 * Sendet Daten an das Objekt
-	 *
-	 * @param senderObject Sender-Objekt
+	 *  @param senderObject Sender-Objekt
 	 * @param data         Daten
 	 * @param dataTime     Zeit des Datensatzes
+	 * @param delayed      <code>true</code>, wenn der im Ergebnis enthaltene Datensatz als nachgeliefert gekennzeichnet werden soll.    
 	 */
-	public void sendData(final KExDaVSender senderObject, final Data data, final long dataTime) {
+	public void sendData(final KExDaVSender senderObject, final Data data, final long dataTime, final boolean delayed) {
 		final SystemObject systemObject = getWrappedObject();
 		if(systemObject == null) return;
 		try {
 			final InnerSender sender = _senders.get(senderObject);
 			if(sender == null) throw new IllegalStateException("Sender wurde noch nicht angemeldet");
-			sender.sendData(systemObject, data, dataTime);
+			sender.sendData(systemObject, data, dataTime, delayed);
 		}
 		catch(SendSubscriptionNotConfirmed sendSubscriptionNotConfirmed) {
 			_manager.addMessage(Message.newMajor("Kann derzeit nicht senden", sendSubscriptionNotConfirmed));
@@ -247,9 +253,9 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Meldet einen Empfänger ab
+	 * Meldet einen EmpfÃ¤nger ab
 	 *
-	 * @param receiverObject Empfänger-Objekt
+	 * @param receiverObject EmpfÃ¤nger-Objekt
 	 */
 	public void unsubscribeReceiver(
 			final KExDaVReceiver receiverObject) {
@@ -260,7 +266,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Gibt die Datenverteiler-Verbindung zurück, zu der dieses Objekt gehört
+	 * Gibt die Datenverteiler-Verbindung zurÃ¼ck, zu der dieses Objekt gehÃ¶rt
 	 *
 	 * @return Datenverteiler-Verbindung
 	 */
@@ -269,7 +275,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Gibt das SystemObject zurück
+	 * Gibt das SystemObject zurÃ¼ck
 	 *
 	 * @return SystemObject
 	 */
@@ -313,7 +319,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Erstellt einen Listener auf die Löschung dieses Objekts
+	 * Entfernt einen Listener auf die LÃ¶schung dieses Objekts
 	 *
 	 * @param e Callback
 	 */
@@ -322,24 +328,24 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Löscht dieses Objekt
+	 * LÃ¶scht dieses Objekt
 	 *
-	 * @param force Soll das Objekt auch gelöscht werden, wenn es nicht von KExDaV kopiert wurde?
+	 * @param force Soll das Objekt auch gelÃ¶scht werden, wenn es nicht von KExDaV kopiert wurde?
 	 *
 	 * @return true wenn das Objekt nicht mehr existiert, sonst false
 	 *
-	 * @throws ConfigurationChangeException Falls das Ändern der Konfiguration fehlschlägt (z.B. keine Berechtigung)
+	 * @throws ConfigurationChangeException Falls das Ã„ndern der Konfiguration fehlschlÃ¤gt (z.B. keine Berechtigung)
 	 */
 	public boolean invalidate(final boolean force) throws ConfigurationChangeException, MissingKExDaVAttributeGroupException {
 		final SystemObject wrappedObject = getWrappedObject();
 		if(wrappedObject == null || !wrappedObject.isValid()) {
-			return true; // Objekt existiert nicht mehr, es braucht nicht nochmal gelöscht zu werden. Daher ist auch eine Warnung unnötig.
+			return true; // Objekt existiert nicht mehr, es braucht nicht nochmal gelÃ¶scht zu werden. Daher ist auch eine Warnung unnÃ¶tig.
 		}
 		if(wrappedObject instanceof ConfigurationObject) {
-			throw new IllegalArgumentException("Versuch, ein Konfigurationsobjekt zu löschen.");
+			throw new IllegalArgumentException("Versuch, ein Konfigurationsobjekt zu lÃ¶schen.");
 		}
 		if(!force && !isCopy()) return false;
-		_manager.addMessage(Message.newInfo("Lösche Objekt: " + _objectSpecification));
+		_manager.addMessage(Message.newInfo("LÃ¶sche Objekt: " + _objectSpecification));
 		wrappedObject.invalidate();
 		setWrappedObject(null);
 		return true;
@@ -428,7 +434,7 @@ public class KExDaVObject {
 	 * @param origConfigAuthority
 	 *
 	 * @throws MissingObjectException       Falls der angegebene Typ nicht existiert oder nicht vom Typ DynamicObjectType ist.
-	 * @throws ConfigurationChangeException Falls die Konfigurationsänderung nicht durchgeführt werden konnte
+	 * @throws ConfigurationChangeException Falls die KonfigurationsÃ¤nderung nicht durchgefÃ¼hrt werden konnte
 	 */
 	public void create(
 			final ConfigurationArea configurationArea,
@@ -441,7 +447,7 @@ public class KExDaVObject {
 		final SystemObject type = _connection.getDataModel().getObject(typePid);
 		if(type == null) throw new MissingObjectException(type + " konnte nicht gefunden werden");
 		if(!(type instanceof DynamicObjectType)) {
-			throw new MissingObjectException(type + " ist kein Typ für dynamische Objekte");
+			throw new MissingObjectException(type + " ist kein Typ fÃ¼r dynamische Objekte");
 		}
 		final Map<PidAttributeGroupUsage, Data> map = new HashMap<PidAttributeGroupUsage, Data>(allConfigurationData);
 		if(_connection.getDataModel().getAttributeGroup(Constants.Pids.AttributeGroupKExDaVConfigData) == null){
@@ -488,7 +494,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Gibt den Typ dieses Objekts zurück
+	 * Gibt den Typ dieses Objekts zurÃ¼ck
 	 *
 	 * @return Objekttyp als Pid
 	 *
@@ -499,7 +505,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Gibt die Spezifikation dieses Objekts zurück
+	 * Gibt die Spezifikation dieses Objekts zurÃ¼ck
 	 *
 	 * @return Objekt-Spezifikation
 	 */
@@ -508,7 +514,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Gibt den Namen dieses Objekts zurück
+	 * Gibt den Namen dieses Objekts zurÃ¼ck
 	 *
 	 * @return Objektname
 	 *
@@ -519,7 +525,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Prüft ob das Objekt existiert
+	 * PrÃ¼ft ob das Objekt existiert
 	 *
 	 * @return True wenn es existiert
 	 */
@@ -529,7 +535,7 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Prüft, ob das Objekt ein Konfigurationsobjekt ist
+	 * PrÃ¼ft, ob das Objekt ein Konfigurationsobjekt ist
 	 *
 	 * @return True wenn es ein Konfigurationsobjekt ist, false wenn es nicht existiert oder ein dynamisches Objekt ist.
 	 */
@@ -539,8 +545,8 @@ public class KExDaVObject {
 	}
 
 	/**
-	 * Gibt <tt>true</tt> zurück, wenn das Objekt mit diesem KExDaV von einem anderen Datenverteilersystem kopiert wurde, d.h. wenn es also "im Besitz" dieses
-	 * KExDaVs ist und damit z.B. auch gelöscht werden darf.
+	 * Gibt <tt>true</tt> zurÃ¼ck, wenn das Objekt mit diesem KExDaV von einem anderen Datenverteilersystem kopiert wurde, d.h. wenn es also "im Besitz" dieses
+	 * KExDaVs ist und damit z.B. auch gelÃ¶scht werden darf.
 	 *
 	 * @return <tt>true</tt>, wenn das Objekt mit diesem KExDaV von einem anderen Datenverteilersystem kopiert wurde, sonst <tt>false</tt>
 	 */
@@ -550,13 +556,24 @@ public class KExDaVObject {
 		       && (_manager.getKExDaVObject() != null && _manager.getKExDaVObject().getPidOrId().equals(exchangeProperties.getKExDaVObject()));
 	}
 
+	/** 
+	 * Gibt die konfigurierte Auttributgruppe fÃ¼r ausgetausche Objekte zurÃ¼ck
+	 * @return die konfigurierte Auttributgruppe fÃ¼r ausgetausche Objekte
+	 * @throws MissingKExDaVAttributeGroupException Bei nicht existierender Attributgruppe in der Konfiguration (altes Datenmodell)
+	 */
 	public ExchangeProperties getExchangeProperties() throws MissingKExDaVAttributeGroupException {
 		final SystemObject wrappedObject = getWrappedObject();
 		if(wrappedObject == null) return null;
 		if(wrappedObject instanceof ConfigurationObject) return null;
 		return getExchangeProperties(wrappedObject);
 	}
-
+	
+	/**
+	 * Gibt die konfigurierte Auttributgruppe fÃ¼r ausgetausche Objekte zurÃ¼ck
+	 * @param wrappedObject Objekt, dessen Infos abgerufen werden sollen
+	 * @return die konfigurierte Auttributgruppe fÃ¼r ausgetausche Objekte
+	 * @throws MissingKExDaVAttributeGroupException Bei nicht existierender Attributgruppe in der Konfiguration (altes Datenmodell)
+	 */
 	public static ExchangeProperties getExchangeProperties(final SystemObject wrappedObject) throws MissingKExDaVAttributeGroupException {
 		final AttributeGroup attributeGroup = wrappedObject.getDataModel().getAttributeGroup(Constants.Pids.AttributeGroupKExDaVConfigData);
 		if(attributeGroup == null) throw new MissingKExDaVAttributeGroupException();
@@ -571,7 +588,7 @@ public class KExDaVObject {
 	 * @param configurationData Konfigurationsdaten
 	 *
 	 * @throws MissingObjectException       Das Objekt existiert nicht
-	 * @throws ConfigurationChangeException Die Konfiguration unterstützt die Änderung nicht
+	 * @throws ConfigurationChangeException Die Konfiguration unterstÃ¼tzt die Ã„nderung nicht
 	 */
 	public void setConfigurationData(final Map<PidAttributeGroupUsage, Data> configurationData) throws MissingObjectException, ConfigurationChangeException {
 		final Collection<DataAndATGUsageInformation> data = convertConfigurationData(configurationData);
@@ -593,6 +610,9 @@ public class KExDaVObject {
 	}
 
 
+	/**
+	 * Klasse, die einen Sender (mit Sendesteuerung) implementiert
+	 */
 	private class InnerSender implements ClientSenderInterface {
 
 		private final KExDaVSender _senderObject;
@@ -611,7 +631,7 @@ public class KExDaVObject {
 			_senderObject = senderObject;
 			_dataDescription = dataDescription;
 			_senderRole = senderRole;
-			_hasPendingSourceSubscription = (senderRole == SenderRole.source());
+			_hasPendingSourceSubscription = (senderRole.isSource());
 			_senders.put(senderObject, this);
 		}
 
@@ -619,7 +639,7 @@ public class KExDaVObject {
 			if(state == _state) return;
 			_state = state;
 			_senderObject.update(state);
-			if(_state == ClientSenderInterface.START_SENDING && _lastData != null &&  _senderRole != SenderRole.source()) {
+			if(_state == ClientSenderInterface.START_SENDING && _lastData != null && _senderRole.isSender()) {
 				try {
 					_connection.sendData(_lastData);
 					_lastData = null;
@@ -634,16 +654,24 @@ public class KExDaVObject {
 			return true;
 		}
 
-		public void sendData(final SystemObject systemObject, Data data, final long dataTime) throws SendSubscriptionNotConfirmed {
+		/**
+		 * Sendet einen Datensatz
+		 * @param systemObject Objekt
+		 * @param data Datum
+		 * @param dataTime Datenzeit
+		 * @param delayed <code>true</code>, wenn der im Ergebnis enthaltene Datensatz als nachgeliefert gekennzeichnet werden soll.      
+		 * @throws SendSubscriptionNotConfirmed
+		 */
+		public void sendData(final SystemObject systemObject, Data data, final long dataTime, final boolean delayed) throws SendSubscriptionNotConfirmed {
 			final ResultData resultData;
 			if(data != null) {
 				if(!(data instanceof KExDaVAttributeGroupData)) {
 					data = new KExDaVAttributeGroupData(data, _manager);
 				}
-				resultData = ((KExDaVAttributeGroupData)data).toResultData(systemObject, _dataDescription, dataTime);
+				resultData = ((KExDaVAttributeGroupData)data).toResultData(systemObject, _dataDescription, dataTime, delayed);
 			}
 			else {
-				resultData = new ResultData(systemObject, _dataDescription, dataTime, null);
+				resultData = new ResultData(systemObject, _dataDescription, dataTime, null, delayed);
 			}
 
 			try {
@@ -658,7 +686,7 @@ public class KExDaVObject {
 					}
 				}
 				else if(_state == ClientSenderInterface.START_SENDING
-						|| (_state == ClientSenderInterface.STOP_SENDING && _senderRole == SenderRole.source())) {
+						|| (_state == ClientSenderInterface.STOP_SENDING && _senderRole.isSource())) {
 					_connection.sendData(resultData);
 				}
 				else {
@@ -669,12 +697,11 @@ public class KExDaVObject {
 				_lastData = resultData;
 			}
 
-
 			if(_state == ClientSenderInterface.STOP_SENDING_NO_RIGHTS){
 				_manager.addMessage(Message.newMajor("Keine Rechte zum Senden von Daten: " +  this));
 			}
 			else if(_state == ClientSenderInterface.STOP_SENDING_NOT_A_VALID_SUBSCRIPTION){
-				_manager.addMessage(Message.newMajor("Ungültige Anmeldung des Empfängers: " +  this));
+				_manager.addMessage(Message.newMajor("UngÃ¼ltige Anmeldung des EmpfÃ¤ngers: " +  this));
 			}
 		}
 
@@ -717,7 +744,10 @@ public class KExDaVObject {
 		public void update(final ResultData[] results) {
 			for(final ResultData result : results) {
 				_kExDaVReceiver.update(
-						result.getData() == null ? null : new KExDaVAttributeGroupData(result.getData(), _manager), result.getDataState(), result.getDataTime()
+						result.getData() == null ? null : new KExDaVAttributeGroupData(result.getData(), _manager),
+						result.getDataState(),
+						result.getDataTime(),
+						result.isDelayedData()
 				);
 			}
 		}

@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,28 +14,40 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.systemobjects;
 
 import de.bsvrz.dav.daf.communication.dataRepresentation.AbstractData;
 import de.bsvrz.dav.daf.communication.dataRepresentation.AttributeBaseValueDataFactory;
-import de.bsvrz.dav.daf.main.*;
-import de.bsvrz.dav.daf.main.config.*;
+import de.bsvrz.dav.daf.main.ClientDavInterface;
+import de.bsvrz.dav.daf.main.Data;
+import de.bsvrz.dav.daf.main.DataDescription;
+import de.bsvrz.dav.daf.main.ResultData;
+import de.bsvrz.dav.daf.main.config.AttributeGroup;
+import de.bsvrz.dav.daf.main.config.AttributeType;
+import de.bsvrz.dav.daf.main.config.DataModel;
+import de.bsvrz.dav.daf.main.config.SystemObject;
 import de.bsvrz.dav.daf.main.impl.config.DafDataModel;
 import de.bsvrz.kex.kexdav.management.ManagerInterface;
 
 import java.util.Iterator;
 
 /**
- * Kapselt ein Datenobjekt für dem sicheren Umgang zwischen Datenverteilern. Dazu wird zusätzlich zu dem Data-Objekt das Datenmodell gespeichert, zu dem es
- * gehört, und es werden sämtliche Zugriffe auf Referenzwerte so korrigiert, dass die Zugriffe nur anhand der Pid stattfinden und nur Objekte aus dem korrekten
- * Datenmodell eingefügt werden können.
+ * Kapselt ein Datenobjekt fÃ¼r dem sicheren Umgang zwischen Datenverteilern. Dazu wird zusÃ¤tzlich zu dem Data-Objekt das Datenmodell gespeichert, zu dem es
+ * gehÃ¶rt, und es werden sÃ¤mtliche Zugriffe auf Referenzwerte so korrigiert, dass die Zugriffe nur anhand der Pid stattfinden und nur Objekte aus dem korrekten
+ * Datenmodell eingefÃ¼gt werden kÃ¶nnen.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9232 $
+ * @version $Revision$
  */
 public class KExDaVAttributeGroupData extends AbstractData.ListData{
 
@@ -65,7 +77,7 @@ public class KExDaVAttributeGroupData extends AbstractData.ListData{
 	}
 
 	/**
-	 * Erstellt ein neues Datenobjekt für eine Attributgruppe
+	 * Erstellt ein neues Datenobjekt fÃ¼r eine Attributgruppe
 	 *
 	 * @param connection Datenverteilerverbindung
 	 * @param atg Attributgruppen-Pid
@@ -84,29 +96,30 @@ public class KExDaVAttributeGroupData extends AbstractData.ListData{
 	 * @param wrappedObject Objekt
 	 * @param dataDescription DataDescription
 	 * @param dataTime Zeit
+	 * @param delayed
 	 * @return ResultData
 	 */
-	public ResultData toResultData(final SystemObject wrappedObject, final DataDescription dataDescription, final long dataTime) {
+	public ResultData toResultData(final SystemObject wrappedObject, final DataDescription dataDescription, final long dataTime, final boolean delayed) {
 		if(!dataDescription.getAttributeGroup().equals(_attributeGroup)){
 			throw new IllegalStateException("Die AttributGruppe der DataDescription passt nicht zum Data-Objekt.");
 		}
-		return new ResultData(wrappedObject,  dataDescription,  dataTime, toData(wrappedObject.getDataModel()));
+		return new ResultData(wrappedObject,  dataDescription,  dataTime, toData(wrappedObject.getDataModel()), delayed);
 	}
 
 	/**
-	 * Gibt ein Data-Objekt zurück, das über den Datenverteiler verschickt werden kann
-	 * @param dataModel Datenmodell des Datenverteilers, über den das Data-Objekt verschickt werden soll
+	 * Gibt ein Data-Objekt zurÃ¼ck, das Ã¼ber den Datenverteiler verschickt werden kann
+	 * @param dataModel Datenmodell des Datenverteilers, Ã¼ber den das Data-Objekt verschickt werden soll
 	 * @return Data
 	 */
 	public Data toData(final DataModel dataModel) {
 		if(!dataModel.equals(_dataModel)){
-			throw new IllegalStateException("Das Datenmodell dieses Data-Objektes passt nicht zu dem Datenmodell des Objektes, zu dem die Daten gespeichert werden sollen oder das Data-Objekt ist nicht vollständig.");
+			throw new IllegalStateException("Das Datenmodell dieses Data-Objektes passt nicht zu dem Datenmodell des Objektes, zu dem die Daten gespeichert werden sollen oder das Data-Objekt ist nicht vollstÃ¤ndig.");
 		}
 		return _data;
 	}
 
 	/**
-	 * Gibt die Datenverteiler-Verbindung zurück, zu der das Data-Objekt gehört
+	 * Gibt die Datenverteiler-Verbindung zurÃ¼ck, zu der das Data-Objekt gehÃ¶rt
 	 * @return Datenverteiler-Verbindung
 	 */
 	public ClientDavInterface getConnection() {
@@ -114,7 +127,7 @@ public class KExDaVAttributeGroupData extends AbstractData.ListData{
 	}
 
 	/**
-	 * Gibt die Attributgruppe zurück, zu der das Data-Objekt gehört
+	 * Gibt die Attributgruppe zurÃ¼ck, zu der das Data-Objekt gehÃ¶rt
 	 * @return Attributgruppe
 	 */
 	public AttributeGroup getAttributeGroup() {

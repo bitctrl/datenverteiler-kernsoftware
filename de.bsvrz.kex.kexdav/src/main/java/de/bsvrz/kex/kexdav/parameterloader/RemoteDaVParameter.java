@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.parameterloader;
@@ -26,10 +32,10 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Spezifikationen für eine Datenverteiler-Verbindung
+ * Spezifikationen fÃ¼r eine Datenverteiler-Verbindung
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9100 $
+ * @version $Revision$
  */
 public class RemoteDaVParameter {
 
@@ -93,7 +99,7 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt den lokalen Standardbereich zurück
+	 * Gibt den lokalen Standardbereich zurÃ¼ck
 	 * @return den lokalen Standardbereich
 	 */
 	public SystemObject getLocalArea() {
@@ -101,15 +107,15 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die lokalen zusätzlichen Bereiche zurück
-	 * @return die lokalen zusätzlichen Bereiche
+	 * Gibt die lokalen zusÃ¤tzlichen Bereiche zurÃ¼ck
+	 * @return die lokalen zusÃ¤tzlichen Bereiche
 	 */
 	public Collection<AreaParameter> getLocalAreaParameters() {
 		return Collections.unmodifiableCollection(_localAreaParameters);
 	}
 
 	/**
-	 * Gibt den Remote-Standardbereich zurück
+	 * Gibt den Remote-Standardbereich zurÃ¼ck
 	 * @return den Remote-Standardbereich
 	 */
 	public String getRemoteArea() {
@@ -117,15 +123,15 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die remote zusätzlichen Bereiche zurück
-	 * @return die remote zusätzlichen Bereiche
+	 * Gibt die remote zusÃ¤tzlichen Bereiche zurÃ¼ck
+	 * @return die remote zusÃ¤tzlichen Bereiche
 	 */
 	public Collection<AreaParameter> getRemoteAreaParameters() {
 		return Collections.unmodifiableCollection(_remoteAreaParameters);
 	}
 
 	/**
-	 * Gibt die Datenaustauschparameter zurück
+	 * Gibt die Datenaustauschparameter zurÃ¼ck
 	 * @return die Datenaustauschparameter
 	 */
 	public Collection<ExchangeDataParameter> getExchangeDataParameters() {
@@ -133,7 +139,7 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die Parameteraustauschparameter zurück
+	 * Gibt die Parameteraustauschparameter zurÃ¼ck
 	 * @return die Parameteraustauschparameter
 	 */
 	public Collection<ExchangeParameterParameter> getExchangeParameterParameters() {
@@ -141,7 +147,7 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die Objektaustauschparameter von Lokal nach Remote zurück
+	 * Gibt die Objektaustauschparameter von Lokal nach Remote zurÃ¼ck
 	 * @return die Objektaustauschparameter von Lokal nach Remote
 	 */
 	public Collection<ObjectCollectionFactory> getExchangeObjectsLocalRemote() {
@@ -149,7 +155,7 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die Objektaustauschparameter von Remote nach Lokal zurück
+	 * Gibt die Objektaustauschparameter von Remote nach Lokal zurÃ¼ck
 	 * @return die Objektaustauschparameter von Remote nach Lokal
 	 */
 	public Collection<ObjectCollectionFactory> getExchangeObjectsRemoteLocal() {
@@ -157,7 +163,7 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die Mengenaustauschparameter zurück
+	 * Gibt die Mengenaustauschparameter zurÃ¼ck
 	 * @return die Mengenaustauschparameter
 	 */
 	public Collection<ExchangeSetParameter> getExchangeSetParameters() {
@@ -165,7 +171,7 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die Verbindungsparameter zurück
+	 * Gibt die Verbindungsparameter zurÃ¼ck
 	 * @return die Verbindungsparameter
 	 */
 	public ConnectionParameter getConnectionParameters() {
@@ -173,7 +179,7 @@ public class RemoteDaVParameter {
 	}
 
 	/**
-	 * Gibt die Dauer zwischen Verbindungsversuchen zurück
+	 * Gibt die Dauer zwischen Verbindungsversuchen zurÃ¼ck
 	 * @return die Dauer zwischen Verbindungsversuchen
 	 */
 	public long getReconnectionDelay() {

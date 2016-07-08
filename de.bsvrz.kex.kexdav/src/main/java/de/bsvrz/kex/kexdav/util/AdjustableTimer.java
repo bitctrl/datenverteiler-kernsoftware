@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.util;
@@ -24,15 +30,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Timer mit einmaliger Ausführung und anpassbarem Delay. Beispiel: Der Timer wird mit 60 Sekunden Delay gestartet, dann triggert er nach 60 Sekunden. Wird nach
+ * Timer mit einmaliger AusfÃ¼hrung und anpassbarem Delay. Beispiel: Der Timer wird mit 60 Sekunden Delay gestartet, dann triggert er nach 60 Sekunden. Wird nach
  * 5 Sekunden aber ein neuer Delay von 20 Sekunden gesetzt, dann wird der Timer nach weiteren 15 Sekunden triggern (also die angegebenen 20 Sekunden seit dem
- * Zeitpunkt, wo er gestartet wurde). Würde stattdessen nach 20 Sekunden ein Delay von 5 Sekunden gesetzt, wird der Timer sofort getriggert, da die 5 Sekunden
- * seit Aktivierung des Timers bereits vergangen sind.<p/> Der Timer macht keine Vorgaben darüber, in welchem Thread der Task ausgeführt wird. Insbesondere kann
- * bei einem resultierenden Zeitraum<=0 der Task sofort in dem Thread ausgeführt werden, in dem der Konstruktor oder die {@link #adjustDelay(long)}-Methode
- * ausgeführt wird.
+ * Zeitpunkt, wo er gestartet wurde). WÃ¼rde stattdessen nach 20 Sekunden ein Delay von 5 Sekunden gesetzt, wird der Timer sofort getriggert, da die 5 Sekunden
+ * seit Aktivierung des Timers bereits vergangen sind.<p> Der Timer macht keine Vorgaben darÃ¼ber, in welchem Thread der Task ausgefÃ¼hrt wird. Insbesondere kann
+ * bei einem resultierenden Zeitraum<=0 der Task sofort in dem Thread ausgefÃ¼hrt werden, in dem der Konstruktor oder die {@link #adjustDelay(long)}-Methode
+ * ausgefÃ¼hrt wird.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9193 $
+ * @version $Revision$
  */
 public class AdjustableTimer {
 
@@ -48,7 +54,7 @@ public class AdjustableTimer {
 	 * Erstellt einen neuen Timer
 	 *
 	 * @param delay Dauer in Millisekunden, bis der Task gestartet wird (ab dem Zeitpunkt, wo dieser Konstruktor aufgerufen wird)
-	 * @param task  Aufgabe, die ausgeführt werden soll
+	 * @param task  Aufgabe, die ausgefÃ¼hrt werden soll
 	 */
 	public AdjustableTimer(final long delay, final Runnable task) {
 		_startTime = System.currentTimeMillis();
@@ -58,9 +64,9 @@ public class AdjustableTimer {
 	}
 
 	/**
-	 * Ändert die Dauer bis zur Ausführung des Tasks
+	 * Ã„ndert die Dauer bis zur AusfÃ¼hrung des Tasks
 	 *
-	 * @param newDelay neue Dauer in ms. Die Dauer wird immer ab dem Initialisierungszeitpunkt des Timers angegeben, ist newDelay bspw. 12 und der Timer läuft
+	 * @param newDelay neue Dauer in ms. Die Dauer wird immer ab dem Initialisierungszeitpunkt des Timers angegeben, ist newDelay bspw. 12 und der Timer lÃ¤uft
 	 *                 schon 5 Sekunden, werden weitere 7 Sekunden gewartet. Falls diese Wartezeit negativ ist, wird der Task sofort gestartet
 	 */
 	public synchronized void adjustDelay(final long newDelay) {
@@ -71,7 +77,7 @@ public class AdjustableTimer {
 		setTrigger(delay);
 	}
 
-	/** Stoppt den Timer und verhindert, dass der Task in Zukunft durch diesen Timer ausgeführt wird */
+	/** Stoppt den Timer und verhindert, dass der Task in Zukunft durch diesen Timer ausgefÃ¼hrt wird */
 	public synchronized void cancel() {
 		_finished = true;
 		_timer.cancel();
@@ -99,7 +105,7 @@ public class AdjustableTimer {
 	}
 
 	/**
-	 * Führt den angegebenen Task aus
+	 * FÃ¼hrt den angegebenen Task aus
 	 */
 	private synchronized void runTask() {
 		if(_finished) return;

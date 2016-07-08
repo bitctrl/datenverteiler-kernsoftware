@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.main;
@@ -36,11 +42,13 @@ import java.util.regex.Pattern;
  * Main-Klasse, mit der KExDav als alleinstehende Anwendung gestartet werden kann
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9222 $
+ * @version $Revision$
  */
 public class KExDaVLocalApplication implements StandardApplication {
 
 	private static final Pattern COMMAND_LINE_SEPARATOR = Pattern.compile(",");
+	
+	public static boolean sleepWorkaround = false;
 
 	private String _kexDavObjectPid = null;
 
@@ -72,6 +80,9 @@ public class KExDaVLocalApplication implements StandardApplication {
 			}
 			if(argumentList.hasArgument("-plugin")) {
 				createPluginMap(argumentList.fetchArgument("-plugin").asString());
+			}	
+			if(argumentList.fetchArgument("-sleep=nein").booleanValue()){
+				sleepWorkaround = true;
 			}
 			if(argumentList.hasUnusedArguments()) {
 				printUsageAndExit();
@@ -86,7 +97,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 	}
 
 	/**
-	 * Schreibt die möglichen Kommandozeilenargumente auf die Standardausgabe
+	 * Schreibt die mÃ¶glichen Kommandozeilenargumente auf die Standardausgabe
 	 */
 	@SuppressWarnings({"UseOfSystemOutOrSystemErr"})
 	private void printUsageAndExit() {
@@ -96,7 +107,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 		System.out.println("Erforderliche Argumente:");
 		System.out.println("  -benutzer=[Name]            Benutzers zur Authentifizierung mit dem lokalen Datenverteiler");
 		System.out.println("  -authentifizierung=[Datei]  Passwortdatei zur Authentifizierung mit dem lokalen und dem Remote-Datenverteiler");
-		System.out.println("                                Eine Textdatei mit Einträgen wie:");
+		System.out.println("                                Eine Textdatei mit EintrÃ¤gen wie:");
 		System.out.println("                                LokalerBenutzerName=geheim");
 		System.out.println("                                RemoteBenutzerName@dav.remoteDatenverteilerPid=secret");
 		System.out.println();
@@ -111,7 +122,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 	}
 
 	/**
-	 * Erstellt die Map mit den Plugins und den zugehörigen Attributgruppen
+	 * Erstellt die Map mit den Plugins und den zugehÃ¶rigen Attributgruppen
 	 * @param plugins String von der Kommandozeile, der geparst werden muss
 	 */
 	private void createPluginMap(final CharSequence plugins) {
@@ -122,7 +133,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 	}
 
 	/**
-	 * Fügt ein Plugin hinzu
+	 * FÃ¼gt ein Plugin hinzu
 	 * @param pluginClassName Plugin-Klasse
 	 */
 	private void addPlugIn(final String pluginClassName) {
@@ -135,7 +146,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 			for(final AttributeGroupPair pair : attributeGroupPairs) {
 				final KExDaVDataPlugin old = _plugins.put(pair, plugin);
 				if(old != null) {
-					_debug.warning("Mehrere Plugins sind für die " + pair + " zuständig: \n" + old.getClass().getName() + "\n" + plugin.getClass().getName());
+					_debug.warning("Mehrere Plugins sind fÃ¼r die " + pair + " zustÃ¤ndig: \n" + old.getClass().getName() + "\n" + plugin.getClass().getName());
 				}
 			}
 		}
@@ -176,7 +187,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 	}
 
 	/**
-	 * Gibt die Pid des KExDaV-Objektes zurück
+	 * Gibt die Pid des KExDaV-Objektes zurÃ¼ck
 	 * @return Pid des KExDaV-Objektes
 	 */
 	public String getKexDavObjectPid() {
@@ -184,7 +195,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 	}
 
 	/**
-	 * Gibt die passwd-Datei zurück
+	 * Gibt die passwd-Datei zurÃ¼ck
 	 * @return passwd-Datei
 	 */
 	public File getAuthenticationFile() {
@@ -192,7 +203,7 @@ public class KExDaVLocalApplication implements StandardApplication {
 	}
 
 	/**
-	 * Gibt eine unveränderliche Map mit Plugins zurück
+	 * Gibt eine unverÃ¤nderliche Map mit Plugins zurÃ¼ck
 	 * @return Map mit Plugins
 	 */
 	public Map<AttributeGroupPair, KExDaVDataPlugin> getPlugins() {
@@ -200,8 +211,8 @@ public class KExDaVLocalApplication implements StandardApplication {
 	}
 
 	/**
-	 * Gibt zurück ob die Argumente gültig sind und KExDaV beim Aufruf der {@link #initialize(de.bsvrz.dav.daf.main.ClientDavInterface)}-Methode gestartet wird.
-	 * @return true wenn die Argumente gültig sind
+	 * Gibt zurÃ¼ck ob die Argumente gÃ¼ltig sind und KExDaV beim Aufruf der {@link #initialize(de.bsvrz.dav.daf.main.ClientDavInterface)}-Methode gestartet wird.
+	 * @return true wenn die Argumente gÃ¼ltig sind
 	 */
 	public boolean hasValidArguments() {
 		return !_exit;

@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.parameterloader;
@@ -24,7 +30,7 @@ package de.bsvrz.kex.kexdav.parameterloader;
  * Verbindungsparameter mit einem Remote-Datenverteiler
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9084 $
+ * @version $Revision$
  */
 public class ConnectionParameter {
 	private final String _hostname;
@@ -55,7 +61,7 @@ public class ConnectionParameter {
 	}
 
 	/**
-	 * Gibt die IP bzw. den Hostnamen zurück
+	 * Gibt die IP bzw. den Hostnamen zurÃ¼ck
 	 * @return die IP bzw. den Hostnamen
 	 */
 	public String getIP() {
@@ -63,7 +69,7 @@ public class ConnectionParameter {
 	}
 
 	/**
-	 * Gibt den Port zurück
+	 * Gibt den Port zurÃ¼ck
 	 * @return den Port
 	 */
 	public int getPort() {
@@ -71,7 +77,7 @@ public class ConnectionParameter {
 	}
 
 	/**
-	 * Gibt den Benutzer zur Anmeldung zurück
+	 * Gibt den Benutzer zur Anmeldung zurÃ¼ck
 	 * @return den Benutzer zur Anmeldung
 	 */
 	public String getUser() {
@@ -79,7 +85,7 @@ public class ConnectionParameter {
 	}
 
 	/**
-	 * Gibt die Pid des Datenverteilers zurück
+	 * Gibt die Pid des Datenverteilers zurÃ¼ck
 	 * @return die Pid des Datenverteilers
 	 */
 	public String getDavPid() {
@@ -87,7 +93,7 @@ public class ConnectionParameter {
 	}
 
 	/**
-	 * Gibt true zurück, wenn die Verbindung aktiv ist, sonst false
+	 * Gibt true zurÃ¼ck, wenn die Verbindung aktiv ist, sonst false
 	 * @return true oder false
 	 */
 	public boolean isActive() {

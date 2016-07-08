@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.objectexchange;
@@ -27,7 +33,7 @@ import de.bsvrz.kex.kexdav.main.Direction;
  * Beschreibung zum Austausch von dynamischen Mengen
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9066 $
+ * @version $Revision$
  */
 public class SetExchangeDescription {
 
@@ -64,7 +70,7 @@ public class SetExchangeDescription {
 	}
 
 	/**
-	 * Gibt das lokale Objekt zurück
+	 * Gibt das lokale Objekt zurÃ¼ck
 	 * @return das lokale Objekt
 	 */
 	public ConfigurationObject getLocalObject() {
@@ -72,7 +78,7 @@ public class SetExchangeDescription {
 	}
 
 	/**
-	 * Gibt das Remote Objekt zurück
+	 * Gibt das Remote Objekt zurÃ¼ck
 	 * @return das Remote Objekt
 	 */
 	public ConfigurationObject getRemoteObject() {
@@ -80,7 +86,7 @@ public class SetExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Richtung zurück
+	 * Gibt die Richtung zurÃ¼ck
 	 * @return die Richtung
 	 */
 	public Direction getStrategy() {
@@ -88,7 +94,7 @@ public class SetExchangeDescription {
 	}
 
 	/**
-	 * Gibt die lokale Menge zurück
+	 * Gibt die lokale Menge zurÃ¼ck
 	 * @return die lokale Menge
 	 */
 	public String getLocalSetName() {
@@ -96,7 +102,7 @@ public class SetExchangeDescription {
 	}
 
 	/**
-	 * Gibt die Remote-Menge zurück
+	 * Gibt die Remote-Menge zurÃ¼ck
 	 * @return die Remote-Menge
 	 */
 	public String getRemoteSetName() {

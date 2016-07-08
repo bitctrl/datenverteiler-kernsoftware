@@ -9,7 +9,7 @@ zu machen.
 Das Projekt beinhaltet die SWEs, die vom NERZ e.V. als Paket *Kernsoftware* zum
 Download bereit gestellt werden.
 
-Aktueller Stand: kernsoftware 3.6.5 vom 22.05.2015
+Aktueller Stand: kernsoftware 3.8.0 vom 31.05.2016
 
 Die Projektdokumentation befindet sich unter
 http://bitctrl.github.io/datenverteiler-kernsoftware/
@@ -18,6 +18,7 @@ Das Maven Repository http://bitctrl.github.io/maven-repository/releases/
 enthält alle mit diesem Projekt erzeugten Artefakte der Kernsofware: Binary
 JARs, Source JARs und JavaDoc JARs.
 
+**Es werden keine lieferbaren SWE-Pakete gemäß NERZ-Spezifikation erstellt!**
 
 Hinweise zur Maven-Konfiguration
 --------------------------------

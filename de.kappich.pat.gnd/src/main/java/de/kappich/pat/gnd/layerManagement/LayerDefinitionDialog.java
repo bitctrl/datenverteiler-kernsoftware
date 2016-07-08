@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.layerManagement;
 
@@ -74,7 +80,7 @@ import javax.swing.table.TableModel;
  * Der Dialog zur Definition und Bearbeitung von Layern.
  *  
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -104,7 +110,7 @@ public class LayerDefinitionDialog extends JFrame {
 	
 	final private EditableListenButton _newDOTButton = new EditableListenButton("Neue Zeile");
 	
-	final private JButton _deleteDOTButton = new JButton("Zeile löschen");
+	final private JButton _deleteDOTButton = new JButton("Zeile lÃ¶schen");
 	
 	private boolean _somethingChanged = false;
 	
@@ -115,8 +121,8 @@ public class LayerDefinitionDialog extends JFrame {
 	 * 
 	 * @param connection die Datenverteiler-Verbindung
 	 * @param layer ein Layer
-	 * @param editable ist der Layer verändebar?
-	 * @param nameChangable ist der Name und damit die Identität änderbar?
+	 * @param editable ist der Layer verÃ¤ndebar?
+	 * @param nameChangable ist der Name und damit die IdentitÃ¤t Ã¤nderbar?
 	 * @param title der Titel des Fensters
 	 */
 	public LayerDefinitionDialog( final ClientDavInterface connection, 
@@ -169,7 +175,7 @@ public class LayerDefinitionDialog extends JFrame {
 		SpringUtilities.makeCompactGrid(upperPanel, 2, 5, 5);
 		add( upperPanel, BorderLayout.NORTH);
 		
-		// Mittelteil für die DOTs
+		// Mittelteil fÃ¼r die DOTs
 		
 		setTableProperties( _scratchLayer.getDotCollection());
 		addListSelectionListener();
@@ -197,7 +203,7 @@ public class LayerDefinitionDialog extends JFrame {
 		// Untere Teil mit Buttons
 		
 		EditableListenButton saveButton = new EditableListenButton("Layer speichern");
-		JButton cancelButton = new JButton("Dialog schließen");
+		JButton cancelButton = new JButton("Dialog schlieÃŸen");
 		JButton helpButton = new JButton("Hilfe");
 		addButtonListener( saveButton, cancelButton, helpButton);
 		
@@ -277,7 +283,7 @@ public class LayerDefinitionDialog extends JFrame {
 		for( int i = 0; i < geoReferenceObjectTypes.size(); i++) {
 			geoReferenceObjectTypes.addAll( getGeoReferenceObjectTypes(geoReferenceObjectTypes.get(i)));
 		}
-		// Merkwürdigerweise enthält geoReferenceObjectTypes manche Einträge zweimal! Deshalb jetzt
+		// MerkwÃ¼rdigerweise enthÃ¤lt geoReferenceObjectTypes manche EintrÃ¤ge zweimal! Deshalb jetzt
 		// alles in ein Set. Vorher wurde hier sortiert, was auch nicht besser ist.
 		Comparator<SystemObjectType> comparator = new Comparator<SystemObjectType>() {
 			public int compare(SystemObjectType o1, SystemObjectType o2) {
@@ -306,12 +312,12 @@ public class LayerDefinitionDialog extends JFrame {
 	}
 	
 	/**
-	 * Setzt die Felder des Layereditors mit den Informationen des übergebenen Layers und
-	 * aktiviert die Veränderbarkeit gemäß der zwei boolschen Werte.
+	 * Setzt die Felder des Layereditors mit den Informationen des Ã¼bergebenen Layers und
+	 * aktiviert die VerÃ¤nderbarkeit gemÃ¤ÃŸ der zwei boolschen Werte.
 	 * 
 	 * @param layer ein Layer
-	 * @param editable ist der Layer veränderbar?
-	 * @param nameChangable ist der Name und damit die Identität des Layers änderbar?
+	 * @param editable ist der Layer verÃ¤nderbar?
+	 * @param nameChangable ist der Name und damit die IdentitÃ¤t des Layers Ã¤nderbar?
 	 */
 	public void setLayer(Layer layer, boolean editable, boolean nameChangable) {
 		_scratchLayer = layer;
@@ -329,12 +335,12 @@ public class LayerDefinitionDialog extends JFrame {
 	}
 	
 	/**
-	 * Setzt den Wert der internen Variable, die darüber entscheidet, ob die Informationen
-	 * des angezeigten Layers veränderbar sind, und macht Textfelder veränderbar oder nicht,
-	 * aktiviert bzw. deaktiviert Knöpfe usw.
+	 * Setzt den Wert der internen Variable, die darÃ¼ber entscheidet, ob die Informationen
+	 * des angezeigten Layers verÃ¤nderbar sind, und macht Textfelder verÃ¤nderbar oder nicht,
+	 * aktiviert bzw. deaktiviert KnÃ¶pfe usw.
 	 * 
-	 * @param editable ist der Layer veränderbar?
-	 * @param nameChangable ist der Name und damit die Identität des Layers änderbar?
+	 * @param editable ist der Layer verÃ¤nderbar?
+	 * @param nameChangable ist der Name und damit die IdentitÃ¤t des Layers Ã¤nderbar?
 	 */
 	public void setEditable(boolean editable, boolean nameChangable) {
 		_editable = editable;
@@ -408,8 +414,8 @@ public class LayerDefinitionDialog extends JFrame {
 				panel.add( _toTextField);
 				SpringUtilities.makeCompactGrid(panel, 2, 20, 5);
 				
-				EditableListenButton saveButton = new EditableListenButton("Daten übernehmen");
-				JButton cancelButton = new JButton("Dialog schließen");
+				EditableListenButton saveButton = new EditableListenButton("Daten Ã¼bernehmen");
+				JButton cancelButton = new JButton("Dialog schlieÃŸen");
 				
 				JPanel buttonsPanel = new JPanel();
 				buttonsPanel.setLayout(new SpringLayout());
@@ -484,7 +490,7 @@ public class LayerDefinitionDialog extends JFrame {
 				if ( selectedRows.length == 0) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte wählen Sie mindestens eine Zeile aus der Liste aus!",
+							"Bitte wÃ¤hlen Sie mindestens eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -519,7 +525,7 @@ public class LayerDefinitionDialog extends JFrame {
 		ActionListener actionListenerCancel = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if ( _editable && _somethingChanged) {
-					if ( !askForSaveChanges()) {	// Es wird nicht gespeichert: Änderungen rückgängig machen!
+					if ( !askForSaveChanges()) {	// Es wird nicht gespeichert: Ã„nderungen rÃ¼ckgÃ¤ngig machen!
 						setLayer(_unchangableOriginalLayer.getCopy(), _editable, _nameChangable);
 					}
 				}
@@ -541,7 +547,7 @@ public class LayerDefinitionDialog extends JFrame {
 		if ( !_editable) {	// Sollte nie passieren, da der Button disabled ist.
 			JOptionPane.showMessageDialog(
 					new JFrame(),
-					"Dieser Layer ist nicht veränderbar!",
+					"Dieser Layer ist nicht verÃ¤nderbar!",
 					"Fehler",
 					JOptionPane.ERROR_MESSAGE);
 			return;
@@ -564,7 +570,7 @@ public class LayerDefinitionDialog extends JFrame {
 		if ( selectedItem == null) {
 			JOptionPane.showMessageDialog(
 					new JFrame(),
-					"Bitte wählen Sie einen Typ aus!",
+					"Bitte wÃ¤hlen Sie einen Typ aus!",
 					"Fehler",
 					JOptionPane.ERROR_MESSAGE);
 			return;
@@ -610,10 +616,10 @@ public class LayerDefinitionDialog extends JFrame {
 		final Layer existingLayer = LayerManager.getInstance().getLayer( layerName);
 		if ( existingLayer != null) {
 			if ((LayerManager.getInstance().isChangeable(existingLayer))) {
-				Object[] options = {"Layer überschreiben", "Speichern abbrechen"};
+				Object[] options = {"Layer Ã¼berschreiben", "Speichern abbrechen"};
 				int n = JOptionPane.showOptionDialog(
 						new JFrame(),
-						"Soll der bestehende Layer mit diesem Namen wirklich überschrieben werden?",
+						"Soll der bestehende Layer mit diesem Namen wirklich Ã¼berschrieben werden?",
 						"Layer speichern",
 						JOptionPane.YES_NO_CANCEL_OPTION,
 						JOptionPane.QUESTION_MESSAGE,
@@ -626,7 +632,7 @@ public class LayerDefinitionDialog extends JFrame {
 			} else  {
 				JOptionPane.showMessageDialog(
 						new JFrame(),
-						"Der bestehende Layer darf nicht überschrieben werden!",
+						"Der bestehende Layer darf nicht Ã¼berschrieben werden!",
 						"Fehler",
 						JOptionPane.ERROR_MESSAGE);
 				return;
@@ -660,11 +666,11 @@ public class LayerDefinitionDialog extends JFrame {
 	}
 	
 	private boolean askForSaveChanges() {
-		Object[] options = {"Änderungen speichern", "Nicht speichern"};
+		Object[] options = {"Ã„nderungen speichern", "Nicht speichern"};
 		int n = JOptionPane.showOptionDialog(
 				new JFrame(),
-				"Änderungen speichern?",
-				"Es wurden Änderungen an dem Layer vorgenommen.",
+				"Ã„nderungen speichern?",
+				"Es wurden Ã„nderungen an dem Layer vorgenommen.",
 				JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
 				null,
@@ -681,7 +687,7 @@ public class LayerDefinitionDialog extends JFrame {
 	
 	private void addListSelectionListener() {
 		final ListSelectionModel selectionModel = _dotTable.getSelectionModel();
-		// vordefinierte Darstellungsobjekttypen dürfen nicht bearbeitet oder gelöscht werden
+		// vordefinierte Darstellungsobjekttypen dÃ¼rfen nicht bearbeitet oder gelÃ¶scht werden
 		ListSelectionListener listSelectionListener = new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				final int selectedRow = _dotTable.getSelectedRow();

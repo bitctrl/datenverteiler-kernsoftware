@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.pluginInterfaces;
 
@@ -30,18 +36,18 @@ import de.bsvrz.dav.daf.main.config.SystemObjectType;
  * der vier Interfaces in diesem Package. Die Implementation dieses Interfaces liefert den Einstieg in
  * diese Implementationen und weitere Meta-Informationen des Plugins.
  * <p>
- * Jede implementierende Klassen muss einen öffentlichen Konstruktor mit leerer Argumentenliste haben, 
- * damit Class.newInstance() aufgerufen werden kann. Außerdem sollte dieser Konstruktor leichtgewichtig sein, 
+ * Jede implementierende Klassen muss einen Ã¶ffentlichen Konstruktor mit leerer Argumentenliste haben, 
+ * damit Class.newInstance() aufgerufen werden kann. AuÃŸerdem sollte dieser Konstruktor leichtgewichtig sein, 
  * damit er nicht die Performanz senkt. 
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8094 $
+ * @version $Revision$
  *
  */
 public interface DisplayObjectTypePlugin {
 	
 	/**
-	 * Gibt den eindeutigen Namen des Plugins zurück. Die Namen 'Fläche', 'Komplex', 'Linie' und 'Punkt' 
+	 * Gibt den eindeutigen Namen des Plugins zurÃ¼ck. Die Namen 'FlÃ¤che', 'Komplex', 'Linie' und 'Punkt' 
 	 * sind bereits vergeben.
 	 * 
 	 * @return der eindeutige Name des Plugins
@@ -49,21 +55,21 @@ public interface DisplayObjectTypePlugin {
 	public String						getName();		
 	
 	/**
-	 * Gibt den Darstellungstypen des Plugins zurück, das ist ein Implementation von {@link DisplayObjectType}.
+	 * Gibt den Darstellungstypen des Plugins zurÃ¼ck, das ist ein Implementation von {@link DisplayObjectType}.
 	 * 
 	 * @return ein Objekt des Darstellungstyps dieses Plugins 
 	 */
 	public DisplayObjectType 			getDisplayObjectType();
 	
 	/**
-	 * Gibt einen Dialog zur Definition und Bearbeitung von Darstellungstypen dieses Plugins zurück.
+	 * Gibt einen Dialog zur Definition und Bearbeitung von Darstellungstypen dieses Plugins zurÃ¼ck.
 	 * 
 	 * @return den Definitions- und Bearbeitungsdialog
 	 */
 	public DOTDefinitionDialog			getDialog( DOTDefinitionDialogFrame dotDefinitionDialogFrame);
 	
 	/**
-	 * Gibt einen Painter zurück, der Darstellungsobjekte mit Darstellungsobjekttypen dieses Plugins,
+	 * Gibt einen Painter zurÃ¼ck, der Darstellungsobjekte mit Darstellungsobjekttypen dieses Plugins,
 	 * zeichnen kann.
 	 * 
 	 * @return ein Objekt des Painters dieses Plugins 
@@ -71,26 +77,26 @@ public interface DisplayObjectTypePlugin {
 	public DisplayObjectPainter			getPainter();
 	
 	/**
-	 * Gibt die möglichen Typen der Grundfiguren, die gezeichnet werden können, zurück, z.B. Rechteck, 
+	 * Gibt die mÃ¶glichen Typen der Grundfiguren, die gezeichnet werden kÃ¶nnen, zurÃ¼ck, z.B. Rechteck, 
 	 * Kreis, Text usw. 
 	 * <p>
-	 * Ein Plugin kann Grundfiguren besitzen, muss aber nicht. Siehe die Erläuterungen {@link DisplayObjectType hier}.
+	 * Ein Plugin kann Grundfiguren besitzen, muss aber nicht. Siehe die ErlÃ¤uterungen {@link DisplayObjectType hier}.
 	 * 
-	 * @return die möglichen Grundfigurtypen des Plugins
+	 * @return die mÃ¶glichen Grundfigurtypen des Plugins
 	 */
 	public String[] 					getPrimitiveFormTypes();
 	
 	/**
-	 * Gibt die Visualisierungs-Eigenschaften des Grundfigurtyps o zurück. Kann mit null aufgerufen werden,
-	 * und gibt dann globale Eigenschaften zurück. Siehe die Erläuterungen {@link DisplayObjectType hier}.
+	 * Gibt die Visualisierungs-Eigenschaften des Grundfigurtyps o zurÃ¼ck. Kann mit null aufgerufen werden,
+	 * und gibt dann globale Eigenschaften zurÃ¼ck. Siehe die ErlÃ¤uterungen {@link DisplayObjectType hier}.
 	 * 
 	 * @return die Eigenschaften der Grundfigur oder des Darstellungstyps selbst
 	 */
 	public DOTProperty[]				getProperties( Object o);
 	
 	/**
-	 * Gibt 'typ.fläche', 'typ.linie', 'typ.punkt' oder 'typ.geoReferenzObject' zurück, je nachdem,
-	 * ob das Plugin für Systemobjekte so eingeschränkt werden kann (in den ersten drei Fällen) oder
+	 * Gibt 'typ.flÃ¤che', 'typ.linie', 'typ.punkt' oder 'typ.geoReferenzObject' zurÃ¼ck, je nachdem,
+	 * ob das Plugin fÃ¼r Systemobjekte so eingeschrÃ¤nkt werden kann (in den ersten drei FÃ¤llen) oder
 	 * nicht (im letzten Fall).
 	 * 
 	 * @return der Geometrietyp
@@ -98,11 +104,11 @@ public interface DisplayObjectTypePlugin {
 	public String 						getGeometryType();
 	
 	/**
-	 * Prüft, ob der übergebene SystemObjectType von dem Plugin unterstützt wird.
+	 * PrÃ¼ft, ob der Ã¼bergebene SystemObjectType von dem Plugin unterstÃ¼tzt wird.
 	 * 
 	 * @param configuration die Konfiguration
 	 * @param systemObjectType ein SystemObjectType
-	 * @return <code>true</code> genau dann, wenn der Typ vom Plugin unterstützt wird
+	 * @return <code>true</code> genau dann, wenn der Typ vom Plugin unterstÃ¼tzt wird
 	 */
 	public boolean						isSystemObjectTypeSupported( DataModel configuration, SystemObjectType systemObjectType);
 	

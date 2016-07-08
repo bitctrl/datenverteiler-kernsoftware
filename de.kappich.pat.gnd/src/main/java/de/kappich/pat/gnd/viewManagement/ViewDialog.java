@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.viewManagement;
@@ -60,7 +66,7 @@ import java.util.List;
  * Ein Dialog zur Anzeige der Eigenschaften einer Ansicht.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9145 $
+ * @version $Revision$
  */
 public class ViewDialog {
 	
@@ -70,11 +76,11 @@ public class ViewDialog {
 	
 	private final View _view;
 	
-	private final boolean _changeable;	// ƒnderungen sind mˆglich oder nicht
+	private final boolean _changeable;	// √Ñnderungen sind m√∂glich oder nicht
 	
-	private final boolean _saveable; // ƒnderungen kˆnnen in den Pr‰ferenzen gespeichert werden
+	private final boolean _saveable; // √Ñnderungen k√∂nnen in den Pr√§ferenzen gespeichert werden
 	
-	private final boolean _nameEditable; // der Name der Ansicht ist ‰nderbar
+	private final boolean _nameEditable; // der Name der Ansicht ist √§nderbar
 	
 	private final JTextField _nameTextField = new JTextField();
 	
@@ -84,17 +90,17 @@ public class ViewDialog {
 	
 	private AddLayerDialog _addLayerDialog = null;
 	
-	private final JButton _newLayerButton = new JButton("Layer hinzuf¸gen");
+	private final JButton _newLayerButton = new JButton("Layer hinzuf√ºgen");
 	
 	private final JButton _deleteLayerButton = new JButton("Layer entfernen");
 	
-	private final JButton _moveLayersUpwardsButton = new JButton("Layer aufw‰rts");
+	private final JButton _moveLayersUpwardsButton = new JButton("Layer aufw√§rts");
 	
-	private final JButton _moveLayersDownwardsButton = new JButton("Layer abw‰rts");
+	private final JButton _moveLayersDownwardsButton = new JButton("Layer abw√§rts");
 	
 	private final JButton _saveViewButton = new JButton("Ansicht speichern");
 	
-	private final JButton _closeDialogButton = new JButton("Dialog schlieﬂen");
+	private final JButton _closeDialogButton = new JButton("Dialog schlie√üen");
 	
 	private final JButton _helpButton = new JButton("Hilfe");
 	
@@ -104,9 +110,9 @@ public class ViewDialog {
 	 * 
 	 * @param viewManager Die Ansichtsverwaltung
 	 * @param view Die aktuell angezeigte Ansicht
-	 * @param changeable Ist die Ansicht ver‰nderbar?
-	 * @param saveable Sind Ver‰nderungen der Ansicht speiecherbar?
-	 * @param nameEditable Ist der Name der Ansicht ver‰nderbar?
+	 * @param changeable Ist die Ansicht ver√§nderbar?
+	 * @param saveable Sind Ver√§nderungen der Ansicht speiecherbar?
+	 * @param nameEditable Ist der Name der Ansicht ver√§nderbar?
 	 */
 	@SuppressWarnings("serial")
     private ViewDialog( final ViewManager viewManager, final View view, 
@@ -157,7 +163,7 @@ public class ViewDialog {
 		_table.setDefaultRenderer(Boolean.class, new ViewTableBooleanCellRenderer());
 		_table.setRowHeight( 30);
 		_table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		_table.setEnabled(_changeable);	// Setzt man das nicht, so sind im Fall von _changeable = false, die Integer-Felder und die Checkboxen bearbeitbar, auch wenn f¸r sie setEditable(false) aufgerufen wurde. Darauf wurde aber verzichtet, weil dan die Optik besser ist!
+		_table.setEnabled(_changeable);	// Setzt man das nicht, so sind im Fall von _changeable = false, die Integer-Felder und die Checkboxen bearbeitbar, auch wenn f√ºr sie setEditable(false) aufgerufen wurde. Darauf wurde aber verzichtet, weil dan die Optik besser ist!
 		addListSelectionListener();
 		final Enumeration<TableColumn> columns = _table.getColumnModel().getColumns();
 		int i = 0;
@@ -179,13 +185,13 @@ public class ViewDialog {
 	}
 	
 	/**
-	 * Diese Methode initialisiert einen neuen ViewDialog und ˆffnet ihn.
+	 * Diese Methode initialisiert einen neuen ViewDialog und √∂ffnet ihn.
 	 * 
 	 * @param viewManager Die Ansichtsverwaltung
 	 * @param view Die aktuell angezeigte Ansicht
-	 * @param changeable Ist die Ansicht ver‰nderbar?
-	 * @param saveable Sind Ver‰nderungen der Ansicht speiecherbar?
-	 * @param nameEditable Ist der Name der Ansicht ver‰nderbar?
+	 * @param changeable Ist die Ansicht ver√§nderbar?
+	 * @param saveable Sind Ver√§nderungen der Ansicht speiecherbar?
+	 * @param nameEditable Ist der Name der Ansicht ver√§nderbar?
 	 */
 	public static void runDialog( final ViewManager viewManager, final View view, 
 			final boolean changeable, final boolean saveable, final boolean nameEditable,
@@ -202,7 +208,7 @@ public class ViewDialog {
 	}
 	
 	/**
-	 * Diese Methode schlieﬂt alle ViewDialog-Objekte.
+	 * Diese Methode schlie√üt alle ViewDialog-Objekte.
 	 */
 	public static void closeAll() {
 		for ( JFrame frame : _frames) {
@@ -301,8 +307,8 @@ public class ViewDialog {
 		
 		/*
 		 * Achtung: JTable benutzt diese Methode, um Default-Renderer und Default-Editor der Zellen zu bestimmen;
-		 * wird sie nicht ¸berschrieben, so w¸rde die Zellen mit Checkboxen f¸r boolsche Werte durch die
-		 * Textanzeige 'true' oder 'false' ersetzt, weil der falsche Renderer benutzt w¸rde.
+		 * wird sie nicht √ºberschrieben, so w√ºrde die Zellen mit Checkboxen f√ºr boolsche Werte durch die
+		 * Textanzeige 'true' oder 'false' ersetzt, weil der falsche Renderer benutzt w√ºrde.
 		 */
 		@Override
 		public Class<? extends Object> getColumnClass(int c) {
@@ -391,9 +397,9 @@ public class ViewDialog {
 					return null;
 				}
 			} else if (colIndex == 1) {
-				return "Maﬂstab, ab dem der Layer eingeblendet wird";
+				return "Ma√üstab, ab dem der Layer eingeblendet wird";
 			} else if (colIndex == 2) {
-				return "Maﬂstab, ab dem der Layer ausgeblendet wird";
+				return "Ma√üstab, ab dem der Layer ausgeblendet wird";
 			} else if (colIndex == 3) {
 				return "Objekte des Layers als selektierbar einstellen";
 			} else if (colIndex == 4) {
@@ -441,7 +447,7 @@ public class ViewDialog {
 								"Fehler",
 								JOptionPane.ERROR_MESSAGE);
 						return;
-					} else { // altes Zeug lˆschen
+					} else { // altes Zeug l√∂schen
 						_viewManager.removeView( _viewManager.getView(viewName));
 					}
 				}
@@ -449,7 +455,7 @@ public class ViewDialog {
 					if ( entry.getZoomIn()<entry.getZoomOut()) {
 						JOptionPane.showMessageDialog(
 								new JFrame(),
-								"Der Einblenden-Wert muss in jeder Zeile mindestens so groﬂ wie der Ausblenden-Wert sein!",
+								"Der Einblenden-Wert muss in jeder Zeile mindestens so gro√ü wie der Ausblenden-Wert sein!",
 								"Fehler",
 								JOptionPane.ERROR_MESSAGE);
 						return;
@@ -511,7 +517,7 @@ public class ViewDialog {
 		
 		_frame.add(buttonsPanel, BorderLayout.EAST);
 		
-		// ActionListener f¸r Neu, Rauf, Runter, Lˆschen und Ok
+		// ActionListener f√ºr Neu, Rauf, Runter, L√∂schen und Ok
 		ActionListener actionListenerNew = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (_addLayerDialog == null) {
@@ -530,7 +536,7 @@ public class ViewDialog {
 				if (selectedRow == -1) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -579,7 +585,7 @@ public class ViewDialog {
 				catch(ArrayIndexOutOfBoundsException e2) {
 					JOptionPane.showMessageDialog(
 							new JFrame(),
-							"Bitte w‰hlen Sie eine Zeile aus der Liste aus!",
+							"Bitte w√§hlen Sie eine Zeile aus der Liste aus!",
 							"Fehler",
 							JOptionPane.ERROR_MESSAGE);
 				}
@@ -605,11 +611,11 @@ public class ViewDialog {
 	
 	private void askForSaveChanges() {
 		if ( _saveable) {
-			Object[] options = {"ƒnderungen speichern", "Nicht speichern"};
+			Object[] options = {"√Ñnderungen speichern", "Nicht speichern"};
 			int n = JOptionPane.showOptionDialog(
 					new JFrame(),
-					"ƒnderungen speichern?",
-					"Es wurden ƒnderungen an der Ansicht vorgenommen.",
+					"√Ñnderungen speichern?",
+					"Es wurden √Ñnderungen an der Ansicht vorgenommen.",
 					JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.QUESTION_MESSAGE,
 					null,

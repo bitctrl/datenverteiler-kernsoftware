@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.correspondingObjects;
@@ -28,7 +34,7 @@ import de.bsvrz.kex.kexdav.systemobjects.ObjectSpecification;
  * Korrespondierendes Objekt auf 2 Datenverteilern
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9217 $
+ * @version $Revision$
  */
 public class CorrespondingObject {
 
@@ -55,24 +61,24 @@ public class CorrespondingObject {
 	}
 
 	/**
-	 * Gibt das Objekt auf dem lokalen System zurück
-	 * @return Klasse, die Informationen über das Objekt wie Existenz usw. bietet.
+	 * Gibt das Objekt auf dem lokalen System zurÃ¼ck
+	 * @return Klasse, die Informationen Ã¼ber das Objekt wie Existenz usw. bietet.
 	 */
 	public KExDaVObject getLocalObject() {
 		return _localObject;
 	}
 
 	/**
-	 * Gibt das Remote-Objekt zurück
-	 * @return Klasse, die Informationen über das Objekt wie Existenz usw. bietet.
+	 * Gibt das Remote-Objekt zurÃ¼ck
+	 * @return Klasse, die Informationen Ã¼ber das Objekt wie Existenz usw. bietet.
 	 */
 	public KExDaVObject getRemoteObject() {
 		return _remoteObject;
 	}
 
 	/**
-	 * Gibt die Objekt-Spezifikation zurück
-	 * @return die Objekt-Spezifikation durch die das Objekt ausgewählt wird
+	 * Gibt die Objekt-Spezifikation zurÃ¼ck
+	 * @return die Objekt-Spezifikation durch die das Objekt ausgewÃ¤hlt wird
 	 */
 	public ObjectSpecification getObjectSpecification() {
 		return _objectSpecification;

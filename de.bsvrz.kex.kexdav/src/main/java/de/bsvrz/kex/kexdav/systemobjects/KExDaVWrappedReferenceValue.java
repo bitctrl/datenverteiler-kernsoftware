@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.systemobjects;
@@ -27,10 +33,10 @@ import de.bsvrz.dav.daf.main.config.SystemObject;
 import de.bsvrz.kex.kexdav.management.ManagerInterface;
 
 /**
- * Kapselt analog zu {@link KExDaVAttributeGroupData} ein Referenzwert, der den Zugriff auf Systemobjekte einschränkt
+ * Kapselt analog zu {@link KExDaVAttributeGroupData} ein Referenzwert, der den Zugriff auf Systemobjekte einschrÃ¤nkt
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9232 $
+ * @version $Revision$
  */
 class KExDaVWrappedReferenceValue implements Data.ReferenceValue {
 
@@ -69,7 +75,7 @@ class KExDaVWrappedReferenceValue implements Data.ReferenceValue {
 	}
 
 	public void setSystemObjectPid(final String objectPid) {
-		// Das Setzen von unbekannten Pids führt hier zu keiner Exception, sondern nur dazu, dass ein Undefiniert-Verweis eingefügt wird
+		// Das Setzen von unbekannten Pids fÃ¼hrt hier zu keiner Exception, sondern nur dazu, dass ein Undefiniert-Verweis eingefÃ¼gt wird
 		try {
 			_referenceValue.setSystemObjectPid(objectPid);
 		}

@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -36,7 +42,7 @@ import javax.swing.table.TableModel;
  * Paar bestehend aus einer Grundfigur und einer Eigenschaft, eingesetzt.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8076 $
+ * @version $Revision$
  *
  */
 public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implements TableModel {
@@ -51,7 +57,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	protected List<TableModelListener> _listenerList = new ArrayList<TableModelListener>();
 	
 	/**
-	 * Fügt den Listener hinzu.
+	 * FÃ¼gt den Listener hinzu.
 	 * 
 	 * @param l der Listener
 	 */
@@ -60,8 +66,8 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Fügt das Item für das Intervall im Sinne von {@link DOTItemManager.#put} hinzu und informiert alle
-	 * TableModelListener über die Änderung.
+	 * FÃ¼gt das Item fÃ¼r das Intervall im Sinne von {@link DOTItemManager.#put} hinzu und informiert alle
+	 * TableModelListener Ã¼ber die Ã„nderung.
 	 * 
 	 * @param interval das Intervall
 	 * @param item das Item
@@ -75,8 +81,8 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Fügt das Item für das Intervall im Sinne von {@link DOTItemManager.#insert} hinzu und informiert alle
-	 * TableModelListener über die Änderung.
+	 * FÃ¼gt das Item fÃ¼r das Intervall im Sinne von {@link DOTItemManager.#insert} hinzu und informiert alle
+	 * TableModelListener Ã¼ber die Ã„nderung.
 	 *
 	 * @param interval das Intervall
 	 * @param item das Item
@@ -91,7 +97,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	
 	/**
 	 * Entfernt das durch den Index angegebene Item und Intervall aus der Verwaltung und informiert alle
-	 * TableModelListener über die Änderung.
+	 * TableModelListener Ã¼ber die Ã„nderung.
 	 * 
 	 * @param index der Index
 	 */
@@ -104,8 +110,8 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Gibt die Klasse der Spaltenobjekte an. Wenn man für die die Spalten vom Typ 'Number' nicht
-	 * diese Klasse zurückgibt, wird der falsche Renderer benutzt.
+	 * Gibt die Klasse der Spaltenobjekte an. Wenn man fÃ¼r die die Spalten vom Typ 'Number' nicht
+	 * diese Klasse zurÃ¼ckgibt, wird der falsche Renderer benutzt.
 	 */
 	public Class<?> getColumnClass(int columnIndex) {
 		if ( columnIndex == 4 || columnIndex == 5) {
@@ -115,7 +121,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Gibt die Anzahl der Spalten zurück.
+	 * Gibt die Anzahl der Spalten zurÃ¼ck.
 	 * 
 	 * @return die Anzahl der Spalten
 	 */
@@ -124,7 +130,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Gibt den Spaltennamen zurück.
+	 * Gibt den Spaltennamen zurÃ¼ck.
 	 * 
 	 * @return den Spaltennamen
 	 */
@@ -133,7 +139,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Gibt die Zeilenzahl zurück.
+	 * Gibt die Zeilenzahl zurÃ¼ck.
 	 * 
 	 * @return die Zeilenzahl
 	 */
@@ -142,7 +148,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Gibt den Wert der durch die Indexe angebenen Zelle zurück.
+	 * Gibt den Wert der durch die Indexe angebenen Zelle zurÃ¼ck.
 	 * 
 	 * @param rowIndex der Zeileindex
 	 * @param columnIndex der Spaltenindex
@@ -187,7 +193,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Gibt <code>false</code> zurück, da die Zellen nicht editierbar sein sollen.
+	 * Gibt <code>false</code> zurÃ¼ck, da die Zellen nicht editierbar sein sollen.
 	 * 
 	 * @return <code>false</code>
 	 */
@@ -196,7 +202,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Entfernt den übergebenen TableModelListener aus der Menge aller Listener.
+	 * Entfernt den Ã¼bergebenen TableModelListener aus der Menge aller Listener.
 	 * 
 	 * @param l der zu entfernende Listener
 	 */
@@ -217,7 +223,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	
 	/**
 	 * Die Methode vergleicht die einzelnen TreeMaps im Detail und gibt nur bei exakter Gleichheit
-	 * auch <code>true</code> zurück.
+	 * auch <code>true</code> zurÃ¼ck.
 	 * 
 	 * @return <code>true</code> genau dann, wenn die Manager gleich sind
 	 */
@@ -252,7 +258,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Überschrieben, weil <code>equals</code> überschrieben wurde.
+	 * Ãœberschrieben, weil <code>equals</code> Ã¼berschrieben wurde.
 	 * 
 	 * @return ein trivialer Hashcode
 	 */
@@ -262,7 +268,7 @@ public class DynamicDOTItemManager extends DOTItemManager<DynamicDOTItem> implem
 	}
 	
 	/**
-	 * Gibt eine Kopie des Objekts zurück.
+	 * Gibt eine Kopie des Objekts zurÃ¼ck.
 	 * 
 	 * @return die Kopie
 	 */

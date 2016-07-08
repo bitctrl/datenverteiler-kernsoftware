@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.viewManagement;
@@ -30,27 +36,27 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 /**
- * Die Klasse für die Ansichten der Generischen Netzdarstellung.
+ * Die Klasse fÃ¼r die Ansichten der Generischen Netzdarstellung.
  * <p>
  * Eine Ansicht hat einen eindeutigen Namen unter dem sie von der {@link ViewManager Ansichtsverwaltung}
- * geführt wird. Sie besteht aus einer Liste von {@link ViewEntry ViewEntries}, also Layern mit
+ * gefÃ¼hrt wird. Sie besteht aus einer Liste von {@link ViewEntry ViewEntries}, also Layern mit
  * ansichts-spezifischen Einstellungen.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9145 $
+ * @version $Revision$
  */
 public class View {
 
 
 	/* Eine kurze Beschreibung, wie das Update eines Views funktioniert. Klassen, die an
-		 * den Änderungen interesiert sind, implementieren das Interface View.ChangeListener.
+		 * den Ã„nderungen interesiert sind, implementieren das Interface View.ChangeListener.
 		 * Dies sind z.B. das MapPane, das LegendPane, aber auch der ViewTableModelAdapter
-		 * in ViewDialog. Dieser ist gleichzeitig aber auch TableModel und ändert seinerseits
+		 * in ViewDialog. Dieser ist gleichzeitig aber auch TableModel und Ã¤ndert seinerseits
 		 * den View in seiner setValueAt-Methode.
 		 */
 
 	/**
-	 * Ein Getter für den Namen.
+	 * Ein Getter fÃ¼r den Namen.
 	 *
 	 * @return den Namen
 	 */
@@ -59,7 +65,7 @@ public class View {
 	}
 
 	/**
-	 * Ein Setter für den Namen.
+	 * Ein Setter fÃ¼r den Namen.
 	 *
 	 * @param der neue Name
      */
@@ -68,49 +74,49 @@ public class View {
     }
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn seit dem Konstruieren der Ansicht oder seit dem letzten Aufruf
-	 * von setSomethingChanged() mit dem Wert false, eine Veränderung an der Ansicht vorgenommen wurde
-	 * (ob durch eine verändernde Methode oder durch setSomethingChanged() mit dem Wert <code>true</code>).
+	 * Gibt <code>true</code> zurÃ¼ck, wenn seit dem Konstruieren der Ansicht oder seit dem letzten Aufruf
+	 * von setSomethingChanged() mit dem Wert false, eine VerÃ¤nderung an der Ansicht vorgenommen wurde
+	 * (ob durch eine verÃ¤ndernde Methode oder durch setSomethingChanged() mit dem Wert <code>true</code>).
 	 *
-	 * @return hat sich etwas geändert?
+	 * @return hat sich etwas geÃ¤ndert?
      */
     public boolean hasSomethingChanged() {
     	return _somethingChanged;
     }
 
     /**
-     * Setzt den Wert der internen Variablen, die zum Verwalten von Änderungen seit der letzten Speicherung
+     * Setzt den Wert der internen Variablen, die zum Verwalten von Ã„nderungen seit der letzten Speicherung
      * dient.
      *
-     * @param b setzt den Wert des Änderungsstatus
+     * @param b setzt den Wert des Ã„nderungsstatus
      */
     public void setSomethingChanged( final boolean b) {
     	_somethingChanged = b;
     }
 
 	/**
-	 * Ein Interface für Listener, die über Änderungen der Ansicht informiert werden wollen.
+	 * Ein Interface fÃ¼r Listener, die Ã¼ber Ã„nderungen der Ansicht informiert werden wollen.
 	 *
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 9145 $
+	 * @version $Revision$
 	 */
 	public interface ViewChangeListener {
 		/**
-		 * Der Ansicht wurde ein Layer am Ende angehängt.
+		 * Der Ansicht wurde ein Layer am Ende angehÃ¤ngt.
 		 *
 		 * @param view die Ansicht
 		 * @param newIndex
 		 */
 		void viewEntryInserted(View view, final int newIndex);
 		/**
-		 * Der Layer an der i-ten Stelle der Ansicht wurde geändert.
+		 * Der Layer an der i-ten Stelle der Ansicht wurde geÃ¤ndert.
 		 *
 		 * @param view die Ansicht
 		 * @param i ein Index
 		 */
 		void viewEntryChanged(View view, int i);
 		/**
-		 * Der Layer an der i-ten Stelle der Ansicht wurde gelöscht.
+		 * Der Layer an der i-ten Stelle der Ansicht wurde gelÃ¶scht.
 		 *
 		 *  @param view die Ansicht
 		 * @param i ein Index
@@ -147,7 +153,7 @@ public class View {
 	}
 
 	/**
-	 * Gibt die Menge der ViewEntries inklusive Notiz-Layern zurück.
+	 * Gibt die Menge der ViewEntries inklusive Notiz-Layern zurÃ¼ck.
 	 *
 	 * @return die Menge der ViewEntries
 	 */
@@ -156,9 +162,9 @@ public class View {
 	}
 
 	/**
-	 * Gibt die Menge der ViewEntries zurück.
+	 * Gibt die Menge der ViewEntries zurÃ¼ck.
 	 *
-	 * @param withNoticeLayers Ob auch Notiz-Layer berücksichtigt werden sollen
+	 * @param withNoticeLayers Ob auch Notiz-Layer berÃ¼cksichtigt werden sollen
 	 * @return die Menge der ViewEntries
 	 */
 	public List<ViewEntry> getViewEntries(final boolean withNoticeLayers) {
@@ -180,8 +186,8 @@ public class View {
 	}
 
 	/**
-	 * Gibt den Index des ViewEntries innerhalb der Liste der ViewEntries zurück. Gehört
-	 * der ViewEntry gemäß Object.equals() nicht zu dieser Ansicht, so ist der Rückgabewert -1.
+	 * Gibt den Index des ViewEntries innerhalb der Liste der ViewEntries zurÃ¼ck. GehÃ¶rt
+	 * der ViewEntry gemÃ¤ÃŸ Object.equals() nicht zu dieser Ansicht, so ist der RÃ¼ckgabewert -1.
 	 *
 	 * @param viewEntry
 	 * @return der Index des Entrys
@@ -198,7 +204,7 @@ public class View {
 	}
 
 	/**
-	 * Fügt einen ViewEntry mit dem übergebenen Layer und Default-Einstellungen am Ende
+	 * FÃ¼gt einen ViewEntry mit dem Ã¼bergebenen Layer und Default-Einstellungen am Ende
 	 * der Liste der ViewEntries hinzu.
 	 *
 	 * @param layer ein Layer
@@ -221,8 +227,8 @@ public class View {
 	}
 
 	/**
-	 * Informiert die {@link View.ChangeListener View.ChangeListeners} über einen geänderte Layer.
-	 * Kann von außen z.B. von der {@link ViewManager Ansichtsverwaltung} aufgerufen werden.
+	 * Informiert die {@link View.ChangeListener View.ChangeListeners} Ã¼ber einen geÃ¤nderte Layer.
+	 * Kann von auÃŸen z.B. von der {@link ViewManager Ansichtsverwaltung} aufgerufen werden.
 	 *
 	 * @param layer ein Layer
 	 */
@@ -237,7 +243,7 @@ public class View {
 	}
 
 	/**
-	 * Entfernt alle ViewEntries aus der Ansicht, die den Layer mit dem übergebenen Namen verwenden.
+	 * Entfernt alle ViewEntries aus der Ansicht, die den Layer mit dem Ã¼bergebenen Namen verwenden.
 	 *
 	 * @param layerName ein Layername
 	 */
@@ -251,7 +257,7 @@ public class View {
 	}
 
 	/**
-	 * Fügt den Listener den auf Änderungen angemeldeten Listenern hinzu.
+	 * FÃ¼gt den Listener den auf Ã„nderungen angemeldeten Listenern hinzu.
 	 *
 	 * @param listener ein Listener
 	 */
@@ -260,7 +266,7 @@ public class View {
 	}
 
 	/**
-	 * Entfernt den Listener aus der Menge der auf Änderungen angemeldeten Listenern.
+	 * Entfernt den Listener aus der Menge der auf Ã„nderungen angemeldeten Listenern.
 	 *
 	 *  @param listener ein Listener
 	 */
@@ -298,7 +304,7 @@ public class View {
 	}
 
 	/**
-	 * Informiert die ChangeListener darüber, dass ein neuer ViewEntry angehängt wurde.
+	 * Informiert die ChangeListener darÃ¼ber, dass ein neuer ViewEntry angehÃ¤ngt wurde.
 	 */
 	public void notifyChangeListenersViewEntryAppended() {
 		for ( ViewChangeListener changeListener : _listeners) {
@@ -308,7 +314,7 @@ public class View {
 	}
 
 	/**
-	 * Informiert die ChangeListener darüber, dass ViewEntry i geändert wurde.
+	 * Informiert die ChangeListener darÃ¼ber, dass ViewEntry i geÃ¤ndert wurde.
 	 *
 	 * @param i ein Index
 	 */
@@ -321,7 +327,7 @@ public class View {
 	}
 
 	/**
-	 * Informiert die ChangeListener darüber, dass ViewEntry i entfrnt wurde.
+	 * Informiert die ChangeListener darÃ¼ber, dass ViewEntry i entfrnt wurde.
 	 *
 	 * @param i ein Index
 	 */
@@ -333,7 +339,7 @@ public class View {
 	}
 
 	/**
-	 * Informiert die ChangeListener darüber, dass ViewEntries i und j vertauscht wurden.
+	 * Informiert die ChangeListener darÃ¼ber, dass ViewEntries i und j vertauscht wurden.
 	 *
 	 * @param i ein Index
 	 * @param j ein Index
@@ -346,7 +352,7 @@ public class View {
 	}
 
 	/**
-	 * Speichert die Ansicht in den übergebenen Knoten.
+	 * Speichert die Ansicht in den Ã¼bergebenen Knoten.
 	 *
 	 * @param prefs der Knoten, unter dem die Speicherung beginnt
 	 */
@@ -363,7 +369,7 @@ public class View {
 	}
 
 	/**
-	 * Initialisiert die Ansicht aus dem übergebenen Knoten.
+	 * Initialisiert die Ansicht aus dem Ã¼bergebenen Knoten.
 	 *
 	 * @param prefs der Knoten, unter dem die Initialisierung beginnt
 	 */
@@ -379,7 +385,7 @@ public class View {
         }
         final Map<Integer, ViewEntry> orderedViewEntries = new TreeMap<Integer, ViewEntry>();
 		for ( String entryName : entries) {
-			if ( !entryName.startsWith("entry")) {	// jetzt ein Fehler, aber später vielleicht okay
+			if ( !entryName.startsWith("entry")) {	// jetzt ein Fehler, aber spÃ¤ter vielleicht okay
 				continue;
 			}
 			Preferences entryPrefs = prefs.node(prefs.absolutePath() + "/" + entryName);
@@ -396,9 +402,9 @@ public class View {
 	}
 
 	/**
-	 * Entfernt die Ansicht unterhalb des übergebenen Knotens.
+	 * Entfernt die Ansicht unterhalb des Ã¼bergebenen Knotens.
 	 *
-	 * @param prefs der Knoten, unter dem gelöscht wird
+	 * @param prefs der Knoten, unter dem gelÃ¶scht wird
 	 */
 	public void deletePreferences( Preferences prefs) {
 		Preferences objectPrefs = prefs.node( prefs.absolutePath() + "/" + getName());
@@ -412,7 +418,7 @@ public class View {
 	}
 
 	/**
-	 * Gibt die Menge aller Farben, die von allen ViewEntries der Ansicht benutzt werden, zurück.
+	 * Gibt die Menge aller Farben, die von allen ViewEntries der Ansicht benutzt werden, zurÃ¼ck.
 	 *
 	 * @return die Menge aller benutzten Farben
 	 */
@@ -462,7 +468,7 @@ public class View {
 
 	private String _name = null;
 
-	private boolean _somethingChanged = false;	// true, wenn seit dem letzten Speichern etwas geändert wurde
+	private boolean _somethingChanged = false;	// true, wenn seit dem letzten Speichern etwas geÃ¤ndert wurde
 
 	private static final Debug _debug = Debug.getLogger();
 

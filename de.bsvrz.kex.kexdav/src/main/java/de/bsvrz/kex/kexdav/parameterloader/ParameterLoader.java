@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.parameterloader;
@@ -25,12 +31,19 @@ import de.bsvrz.dav.daf.main.config.ReferenceAttributeType;
 import de.bsvrz.dav.daf.main.config.SystemObject;
 import de.bsvrz.dav.dav.util.accessControl.*;
 import de.bsvrz.kex.kexdav.correspondingObjects.MissingAreaException;
-import de.bsvrz.kex.kexdav.dataexchange.*;
-import de.bsvrz.kex.kexdav.main.*;
+import de.bsvrz.kex.kexdav.dataexchange.DataExchangeStrategy;
+import de.bsvrz.kex.kexdav.dataexchange.KExDaVReceiver;
+import de.bsvrz.kex.kexdav.dataexchange.KExDaVSender;
+import de.bsvrz.kex.kexdav.dataexchange.ParameterExchangeStrategy;
+import de.bsvrz.kex.kexdav.main.Constants;
+import de.bsvrz.kex.kexdav.main.Direction;
+import de.bsvrz.kex.kexdav.main.KExDaV;
 import de.bsvrz.kex.kexdav.management.KExDaVManager;
 import de.bsvrz.kex.kexdav.management.Message;
-import de.bsvrz.kex.kexdav.main.Direction;
-import de.bsvrz.kex.kexdav.systemobjects.*;
+import de.bsvrz.kex.kexdav.systemobjects.IdSpecification;
+import de.bsvrz.kex.kexdav.systemobjects.KExDaVAttributeGroupData;
+import de.bsvrz.kex.kexdav.systemobjects.KExDaVObject;
+import de.bsvrz.kex.kexdav.systemobjects.MissingObjectException;
 import de.bsvrz.sys.funclib.concurrent.UnboundedQueue;
 
 import java.util.*;
@@ -39,7 +52,7 @@ import java.util.*;
  * Diese Klasse liest die Parameter von dem KExDaV-Objekt ein und gibt die Parameter weiter
  *
  * @author Kappich Systemberatung
- * @version $Revision: 12677 $
+ * @version $Revision$
  */
 public class ParameterLoader extends DataLoader implements ObjectCollectionParent, ObjectCollectionChangeListener, RegionManager {
 
@@ -69,12 +82,12 @@ public class ParameterLoader extends DataLoader implements ObjectCollectionParen
 	private final UnboundedQueue<Data> _dataQueue = new UnboundedQueue<Data>();
 
 	/**
-	 * Erstellt ein neues Objekt für das Daten aktualisiert werden sollen.
+	 * Erstellt ein neues Objekt fÃ¼r das Daten aktualisiert werden sollen.
 	 *
 	 * @param connection   Verbindung zum Datenverteiler
-	 * @param systemObject KExDaV-SystemObjekt, für das Parameter geladen werden sollen
-	 * @param manager      Manager-Klasse an die Benachrichtigungen und Warnungen geschickt werden können
-	 * @param kExDaV       Hauptklasse KExDaV, wird über neue Parameter benachrichtigt
+	 * @param systemObject KExDaV-SystemObjekt, fÃ¼r das Parameter geladen werden sollen
+	 * @param manager      Manager-Klasse an die Benachrichtigungen und Warnungen geschickt werden kÃ¶nnen
+	 * @param kExDaV       Hauptklasse KExDaV, wird Ã¼ber neue Parameter benachrichtigt
 	 */
 	public ParameterLoader(
 			final ClientDavInterface connection, final SystemObject systemObject, final KExDaVManager manager, final KExDaV kExDaV) {
@@ -87,7 +100,7 @@ public class ParameterLoader extends DataLoader implements ObjectCollectionParen
 			_parameterPublisher.registerSender(
 					Constants.Pids.AtgSpecificationKExDaV, Constants.Pids.AspectParameterActual, (short)-1, SenderRole.source(), _sender
 			);
-			_parameterPublisher.sendData(_sender, null, System.currentTimeMillis());
+			_parameterPublisher.sendData(_sender, null, System.currentTimeMillis(), false);
 			_parameterPublisher.registerReceiver(
 					Constants.Pids.AtgTriggerKExDaV,
 					Constants.Pids.AspectRequest,
@@ -95,11 +108,11 @@ public class ParameterLoader extends DataLoader implements ObjectCollectionParen
 					ReceiverRole.drain(),
 					ReceiveOptions.delta(),
 					new KExDaVReceiver() {
-						public void update(final KExDaVAttributeGroupData data, final DataState dataState, final long dataTime) {
+						public void update(final KExDaVAttributeGroupData data, final DataState dataState, final long dataTime, final boolean isDelayed) {
 							if(dataState == DataState.INVALID_SUBSCRIPTION) {
 								_manager.addMessage(
 										Message.newError(
-												"Kann nicht als Senke auf Trigger-Attributgruppe anmelden. Möglicherweise läuft bereits eine KExDaV-Applikation."
+												"Kann nicht als Senke auf Trigger-Attributgruppe anmelden. MÃ¶glicherweise lÃ¤uft bereits eine KExDaV-Applikation."
 										)
 								);
 								_kExDaV.terminate();
@@ -169,30 +182,30 @@ public class ParameterLoader extends DataLoader implements ObjectCollectionParen
 			_kExDaV.setNewParameters(remoteDaVParameters);
 		}
 		catch(MissingAreaException e) {
-			// Die Parameter sind ungültig und können nicht gesetzt werden, weil ein Konfigurationsbereich fehlt.
+			// Die Parameter sind ungÃ¼ltig und kÃ¶nnen nicht gesetzt werden, weil ein Konfigurationsbereich fehlt.
 			_manager.addMessage(Message.newError(e));
 			if(_parameterData == null) {
 				_kExDaV.terminate();
 			}
 			else {
-				// Alte Parameterdaten erneut veröffentlichen, TAnf 4.6.1
+				// Alte Parameterdaten erneut verÃ¶ffentlichen, TAnf 4.6.1
 				publishParameters(_parameterData);
 			}
 			return;
 		}
-		// Die neuen Parameter veröffentlichen. Nur wenn keine MissingAreaException aufgetreten ist, dann würden die alten Parameter weiterverwendet werden.
+		// Die neuen Parameter verÃ¶ffentlichen. Nur wenn keine MissingAreaException aufgetreten ist, dann wÃ¼rden die alten Parameter weiterverwendet werden.
 		_parameters = remoteDaVParameters;
 		_parameterData = data;
 		publishParameters(_parameterData);
 	}
 
 	/**
-	 * Veröffentlicht die aktuellen Parameter unter dem Aspekt ParameterIst
+	 * VerÃ¶ffentlicht die aktuellen Parameter unter dem Aspekt ParameterIst
 	 *
 	 * @param data Aktuelle Daten
 	 */
 	private void publishParameters(final Data data) {
-		_parameterPublisher.sendData(_sender, data, System.currentTimeMillis());
+		_parameterPublisher.sendData(_sender, data, System.currentTimeMillis(), false);
 	}
 
 	private RemoteDaVParameter parseRemoteDaV(final Data item) {

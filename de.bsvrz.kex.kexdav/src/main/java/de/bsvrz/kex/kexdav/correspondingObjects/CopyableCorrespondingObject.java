@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.correspondingObjects;
@@ -44,11 +50,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Diese Klasse kapselt zwei korrespondierenden Objekten auf unterschiedlichen Datenverteilern und unterstützt das automatische Kopieren, Löschen, usw. des
+ * Diese Klasse kapselt zwei korrespondierenden Objekten auf unterschiedlichen Datenverteilern und unterstÃ¼tzt das automatische Kopieren, LÃ¶schen, usw. des
  * Objektes in eine vorgegebene Richtung
  *
  * @author Kappich Systemberatung
- * @version $Revision: 9238 $
+ * @version $Revision$
  */
 public class CopyableCorrespondingObject extends CorrespondingObject {
 
@@ -81,7 +87,7 @@ public class CopyableCorrespondingObject extends CorrespondingObject {
 
 	/**
 	 * Startet den Austausch des Objekts
-	 * @throws MissingAreaException Ein benötigter KB fehlt
+	 * @throws MissingAreaException Ein benÃ¶tigter KB fehlt
 	 */
 	void start() throws MissingAreaException {
 		if(_started) return;
@@ -113,7 +119,7 @@ public class CopyableCorrespondingObject extends CorrespondingObject {
 	/**
 	 * Kopiert Konfigurationsdaten
 	 * @param source Quell-Objekt
-	 * @param target Objekt, den die Konfigurationsdaten hinzugefügt werden sollen
+	 * @param target Objekt, den die Konfigurationsdaten hinzugefÃ¼gt werden sollen
 	 */
 	private void copyConfigurationData(final KExDaVObject source, final KExDaVObject target) {
 		try {
@@ -147,9 +153,9 @@ public class CopyableCorrespondingObject extends CorrespondingObject {
 	}
 
 	/**
-	 * Erstellt den Listener, der überwacht ob ein Objekt erstellt oder gelöscht wird und daraufhin das Objekt ebenfalls kopiert oder löscht
-	 * @param source Objekt, das auf Änderungen überwacht wird
-	 * @param target Objekt das ggf. erstellt oder gelöscht wird
+	 * Erstellt den Listener, der Ã¼berwacht ob ein Objekt erstellt oder gelÃ¶scht wird und daraufhin das Objekt ebenfalls kopiert oder lÃ¶scht
+	 * @param source Objekt, das auf Ã„nderungen Ã¼berwacht wird
+	 * @param target Objekt das ggf. erstellt oder gelÃ¶scht wird
 	 */
 	private void createCopyObjectListener(final KExDaVObject source, final KExDaVObject target) {
 		if(_sourceListener == null) {
@@ -159,7 +165,7 @@ public class CopyableCorrespondingObject extends CorrespondingObject {
 						invalidateObject(target);
 					}
 					catch(ConfigurationChangeException e) {
-						_manager.addMessage(Message.newMajor("Kann ein dynamisches Objekt nicht löschen", e));
+						_manager.addMessage(Message.newMajor("Kann ein dynamisches Objekt nicht lÃ¶schen", e));
 					}
 				}
 
@@ -180,26 +186,26 @@ public class CopyableCorrespondingObject extends CorrespondingObject {
 	}
 
 	/**
-	 * Löscht ein Objekt
+	 * LÃ¶scht ein Objekt
 	 * @param target Objekt
-	 * @throws ConfigurationChangeException Konfiguration weigert sich den Auftrag auszuführen
+	 * @throws ConfigurationChangeException Konfiguration weigert sich den Auftrag auszufÃ¼hren
 	 */
 	private void invalidateObject(final KExDaVObject target) throws ConfigurationChangeException {
-		// das Ziel-Objekt sollte nur gelöscht werden, wenn es sich auch im Austauschbereich befindet. Sonst würden hier womöglich dynamische Objekte gelöscht,
+		// das Ziel-Objekt sollte nur gelÃ¶scht werden, wenn es sich auch im Austauschbereich befindet. Sonst wÃ¼rden hier womÃ¶glich dynamische Objekte gelÃ¶scht,
 		// die gar nicht ausgetauscht werden sollten und noch gebraucht werden
 		try {
 			final SystemObject wrappedObject = target.getWrappedObject();
-			if(wrappedObject == null) return; // Nichts machen, das Objekt wurde anscheinend schon gelöscht
+			if(wrappedObject == null) return; // Nichts machen, das Objekt wurde anscheinend schon gelÃ¶scht
 			if(getTargetConfigurationArea(target.getType()).equals(wrappedObject.getConfigurationArea())) target.invalidate(false);
 		}
 		catch(MissingAreaException ignored) {
-			// Nichts machen, es gibt keinen Austauschbereich, folglich gibt es auch keinen Bereich, aus dem das Objekt gelöscht werden müsste
+			// Nichts machen, es gibt keinen Austauschbereich, folglich gibt es auch keinen Bereich, aus dem das Objekt gelÃ¶scht werden mÃ¼sste
 		}
 		catch(MissingObjectException ignored) {
-			// Nichts machen, das Objekt wurde anscheinend schon gelöscht
+			// Nichts machen, das Objekt wurde anscheinend schon gelÃ¶scht
 		}
 		catch(MissingKExDaVAttributeGroupException e) {
-			// Nichts machen, es können keine Objekte übertragen werden, also ist unwahrscheinlich das dieses Objekt hätte gelöscht werden sollen
+			// Nichts machen, es kÃ¶nnen keine Objekte Ã¼bertragen werden, also ist unwahrscheinlich das dieses Objekt hÃ¤tte gelÃ¶scht werden sollen
 		}
 	}
 
@@ -254,7 +260,7 @@ public class CopyableCorrespondingObject extends CorrespondingObject {
 	}
 
 	/**
-	 * Gibt die Richtung des Objektaustausches zurück
+	 * Gibt die Richtung des Objektaustausches zurÃ¼ck
 	 *
 	 * @return Richtung
 	 */

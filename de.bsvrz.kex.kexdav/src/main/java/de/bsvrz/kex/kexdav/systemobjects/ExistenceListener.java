@@ -3,9 +3,9 @@
  * 
  * This file is part of de.bsvrz.kex.kexdav.
  * 
- * de.bsvrz.kex.kexdav is free software; you can redistribute it and/or modify
+ * de.bsvrz.kex.kexdav is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.bsvrz.kex.kexdav is distributed in the hope that it will be useful,
@@ -14,23 +14,29 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.bsvrz.kex.kexdav; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.bsvrz.kex.kexdav.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.bsvrz.kex.kexdav.systemobjects;
 
 /**
- * Listener, der dazu dient, zu informieren, wenn ein dynamisches Objekt entweder erstellt oder gelöscht wurde
+ * Listener, der dazu dient, zu informieren, wenn ein dynamisches Objekt entweder erstellt oder gelÃ¶scht wurde
  *
  * @author Kappich Systemberatung
- * @version $Revision: 8995 $
+ * @version $Revision$
  */
 public interface ExistenceListener {
 
 	/**
-	 * Wird aufgerufen, wenn das Objekt gelöscht wurde bzw. genauer es auf ungültig gesetzt wurde.
-	 * @param object Das dynamische Objekt, das auf ungültig gesetzt wurde.
+	 * Wird aufgerufen, wenn das Objekt gelÃ¶scht wurde bzw. genauer es auf ungÃ¼ltig gesetzt wurde.
+	 * @param object Das dynamische Objekt, das auf ungÃ¼ltig gesetzt wurde.
 	 */
 	public void objectInvalidated(KExDaVObject object);
 

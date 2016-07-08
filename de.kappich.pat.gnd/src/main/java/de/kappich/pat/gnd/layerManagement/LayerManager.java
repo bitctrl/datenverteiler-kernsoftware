@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.layerManagement;
 
@@ -44,11 +50,11 @@ import javax.swing.table.TableModel;
  * sie in einem JTable angezeigt werden kann.
  * <p>
  * Dass diese Klasse (wie z.B. auch der {@link DOTManager} als Singleton implementiert ist, ist hinsichtlich
- * denkbarer Erweiterungen sicherlich keine optimale Lösung, aber erspart gegenwärtig die Implementation
+ * denkbarer Erweiterungen sicherlich keine optimale LÃ¶sung, aber erspart gegenwÃ¤rtig die Implementation
  * der Kommunikation zwischen verschiedenen Instanzen dieser Klasse.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 10225 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
@@ -59,7 +65,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	private static final Debug _debug = Debug.getLogger();
 
 	/**
-	 * Die für ein Singleton übliche Methode, um an die einzige Instanz der Klasse zu gelangen.
+	 * Die fÃ¼r ein Singleton Ã¼bliche Methode, um an die einzige Instanz der Klasse zu gelangen.
 	 *
 	 * @return den LayerManager
 	 */
@@ -69,7 +75,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 
 	/**
 	 * Mit Hilfe dieser Methode kann man den LayerManager dazu zwingen, sich erneut zu
-	 * konstruieren, was etwa nach dem Importieren von Präferenzen sinnvoll ist.
+	 * konstruieren, was etwa nach dem Importieren von PrÃ¤ferenzen sinnvoll ist.
 	 */
 	public static void refreshInstance() {
 		_instance._layers.clear();
@@ -80,9 +86,9 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/*
-	 * Ein LayerManager verwaltet alle zur GND gehörenden Layer in einer Liste. Darin
-	 * stehen einige in seinem Kode definierte Layer, die unveränderbar sind, sowie
-	 * alle vom Benutzer definierten Layer, die in den Präferenzen abgespeichert werden.
+	 * Ein LayerManager verwaltet alle zur GND gehÃ¶renden Layer in einer Liste. Darin
+	 * stehen einige in seinem Kode definierte Layer, die unverÃ¤nderbar sind, sowie
+	 * alle vom Benutzer definierten Layer, die in den PrÃ¤ferenzen abgespeichert werden.
 	 */
 	private LayerManager () {
 		initDefaultLayers();
@@ -90,7 +96,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Gibt die Liste aller Layer zurück.
+	 * Gibt die Liste aller Layer zurÃ¼ck.
 	 *
 	 * @return die Liste aller Layer
 	 */
@@ -99,7 +105,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Gibt den Layer mit dem übergebenen Namen zurück.
+	 * Gibt den Layer mit dem Ã¼bergebenen Namen zurÃ¼ck.
 	 *
 	 * @return den geforderten Layer
 	 */
@@ -108,7 +114,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Gibt den Layer an der i-ten Stelle der Layerliste zurück, wobei die Zählung mit 0 beginnt.
+	 * Gibt den Layer an der i-ten Stelle der Layerliste zurÃ¼ck, wobei die ZÃ¤hlung mit 0 beginnt.
 	 *
 	 * @return den geforderten Layer
 	 */
@@ -117,29 +123,29 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/*
-	 * Gehört zur Implementation des TableModel.
+	 * GehÃ¶rt zur Implementation des TableModel.
 	 */
 	public int getColumnCount() {
 		return columnNames.length;
 	}
 
 	/*
-	 * Gehört zur Implementation des TableModel.
+	 * GehÃ¶rt zur Implementation des TableModel.
 	 */
 	public int getRowCount() {
 		return _layers.size();
 	}
 
 	/*
-	 * Gehört zur Implementation des TableModel.
+	 * GehÃ¶rt zur Implementation des TableModel.
 	 */
 	public Object getValueAt(int rowIndex, int columnIndex) {
 	    return _layers.get(rowIndex).getName();
     }
 
 	/**
-	 * Definiert den Tooltipp für die Felder der Tabelle.
-	 * Gehört zur Implementation des TableModel.
+	 * Definiert den Tooltipp fÃ¼r die Felder der Tabelle.
+	 * GehÃ¶rt zur Implementation des TableModel.
 	 *
 	 * @param rowIndex ein Zeilenindex
 	 * @param columnIndex ein Spaltenindex
@@ -153,7 +159,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
     }
 
 	/*
-	 * Gehört zur Implementation des TableModel.
+	 * GehÃ¶rt zur Implementation des TableModel.
 	 */
 	@Override
 	public String getColumnName(int columnIndex) {
@@ -161,7 +167,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Fügt den Layer der Layerliste an, wenn nicht schon ein gleichnamiger Layer existiert.
+	 * FÃ¼gt den Layer der Layerliste an, wenn nicht schon ein gleichnamiger Layer existiert.
 	 *
 	 * @param layer ein Layer
 	 * @throws IllegalArgumentException wenn bereits ein gleichnamiger Layer existiert
@@ -179,7 +185,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Ändert den gleichnamigen Layer.
+	 * Ã„ndert den gleichnamigen Layer.
 	 *
 	 * @param layer ein Layer
 	 * @throws IllegalArgumentException wenn der Layer nicht bekannt ist
@@ -205,13 +211,13 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Entfernt den übergebenen Layer auf Basis eines Namensvergleichs aus der Liste aller Layer
-	 * und damit auch aus den Präferenzen. Entspricht einer kompletten Löschung des Layers.
-	 * Wirkt aber nicht für im Kode definierte Layer. Wird ein Layer gelöscht, so erhält man
-	 * den Rückgabewert <code>true</code>, sonst false.
+	 * Entfernt den Ã¼bergebenen Layer auf Basis eines Namensvergleichs aus der Liste aller Layer
+	 * und damit auch aus den PrÃ¤ferenzen. Entspricht einer kompletten LÃ¶schung des Layers.
+	 * Wirkt aber nicht fÃ¼r im Kode definierte Layer. Wird ein Layer gelÃ¶scht, so erhÃ¤lt man
+	 * den RÃ¼ckgabewert <code>true</code>, sonst false.
 	 *
 	 * @param layer ein Layer
-	 * @return <code>true</code> genau dann, wenn der Layer gelöscht wurde
+	 * @return <code>true</code> genau dann, wenn der Layer gelÃ¶scht wurde
 	 */
 	public boolean removeLayer(  Layer layer) {
 		final String name = layer.getName();
@@ -227,7 +233,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 		return false;
 	}
 	/**
-	 * 	Löscht alle benutzerdefinierten Layer.
+	 * 	LÃ¶scht alle benutzerdefinierten Layer.
 	 */
 	public void clearLayers() {
 		for ( Layer layer : _layers) {
@@ -241,8 +247,8 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	private void initDefaultLayersLines() {
-		Layer streetNetLayer = new Layer("Straßennetz",
-				"Dargestellt werden alle Straßenteilsegmente", "typ.straßenTeilSegment");
+		Layer streetNetLayer = new Layer("StraÃŸennetz",
+				"Dargestellt werden alle StraÃŸenteilsegmente", "typ.straÃŸenTeilSegment");
 		final DisplayObjectType dotBlackLine = DOTManager.getInstance().getDisplayObjectType("Konfigurationslinie schwarz");
 		if (dotBlackLine != null) {
 			streetNetLayer.addDisplayObjectType( dotBlackLine, Integer.MAX_VALUE, 1000000);
@@ -259,16 +265,16 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 		_layerHashMap.put(streetNetLayer.getName(), streetNetLayer);
 		_notChangables.add( streetNetLayer.getName());
 
-		Layer olsim1Layer = new Layer("Störfällzustand OLSIM 1",
-				"Berechnet an Straßensegmenten", "typ.straßenSegment");
-		String dotName = "Störfallzustand OLSIM 1 (grob)";
+		Layer olsim1Layer = new Layer("StÃ¶rfÃ¤llzustand OLSIM 1",
+				"Berechnet an StraÃŸensegmenten", "typ.straÃŸenSegment");
+		String dotName = "StÃ¶rfallzustand OLSIM 1 (grob)";
 		final DisplayObjectType dotOlsim1Rough = DOTManager.getInstance().getDisplayObjectType(dotName);
 		if (dotOlsim1Rough != null) {
 			olsim1Layer.addDisplayObjectType(dotOlsim1Rough, Integer.MAX_VALUE, 500000);
 		} else {
 			_debug.warning( "Fehler in LayerManager.initDefaultLayersLines: das Darstellungsobjekt '" + dotName + "' konnte nicht gefunden werden.");
 		}
-		dotName = "Störfallzustand OLSIM 1 (fein)";
+		dotName = "StÃ¶rfallzustand OLSIM 1 (fein)";
 		final DisplayObjectType dotOlsim1Smooth = DOTManager.getInstance().getDisplayObjectType( dotName);
 		if (dotOlsim1Smooth != null) {
 			olsim1Layer.addDisplayObjectType( dotOlsim1Smooth, 500000, 1);
@@ -319,8 +325,8 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Gibt das Preferences-Objekt für den Ausgangspunkt zur Ablage der Präferenzen des
-	 * Layermanagers zurück.
+	 * Gibt das Preferences-Objekt fÃ¼r den Ausgangspunkt zur Ablage der PrÃ¤ferenzen des
+	 * Layermanagers zurÃ¼ck.
 	 *
 	 * @return den Ausgangsknoten
 	 */
@@ -369,7 +375,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 		for ( Layer layer: _layers) {
 			s += layer.toString();
 		}
-		s += "[Unveränderebare Layer: ";
+		s += "[UnverÃ¤nderebare Layer: ";
 		for ( String name : _notChangables) {
 			s += "[" + name + "]";
 		}
@@ -378,38 +384,38 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, wenn der Layer veränderbar ist. Im Moment ist ein Layer genau
-	 * dann unveränderbar, wenn er im Kode definiert ist.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn der Layer verÃ¤nderbar ist. Im Moment ist ein Layer genau
+	 * dann unverÃ¤nderbar, wenn er im Kode definiert ist.
 	 *
 	 * @param layer ein Layer
-	 * @return <code>true</code> genau dann, wenn der Layer veränderbar ist
+	 * @return <code>true</code> genau dann, wenn der Layer verÃ¤nderbar ist
 	 */
 	public boolean isChangeable( Layer layer) {
 		return !(_notChangables.contains( layer.getName()));
 	}
 
 	/**
-	 * Ein Interface für Listener, die über das Hinzufügen, Löschen und Ändern von Layern informiert werden wollen.
+	 * Ein Interface fÃ¼r Listener, die Ã¼ber das HinzufÃ¼gen, LÃ¶schen und Ã„ndern von Layern informiert werden wollen.
 	 *
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 10225 $
+	 * @version $Revision$
 	 *
 	 */
 	public interface LayerManagerChangeListener {
 		/**
-		 * Diese Methode wird aufgerufen, wenn der Layer hinzugefügt wurde.
+		 * Diese Methode wird aufgerufen, wenn der Layer hinzugefÃ¼gt wurde.
 		 *
 		 * @param layer ein Layer
 		 */
 		void layerAdded( final Layer layer);
 		/**
-		 * Diese Methode wird aufgerufen, wenn der Layer geändert wurde.
+		 * Diese Methode wird aufgerufen, wenn der Layer geÃ¤ndert wurde.
 		 *
 		 * @param layer ein Layer
 		 */
 		void layerChanged( final Layer layer);
 		/**
-		 * Diese Methode wird aufgerufen, wenn der Layer gelöscht wurde.
+		 * Diese Methode wird aufgerufen, wenn der Layer gelÃ¶scht wurde.
 		 *
 		 * @param layer ein Layer
 		 */
@@ -417,7 +423,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Fügt das übergebene Objekt der Liste der auf Layeränderungen angemeldeten Objekte hinzu.
+	 * FÃ¼gt das Ã¼bergebene Objekt der Liste der auf LayerÃ¤nderungen angemeldeten Objekte hinzu.
 	 *
 	 * @param listener ein Listener
 	 */
@@ -426,7 +432,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Entfernt das übergebene Objekt aus der Liste der auf Layeränderungen angemeldeten Objekte.
+	 * Entfernt das Ã¼bergebene Objekt aus der Liste der auf LayerÃ¤nderungen angemeldeten Objekte.
 	 *
 	 * @param listener ein Listener
 	 */
@@ -435,7 +441,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Informiert die auf Layeränderungen angemeldeten Objekte über einen neu hinzugefügten Layer.
+	 * Informiert die auf LayerÃ¤nderungen angemeldeten Objekte Ã¼ber einen neu hinzugefÃ¼gten Layer.
 	 *
 	 * @param layer ein Layer
 	 */
@@ -446,7 +452,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Informiert die auf Layeränderungen angemeldeten Objekte über einen geänderten Layer.
+	 * Informiert die auf LayerÃ¤nderungen angemeldeten Objekte Ã¼ber einen geÃ¤nderten Layer.
 	 *
 	 * @param layer ein Layer
 	 */
@@ -457,7 +463,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Informiert die auf Layeränderungen angemeldeten Objekte über einen gelöschten Layer.
+	 * Informiert die auf LayerÃ¤nderungen angemeldeten Objekte Ã¼ber einen gelÃ¶schten Layer.
 	 *
 	 * @param layer ein Layer
 	 */
@@ -468,7 +474,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück, falls der durch den Namen angegebene Darstellungstyp von einem
+	 * Gibt <code>true</code> zurÃ¼ck, falls der durch den Namen angegebene Darstellungstyp von einem
 	 * der Layer verwendet wrd.
 	 *
 	 * @param  displayObjectTypeName der Name eines Darstellungstyps
@@ -484,7 +490,7 @@ public class LayerManager extends AbstractTableModel implements TableModel {
 	}
 
 	/**
-	 * Gibt die Namen all der Layer zurück, die den durch den Namen angegebene Darstellungstyp
+	 * Gibt die Namen all der Layer zurÃ¼ck, die den durch den Namen angegebene Darstellungstyp
 	 * verwenden.
 	 *
 	 * @param  displayObjectTypeName der Name eines Darstellungstyps

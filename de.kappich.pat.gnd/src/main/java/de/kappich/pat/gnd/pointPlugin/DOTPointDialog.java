@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-Stra√üe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 
 package de.kappich.pat.gnd.pointPlugin;
@@ -51,13 +57,13 @@ import java.awt.event.ItemListener;
 import java.util.*;
 
 /**
- * Der Definitionsdialog f¸r Darstellungstypen von Punktobjekten.
- * <p/>
- * DOTPointDialog implementiert das Interface DOTDefinitionDialog f¸r das Punkt-Plugin. Hierzu interagiert es intensiv und software-technisch unsauber mit dem
- * umschlieﬂenden DOTDefinitionDialogFrame.
+ * Der Definitionsdialog f√ºr Darstellungstypen von Punktobjekten.
+ * <p>
+ * DOTPointDialog implementiert das Interface DOTDefinitionDialog f√ºr das Punkt-Plugin. Hierzu interagiert es intensiv und software-technisch unsauber mit dem
+ * umschlie√üenden DOTDefinitionDialogFrame.
  *
  * @author Kappich Systemberatung
- * @version $Revision: 11698 $
+ * @version $Revision$
  */
 public class DOTPointDialog implements DOTDefinitionDialog {
 
@@ -267,7 +273,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 		}
 
 		/**
-		 * Gibt die einzige Combobox oder <code>null</code> zur¸ck.
+		 * Gibt die einzige Combobox oder <code>null</code> zur√ºck.
 		 *
 		 * @return die einzige Combobox oder <code>null</code>
 		 */
@@ -394,7 +400,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 
 	private StaticPanel createStaticTextsizePanel(PrimitiveForm primitiveForm, DOTProperty property) {
 		return createStaticSpinnerPanel(
-				primitiveForm, property, "Schriftgrˆﬂe: ", getNewTextSizeSpinnerModel()
+				primitiveForm, property, "Schriftgr√∂√üe: ", getNewTextSizeSpinnerModel()
 		);
 	}
 
@@ -514,7 +520,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 
 		JButton newDOTItemButton = new JButton("Neue Zeile");
 		newDOTItemButton.setEnabled(_dotDefinitionDialogFrame.isEditable());
-		JButton deleteDOTItemButton = new JButton("Zeile lˆschen");
+		JButton deleteDOTItemButton = new JButton("Zeile l√∂schen");
 		deleteDOTItemButton.setEnabled(false);
 		JButton showConflictsButton = new JButton("Zeige Konflikte");
 
@@ -605,31 +611,31 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 						String errorString = null;
 						if(_property == DOTProperty.DURCHMESSER) {
 							propertyValue = _diameterSpinner.getValue();
-							errorString = "Bitte w‰hlen Sie einen Durchmesser aus!";
+							errorString = "Bitte w√§hlen Sie einen Durchmesser aus!";
 						}
 						else if(_property == DOTProperty.FARBE || _property == DOTProperty.FUELLUNG) {
 							propertyValue = _colorComboBox.getSelectedItem();
-							errorString = "Bitte w‰hlen Sie eine Farbe aus!";
+							errorString = "Bitte w√§hlen Sie eine Farbe aus!";
 						}
 						else if(_property == DOTProperty.GROESSE) {
 							propertyValue = _textSizeSpinner.getValue();
-							errorString = "Bitte w‰hlen Sie eine Schriftgrˆﬂe aus!";
+							errorString = "Bitte w√§hlen Sie eine Schriftgr√∂√üe aus!";
 						}
 						else if(_property == DOTProperty.STRICHBREITE) {
 							propertyValue = _strokeWidthSpinner.getValue();
-							errorString = "Bitte w‰hlen Sie eine Strichbreite  aus!";
+							errorString = "Bitte w√§hlen Sie eine Strichbreite  aus!";
 						}
 						else if(_property == DOTProperty.TEXT) {
 							propertyValue = _textComboBox.getSelectedItem();
-							errorString = "Bitte w‰hlen Sie einen Text aus!";
+							errorString = "Bitte w√§hlen Sie einen Text aus!";
 						}
 						else if(_property == DOTProperty.TEXTSTIL) {
 							propertyValue = _textStyleComboBox.getSelectedItem();
-							errorString = "Bitte w‰hlen Sie einen Textstil aus!";
+							errorString = "Bitte w√§hlen Sie einen Textstil aus!";
 						}
 						else if(_property == DOTProperty.TRANSPARENZ) {
 							propertyValue = _transparencySpinner.getValue();
-							errorString = "Bitte w‰hlen Sie eine Tranparenz aus!";
+							errorString = "Bitte w√§hlen Sie eine Tranparenz aus!";
 						}
 						else {
 							errorString = "DOTPointDialog.addButtonListeners(): unbehandelte Eigenschaft!";
@@ -652,7 +658,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 						final String attributeGroupName = _dynamicDefinitionComponent.getAttributeGroupName();
 						if(attributeGroupName == null) {
 							JOptionPane.showMessageDialog(
-									new JFrame(), "Bitte w‰hlen Sie eine Attributgruppe aus!", "Fehler", JOptionPane.ERROR_MESSAGE
+									new JFrame(), "Bitte w√§hlen Sie eine Attributgruppe aus!", "Fehler", JOptionPane.ERROR_MESSAGE
 							);
 							return;
 						}
@@ -660,7 +666,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 						final String aspectName = _dynamicDefinitionComponent.getAspectName();
 						if(aspectName == null) {
 							JOptionPane.showMessageDialog(
-									new JFrame(), "Bitte w‰hlen Sie einen Aspekt aus!", "Fehler", JOptionPane.ERROR_MESSAGE
+									new JFrame(), "Bitte w√§hlen Sie einen Aspekt aus!", "Fehler", JOptionPane.ERROR_MESSAGE
 							);
 							return;
 						}
@@ -670,13 +676,13 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 							int error = _dynamicDefinitionComponent.checkAttributeName();
 							if(error == 1) {
 								JOptionPane.showMessageDialog(
-										new JFrame(), "Bitte w‰hlen Sie ein Attribut aus!", "Fehler", JOptionPane.ERROR_MESSAGE
+										new JFrame(), "Bitte w√§hlen Sie ein Attribut aus!", "Fehler", JOptionPane.ERROR_MESSAGE
 								);
 								return;
 							}
 							else if(error == 2) {
 								JOptionPane.showMessageDialog(
-										new JFrame(), "Der Attributname ist ung¸ltig!", "Fehler", JOptionPane.ERROR_MESSAGE
+										new JFrame(), "Der Attributname ist ung√ºltig!", "Fehler", JOptionPane.ERROR_MESSAGE
 								);
 								return;
 							}
@@ -718,7 +724,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 
 						if((fromValue != null) && (toValue != null) && fromValue > toValue) {
 							JOptionPane.showMessageDialog(
-									new JFrame(), "Der Von-Wert ist grˆﬂer als der Bis-Wert!", "Fehler", JOptionPane.ERROR_MESSAGE
+									new JFrame(), "Der Von-Wert ist gr√∂√üer als der Bis-Wert!", "Fehler", JOptionPane.ERROR_MESSAGE
 							);
 							return;
 						}
@@ -772,7 +778,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 					_component = _colorComboBox;
 				}
 				else if(_property == DOTProperty.GROESSE) {
-					aLabel = new JLabel("Schriftgrˆﬂe: ");
+					aLabel = new JLabel("Schriftgr√∂√üe: ");
 					if(propertyValue != null) {
 						_textSizeSpinner.setValue(propertyValue);
 					}
@@ -812,7 +818,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 
 				final JButton saveButton = new JButton("Speichern");
 				saveButton.setEnabled(_dotDefinitionDialogFrame.isEditable());
-				final JButton cancelButton = new JButton("Dialog schlieﬂen");
+				final JButton cancelButton = new JButton("Dialog schlie√üen");
 
 				final JPanel buttonsPanel = new JPanel();
 				buttonsPanel.setLayout(new SpringLayout());
@@ -824,7 +830,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 				SpringUtilities.makeCompactGrid(buttonsPanel, 2, 20, 5);
 				addButtonListeners(saveButton, cancelButton);
 
-				setTitle("GND: Darstellungsfestlegung f¸r Punkte");
+				setTitle("GND: Darstellungsfestlegung f√ºr Punkte");
 				setLayout(new BorderLayout());
 				add(new JScrollPane(panel), BorderLayout.NORTH);
 				add(new JScrollPane(_dynamicDefinitionComponent), BorderLayout.CENTER);
@@ -837,8 +843,8 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 
 			private void prepareTextComboBox(final Object propertyValue) {
 				// _textComboBox wird in der letzten Zeile editierbar gemacht, und es wird
-				// der ¸bergebene Wert in diese Zeile eingetragen und selektiert, wenn er nicht
-				// einem der anderen Eintr‰ge entspricht.
+				// der √ºbergebene Wert in diese Zeile eingetragen und selektiert, wenn er nicht
+				// einem der anderen Eintr√§ge entspricht.
 
 				if(propertyValue != null) {
 					String propertyValueAsString = (String)propertyValue;
@@ -910,7 +916,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 				final int[] selectedRows = workForThisTable.getSelectedRows();
 				if(selectedRows.length == 0) {
 					JOptionPane.showMessageDialog(
-							new JFrame(), "Bitte w‰hlen Sie eine Zeile aus!", "Fehler", JOptionPane.ERROR_MESSAGE
+							new JFrame(), "Bitte w√§hlen Sie eine Zeile aus!", "Fehler", JOptionPane.ERROR_MESSAGE
 					);
 					return;
 				}
@@ -968,7 +974,7 @@ public class DOTPointDialog implements DOTDefinitionDialog {
 	}
 
 	private void addToolTips() {
-		_translationFactorSpinner.setToolTipText("F¸r Punkte, die auf einer Straﬂe liegen, wird die Darstellung orthogonal um diese L‰nge verschoben.");
+		_translationFactorSpinner.setToolTipText("F√ºr Punkte, die auf einer Stra√üe liegen, wird die Darstellung orthogonal um diese L√§nge verschoben.");
 		_joinByLineCheckBox.setToolTipText("Hier wird festgelegt, ob die verschobene Darstellung mit dem Lagepunkt durch eine Linie verbunden wird.");
 	}
 

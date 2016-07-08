@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.utils;
 
@@ -24,21 +30,21 @@ package de.kappich.pat.gnd.utils;
  * <p>
  * Die Klasse <code>Interval&lt;E&gt;</code> dient zur Verwaltung von Intervalle der Klasse <code>E</code>,
  * die die Klasse <code>Number</code> erweitert. Jedes Intervall hat eine Untergrenze und eine Obergrenze, 
- * wobei es keine festgelegte Interpretation gibt, ob diese Werte zum Intervall dazu gehören oder nicht. 
- * Daneben gibt es noch einen Zähler, mit dessen Hilfe ansonsten gleiche Intervalle in einer Menge 
- * koexistieren können.
+ * wobei es keine festgelegte Interpretation gibt, ob diese Werte zum Intervall dazu gehÃ¶ren oder nicht. 
+ * Daneben gibt es noch einen ZÃ¤hler, mit dessen Hilfe ansonsten gleiche Intervalle in einer Menge 
+ * koexistieren kÃ¶nnen.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8080 $
+ * @version $Revision$
  *
  */
 public class Interval<E extends Number> implements Comparable<Interval<E>> {
 	private E _lowerBound;
 	private E _upperBound;
-	private int _counter;	// Erlaubt es ansonsten gleiche Intervalle als unterschiedliche Schlüssel
-							// in Maps etc zu verwenden, wenn man den Counter hochzählt!
+	private int _counter;	// Erlaubt es ansonsten gleiche Intervalle als unterschiedliche SchlÃ¼ssel
+							// in Maps etc zu verwenden, wenn man den Counter hochzÃ¤hlt!
 	/**
-	 * Konstruiert ein Intervall aus den übergebenen Grenzen.
+	 * Konstruiert ein Intervall aus den Ã¼bergebenen Grenzen.
 	 * 
 	 * @param lowerBound die untere Grenze
 	 * @param upperBound die obere Grenze
@@ -83,25 +89,25 @@ public class Interval<E extends Number> implements Comparable<Interval<E>> {
 	}
 	
 	/**
-	 * Der Getter des Zählers.
+	 * Der Getter des ZÃ¤hlers.
 	 * 
-	 * @return der Zählerwert
+	 * @return der ZÃ¤hlerwert
      */
     public int getCounter() {
     	return _counter;
     }
     
 	/**
-	 * Der Setter des Zählers.
+	 * Der Setter des ZÃ¤hlers.
 	 * 
-	 * @param der neue Zählerwert
+	 * @param der neue ZÃ¤hlerwert
      */
     public void setCounter(int counter) {
     	_counter = counter;
     }
 
     /**
-     * Gibt <code>true</code> zurück, wenn die beiden Intervalle im Sinne abgeschlossener
+     * Gibt <code>true</code> zurÃ¼ck, wenn die beiden Intervalle im Sinne abgeschlossener
      * Intervalle eine nicht-leere Schnittmenge haben.
      * 
      * @param o ein Intervall
@@ -117,7 +123,7 @@ public class Interval<E extends Number> implements Comparable<Interval<E>> {
 	}
 	
 	/**
-	 * Gibt die Schnittmenge der beiden Intervalle zurück oder <code>null</code>, wenn der Schnitt leer ist.
+	 * Gibt die Schnittmenge der beiden Intervalle zurÃ¼ck oder <code>null</code>, wenn der Schnitt leer ist.
 	 * 
 	 * @param o ein Intervall
 	 * @return die Schnittmenge oder <code>null</code>
@@ -146,19 +152,19 @@ public class Interval<E extends Number> implements Comparable<Interval<E>> {
 	}
 	
 	/**
-	 * Die Länge eines Intervalls ist die Differenz von oberer und unterer Grenze. Achtung: da
-	 * keine Überprüfung stattfindet, ob diese Grenzen sinnvolle Werte enthalten oder ihre
+	 * Die LÃ¤nge eines Intervalls ist die Differenz von oberer und unterer Grenze. Achtung: da
+	 * keine ÃœberprÃ¼fung stattfindet, ob diese Grenzen sinnvolle Werte enthalten oder ihre
 	 * Relation stimmt, kann das Ergebnis entsprechend ausfallen.
 	 * 
-	 * @return die Länge
+	 * @return die LÃ¤nge
 	 */
 	public double length() {
 		return (_upperBound.doubleValue() - _lowerBound.doubleValue());
 	}
 	
 	/**
-	 * Gibt ein neues Intervall zurück, dass dieselben unteren und oberen Schranken
-	 * besitzt, und auch denselben Zählerwert.
+	 * Gibt ein neues Intervall zurÃ¼ck, dass dieselben unteren und oberen Schranken
+	 * besitzt, und auch denselben ZÃ¤hlerwert.
 	 * 
 	 * @return die Kopie
 	 */
@@ -207,7 +213,7 @@ public class Interval<E extends Number> implements Comparable<Interval<E>> {
 	}
 	
 	/**
-	 * Der Hashcode eines Intervalls hängt nur von der oberen und unteren Grenze ab, nicht aber vom Zähler.
+	 * Der Hashcode eines Intervalls hÃ¤ngt nur von der oberen und unteren Grenze ab, nicht aber vom ZÃ¤hler.
 	 * 
 	 * @return die Summe der Hashcodes der unteren und oberen Grenze
 	 */

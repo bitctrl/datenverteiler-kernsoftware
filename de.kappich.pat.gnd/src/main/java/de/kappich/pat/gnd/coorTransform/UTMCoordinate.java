@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,16 +14,22 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.coorTransform;
 
 /**
- * Eine Klasse für UTM-Koordinaten.
+ * Eine Klasse fÃ¼r UTM-Koordinaten.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 8067 $
+ * @version $Revision$
  *
  * Nach Vorlage von bitCtrl.
  * 
@@ -34,7 +40,7 @@ public class UTMCoordinate {
 	 * Eine Klasse zur Verkapselung der zwei Halbkugeln.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 8067 $
+	 * @version $Revision$
 	 *
 	 */
 	public static final class UTMHemisphere {
@@ -71,7 +77,7 @@ public class UTMCoordinate {
 	private int _utmZone;
 	
 	/**
-	 * die Hemisphäre.
+	 * die HemisphÃ¤re.
 	 */
 	private UTMHemisphere _utmHemisphere = UTMHemisphere.HORDHALBKUGEL;
 	
@@ -81,7 +87,7 @@ public class UTMCoordinate {
 	public UTMCoordinate () {}
 	
 	/**
-	 * Konstruktor für eine UTM-Koordinate auf der nördlichen Erdhalbkugel.
+	 * Konstruktor fÃ¼r eine UTM-Koordinate auf der nÃ¶rdlichen Erdhalbkugel.
 	 * 
 	 * @param x der x- oder Ostwert
 	 * @param y der y- oder Nordwert
@@ -89,7 +95,7 @@ public class UTMCoordinate {
 	 */
 	public UTMCoordinate(double x, double y, int zone) {
 		if ((zone < UTM_ZONE_MIN) || (zone > UTM_ZONE_MAX)) {
-			throw new IllegalArgumentException("Der Wert für die Zone ist ungültig!");
+			throw new IllegalArgumentException("Der Wert fÃ¼r die Zone ist ungÃ¼ltig!");
 		}
 		
 		_x = x;
@@ -99,16 +105,16 @@ public class UTMCoordinate {
 	}
 	
 	/**
-	 *  Konstruktor für eine UTM-Koordinate.
+	 *  Konstruktor fÃ¼r eine UTM-Koordinate.
 	 *  
 	 * @param x der x- oder Ostwert
 	 * @param y der y- oder Nordwert
 	 * @param zone die UTM-Zone
-	 * @param hemisphere die Hemisphäre
+	 * @param hemisphere die HemisphÃ¤re
 	 */
 	public UTMCoordinate(double x, double y, int zone, UTMHemisphere hemisphere) {
 		if ((zone < UTM_ZONE_MIN) || (zone > UTM_ZONE_MAX)) {
-			throw new IllegalArgumentException("Der Wert für die Zone ist ungültig!");
+			throw new IllegalArgumentException("Der Wert fÃ¼r die Zone ist ungÃ¼ltig!");
 		}
 		_x = x;
 		_y = y;
@@ -117,18 +123,18 @@ public class UTMCoordinate {
 	}
 	
 	/**
-	 * Gibt die Hemisphäre zurück.
+	 * Gibt die HemisphÃ¤re zurÃ¼ck.
 	 * 
-	 * @return gibt die Hemisphäre zurück
+	 * @return gibt die HemisphÃ¤re zurÃ¼ck
 	 */
 	public UTMHemisphere getHemisphere() {
 		return _utmHemisphere;
 	}
 	
 	/**
-	 * Gibt die x-Koordinate zurück, die auch als Ostwert bezeichnet wird.
+	 * Gibt die x-Koordinate zurÃ¼ck, die auch als Ostwert bezeichnet wird.
 	 * 
-	 * @return gibt die x-Koordinate oder Ostwert zurück
+	 * @return gibt die x-Koordinate oder Ostwert zurÃ¼ck
 	 */
 	public double getX() {
 		return _x;
@@ -153,9 +159,9 @@ public class UTMCoordinate {
 	}
 	
 	/**
-	 * Gibt die y-Koordinate zurück, die auch als Nordwert bezeichnet wird.
+	 * Gibt die y-Koordinate zurÃ¼ck, die auch als Nordwert bezeichnet wird.
 	 * 
-	 * @return gibt die y-Koordinate bzw. Nordwert zurück
+	 * @return gibt die y-Koordinate bzw. Nordwert zurÃ¼ck
 	 */
 	public double getY() {
 		return _y;
@@ -171,18 +177,18 @@ public class UTMCoordinate {
 	}
 	
 	/**
-	 * Gibt die UTM-Zone zurück.
+	 * Gibt die UTM-Zone zurÃ¼ck.
 	 * 
-	 * @return gibt die UTM-Zone zurück
+	 * @return gibt die UTM-Zone zurÃ¼ck
 	 */
 	public int getZone() {
 		return _utmZone;
 	}
 	
 	/**
-	 * Setzt die Hemisphäre.
+	 * Setzt die HemisphÃ¤re.
 	 * 
-	 * @param setzt die Hemisphäre
+	 * @param setzt die HemisphÃ¤re
 	 */
 	public void setHemisphere(UTMHemisphere hemisphere) {
 		this._utmHemisphere = hemisphere;

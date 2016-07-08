@@ -3,9 +3,9 @@
  * 
  * This file is part of de.kappich.pat.gnd.
  * 
- * de.kappich.pat.gnd is free software; you can redistribute it and/or modify
+ * de.kappich.pat.gnd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
  * de.kappich.pat.gnd is distributed in the hope that it will be useful,
@@ -14,8 +14,14 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with de.kappich.pat.gnd; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with de.kappich.pat.gnd.  If not, see <http://www.gnu.org/licenses/>.
+
+ * Contact Information:
+ * Kappich Systemberatung
+ * Martin-Luther-StraÃŸe 14
+ * 52062 Aachen, Germany
+ * phone: +49 241 4090 436 
+ * mail: <info@kappich.de>
  */
 package de.kappich.pat.gnd.displayObjectToolkit;
 
@@ -48,18 +54,18 @@ import java.util.prefs.Preferences;
 /**
  * Der DOTManager verwaltet alle Darstellungstypen. Derzeit ist er als Singleton implementiert, um das
  * Problem der Kommunikation verschiedener Manager zu umgehen. Er ist auch ein TableModel, damit seine 
- * Inhalte im DOTManagerDialog angezeigt werden können.
+ * Inhalte im DOTManagerDialog angezeigt werden kÃ¶nnen.
  * 
  * @author Kappich Systemberatung
- * @version $Revision: 10225 $
+ * @version $Revision$
  *
  */
 @SuppressWarnings("serial")
 public class DOTManager extends AbstractTableModel implements TableModel {
-	// Ein Singleton, was aber nicht die ultimative Lösung sein muss; werden
-	// mehrere benötigt, so müssen Änderungen zwischen diesen mitgeteilt 
-	// werden, oder alternativ muss sichergestellt werden, dass überall,
-	// wo solche Änderungen benötigt werden, derselbe Manager benutzt wird.
+	// Ein Singleton, was aber nicht die ultimative LÃ¶sung sein muss; werden
+	// mehrere benÃ¶tigt, so mÃ¼ssen Ã„nderungen zwischen diesen mitgeteilt 
+	// werden, oder alternativ muss sichergestellt werden, dass Ã¼berall,
+	// wo solche Ã„nderungen benÃ¶tigt werden, derselbe Manager benutzt wird.
 	
 	private static final DOTManager _instance = new DOTManager();
 	
@@ -70,13 +76,13 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	private final static Debug _debug = Debug.getLogger();
 	
 	/**
-	 * Die für eine Singleton typische Methode.
+	 * Die fÃ¼r eine Singleton typische Methode.
 	 * 
 	 * @return den DOTManager
 	 */
 	public static DOTManager getInstance() {
 		// Die Instanz wird nicht im Konstruktor initialisiert, damit sich DOTs
-		// bereits als DOTManager.DOTChangeListener registrieren können.
+		// bereits als DOTManager.DOTChangeListener registrieren kÃ¶nnen.
 		if ( !_instance._initialized) {
 			_instance._initialized = true; // Das muss schon hier stehen, denn die Instanz wird in den folgenden Zeilen bereits benutzt!
 			_instance.readFullClassNames();
@@ -88,7 +94,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	
 	/**
 	 * Mit Hilfe dieser Methode kann man den DOTManager dazu zwingen, sich erneut zu
-	 * konstruieren, was etwa nach dem Importieren von Präferenzen angezeigt ist.
+	 * konstruieren, was etwa nach dem Importieren von PrÃ¤ferenzen angezeigt ist.
 	 */
 	public static void refreshInstance() {
 		_instance._dotList.clear();
@@ -100,11 +106,11 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	
 	private DOTManager () {
 		// Die Instanz wird nicht im Konstruktor initialisiert, damit sich DOTs
-		// bereits als DOTManager.DOTChangeListener registrieren können.
+		// bereits als DOTManager.DOTChangeListener registrieren kÃ¶nnen.
 	}
 	
 	/**
-	 * Gibt den Darstellungstypen zu dem übergebenen Namen zurück, falls ein solcher existiert, und
+	 * Gibt den Darstellungstypen zu dem Ã¼bergebenen Namen zurÃ¼ck, falls ein solcher existiert, und
 	 * <code>null</code> sonst.
 	 * 
 	 * @param eine Name
@@ -115,18 +121,18 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Gibt den Darstellungstypen zu dem übergebenen Index zurück, falls ein solcher existiert, und
+	 * Gibt den Darstellungstypen zu dem Ã¼bergebenen Index zurÃ¼ck, falls ein solcher existiert, und
 	 * wirft eine <code>IndexOutOfBoundsException</code> sonst.
 	 * 
 	 * @param ein Index zwischen 0 und der Anzahl der Darstellungstypen - 1
-	 * @return den zugehörigen Darstellungstypen 
+	 * @return den zugehÃ¶rigen Darstellungstypen 
 	 */
 	public DisplayObjectType getDisplayObjectType( int index) {
 		return _dotList.get( index);
 	}
 	
 	/**
-	 * Gibt alle Darstellungstypen zurück.
+	 * Gibt alle Darstellungstypen zurÃ¼ck.
 	 * 
 	 * @return alle Darstellungstypen 
 	 */
@@ -135,7 +141,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn ein Darstellungstyp mit diesem Namen existiert.
+	 * Gibt <code>true</code> zurÃ¼ck, wenn ein Darstellungstyp mit diesem Namen existiert.
 	 * 
 	 * @return <code>true</code> genau dann, wenn es einen Darstellungstyp mit diesem Namen gibt
 	 */
@@ -144,7 +150,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Speichert den übergebenen Darstellungstypen.
+	 * Speichert den Ã¼bergebenen Darstellungstypen.
 	 * 
 	 * @param dot ein Darstellungstyp
 	 */
@@ -163,7 +169,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		}
 	}
 	/**
-	 * Löscht den übergebenen Darstellungstypen.
+	 * LÃ¶scht den Ã¼bergebenen Darstellungstypen.
 	 * 
 	 * @param dot ein Darstellungstyp
 	 */
@@ -179,11 +185,11 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		return false;
 	}
 	/**
-	 * Löscht den Darstellungstypen mit dem übergebenen Namen, und gibt <code>true</code>
-	 * zurück, wenn das Löschen erfolgreich war.
+	 * LÃ¶scht den Darstellungstypen mit dem Ã¼bergebenen Namen, und gibt <code>true</code>
+	 * zurÃ¼ck, wenn das LÃ¶schen erfolgreich war.
 	 * 
 	 * @param dotName ein Darstellungstypname
-	 * @return <code>true</code> genau dann, wenn das Löschen erfolgreich war.
+	 * @return <code>true</code> genau dann, wenn das LÃ¶schen erfolgreich war.
 	 */
 	public boolean deleteDisplayObjectType( String dotName) {
 		if ( !_notChangables.contains(dotName)) {
@@ -195,7 +201,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		return false;
 	}
 	/**
-	 * 	Löscht alle Darstellungstypen.
+	 * 	LÃ¶scht alle Darstellungstypen.
 	 */
 	public void clearDisplayObjectTypes() {
 		final Object[] array = _dotHash.keySet().toArray();
@@ -217,7 +223,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		} else {	// eine andere als die vordefinierten Klassen muss gesucht werden
 			fullPathName = _fullClassNames.get( className);
 			if ( fullPathName == null || fullPathName.length() == 0) {
-				_debug.error("DOTManager.getClass() wurde für die nicht unterstützte Klasse " + className + " aufgerufen.");
+				_debug.error("DOTManager.getClass() wurde fÃ¼r die nicht unterstÃ¼tzte Klasse " + className + " aufgerufen.");
 				return null;
 			}
 		}
@@ -226,7 +232,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 			c = Class.forName( fullPathName);
 		}
 		catch(ClassNotFoundException e) {
-			_debug.error("DOTManager.getClass() wurde für die nicht auffindbare Klasse " + className + " aufgerufen.");
+			_debug.error("DOTManager.getClass() wurde fÃ¼r die nicht auffindbare Klasse " + className + " aufgerufen.");
 			return null;
 		}
 		return c;
@@ -243,13 +249,13 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 			dotSubClasses = classPrefs.childrenNames();
 		}
 		catch(BackingStoreException e) {
-			_debug.error("Die benutzer-definierten Darstellungstypen können nicht initialisiert werden, " + 
+			_debug.error("Die benutzer-definierten Darstellungstypen kÃ¶nnen nicht initialisiert werden, " + 
 					"BackingStoreException: " + e.toString());
 			return false;
 		}
 		for ( String subClassName : dotSubClasses) {
 			Class<?> c;
-			if ( subClassName.equals( "Classes")) {	// hier steht das Lookup für die vollständigen Klassennamen
+			if ( subClassName.equals( "Classes")) {	// hier steht das Lookup fÃ¼r die vollstÃ¤ndigen Klassennamen
 				continue;
 			}
 			c = getClass( subClassName);
@@ -277,13 +283,13 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 					object = c.newInstance();
 				}
 				catch(InstantiationException e) {
-					_debug.error("Ein benutzer-definierter Darstellungstyp kann nicht vollständig initialisiert werden, " +
+					_debug.error("Ein benutzer-definierter Darstellungstyp kann nicht vollstÃ¤ndig initialisiert werden, " +
 							"InstantiationException: " + e.toString());
 					everythingFine = false;
 					break;
 				}
 				catch(IllegalAccessException e) {
-					_debug.error("Ein benutzer-definierter Darstellungstyp kann nicht vollständig initialisiert werden, " +
+					_debug.error("Ein benutzer-definierter Darstellungstyp kann nicht vollstÃ¤ndig initialisiert werden, " +
 							"IllegalAccessException: " + e.toString());
 					everythingFine = false;
 					break;
@@ -297,9 +303,9 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Gibt den Ausgangsknoten zum Abspeichern aller Präferenzen des DOTManagers an.
+	 * Gibt den Ausgangsknoten zum Abspeichern aller PrÃ¤ferenzen des DOTManagers an.
 	 * 
-	 * @return gibt den Ausgangsknoten zum Abspeichern aller Präferenzen des DOTManagers zurück
+	 * @return gibt den Ausgangsknoten zum Abspeichern aller PrÃ¤ferenzen des DOTManagers zurÃ¼ck
 	 */
 	public static Preferences getPreferenceStartPath() {
 		// return Preferences.userRoot().node( "de/kappich/pat/gnd/DOT");	// Einzige Stelle dieses Strings!
@@ -315,9 +321,9 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Gibt die Namen aller Darstellungstypen zurück.
+	 * Gibt die Namen aller Darstellungstypen zurÃ¼ck.
 	 * 
-	 * @return gibt die Namen aller Darstellungstypen zurück
+	 * @return gibt die Namen aller Darstellungstypen zurÃ¼ck
 	 */
 	public Object[] getDOTNames() {
 		return _dotHash.keySet().toArray();
@@ -334,7 +340,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	        keys = classesPrefs.keys();
         }
         catch(BackingStoreException e) {
-        	_debug.error("Die GND-paketfremden Darstellungstypen können nicht initialisiert werden, " + 
+        	_debug.error("Die GND-paketfremden Darstellungstypen kÃ¶nnen nicht initialisiert werden, " + 
 					"BackingStoreException: " + e.toString());
         	return;
         }
@@ -375,11 +381,11 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		put(defaultDOT1_);
 		_notChangables.add(defaultDOT1_.getName());
 		
-		DOTLine defaultDOT2 = new DOTLine( "Störfallzustand OLSIM 1 (grob)", "Zwei Zustände");
+		DOTLine defaultDOT2 = new DOTLine( "StÃ¶rfallzustand OLSIM 1 (grob)", "Zwei ZustÃ¤nde");
 		defaultDOT2.setPropertyStatic( null, DOTProperty.FARBE, false);
-		DisplayObjectTypeItem dItem1 = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenOLSIM1", "Situation", "Grün: frei bis dicht", "grün");
+		DisplayObjectTypeItem dItem1 = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenOLSIM1", "Situation", "GrÃ¼n: frei bis dicht", "grÃ¼n");
 		defaultDOT2.setValueOfDynamicProperty(null, DOTProperty.FARBE, dItem1, 2., 4.);
-		DisplayObjectTypeItem dItem2 = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenOLSIM1", "Situation", "Rot: zäh bis Stau", "rot");
+		DisplayObjectTypeItem dItem2 = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenOLSIM1", "Situation", "Rot: zÃ¤h bis Stau", "rot");
 		defaultDOT2.setValueOfDynamicProperty(null, DOTProperty.FARBE, dItem2, 5., 7.);
 		defaultDOT2.setPropertyStatic( null, DOTProperty.ABSTAND, true);
 		defaultDOT2.setValueOfStaticProperty(null, DOTProperty.ABSTAND, 20);
@@ -388,15 +394,15 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		put(defaultDOT2);
 		_notChangables.add(defaultDOT2.getName());
 		
-		DOTLine defaultDOT2_ = new DOTLine( "Störfallzustand OLSIM 1 (fein)", "Vier Zustände");
+		DOTLine defaultDOT2_ = new DOTLine( "StÃ¶rfallzustand OLSIM 1 (fein)", "Vier ZustÃ¤nde");
 		defaultDOT2_.setPropertyStatic( null, DOTProperty.FARBE, false);
-		DisplayObjectTypeItem dItem1_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenOLSIM1", "Situation", "Grün: frei/lebhaft", "grün");
+		DisplayObjectTypeItem dItem1_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenOLSIM1", "Situation", "GrÃ¼n: frei/lebhaft", "grÃ¼n");
 		defaultDOT2_.setValueOfDynamicProperty(null, DOTProperty.FARBE, dItem1_, 2., 3.);
-		DisplayObjectTypeItem dItem2_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenOLSIM1", "Situation", "Orange: dicht/zäh", "orange");
+		DisplayObjectTypeItem dItem2_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenOLSIM1", "Situation", "Orange: dicht/zÃ¤h", "orange");
 		defaultDOT2_.setValueOfDynamicProperty(null, DOTProperty.FARBE, dItem2_, 4., 5.);
-		DisplayObjectTypeItem dItem3_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenOLSIM1", "Situation", "Rot: stockend/Stau", "rot");
+		DisplayObjectTypeItem dItem3_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenOLSIM1", "Situation", "Rot: stockend/Stau", "rot");
 		defaultDOT2_.setValueOfDynamicProperty(null, DOTProperty.FARBE, dItem3_, 6., 7.);
-		DisplayObjectTypeItem dItem4_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenOLSIM1", "Situation", "Gelb: Störung/unbekannt", "gelb");
+		DisplayObjectTypeItem dItem4_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenOLSIM1", "Situation", "Gelb: StÃ¶rung/unbekannt", "gelb");
 		defaultDOT2_.setValueOfDynamicProperty(null, DOTProperty.FARBE, dItem4_, 0., 1.);
 		defaultDOT2_.setPropertyStatic( null, DOTProperty.ABSTAND, true);
 		defaultDOT2_.setValueOfStaticProperty(null, DOTProperty.ABSTAND, 20);
@@ -423,9 +429,9 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 				PrimitiveFormType.RECHTECK, "Aspekt asp.agregation1Minute", 
 				new Point2D.Double( 0,0), specificInformation1);
 		newDOT.addPrimitiveForm( centralRectangle);
-		// Properties des zentralen Rechtecks: Füllung (dynamisch, Strichbreite, Tranzparenz (statisch)
+		// Properties des zentralen Rechtecks: FÃ¼llung (dynamisch, Strichbreite, Tranzparenz (statisch)
 		newDOT.setPropertyStatic( centralRectangle.getName(), DOTProperty.FUELLUNG, false);
-		DisplayObjectTypeItem dItem1 = new DynamicDOTItem("atg.verkehrsDatenKurzZeitMq", "asp.agregation1Minute", "VKfz.Wert", "Grün: über 80 km/h", "grün");
+		DisplayObjectTypeItem dItem1 = new DynamicDOTItem("atg.verkehrsDatenKurzZeitMq", "asp.agregation1Minute", "VKfz.Wert", "GrÃ¼n: Ã¼ber 80 km/h", "grÃ¼n");
 		newDOT.setValueOfDynamicProperty(centralRectangle.getName(), DOTProperty.FUELLUNG, dItem1, 80., 255.);
 		DisplayObjectTypeItem dItem2 = new DynamicDOTItem("atg.verkehrsDatenKurzZeitMq", "asp.agregation1Minute", "VKfz.Wert", "Orange: zwischen 30 und 80 km/h", "orange");
 		newDOT.setValueOfDynamicProperty(centralRectangle.getName(), DOTProperty.FUELLUNG, dItem2, 30., 79.);
@@ -443,7 +449,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	private void addAdvancedDOTForDetectionSites() {
 		DOTPoint newDOT = new DOTPoint( "MQ, einfach kombinierte Darstellung", "MQDT", 30., true);
 		
-		// Zunächst ein einfaches Rechteck
+		// ZunÃ¤chst ein einfaches Rechteck
 		Map<String, Object> specificInformation1 = new HashMap<String, Object>();
 		specificInformation1.put( "height", new Double(16.));
 		specificInformation1.put( "width", new Double(16.));
@@ -451,9 +457,9 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 				PrimitiveFormType.RECHTECK, "Aspekt asp.agregation1Minute", 
 				new Point2D.Double( 0,0), specificInformation1);
 		newDOT.addPrimitiveForm( centralRectangle);
-		// Properties: Füllung (dynamisch), Strichbreite, Tranzparenz (statisch)
+		// Properties: FÃ¼llung (dynamisch), Strichbreite, Tranzparenz (statisch)
 		newDOT.setPropertyStatic( centralRectangle.getName(), DOTProperty.FUELLUNG, false);
-		DisplayObjectTypeItem dItem1 = new DynamicDOTItem("atg.verkehrsDatenKurzZeitMq", "asp.agregation1Minute", "VKfz.Wert", "Grün: über 80 km/h", "grün");
+		DisplayObjectTypeItem dItem1 = new DynamicDOTItem("atg.verkehrsDatenKurzZeitMq", "asp.agregation1Minute", "VKfz.Wert", "GrÃ¼n: Ã¼ber 80 km/h", "grÃ¼n");
 		newDOT.setValueOfDynamicProperty(centralRectangle.getName(), DOTProperty.FUELLUNG, dItem1, 80., 255.);
 		DisplayObjectTypeItem dItem2 = new DynamicDOTItem("atg.verkehrsDatenKurzZeitMq", "asp.agregation1Minute", "VKfz.Wert", "Orange: zwischen 30 und 80 km/h", "orange");
 		newDOT.setValueOfDynamicProperty(centralRectangle.getName(), DOTProperty.FUELLUNG, dItem2, 30., 79.);
@@ -468,17 +474,17 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		Map<String, Object> specificInformation3 = new HashMap<String, Object>();
 		specificInformation3.put( "radius", new Double(8));
 		specificInformation3.put( "orientation", DOTPointPainter.OBERER_HALBKREIS);
-		PrimitiveForm semicircle = new PrimitiveForm("Halbkreis: Störfallzustand", 
-				PrimitiveFormType.HALBKREIS, "Aspekt asp.störfallVerfahrenConstraint", 
+		PrimitiveForm semicircle = new PrimitiveForm("Halbkreis: StÃ¶rfallzustand", 
+				PrimitiveFormType.HALBKREIS, "Aspekt asp.stÃ¶rfallVerfahrenConstraint", 
 				new Point2D.Double( 0,8), specificInformation3);
 		newDOT.addPrimitiveForm( semicircle);
-		// Properties: Füllung (dynamisch), Strichbreite, Tranzparenz (statisch)
+		// Properties: FÃ¼llung (dynamisch), Strichbreite, Tranzparenz (statisch)
 		newDOT.setPropertyStatic( semicircle.getName(), DOTProperty.FUELLUNG, false);
-		DisplayObjectTypeItem dItem1_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenConstraint", "Situation", "Grün: frei", "grün");
+		DisplayObjectTypeItem dItem1_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenConstraint", "Situation", "GrÃ¼n: frei", "grÃ¼n");
 		newDOT.setValueOfDynamicProperty(semicircle.getName(), DOTProperty.FUELLUNG, dItem1_, 2., 4.);
-		DisplayObjectTypeItem dItem2_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenConstraint", "Situation", "Rot: gestört", "rot");
+		DisplayObjectTypeItem dItem2_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenConstraint", "Situation", "Rot: gestÃ¶rt", "rot");
 		newDOT.setValueOfDynamicProperty(semicircle.getName(), DOTProperty.FUELLUNG, dItem2_, 5., 7.);
-		DisplayObjectTypeItem dItem3_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenConstraint", "Situation", "Grau: unbekannt", "grau");
+		DisplayObjectTypeItem dItem3_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenConstraint", "Situation", "Grau: unbekannt", "grau");
 		newDOT.setValueOfDynamicProperty(semicircle.getName(), DOTProperty.FUELLUNG, dItem3_, 0., 1.);
 		semicircle.setPropertyStatic( DOTProperty.STRICHBREITE, true);
 		semicircle.setValueOfStaticProperty( DOTProperty.STRICHBREITE, new Double( 2.0));
@@ -492,7 +498,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	
 	private void addTestDOTForDetectionSites() {
 		DOTPoint newDOT = new DOTPoint( "MQ, Testdarstellung 1", "MQDT 1", 70., true);
-		// Der originäre Punkt
+		// Der originÃ¤re Punkt
 		Map<String, Object> specificInformation0 = new HashMap<String, Object>();
 		PrimitiveForm point = new PrimitiveForm("Der Punkt", 
 				PrimitiveFormType.PUNKT, "Verortung", 
@@ -512,13 +518,13 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 				PrimitiveFormType.RECHTECK, "LOS-Rechteck", 
 				new Point2D.Double( 0,0), specificInformation1);
 		newDOT.addPrimitiveForm( centralRectangle);
-		// Properties des zentralen Rechtecks: Füllung (dynamisch, Strichbreite, Tranzparenz (statisch)
+		// Properties des zentralen Rechtecks: FÃ¼llung (dynamisch, Strichbreite, Tranzparenz (statisch)
 		newDOT.setPropertyStatic( centralRectangle.getName(), DOTProperty.FUELLUNG, false);
-		DisplayObjectTypeItem dItem1_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenMARZ", "Situation", "Grün: frei", "grün");
+		DisplayObjectTypeItem dItem1_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenMARZ", "Situation", "GrÃ¼n: frei", "grÃ¼n");
 		newDOT.setValueOfDynamicProperty(centralRectangle.getName(), DOTProperty.FUELLUNG, dItem1_, 2., 4.);
-		DisplayObjectTypeItem dItem2_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenMARZ", "Situation", "Rot: Stau", "ror");
+		DisplayObjectTypeItem dItem2_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenMARZ", "Situation", "Rot: Stau", "ror");
 		newDOT.setValueOfDynamicProperty(centralRectangle.getName(), DOTProperty.FUELLUNG, dItem2_, 5., 7.);
-		DisplayObjectTypeItem dItem3_ = new DynamicDOTItem("atg.störfallZustand", "asp.störfallVerfahrenMARZ", "Situation", "Grau: Störung/unbekannt", "grau");
+		DisplayObjectTypeItem dItem3_ = new DynamicDOTItem("atg.stÃ¶rfallZustand", "asp.stÃ¶rfallVerfahrenMARZ", "Situation", "Grau: StÃ¶rung/unbekannt", "grau");
 		newDOT.setValueOfDynamicProperty(centralRectangle.getName(), DOTProperty.FUELLUNG, dItem3_, 0., 1.);
 		
 		newDOT.setPropertyStatic( centralRectangle.getName(), DOTProperty.STRICHBREITE, true);
@@ -530,17 +536,17 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		Map<String, Object> specificInformation2 = new HashMap<String, Object>();
 		specificInformation2.put( "radius", new Double(10));
 		PrimitiveForm circle = new PrimitiveForm("Ein Kreis", 
-				PrimitiveFormType.KREIS, "Güte-Kreis", 
+				PrimitiveFormType.KREIS, "GÃ¼te-Kreis", 
 				new Point2D.Double( 25,5), specificInformation2);
 		newDOT.addPrimitiveForm( circle);
-		// Properties des Kreises: Füllung, Strichbreite, Tranzparenz (erstmal statisch)
+		// Properties des Kreises: FÃ¼llung, Strichbreite, Tranzparenz (erstmal statisch)
 		newDOT.setPropertyStatic( circle.getName(), DOTProperty.FUELLUNG, true);
 		newDOT.setValueOfStaticProperty( circle.getName(), DOTProperty.FUELLUNG, Color.GREEN);
 		newDOT.setPropertyStatic( circle.getName(), DOTProperty.STRICHBREITE, true);
 		newDOT.setValueOfStaticProperty( circle.getName(), DOTProperty.STRICHBREITE, new Double( 1.0));
 		newDOT.setPropertyStatic( circle.getName(), DOTProperty.TRANSPARENZ, true);
 		newDOT.setValueOfStaticProperty( circle.getName(), DOTProperty.TRANSPARENZ, new Integer(60));
-		// Der Halbkreis über dem Rechteck
+		// Der Halbkreis Ã¼ber dem Rechteck
 		Map<String, Object> specificInformation3 = new HashMap<String, Object>();
 		specificInformation3.put( "radius", new Double(15));
 		specificInformation3.put( "orientation", DOTPointPainter.OBERER_HALBKREIS);
@@ -548,7 +554,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 				PrimitiveFormType.HALBKREIS, "Spannungshalbkreis", 
 				new Point2D.Double( 0,15), specificInformation3);
 		newDOT.addPrimitiveForm( semicircle);
-		// Properties des Halbkreises: Füllung, Strichbreite, Tranzparenz (erstmal statisch)
+		// Properties des Halbkreises: FÃ¼llung, Strichbreite, Tranzparenz (erstmal statisch)
 		newDOT.setPropertyStatic( semicircle.getName(), DOTProperty.FUELLUNG, true);
 		newDOT.setValueOfStaticProperty( semicircle.getName(), DOTProperty.FUELLUNG, Color.BLUE);
 		newDOT.setPropertyStatic( semicircle.getName(), DOTProperty.STRICHBREITE, true);
@@ -561,7 +567,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 				PrimitiveFormType.TEXTDARSTELLUNG, "Name", 
 				new Point2D.Double( -15,-35), specificInformation4);
 		newDOT.addPrimitiveForm( text);
-		// Properties des Textes: Text (dynamisch), Farbe, Größe und Textstil (statisch)
+		// Properties des Textes: Text (dynamisch), Farbe, GrÃ¶ÃŸe und Textstil (statisch)
 		newDOT.setPropertyStatic( text.getName(), DOTProperty.TEXT, false);
 		DisplayObjectTypeItem textItem = new DynamicDOTItem(
 				"atg.verkehrsDatenKurzZeitMq", 
@@ -581,11 +587,11 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Gibt <code>true</code> zurück, wenn der Darstellungstyp veränderbar ist, was genau dann der Fall ist,
+	 * Gibt <code>true</code> zurÃ¼ck, wenn der Darstellungstyp verÃ¤nderbar ist, was genau dann der Fall ist,
 	 * wenn er nicht im Programmcode, sondern von einem Benutzer definiert wurde, und <code>false</code> sonst.
 	 * 
 	 * @param dot ein Darstellungstyp
-	 * @return <code>true</code> genau dann, wenn der Darstellungstyp veränderbar ist
+	 * @return <code>true</code> genau dann, wenn der Darstellungstyp verÃ¤nderbar ist
 	 */
 	public boolean isChangeable ( DisplayObjectType dot) {
 		return !(_notChangables.contains( dot.getName()));
@@ -615,53 +621,53 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/*
-	 * Gehört zur Implementaion des TableModel und gibt den Spaltennamen der Spalte mit dem übergebenen Index zurück.
+	 * GehÃ¶rt zur Implementaion des TableModel und gibt den Spaltennamen der Spalte mit dem Ã¼bergebenen Index zurÃ¼ck.
 	 */
 	@Override
 	public String getColumnName(int columnIndex) {
 		return columnNames[columnIndex];
 	}
 	/*
-	 * Gehört zur Implementaion des TableModel und gibt die Anzahl der Spalten an.
+	 * GehÃ¶rt zur Implementaion des TableModel und gibt die Anzahl der Spalten an.
 	 */
 	public int getColumnCount() {
 		return columnNames.length;
 	}
 	/*
-	 * Gehört zur Implementaion des TableModel und gibt die Anzahl der Zeilen an.
+	 * GehÃ¶rt zur Implementaion des TableModel und gibt die Anzahl der Zeilen an.
 	 */
 	public int getRowCount() {
 		return _dotList.size();
 	}
 	/*
-	 * Gehört zur Implementaion des TableModel und gibt den Wert der durch die Indizes angebenen Zelle zurück.
+	 * GehÃ¶rt zur Implementaion des TableModel und gibt den Wert der durch die Indizes angebenen Zelle zurÃ¼ck.
 	 */
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return _dotList.get(rowIndex).getName();
 	}
 	
 	/**
-	 * Ein Interface für Listener, die über Änderungen von Darstellungstypen informiert werden wollen.
+	 * Ein Interface fÃ¼r Listener, die Ã¼ber Ã„nderungen von Darstellungstypen informiert werden wollen.
 	 * 
 	 * @author Kappich Systemberatung
-	 * @version $Revision: 10225 $
+	 * @version $Revision$
 	 *
 	 */
 	public interface DOTChangeListener {
 		/**
-		 * Diese Methode wird aufgerufen, wenn der übergebene Darstellungstyp hinzugefügt wurde.
+		 * Diese Methode wird aufgerufen, wenn der Ã¼bergebene Darstellungstyp hinzugefÃ¼gt wurde.
 		 * 
 		 * @param displayObjectType ein Darstellungstyp
 		 */
 		void displayObjectTypeAdded( final DisplayObjectType displayObjectType);
 		/**
-		 * Diese Methode wird aufgerufen, wenn der übergebene Darstellungstyp geändert wurde.
+		 * Diese Methode wird aufgerufen, wenn der Ã¼bergebene Darstellungstyp geÃ¤ndert wurde.
 		 * 
 		 * @param displayObjectType ein Darstellungstyp
 		 */
 		void displayObjectTypeChanged( final DisplayObjectType displayObjectType);
 		/**
-		 * Diese Methode wird aufgerufen, wenn der genannte Darstellungstyp gelöscht wurde.
+		 * Diese Methode wird aufgerufen, wenn der genannte Darstellungstyp gelÃ¶scht wurde.
 		 * 
 		 * @param displayObjectType ein Darstellungstyp
 		 */
@@ -669,7 +675,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Fügt das übergebene Objekt zur Liste aller auf Darstellungstypänderungen angemeldeten Objekte hinzu.
+	 * FÃ¼gt das Ã¼bergebene Objekt zur Liste aller auf DarstellungstypÃ¤nderungen angemeldeten Objekte hinzu.
 	 * 
 	 * @param listener ein DOTChangeListener
 	 */
@@ -677,7 +683,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		_dotChangeListeners.add(listener);
 	}
 	/**
-	 * Löscht das übergebene Objekt aus der Liste aller auf Darstellungstypänderungen angemeldeten Objekte.
+	 * LÃ¶scht das Ã¼bergebene Objekt aus der Liste aller auf DarstellungstypÃ¤nderungen angemeldeten Objekte.
 	 * 
 	 * @param listener ein DOTChangeListener
 	 */
@@ -686,7 +692,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Benachrichtigt alle auf Darstellungstypänderungen angemeldeten Objekte über das Hinzufügen eines 
+	 * Benachrichtigt alle auf DarstellungstypÃ¤nderungen angemeldeten Objekte Ã¼ber das HinzufÃ¼gen eines 
 	 * Darstellungstypen.
 	 * 
 	 * @param displayObjectType ein Darstellungstyp
@@ -698,7 +704,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Benachrichtigt alle auf Darstellungstypänderungen angemeldeten Objekte über das Verändern eines 
+	 * Benachrichtigt alle auf DarstellungstypÃ¤nderungen angemeldeten Objekte Ã¼ber das VerÃ¤ndern eines 
 	 * Darstellungstypen.
 	 * 
 	 * @param displayObjectType ein Darstellungstyp
@@ -709,7 +715,7 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 		}
 	}
 	/**
-	 * Benachrichtigt alle auf Darstellungstypänderungen angemeldeten Objekte über das
+	 * Benachrichtigt alle auf DarstellungstypÃ¤nderungen angemeldeten Objekte Ã¼ber das
 	 * Entfernen eines Darstellungstypen.
 	 * 
 	 * @param displayObjectType ein Darstellungstyp
@@ -735,11 +741,11 @@ public class DOTManager extends AbstractTableModel implements TableModel {
 	}
 	
 	/**
-	 * Der PluginManager ruft diese Methode auf, wenn externe Plugins hinzugefügt wurden. Dies wird
-	 * statt einem Listener-Mechanismus bevorzugt, weil bei einem solchen sichergestellt werden müsste,
+	 * Der PluginManager ruft diese Methode auf, wenn externe Plugins hinzugefÃ¼gt wurden. Dies wird
+	 * statt einem Listener-Mechanismus bevorzugt, weil bei einem solchen sichergestellt werden mÃ¼sste,
 	 * dass der DOTManager bereits instanziiert ist.
 	 * 
-	 * @param plugins die Liste der hinzugefügten Plugins
+	 * @param plugins die Liste der hinzugefÃ¼gten Plugins
 	 */
 	public static void pluginsAdded( final List<String> plugins) {
 		final List<String> dotClasses = new ArrayList<String>();
